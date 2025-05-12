@@ -1,0 +1,94 @@
+<!-- booking.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book your massage appointment with ease.">
+    <title>Booking - Tranquil Touch Massage</title>
+    <link rel="stylesheet" href="css/formatting.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav>
+        <div class="menu-toggle" id="mobile-menu">☰</div>
+        <ul class="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="booking.html">Booking</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="booking-form">
+    <h1>Book Your Appointment</h1>
+    <form>
+        <fieldset>
+            <legend>Personal Details</legend>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <!-- Required: Zip Code with pattern -->
+            <label for="zip">Zip Code:</label>
+            <input type="text" id="zip" name="zip" pattern="\d{5}" title="Enter 5-digit zip code" required>
+
+            
+        </fieldset>
+
+        <fieldset>
+            <legend>Booking Information</legend>
+
+            <label for="date">Preferred Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Preferred Time:</label>
+            <input type="time" id="time" name="time" required>
+
+            <p>Massage Type:</p>
+            <input type="radio" id="swedish" name="massage" value="Swedish" required><label for="swedish">Swedish</label>
+            <input type="radio" id="deep" name="massage" value="Deep Tissue"><label for="deep">Deep Tissue</label>
+
+            <p>Add-ons:</p>
+            <input type="checkbox" id="aroma" name="addon" value="Aromatherapy"><label for="aroma">Aromatherapy</label>
+            <input type="checkbox" id="stones" name="addon" value="Hot Stones"><label for="stones">Hot Stones</label>
+
+            <!-- Required: Range slider -->
+            <label for="pressure">Pressure Level:</label>
+            <input type="range" id="pressure" name="pressure" min="1" max="10">
+
+            <!-- Required: Spinner (Number Input) -->
+            <label for="guests">Number of Guests:</label>
+            <input type="number" id="guests" name="guests" min="1" max="4">
+
+            <!-- Required: Textarea -->
+            <label for="notes">Additional Notes:</label>
+            <textarea id="notes" name="notes" rows="4" cols="50"></textarea>
+
+            <!-- Required: Datalist -->
+            <label for="location">Location:</label>
+            <input list="locations" id="location" name="location">
+            <datalist id="locations">
+                <option value="Downtown Spa">
+                <option value="Uptown Wellness">
+            </datalist>
+
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </fieldset>
+    </form>
+</section>
+
+<footer>
+    <p>&copy; 2025 Tranquil Touch Massage | <a href="#">Terms</a> | <a href="#">Privacy</a></p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
