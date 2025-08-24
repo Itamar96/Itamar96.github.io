@@ -2,21 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>WEB 115 – Itamar Castillo</title>
+  <title>WEB 115 – Home (RESET)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { font-family: Arial, sans-serif; max-width: 700px; margin: 40px auto; line-height: 1.6; }
-    h1 { color: #2c3e50; }
-    a { color: #0066cc; text-decoration: none; }
+    body { font-family: Arial, sans-serif; max-width: 720px; margin: 48px auto; line-height: 1.6; }
+    .box { padding: 16px; border: 2px dashed #999; border-radius: 12px; }
+    a { color: #0645ad; text-decoration: none; }
     a:hover { text-decoration: underline; }
+    code { background:#f3f3f3; padding:2px 6px; border-radius:6px; }
   </style>
 </head>
 <body>
   <h1>WEB 115 – Itamar Castillo</h1>
-  <p>Welcome to my WEB 115 homepage. This site will contain my coursework, assignments, and projects for the semester.</p>
+  <p class="box">
+    This is the <strong>NEW homepage</strong> for WEB 115.  
+    If you still see your old class site here, your browser is caching the old page.
+  </p>
 
-  <h2>Class Folder</h2>
-  <ul>
-    <li><a href="/web115/">Go to my WEB 115 class site →</a></li>
-  </ul>
+  <h2>Go to my class folder</h2>
+  <p>
+    <!-- ABSOLUTE link so it cannot point to the old project -->
+    <a href="https://itamar96.github.io/web115/">Open WEB 115 →</a>
+  </p>
+
+  <hr>
+  <p><small>Build stamp: <span id="stamp"></span></small></p>
+  <script>
+    // shows the exact time this file was served, so you can tell if you're seeing the new one
+    document.getElementById('stamp').textContent = new Date().toString();
+  </script>
 </body>
 </html>
