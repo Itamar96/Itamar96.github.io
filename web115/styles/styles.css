@@ -24,12 +24,7 @@ body {
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: var(--text);
-  background: linear-gradient(
-    135deg,
-    var(--bg-grad-1),
-    var(--bg-grad-2),
-    var(--bg-grad-3)
-  );
+  background: linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
 }
 
 header,
@@ -61,7 +56,7 @@ nav a:focus-visible {
   outline-offset: 2px;
 }
 
-/* Figures & Images */
+/* Media */
 figure {
   margin: 1rem auto;
   text-align: center;
@@ -72,30 +67,9 @@ figure img {
   max-width: 250px;
   border-radius: 12px;
   margin: 0 auto;
-
-  /* ✨ Vibrant gradient border */
-  border: 6px solid;
-  border-image: linear-gradient(
-    135deg,
-    #c084f5,  /* soft violet (matches accent) */
-    #00e0ff,  /* cyan */
-    #ffeb3b,  /* golden yellow */
-    #8a2be2   /* deep purple */
-  ) 1;
-
-  /* Glow to match theme */
-  box-shadow: 0 0 20px rgba(192, 132, 245, 0.6),
-              0 0 30px rgba(0, 224, 255, 0.3);
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
 }
 
-figure figcaption {
-  margin-top: 0.75rem;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-  color: var(--text);
-}
-
-/* General links */
 a {
   color: #ffcc00; /* gold for high contrast */
   text-decoration: underline;
