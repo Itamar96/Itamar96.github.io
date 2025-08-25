@@ -6,6 +6,7 @@
 *::after { box-sizing: border-box; }
 
 :root {
+  /* Theme colors */
   --bg-grad-1: #2e003e;
   --bg-grad-2: #3c1874;
   --bg-grad-3: #1f1c2c;
@@ -15,9 +16,9 @@
   --white: #ffffff;
 
   /* Glow palette */
-  --glow-yellow-strong: rgba(255, 235, 59, 0.8);
-  --glow-yellow-med:    rgba(255, 235, 59, 0.4); /* balanced */
-  --glow-yellow-soft:   rgba(255, 235, 59, 0.2); /* subtle */
+  --glow-yellow-strong: rgba(255, 235, 59, 0.8); /* L3 */
+  --glow-yellow-med:    rgba(255, 235, 59, 0.5); /* L2 */
+  --glow-yellow-soft:   rgba(255, 235, 59, 0.3); /* L2 */
 }
 
 /* Layout */
@@ -74,20 +75,26 @@ a:hover, a:focus { color: #ffffff; }
 /*        ✨ GLOW EFFECTS         */
 /* ============================== */
 
-/* LEVEL 2 (Balanced glow) */
-header h1,
-main h2,
-footer p,
-figure figcaption,
-strong,
-em,
-nav a,
-a[href*="validate"],
-a[href="#"],
-a[href*="web115"] {
+/* LEVEL 2 (Balanced glow) — applies to all items you listed */
+header h1,                 /* WEB115 • Home, WEB115 • Introduction, Itamar... */
+main h2, main h3,          /* Home, Contract, Welcome, etc. */
+nav a,                     /* Home • Introduction • Contract • Personal Home */
+footer p, footer a,        /* Validate: HTML • CSS • Page built by Aethernova Design */
+figure figcaption,         /* A meaningful holiday... */
+strong, em,                /* bold/italic text (names, I.C., etc.) */
+main a,                    /* links inside main content (e.g., "my introduction", contract name link) */
+a#validate-html, a#validate-css /* explicit validator anchors if used */
+{
   text-shadow:
-    0 0 2px var(--glow-yellow-soft),
-    0 0 4px var(--glow-yellow-med);
+    0 0 3px var(--glow-yellow-med),
+    0 0 6px var(--glow-yellow-soft);
+}
+
+/* Ensure the contract name link specifically glows (redundant but explicit) */
+main p a[href$="introduction.html"] {
+  text-shadow:
+    0 0 3px var(--glow-yellow-med),
+    0 0 6px var(--glow-yellow-soft);
 }
 
 /* LEVEL 3 (Vibrant glow) — Dragon only */
@@ -98,5 +105,3 @@ span.dragon {
     0 0 8px var(--glow-yellow-med),
     0 0 12px var(--glow-yellow-soft);
 }
-
-h1 .dragon, h2 .dragon, h3 .dragon { display: inline-block; }
