@@ -37,6 +37,16 @@ footer {
 
 main {
   padding: 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Typography tweaks */
+h1, h2, h3 {
+  margin: 0.25rem 0 0.75rem;
+}
+p, li {
+  line-height: 1.6;
 }
 
 /* Nav */
@@ -45,15 +55,25 @@ nav a {
   color: var(--accent);
   text-decoration: none;
 }
-
 nav a:hover,
 nav a:focus {
   text-decoration: underline;
 }
-
 nav a:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
+}
+/* show current page */
+nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
+
+/* Utility */
+.small {
+  font-size: 0.9rem;
+  opacity: 0.9;
 }
 
 /* Media */
@@ -61,10 +81,11 @@ figure {
   margin: 1rem auto;
   text-align: center;
 }
-
 figure img {
   display: block;
   max-width: 250px;
+  width: 100%;
+  height: auto;
   border-radius: 12px;
   margin: 0 auto;
   box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
