@@ -39,3 +39,6 @@ figure img {
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
 }
+
+img {
+  max-width: 300px;   /* sets a maximum size (adjust if you want bigger/smaller
