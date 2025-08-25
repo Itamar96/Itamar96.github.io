@@ -16,8 +16,8 @@
 
   /* Glow palette */
   --glow-yellow-strong: rgba(255, 235, 59, 0.8);
-  --glow-yellow-med:    rgba(255, 235, 59, 0.6);
-  --glow-yellow-soft:   rgba(255, 235, 59, 0.3);
+  --glow-yellow-med:    rgba(255, 235, 59, 0.4); /* balanced */
+  --glow-yellow-soft:   rgba(255, 235, 59, 0.2); /* subtle */
 }
 
 /* Layout */
@@ -74,29 +74,29 @@ a:hover, a:focus { color: #ffffff; }
 /*        ✨ GLOW EFFECTS         */
 /* ============================== */
 
-/* LEVEL 2 (Balanced) — for your important text */
+/* LEVEL 2 (Balanced glow) */
+header h1,
+main h2,
 footer p,
 figure figcaption,
 strong,
 em,
-/* Key links you called out */
+nav a,
 a[href*="validate"],
 a[href="#"],
 a[href*="web115"] {
-  /* Level 2: readable neon */
   text-shadow:
-    0 0 3px var(--glow-yellow-med),
-    0 0 6px var(--glow-yellow-soft);
+    0 0 2px var(--glow-yellow-soft),
+    0 0 4px var(--glow-yellow-med);
 }
 
-/* LEVEL 3 (Vibrant) — dragon only */
+/* LEVEL 3 (Vibrant glow) — Dragon only */
 span.dragon {
-  color: #ffffff; /* keep dragon white so glow stands out */
+  color: #ffffff;
   text-shadow:
     0 0 4px var(--glow-yellow-strong),
     0 0 8px var(--glow-yellow-med),
     0 0 12px var(--glow-yellow-soft);
 }
 
-/* (Optional) ensure headers don’t override dragon glow */
 h1 .dragon, h2 .dragon, h3 .dragon { display: inline-block; }
