@@ -102,34 +102,30 @@ a:focus {
   color: #ffffff; /* white on hover/focus */
 }
 
-/* ✨ Subtle Yellow Glow for Key Text */
+/* ✨ Minimum Brightness Glow for Key Text */
 
 /* Footer (© line + credit) */
 footer p {
   font-weight: bold;
   color: var(--white);
-  text-shadow: 0 0 3px rgba(255, 235, 59, 0.6),
-               0 0 6px rgba(255, 235, 59, 0.4);
+  text-shadow: 0 0 1px rgba(255, 235, 59, 0.2);
 }
 
 /* Captions under images */
 figure figcaption {
-  text-shadow: 0 0 3px rgba(255, 235, 59, 0.5),
-               0 0 5px rgba(255, 235, 59, 0.3);
+  text-shadow: 0 0 1px rgba(255, 235, 59, 0.2);
 }
 
 /* Bold names + highlighted text + alias (Aethernova) */
 strong,
 em {
   color: #ffffff;
-  text-shadow: 0 0 3px rgba(255, 235, 59, 0.6),
-               0 0 6px rgba(255, 235, 59, 0.3);
+  text-shadow: 0 0 1px rgba(255, 235, 59, 0.2);
 }
 
 /* Key links (Validate HTML/CSS, Coming soon, WEB115 course link) */
 a[href*="validate"],
 a[href="#"],
 a[href*="web115"] {
-  text-shadow: 0 0 3px rgba(255, 235, 59, 0.6),
-               0 0 6px rgba(255, 235, 59, 0.3);
+  text-shadow: 0 0 1px rgba(255, 235, 59, 0.2);
 }
