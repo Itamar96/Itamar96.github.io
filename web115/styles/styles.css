@@ -61,7 +61,7 @@ nav a:focus-visible {
   outline-offset: 2px;
 }
 
-/* Media */
+/* Figures & Images */
 figure {
   margin: 1rem auto;
   text-align: center;
@@ -88,6 +88,14 @@ figure img {
               0 0 30px rgba(0, 224, 255, 0.3);
 }
 
+figure figcaption {
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+/* General links */
 a {
   color: #ffcc00; /* gold for high contrast */
   text-decoration: underline;
