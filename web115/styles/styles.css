@@ -38,6 +38,25 @@ header, footer {
 
 main { padding: 2rem; }
 
+/* Tagline (under header h1) */
+.tagline {
+  font-size: 0.9rem;
+  color: var(--accent);
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+/* Optional: tiny circular logo next to the site title */
+.logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  border: 2px solid var(--accent);
+}
+
 /* Nav */
 nav a {
   margin: 0 0.5rem;
@@ -76,15 +95,16 @@ a:hover, a:focus { color: #ffffff; }
 /* ============================== */
 
 /* LEVEL 2 (Balanced glow) — applies to all items you listed */
-header h1,                 /* WEB115 • Home, WEB115 • Introduction, Itamar... */
-main h2, main h3,          /* Home, Contract, Welcome, etc. */
-nav a,                     /* Home • Introduction • Contract • Personal Home */
-footer p, footer a,        /* Validate: HTML • CSS • Page built by Aethernova Design */
-figure figcaption,         /* A meaningful holiday... */
-strong, em,                /* bold/italic text (names, I.C., etc.) */
-main a,                    /* links inside main content (e.g., "my introduction", contract name link) */
+.tagline,                 /* <<< added */
+header h1,                /* WEB115 • Home, WEB115 • Introduction, Itamar... */
+main h2, main h3,         /* Home, Contract, Welcome, etc. */
+nav a,                    /* Home • Introduction • Contract • Personal Home */
+footer p, footer a,       /* Validate: HTML • CSS • Page built by Aethernova Design */
+figure figcaption,        /* A meaningful holiday... */
+strong, em,               /* bold/italic text (names, I.C., etc.) */
+main a,                   /* links inside main content (e.g., "my introduction", contract name link) */
 a#validate-html, a#validate-css, /* explicit validator anchors if used */
-blockquote                 /* <<< NEW: inspirational quote */
+blockquote                /* inspirational quote */
 {
   text-shadow:
     0 0 3px var(--glow-yellow-med),
