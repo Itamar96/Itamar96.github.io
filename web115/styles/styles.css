@@ -102,30 +102,31 @@ a:focus {
   color: #ffffff; /* white on hover/focus */
 }
 
-/* ✨ Minimum Brightness Glow for Key Text */
+/* ✨ Glow Effects */
 
-/* Footer (© line + credit) */
-footer p {
-  font-weight: bold;
-  color: var(--white);
-  text-shadow: 0 0 1px rgba(255, 235, 59, 0.2);
-}
-
-/* Captions under images */
-figure figcaption {
-  text-shadow: 0 0 1px rgba(255, 235, 59, 0.2);
-}
-
-/* Bold names + highlighted text + alias (Aethernova) */
+/* Level 2 Glow (balanced) — for text */
+footer p,
+figure figcaption,
 strong,
-em {
-  color: #ffffff;
-  text-shadow: 0 0 1px rgba(255, 235, 59, 0.2);
-}
-
-/* Key links (Validate HTML/CSS, Coming soon, WEB115 course link) */
+em,
 a[href*="validate"],
 a[href="#"],
 a[href*="web115"] {
-  text-shadow: 0 0 1px rgba(255, 235, 59, 0.2);
+  text-shadow: 0 0 2px rgba(255, 235, 59, 0.4),
+               0 0 4px rgba(255, 235, 59, 0.2);
+}
+
+/* Level 3 Glow (strong) — for the dragon 🐉 */
+h1:has(span.dragon),
+h2:has(span.dragon),
+h3:has(span.dragon) {
+  text-shadow: 0 0 3px rgba(255, 235, 59, 0.6),
+               0 0 6px rgba(255, 235, 59, 0.3),
+               0 0 8px rgba(255, 235, 59, 0.2);
+}
+
+span.dragon {
+  text-shadow: 0 0 3px rgba(255, 235, 59, 0.6),
+               0 0 6px rgba(255, 235, 59, 0.3),
+               0 0 8px rgba(255, 235, 59, 0.2);
 }
