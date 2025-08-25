@@ -89,4 +89,15 @@ figure figcaption {
   margin-bottom: 1rem;  /* space after caption */
   font-size: 0.9rem;
   color: var(--text);
+  /* Glow effect */
+  text-shadow: 0 0 5px #ffffff, 0 0 10px rgba(255,255,255,0.8);
+}
+
+/* Glow effect for bold text everywhere */
+strong,
+b {
+  color: #ffffff; /* keep it bright white */
+  text-shadow: 0 0 5px #ffffff,
+               0 0 10px rgba(255,255,255,0.8),
+               0 0 15px rgba(192,132,245,0.6);
 }
