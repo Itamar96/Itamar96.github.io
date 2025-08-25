@@ -1,5 +1,3 @@
-/* filename: web115/styles/styles.css */
-
 /* styles.css — WEB115 Aurora Theme */
 
 /* Base / Reset */
@@ -49,17 +47,15 @@ main { padding: 2rem; }
   font-style: italic;
 }
 
-/* Tiny circular logo next to the site title (PNG) */
+/* Square logo next to the site title (PNG) */
 .logo {
-  width: 36px;           /* adjust to taste */
-  aspect-ratio: 1 / 1;   /* keeps it perfectly square */
+  width: 40px;           /* adjust size as you like */
   height: auto;
-  border-radius: 50%;    /* circular mask */
   vertical-align: middle;
   margin-right: 0.5rem;
-  border: 2px solid var(--accent); /* subtle ring */
+  border: 2px solid var(--accent); /* subtle accent border */
   background-color: transparent;
-  object-fit: cover;     /* trims any padding in the PNG */
+  object-fit: contain;   /* keeps full logo visible inside its box */
 }
 
 /* Nav */
@@ -132,14 +128,13 @@ span.dragon {
     0 0 12px var(--glow-yellow-soft);
 }
 
-/* Keep footer glow even on hover/focus */
-footer p, footer a {
+/* Footer glow — unify with Level 2 */
+footer p,
+footer a,
+footer a:hover,
+footer a:focus {
   text-shadow:
     0 0 3px var(--glow-yellow-med),
-    0 0 6px var(--glow-yellow-soft) !important;
+    0 0 6px var(--glow-yellow-soft);
 }
-footer a:hover, footer a:focus {
-  color: #ffffff;
-  text-decoration: underline;
-  text-shadow:
-    0 0 3px var(--glow-yel
+
