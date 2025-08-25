@@ -1,3 +1,5 @@
+/* filename: web115/styles/styles.css */
+
 /* styles.css — WEB115 Aurora Theme */
 
 /* Base / Reset */
@@ -47,14 +49,17 @@ main { padding: 2rem; }
   font-style: italic;
 }
 
-/* Optional: tiny circular logo next to the site title */
+/* Tiny circular logo next to the site title (PNG) */
 .logo {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
+  width: 36px;           /* adjust to taste */
+  aspect-ratio: 1 / 1;   /* keeps it perfectly square */
+  height: auto;
+  border-radius: 50%;    /* circular mask */
   vertical-align: middle;
   margin-right: 0.5rem;
-  border: 2px solid var(--accent);
+  border: 2px solid var(--accent); /* subtle ring */
+  background-color: transparent;
+  object-fit: cover;     /* trims any padding in the PNG */
 }
 
 /* Nav */
@@ -95,14 +100,14 @@ a:hover, a:focus { color: #ffffff; }
 /* ============================== */
 
 /* LEVEL 2 (Balanced glow) — applies to all items you listed */
-.tagline,                 /* <<< added */
+.tagline,                 /* tagline glows like the rest */
 header h1,                /* WEB115 • Home, WEB115 • Introduction, Itamar... */
 main h2, main h3,         /* Home, Contract, Welcome, etc. */
 nav a,                    /* Home • Introduction • Contract • Personal Home */
 footer p, footer a,       /* Validate: HTML • CSS • Page built by Aethernova Design */
 figure figcaption,        /* A meaningful holiday... */
 strong, em,               /* bold/italic text (names, I.C., etc.) */
-main a,                   /* links inside main content (e.g., "my introduction", contract name link) */
+main a,                   /* links inside main content (e.g., "my introduction", contract link) */
 a#validate-html, a#validate-css, /* explicit validator anchors if used */
 blockquote                /* inspirational quote */
 {
@@ -126,3 +131,15 @@ span.dragon {
     0 0 8px var(--glow-yellow-med),
     0 0 12px var(--glow-yellow-soft);
 }
+
+/* Keep footer glow even on hover/focus */
+footer p, footer a {
+  text-shadow:
+    0 0 3px var(--glow-yellow-med),
+    0 0 6px var(--glow-yellow-soft) !important;
+}
+footer a:hover, footer a:focus {
+  color: #ffffff;
+  text-decoration: underline;
+  text-shadow:
+    0 0 3px var(--glow-yel
