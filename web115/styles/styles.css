@@ -1,16 +1,36 @@
-/* styles.css - WEB115 Aurora Theme */
+/* styles.css — WEB115 Aurora Theme */
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #2e003e, #3c1874, #1f1c2c);
-  color: #e6e6f0;
-  margin: 0;
-  padding: 0;
+/* Base / Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-header, footer {
-  background-color: #2e003e;
-  color: #fff;
+:root {
+  /* Theme colors */
+  --bg-grad-1: #2e003e;
+  --bg-grad-2: #3c1874;
+  --bg-grad-3: #1f1c2c;
+  --text: #e6e6f0;
+  --surface: #2e003e;
+  --accent: #c084f5;
+  --white: #ffffff;
+}
+
+/* Layout */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+  background: linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
+}
+
+header,
+footer {
+  background-color: var(--surface);
+  color: var(--white);
   text-align: center;
   padding: 1rem;
 }
@@ -19,26 +39,33 @@ main {
   padding: 2rem;
 }
 
+/* Nav */
 nav a {
   margin: 0 0.5rem;
-  color: #c084f5;
+  color: var(--accent);
   text-decoration: none;
 }
 
-nav a:hover {
+nav a:hover,
+nav a:focus {
   text-decoration: underline;
 }
 
+nav a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Media */
 figure {
   margin: 1rem auto;
   text-align: center;
 }
 
 figure img {
+  display: block;
   max-width: 250px;
   border-radius: 12px;
+  margin: 0 auto;
   box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
 }
-
-img {
-  max-width: 300px;   /* sets a maximum size (adjust if you want bigger/smaller
