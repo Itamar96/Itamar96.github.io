@@ -1,0 +1,41 @@
+/* styles.css - WEB115 Aurora Theme */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #2e003e, #3c1874, #1f1c2c);
+  color: #e6e6f0;
+  margin: 0;
+  padding: 0;
+}
+
+header, footer {
+  background-color: #2e003e;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+
+main {
+  padding: 2rem;
+}
+
+nav a {
+  margin: 0 0.5rem;
+  color: #c084f5;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+figure {
+  margin: 1rem auto;
+  text-align: center;
+}
+
+figure img {
+  max-width: 250px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+}
