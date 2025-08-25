@@ -83,14 +83,15 @@ footer p, footer a,        /* Validate: HTML • CSS • Page built by Aethernov
 figure figcaption,         /* A meaningful holiday... */
 strong, em,                /* bold/italic text (names, I.C., etc.) */
 main a,                    /* links inside main content (e.g., "my introduction", contract name link) */
-a#validate-html, a#validate-css /* explicit validator anchors if used */
+a#validate-html, a#validate-css, /* explicit validator anchors if used */
+blockquote                 /* <<< NEW: inspirational quote */
 {
   text-shadow:
     0 0 3px var(--glow-yellow-med),
     0 0 6px var(--glow-yellow-soft);
 }
 
-/* Ensure the contract name link specifically glows (redundant but explicit) */
+/* Ensure the contract name link specifically glows */
 main p a[href$="introduction.html"] {
   text-shadow:
     0 0 3px var(--glow-yellow-med),
