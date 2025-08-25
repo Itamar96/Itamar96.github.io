@@ -102,21 +102,34 @@ a:focus {
   color: #ffffff; /* white on hover/focus */
 }
 
-/* ✨ Glow effect for important text */
-strong,
-footer p,
-a,
-figcaption,
-h1,
-h2,
-h3 {
-  text-shadow: 0 0 5px #ffeb3b,
-               0 0 10px #ffeb3b,
-               0 0 20px #ffeb3b;
-}
+/* ✨ Subtle Yellow Glow for Key Text */
 
-/* Special emphasis for footer © line */
+/* Footer (© line + credit) */
 footer p {
   font-weight: bold;
   color: var(--white);
+  text-shadow: 0 0 3px rgba(255, 235, 59, 0.6),
+               0 0 6px rgba(255, 235, 59, 0.4);
+}
+
+/* Captions under images */
+figure figcaption {
+  text-shadow: 0 0 3px rgba(255, 235, 59, 0.5),
+               0 0 5px rgba(255, 235, 59, 0.3);
+}
+
+/* Bold names + highlighted text + alias (Aethernova) */
+strong,
+em {
+  color: #ffffff;
+  text-shadow: 0 0 3px rgba(255, 235, 59, 0.6),
+               0 0 6px rgba(255, 235, 59, 0.3);
+}
+
+/* Key links (Validate HTML/CSS, Coming soon, WEB115 course link) */
+a[href*="validate"],
+a[href="#"],
+a[href*="web115"] {
+  text-shadow: 0 0 3px rgba(255, 235, 59, 0.6),
+               0 0 6px rgba(255, 235, 59, 0.3);
 }
