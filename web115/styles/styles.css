@@ -38,26 +38,6 @@ header, footer {
 
 main { padding: 2rem; }
 
-/* Tagline (under header h1) */
-.tagline {
-  font-size: 0.9rem;
-  color: var(--accent);
-  margin-top: -0.5rem;
-  margin-bottom: 1rem;
-  font-style: italic;
-}
-
-/* Square logo next to the site title (PNG) */
-.logo {
-  width: 40px;           /* adjust size as you like */
-  height: auto;
-  vertical-align: middle;
-  margin-right: 0.5rem;
-  border: 2px solid var(--accent); /* subtle accent border */
-  background-color: transparent;
-  object-fit: contain;   /* keeps full logo visible inside its box */
-}
-
 /* Nav */
 nav a {
   margin: 0 0.5rem;
@@ -96,16 +76,15 @@ a:hover, a:focus { color: #ffffff; }
 /* ============================== */
 
 /* LEVEL 2 (Balanced glow) — applies to all items you listed */
-.tagline,                 /* tagline glows like the rest */
-header h1,                /* WEB115 • Home, WEB115 • Introduction, Itamar... */
-main h2, main h3,         /* Home, Contract, Welcome, etc. */
-nav a,                    /* Home • Introduction • Contract • Personal Home */
-footer p, footer a,       /* Validate: HTML • CSS • Page built by Aethernova Design */
-figure figcaption,        /* A meaningful holiday... */
-strong, em,               /* bold/italic text (names, I.C., etc.) */
-main a,                   /* links inside main content (e.g., "my introduction", contract link) */
+header h1,                 /* WEB115 • Home, WEB115 • Introduction, Itamar... */
+main h2, main h3,          /* Home, Contract, Welcome, etc. */
+nav a,                     /* Home • Introduction • Contract • Personal Home */
+footer p, footer a,        /* Validate: HTML • CSS • Page built by Aethernova Design */
+figure figcaption,         /* A meaningful holiday... */
+strong, em,                /* bold/italic text (names, I.C., etc.) */
+main a,                    /* links inside main content (e.g., "my introduction", contract name link) */
 a#validate-html, a#validate-css, /* explicit validator anchors if used */
-blockquote                /* inspirational quote */
+blockquote                 /* <<< NEW: inspirational quote */
 {
   text-shadow:
     0 0 3px var(--glow-yellow-med),
@@ -126,14 +105,4 @@ span.dragon {
     0 0 4px var(--glow-yellow-strong),
     0 0 8px var(--glow-yellow-med),
     0 0 12px var(--glow-yellow-soft);
-}
-
-/* Footer glow — unify with Level 2 */
-footer p,
-footer a,
-footer a:hover,
-footer a:focus {
-  text-shadow:
-    0 0 3px var(--glow-yellow-med),
-    0 0 6px var(--glow-yellow-soft);
 }
