@@ -89,15 +89,34 @@ figure figcaption {
   margin-bottom: 1rem;  /* space after caption */
   font-size: 0.9rem;
   color: var(--text);
-  /* Glow effect */
-  text-shadow: 0 0 5px #ffffff, 0 0 10px rgba(255,255,255,0.8);
 }
 
-/* Glow effect for bold text everywhere */
+/* Links */
+a {
+  color: #ffcc00; /* gold for high contrast */
+  text-decoration: underline;
+}
+
+a:hover,
+a:focus {
+  color: #ffffff; /* white on hover/focus */
+}
+
+/* ✨ Glow effect for important text */
 strong,
-b {
-  color: #ffffff; /* keep it bright white */
-  text-shadow: 0 0 5px #ffffff,
-               0 0 10px rgba(255,255,255,0.8),
-               0 0 15px rgba(192,132,245,0.6);
+footer p,
+a,
+figcaption,
+h1,
+h2,
+h3 {
+  text-shadow: 0 0 5px #ffeb3b,
+               0 0 10px #ffeb3b,
+               0 0 20px #ffeb3b;
+}
+
+/* Special emphasis for footer © line */
+footer p {
+  font-weight: bold;
+  color: var(--white);
 }
