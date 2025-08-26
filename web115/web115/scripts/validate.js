@@ -1,26 +1,33 @@
-// web115/scripts/validate.js
-document.addEventListener("DOMContentLoaded", function () {
-  const htmlLink = document.getElementById("validate-html");
-  const cssLink  = document.getElementById("validate-css");
+// /web115/scripts/validate.js
+(() => {
+  function setLinks() {
+    const html = document.getElementById('validate-html');
+    const css  = document.getElementById('validate-css');
 
-  if (htmlLink) {
-    htmlLink.href =
-      "https://validator.w3.org/nu/?doc=" + encodeURIComponent(location.href);
+    // Fallbacks if JS is blocked or running from file://
+    const htmlFallback = 'https://validator.w3.org/nu/#textarea';
+    const cssFallback  = 'https://jigsaw.w3.org/css-validator/#validate_by_input';
+
+    if (!html && !css) return;
+
+    const url = location.href;
+    if (html) {
+      html.href = 'https://validator.w3.org/nu/?doc=' + encodeURIComponent(url);
+      html.target = '_blank';
+      html.rel = 'noopener noreferrer';
+      if (location.protocol === 'file:') html.href = htmlFallback;
+    }
+    if (css) {
+      css.href = 'https://jigsaw.w3.org/css-validator/validator?uri=' + encodeURIComponent(url);
+      css.target = '_blank';
+      css.rel = 'noopener noreferrer';
+      if (location.protocol === 'file:') css.href = cssFallback;
+    }
   }
-  if (cssLink) {
-    cssLink.href =
-      "https://jigsaw.w3.org/css-validator/validator?uri=" + encodeURIComponent(location.href);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setLinks);
+  } else {
+    setLinks();
   }
-});
-
-<footer>
-  <p class="small">
-    Validate:
-    <a id="validate-html" href="#" target="_blank" rel="noopener">HTML</a> •
-    <a id="validate-css"  href="#" target="_blank" rel="noopener">CSS</a>
-  </p>
-  <p>External links … • Page built by Aethernova Design</p>
-
-  <!-- Load the validation script -->
-  <script src="scripts/validate.js"></script>
-</footer>
+})();
