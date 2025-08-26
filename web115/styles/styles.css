@@ -1,4 +1,4 @@
-/* styles.css — WEB115 Aurora Theme */
+/* styles.css — WEB115 Aurora Theme (Accumulus-friendly) */
 
 /* Base / Reset */
 *,
@@ -23,13 +23,17 @@
 
 /* Layout */
 body {
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: var(--text);
+  /* fallback + gradient */
+  background-color: var(--bg-grad-2);
   background: linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
 }
 
-header, footer {
+header,
+footer {
   background-color: var(--surface);
   color: var(--white);
   text-align: center;
@@ -44,8 +48,13 @@ nav a {
   color: var(--accent);
   text-decoration: none;
 }
-nav a:hover, nav a:focus { text-decoration: underline; }
-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+nav a:hover,
+nav a:focus { text-decoration: underline; }
+
+/* keep a11y outline; some validators don’t know :focus-visible */
+nav a:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* Optional: uncomment if you want the nicer behavior and your checker allows it */
+/* nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; } */
 
 /* Figures & Images */
 figure { margin: 1rem auto; text-align: center; }
@@ -55,36 +64,45 @@ figure img {
   max-width: 250px;
   border-radius: 12px;
   margin: 0 auto;
-  border: 6px solid;
-  border-image: linear-gradient(135deg, #c084f5, #00e0ff, #ffeb3b, #8a2be2) 1;
-  box-shadow: 0 0 20px rgba(192,132,245,0.6), 0 0 30px rgba(0,224,255,0.3);
+  border: 6px solid; /* visible even if border-image is ignored */
+
+  /* split shorthand to appease some validators */
+  border-image-source: linear-gradient(135deg, #c084f5, #00e0ff, #ffeb3b, #8a2be2);
+  border-image-slice: 1;
+
+  box-shadow:
+    0 0 20px rgba(192, 132, 245, 0.6),
+    0 0 30px rgba(0, 224, 255, 0.3);
 }
 
 figure figcaption {
-  margin-top: .75rem;
+  margin-top: 0.75rem;
   margin-bottom: 1rem;
-  font-size: .9rem;
+  font-size: 0.9rem;
   color: var(--text);
 }
 
 /* Links (base) */
 a { color: #ffcc00; text-decoration: underline; }
-a:hover, a:focus { color: #ffffff; }
+a:hover,
+a:focus { color: #ffffff; }
 
 /* ============================== */
 /*        ✨ GLOW EFFECTS         */
 /* ============================== */
 
-/* LEVEL 2 (Balanced glow) — applies to all items you listed */
-header h1,                 /* WEB115 • Home, WEB115 • Introduction, Itamar... */
-main h2, main h3,          /* Home, Contract, Welcome, etc. */
-nav a,                     /* Home • Introduction • Contract • Personal Home */
-footer p, footer a,        /* Social links, footer text */
-figure figcaption,         /* A meaningful holiday... */
-strong, em,                /* bold/italic text (names, I.C., etc.) */
-main a,                    /* links inside main content (e.g., "my introduction", contract name link) */
-blockquote                 /* inspirational quote */
-{
+/* LEVEL 2 (Balanced glow) — applies to headings, nav, footer text/links, figcaptions, emphasis, and in-content links */
+header h1,
+main h2,
+main h3,
+nav a,
+footer p,
+footer a,
+figure figcaption,
+strong,
+em,
+main a,
+blockquote {
   text-shadow:
     0 0 3px var(--glow-yellow-med),
     0 0 6px var(--glow-yellow-soft);
