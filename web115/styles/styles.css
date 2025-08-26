@@ -1,9 +1,7 @@
 /* styles.css — WEB115 Aurora Theme (Accumulus-friendly) */
 
 /* Base / Reset */
-*,
-*::before,
-*::after { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: border-box; }  /* single-colon for older parsers */
 
 :root {
   /* Theme colors */
@@ -51,9 +49,9 @@ nav a {
 nav a:hover,
 nav a:focus { text-decoration: underline; }
 
-/* keep a11y outline; some validators don’t know :focus-visible */
+/* Keep a11y outline; some validators don’t know :focus-visible */
 nav a:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
-/* Optional: uncomment if you want the nicer behavior and your checker allows it */
+/* Optional modern rule (uncomment if you want it and your linter allows it) */
 /* nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; } */
 
 /* Figures & Images */
@@ -90,8 +88,7 @@ a:focus { color: #ffffff; }
 /* ============================== */
 /*        ✨ GLOW EFFECTS         */
 /* ============================== */
-
-/* LEVEL 2 (Balanced glow) — applies to headings, nav, footer text/links, figcaptions, emphasis, and in-content links */
+/* LEVEL 2 (Balanced glow) — headings, nav, footer text/links, figcaptions, emphasis, in-content links, blockquote */
 header h1,
 main h2,
 main h3,
