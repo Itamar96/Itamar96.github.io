@@ -113,10 +113,11 @@ main p a[href$="introduction.html"] {
 }
 
 /* LEVEL 3 (Vibrant glow) — Dragon only */
-span.dragon {
+.dragon {
   color: #ffffff;
   text-shadow:
     0 0 4px var(--glow-yellow-strong),
     0 0 8px var(--glow-yellow-med),
     0 0 12px var(--glow-yellow-soft);
 }
+
