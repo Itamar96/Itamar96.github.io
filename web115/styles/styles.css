@@ -110,14 +110,12 @@ blockquote {
   text-shadow:
     0 0 3px var(--glow-yellow-med),
     0 0 6px var(--glow-yellow-soft);
-}
 
 /* Specific link glow (contract name link) */
 a[href$="introduction.html"] {
   text-shadow:
     0 0 3px var(--glow-yellow-med),
     0 0 6px var(--glow-yellow-soft);
-}
 
 /* LEVEL 3 (Vibrant glow) — Dragon only */
 .dragon {
@@ -126,4 +124,3 @@ a[href$="introduction.html"] {
     0 0 4px var(--glow-yellow-strong),
     0 0 8px var(--glow-yellow-med),
     0 0 12px var(--glow-yellow-soft);
-}
