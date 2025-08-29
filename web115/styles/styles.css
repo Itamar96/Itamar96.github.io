@@ -55,7 +55,7 @@ nav a:focus { text-decoration: underline; }
 
 /* Keep a11y outline; some validators don’t know :focus-visible */
 nav a:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
-/* Optional modern rule (uncomment if you want it and your linter allows it) */
+/* Optional modern rule (uncomment if your linter allows it) */
 /* nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; } */
 
 /* Figures & Images */
@@ -66,9 +66,11 @@ figure img {
   max-width: 250px;
   border-radius: 12px;
   margin: 0 auto;
-  border: 6px solid; /* visible even if border-image is ignored */
 
-  /* split shorthand to appease some validators */
+  /* visible border even if border-image is ignored */
+  border: 6px solid transparent;
+
+  /* split shorthand for strict validators */
   border-image-source: linear-gradient(135deg, #c084f5, #00e0ff, #ffeb3b, #8a2be2);
   border-image-slice: 1;
 
@@ -93,9 +95,9 @@ a:focus { color: #ffffff; }
 /*        ✨ GLOW EFFECTS         */
 /* ============================== */
 /* LEVEL 2 (Balanced glow) — headings, nav, footer text/links, figcaptions, emphasis, in-content links, blockquote */
-header h1,
-main h2,
-main h3,
+h1,
+h2,
+h3,
 nav a,
 footer p,
 footer a,
@@ -109,8 +111,8 @@ blockquote {
     0 0 6px var(--glow-yellow-soft);
 }
 
-/* Ensure the contract name link specifically glows */
-main p a[href$="introduction.html"] {
+/* Specific link glow (contract name link) */
+a[href$="introduction.html"] {
   text-shadow:
     0 0 3px var(--glow-yellow-med),
     0 0 6px var(--glow-yellow-soft);
