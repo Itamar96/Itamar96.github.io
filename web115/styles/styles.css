@@ -1,7 +1,10 @@
 /* styles.css — WEB115 Aurora Theme (Accumulus-friendly) */
 
-/* Base / Reset */
-*, *:before, *:after { box-sizing: border-box; }  /* single-colon for older parsers */
+/* ------------------------ */
+/* Base / Reset             */
+/* ------------------------ */
+*, *:before, *:after,
+*::before, *::after { box-sizing: border-box; } /* dual-pseudo for compat + modern */
 
 :root {
   /* Theme colors */
@@ -19,15 +22,21 @@
   --glow-yellow-soft:   rgba(255, 235, 59, 0.3); /* L2 */
 }
 
-/* Layout */
+/* ------------------------ */
+/* Layout                   */
+/* ------------------------ */
 body {
   margin: 0;
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: var(--text);
-  /* fallback + gradient */
+
+  /* fallback color + gradient background */
   background-color: var(--bg-grad-2);
-  background: linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
+  background-image: linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100dvh;
 }
 
 header,
@@ -40,7 +49,9 @@ footer {
 
 main { padding: 2rem; }
 
-/* Nav */
+/* ------------------------ */
+/* Navigation               */
+/* ------------------------ */
 nav a {
   margin: 0 0.5rem;
   color: var(--accent);
@@ -49,22 +60,32 @@ nav a {
 nav a:hover,
 nav a:focus { text-decoration: underline; }
 
-/* Keep a11y outline; some validators don’t know :focus-visible */
+/* Keep a11y outline visible */
 nav a:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
-/* Optional modern rule (uncomment if you want it and your linter allows it) */
-/* nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; } */
 
-/* Figures & Images */
+/* Use :focus-visible where supported */
+@supports selector(:focus-visible) {
+  nav a:focus { outline: none; }
+  nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+}
+
+/* ------------------------ */
+/* Figures & Images         */
+/* ------------------------ */
 figure { margin: 1rem auto; text-align: center; }
 
 figure img {
   display: block;
+  width: 100%;
   max-width: 250px;
+  height: auto;
   border-radius: 12px;
   margin: 0 auto;
-  border: 6px solid; /* visible even if border-image is ignored */
 
-  /* split shorthand to appease some validators */
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent;
+
   border-image-source: linear-gradient(135deg, #c084f5, #00e0ff, #ffeb3b, #8a2be2);
   border-image-slice: 1;
 
@@ -80,18 +101,19 @@ figure figcaption {
   color: var(--text);
 }
 
-/* Links (base) */
+/* ------------------------ */
+/* Links (base)             */
+/* ------------------------ */
 a { color: #ffcc00; text-decoration: underline; }
 a:hover,
 a:focus { color: #ffffff; }
 
-/* ============================== */
-/*        ✨ GLOW EFFECTS         */
-/* ============================== */
-/* LEVEL 2 (Balanced glow) — headings, nav, footer text/links, figcaptions, emphasis, in-content links, blockquote */
-header h1,
-main h2,
-main h3,
+/* ------------------------ */
+/* ✨ Glow Effects           */
+/* ------------------------ */
+h1,
+h2,
+h3,
 nav a,
 footer p,
 footer a,
@@ -121,3 +143,24 @@ main p a[href$="introduction.html"] {
     0 0 12px var(--glow-yellow-soft);
 }
 
+/* ------------------------ */
+/* Reduced motion respect   */
+/* ------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  h1,
+  h2,
+  h3,
+  nav a,
+  footer p,
+  footer a,
+  figure figcaption,
+  strong,
+  em,
+  main a,
+  blockquote,
+  .dragon {
+    text-shadow: none;
+  }
+
+  figure img { box-shadow: none; }
+}
