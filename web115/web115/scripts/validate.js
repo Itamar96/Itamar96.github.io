@@ -1,33 +1,27 @@
-// /web115/scripts/validate.js
-(() => {
-  function setLinks() {
-    const html = document.getElementById('validate-html');
-    const css  = document.getElementById('validate-css');
-
-    // Fallbacks if JS is blocked or running from file://
-    const htmlFallback = 'https://validator.w3.org/nu/#textarea';
-    const cssFallback  = 'https://jigsaw.w3.org/css-validator/#validate_by_input';
-
-    if (!html && !css) return;
-
-    const url = location.href;
-    if (html) {
-      html.href = 'https://validator.w3.org/nu/?doc=' + encodeURIComponent(url);
-      html.target = '_blank';
-      html.rel = 'noopener noreferrer';
-      if (location.protocol === 'file:') html.href = htmlFallback;
-    }
-    if (css) {
-      css.href = 'https://jigsaw.w3.org/css-validator/validator?uri=' + encodeURIComponent(url);
-      css.target = '_blank';
-      css.rel = 'noopener noreferrer';
-      if (location.protocol === 'file:') css.href = cssFallback;
+function includeHTML() {
+  var z, i, elmnt, file, xhttp;
+  /* Loop through a collection of all HTML elements: */
+  z = document.getElementsByTagName("*");
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+    file = elmnt.getAttribute("w3-include-html");
+    if (file) {
+      /* Make an HTTP request using the attribute value as the file name: */
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState === 4) {
+          if (this.status === 200) {elmnt.innerHTML = this.responseText;}
+          if (this.status === 404) {elmnt.innerHTML = "Page not found.";}
+          /* Remove the attribute, and call this function once more: */
+          elmnt.removeAttribute("w3-include-html");
+          includeHTML();
+        }
+      };
+      xhttp.open("GET", file, true);
+      xhttp.send();
+      /* Exit the function: */
+      return;
     }
   }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setLinks);
-  } else {
-    setLinks();
-  }
-})();
+}  
