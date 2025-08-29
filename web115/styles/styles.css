@@ -64,6 +64,7 @@ figure { margin: 1rem auto; text-align: center; }
 figure img {
   display: block;
   max-width: 250px;
+  height: auto;
   border-radius: 12px;
   margin: 0 auto;
 
