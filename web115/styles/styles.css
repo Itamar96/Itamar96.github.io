@@ -7,10 +7,6 @@ html::after {
   box-sizing: border-box;
 }
 
-*, *::before, *::after {
-  box-sizing: inherit;
-}
-
 :root {
   /* Theme colors */
   --bg-grad-1: #2e003e;
