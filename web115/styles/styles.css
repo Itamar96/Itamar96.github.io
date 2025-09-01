@@ -68,7 +68,7 @@ nav a[aria-current="page"]{
   transition:transform 120ms ease, background-color 160ms ease, border-color 160ms ease, color 120ms ease;
 }
 .btn:hover{ background:#FAF3E8; transform:translateY(-1px); }
-/* no adjoining classes */
+/* single class (no adjoining classes) */
 .btn-brand{ background:var(--accent); border-color:var(--accent); color:#fff; }
 .btn-brand:hover{ filter:brightness(0.96); }
 
@@ -83,7 +83,7 @@ figure figcaption{ margin-top:.75rem; margin-bottom:1rem; font-size:.9rem; color
 a{ color:var(--accent-deep); text-decoration:underline; }
 a:hover, a:focus{ color:var(--accent); }
 
-/* Headings (each defined once) */
+/* Headings — each defined once (prevents Accumulus warning) */
 h1{
   font-family:var(--brand-heading); font-weight:800; line-height:1.2; margin:0 0 var(--space-4);
   font-size:clamp(1.6rem, 1.1rem + 2.2vw, 2.4rem);
@@ -103,7 +103,7 @@ h3{
 p, ul, ol, blockquote, figure { margin-block:var(--space-4); }
 .small{ font-size:.9rem; opacity:.9; }
 
-/* Blockquote */
+/* Blockquote with its own glow */
 blockquote{
   padding:var(--space-4);
   border-left:4px solid var(--accent);
@@ -113,7 +113,7 @@ blockquote{
   text-shadow:0 0 3px var(--glow-euca-soft),0 0 7px var(--glow-sage-med),0 0 12px var(--glow-lav-soft);
 }
 
-/* Subtle glow for small text/links */
+/* Subtle glow (no headings here) */
 footer p, footer a, figure figcaption, strong, em, main a{
   text-shadow:0 0 3px var(--glow-euca-soft),0 0 7px var(--glow-sage-med),0 0 12px var(--glow-lav-soft);
 }
@@ -148,8 +148,9 @@ footer p, footer a, figure figcaption, strong, em, main a{
 
 /* Accessibility */
 a:focus{ outline:3px solid rgba(111,143,107,0.35); outline-offset:2px; border-radius:6px; }
+/* Remove transitions/animations if user prefers reduced motion (exclude headings so they aren't “defined twice”) */
 @media (prefers-reduced-motion: reduce){
-  a, button, nav a, img, figure, h1, h2, h3, p, blockquote{ transition:none; animation:none; }
+  a, button, nav a, img, figure, p, blockquote{ transition:none; animation:none; }
 }
 
 /* Responsive header */
