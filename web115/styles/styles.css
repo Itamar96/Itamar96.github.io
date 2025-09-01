@@ -1,6 +1,8 @@
-/* styles.css — WEB115 Aurora Theme (Accumulus-friendly) */
+/* ==============================
+   styles.css — Aurora Brand Theme
+   ============================== */
 
-/* Base / Reset (no universal selector as key) */
+/* Base / Reset */
 html,
 html::before,
 html::after {
@@ -18,18 +20,32 @@ html::after {
   --white: #ffffff;
 
   /* Glow palette */
-  --glow-yellow-strong: rgba(255, 235, 59, 0.8); /* L3 */
-  --glow-yellow-med:    rgba(255, 235, 59, 0.5); /* L2 */
-  --glow-yellow-soft:   rgba(255, 235, 59, 0.3); /* L2 */
+  --glow-yellow-strong: rgba(255, 235, 59, 0.8);
+  --glow-yellow-med:    rgba(255, 235, 59, 0.5);
+  --glow-yellow-soft:   rgba(255, 235, 59, 0.3);
+
+  /* Fonts */
+  --brand-heading: "Montserrat", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans";
+  --brand-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans";
+
+  /* Layout helpers */
+  --content-width: 960px;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --radius: 14px;
+  --shadow: 0 8px 30px rgba(0,0,0,0.25);
 }
 
 /* Layout */
 body {
   margin: 0;
   padding: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--brand-body);
   color: var(--text);
-  /* fallback + gradient */
   background-color: var(--bg-grad-2);
   background: linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
 }
@@ -42,39 +58,74 @@ footer {
   padding: 1rem;
 }
 
-main { padding: 2rem; }
+main {
+  padding: 2rem;
+  max-width: var(--content-width);
+  margin-inline: auto;
+}
+
+header,
+footer {
+  max-width: var(--content-width);
+  margin-inline: auto;
+}
 
 /* Nav */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  justify-content: center;
+  margin-top: var(--space-2);
+}
+
 nav a {
   margin: 0 0.5rem;
   color: var(--accent);
   text-decoration: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  transition: background-color 160ms ease, transform 120ms ease;
 }
-nav a:hover,
-nav a:focus { text-decoration: underline; }
 
-/* Keep a11y outline; some validators don’t know :focus-visible */
-nav a:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
-/* Optional modern rule (uncomment if your linter allows it) */
-/* nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; } */
+nav a:hover,
+nav a:focus {
+  text-decoration: underline;
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-1px);
+}
+
+nav a:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+nav a[aria-current="page"] {
+  background: linear-gradient(135deg, #8a2be2, var(--accent));
+  color: #0b0b12;
+  font-weight: 600;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.08) inset, var(--shadow);
+}
 
 /* Figures & Images */
-figure { margin: 1rem auto; text-align: center; }
+figure {
+  margin: 1rem auto;
+  text-align: center;
+  background: rgba(255,255,255,0.03);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  box-shadow: var(--shadow);
+}
 
 figure img {
   display: block;
-  max-width: 250px;
+  max-width: 320px;
   height: auto;
   border-radius: 12px;
   margin: 0 auto;
-
-  /* visible border even if border-image is ignored */
   border: 6px solid transparent;
-
-  /* split shorthand for strict validators */
   border-image-source: linear-gradient(135deg, #c084f5, #00e0ff, #ffeb3b, #8a2be2);
   border-image-slice: 1;
-
   box-shadow:
     0 0 20px rgba(192, 132, 245, 0.6),
     0 0 30px rgba(0, 224, 255, 0.3);
@@ -87,18 +138,63 @@ figure figcaption {
   color: var(--text);
 }
 
-/* Links (base) */
-a { color: #ffcc00; text-decoration: underline; }
+/* Links */
+a {
+  color: #ffcc00;
+  text-decoration: underline;
+}
 a:hover,
-a:focus { color: #ffffff; }
+a:focus {
+  color: #ffffff;
+}
 
-/* ============================== */
-/*          GLOW EFFECTS          */
-/* ============================== */
-/* LEVEL 2 (Balanced glow) — headings, nav, footer text/links, figcaptions, emphasis, in-content links, blockquote */
-h1,
-h2,
-h3,
+/* Typography */
+h1, h2, h3 {
+  font-family: var(--brand-heading);
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0 0 var(--space-4);
+}
+
+h1 { font-size: clamp(1.6rem, 1.1rem + 2.4vw, 2.4rem); }
+h2 { font-size: clamp(1.25rem, 1rem + 1.2vw, 1.75rem); }
+h3 { font-size: 1.125rem; }
+
+p, ul, ol, blockquote, figure {
+  margin-block: var(--space-4);
+}
+
+.small {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Blockquote */
+blockquote {
+  padding: var(--space-4);
+  border-left: 4px solid var(--accent);
+  background:
+    linear-gradient(135deg, rgba(192,132,245,0.12), rgba(0,224,255,0.08));
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-style: italic;
+}
+
+/* Footer */
+footer p {
+  margin: var(--space-2) 0;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+footer a:hover,
+footer a:focus {
+  text-decoration: underline;
+}
+
+/* Glow Effects */
+h1, h2, h3,
 nav a,
 footer p,
 footer a,
@@ -112,18 +208,106 @@ blockquote {
     0 0 6px var(--glow-yellow-soft);
 }
 
-/* Specific link glow (contract name link) */
-a[href$="introduction.html"] {
-  text-shadow:
-    0 0 3px var(--glow-yellow-med),
-    0 0 6px var(--glow-yellow-soft);
-}
-
-/* LEVEL 3 (Vibrant glow) — Dragon only */
 .dragon {
   color: #ffffff;
   text-shadow:
     0 0 4px var(--glow-yellow-strong),
     0 0 8px var(--glow-yellow-med),
     0 0 12px var(--glow-yellow-soft);
+}
+
+/* Swatch grid (Brand Guide page) */
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+.swatch {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 0.9rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.swatch::before {
+  content: "";
+  display: block;
+  height: 64px;
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+  background: var(--swatch, #c084f5);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.12);
+}
+.swatch span {
+  display: block;
+  font-weight: 600;
+}
+.swatch em {
+  display: block;
+  font-style: normal;
+  opacity: 0.85;
+  font-size: 0.9rem;
+  margin-top: 0.15rem;
+}
+
+/* Typography demo cards */
+.type-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 1rem;
+  margin-block: 1rem;
+}
+.type-label {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+.demo-h1 { font-size: clamp(1.8rem, 1.2rem + 2.4vw, 2.6rem); }
+.demo-h2 { font-size: clamp(1.4rem, 1.1rem + 1.4vw, 2.0rem); }
+.demo-h3 { font-size: clamp(1.15rem, 1rem + 0.6vw, 1.25rem); }
+
+/* Validator buttons */
+#validate-html,
+#validate-css {
+  display: inline-block;
+  padding: 0.35rem 0.7rem;
+  margin-inline: 0.25rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  text-decoration: none;
+  color: var(--text);
+}
+#validate-html:hover,
+#validate-css:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* Accessibility */
+a:focus {
+  outline: 3px solid rgba(255, 235, 59, 0.6);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Reduced motion (no universal selector) */
+@media (prefers-reduced-motion: reduce) {
+  a, button, nav a, img, figure, h1, h2, h3, p, blockquote {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Responsive header grid */
+@media (min-width: 700px) {
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: var(--space-4);
+  }
 }
