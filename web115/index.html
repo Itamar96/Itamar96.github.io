@@ -3,22 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Itamar B. Castillo’s Dragon • WEB115 • Home</title>
+  <title>Itamar B. Castillo’s Aethernova Dragon • WEB115 • Home</title>
 
-  <!-- Brand fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 
-  <!-- Course CSS (inside /web115/styles/) -->
+  <!-- Site CSS -->
   <link rel="stylesheet" href="styles/styles.css">
+
+  <!-- LAST item in HEAD: WEB115 Accumulus kit -->
   <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <header>
-    <!-- H1: first part of the title only (same on every page) -->
-    <h1>Itamar B. Castillo’s Dragon • WEB115 <span class="dragon" aria-hidden="true">🐉</span></h1>
-
-    <!-- Same nav on every course page -->
+    <h1 class="site-title">
+      <span class="line-1">Itamar B. Castillo’s</span>
+      <span class="line-2"><span class="sep">||</span> Aethernova Dragon <span class="dot">•</span> WEB115 <span class="dragon" aria-hidden="true">🐉</span></span>
+    </h1>
     <nav class="nav-top">
       <a href="index.html" aria-current="page">Home</a>
       <a href="introduction.html">Introduction</a>
@@ -28,29 +30,24 @@
   </header>
 
   <main>
-    <!-- H2: page name (first element in main) -->
     <h2>Home</h2>
 
     <p>Welcome—I'm <strong>Itamar B. Castillo</strong>. This site is my WEB115 workspace and a living demo of my brand, <strong>Aethernova</strong>: a calm, aurora-inspired theme where clear communication meets elegant engineering.</p>
     <p>Use the navigation above to visit my <em>Introduction</em>, read the <em>Course Contract</em>, and view the live <em>Brand Guide</em> defining the colors, type, and usage rules across the site.</p>
 
-    <!-- Quick actions -->
     <p>
       <a class="btn brand" href="brand.html">View Brand Guide</a>
       <a class="btn" href="introduction.html">Go to Introduction</a>
       <a class="btn" href="contract.html">Read Contract</a>
     </p>
 
-    <!-- Optional hero image (sized by CSS only) -->
     <figure>
       <img src="images/itamar-segovia.jpg" alt="Itamar B. Castillo in Segovia, Spain" />
       <figcaption class="small">A meaningful holiday spent with family in Segovia, Christmas 2024.</figcaption>
     </figure>
 
-    <!-- Tagline (highlighted per brand) -->
     <blockquote>“Growth happens when curiosity meets persistence.” — <em>Itamar B. Castillo</em></blockquote>
 
-    <!-- What’s inside (brief, scannable) -->
     <ul>
       <li><strong>Clean structure:</strong> header → main → footer; consistent nav across pages.</li>
       <li><strong>Accessible design:</strong> readable contrast, focus outlines, reduced-motion support.</li>
@@ -59,11 +56,6 @@
   </main>
 
   <footer>
-    <p class="small">
-      Validate:
-      <a id="validate-html" href="https://validator.w3.org/nu/" target="_blank" rel="noopener">HTML</a> •
-      <a id="validate-css"  href="https://jigsaw.w3.org/css-validator/" target="_blank" rel="noopener">CSS</a>
-    </p>
     <p>
       <a href="https://github.com/Itamar96" target="_blank" rel="noopener">GitHub</a> •
       <a href="https://itamar96.github.io/" target="_blank" rel="noopener">GitHub.io</a> •
@@ -72,8 +64,7 @@
       <a href="https://jsfiddle.net/u/Itamar96/fiddles/" target="_blank" rel="noopener">JSFiddle</a> •
       <a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener">LinkedIn</a>
     </p>
-    <p>Page built by Aethernova Design</p>
-    <script src="scripts/validate.js"></script>
+    <p class="small">Page built by Aethernova Design</p>
   </footer>
 </body>
 </html>
