@@ -68,7 +68,7 @@ nav a[aria-current="page"]{
   transition:transform 120ms ease, background-color 160ms ease, border-color 160ms ease, color 120ms ease;
 }
 .btn:hover{ background:#FAF3E8; transform:translateY(-1px); }
-/* Replaced adjoining class .btn.brand with single class .btn-brand */
+/* no adjoining classes */
 .btn-brand{ background:var(--accent); border-color:var(--accent); color:#fff; }
 .btn-brand:hover{ filter:brightness(0.96); }
 
@@ -83,21 +83,21 @@ figure figcaption{ margin-top:.75rem; margin-bottom:1rem; font-size:.9rem; color
 a{ color:var(--accent-deep); text-decoration:underline; }
 a:hover, a:focus{ color:var(--accent); }
 
-/* Typography — each heading defined once (per Accumulus) */
+/* Headings (each defined once) */
 h1{
   font-family:var(--brand-heading); font-weight:800; line-height:1.2; margin:0 0 var(--space-4);
   font-size:clamp(1.6rem, 1.1rem + 2.2vw, 2.4rem);
-  text-shadow: 0 0 3px var(--glow-euca-soft), 0 0 7px var(--glow-sage-med), 0 0 12px var(--glow-lav-soft);
+  text-shadow:0 0 3px var(--glow-euca-soft),0 0 7px var(--glow-sage-med),0 0 12px var(--glow-lav-soft);
 }
 h2{
   font-family:var(--brand-heading); font-weight:700; line-height:1.2; margin:0 0 var(--space-4);
   font-size:clamp(1.3rem, 1.05rem + 1.2vw, 1.9rem);
-  text-shadow: 0 0 3px var(--glow-euca-soft), 0 0 7px var(--glow-sage-med), 0 0 12px var(--glow-lav-soft);
+  text-shadow:0 0 3px var(--glow-euca-soft),0 0 7px var(--glow-sage-med),0 0 12px var(--glow-lav-soft);
 }
 h3{
   font-family:var(--brand-heading); font-weight:700; line-height:1.2; margin:0 0 var(--space-4);
   font-size:1.15rem;
-  text-shadow: 0 0 3px var(--glow-euca-soft), 0 0 7px var(--glow-sage-med), 0 0 12px var(--glow-lav-soft);
+  text-shadow:0 0 3px var(--glow-euca-soft),0 0 7px var(--glow-sage-med),0 0 12px var(--glow-lav-soft);
 }
 
 p, ul, ol, blockquote, figure { margin-block:var(--space-4); }
@@ -110,21 +110,21 @@ blockquote{
   background:linear-gradient(180deg, rgba(141,163,166,0.18), rgba(196,99,58,0.10));
   border-radius:0 var(--radius) var(--radius) 0;
   font-style:italic;
-  text-shadow: 0 0 3px var(--glow-euca-soft), 0 0 7px var(--glow-sage-med), 0 0 12px var(--glow-lav-soft);
+  text-shadow:0 0 3px var(--glow-euca-soft),0 0 7px var(--glow-sage-med),0 0 12px var(--glow-lav-soft);
 }
 
-/* Footer text/link subtle glow */
+/* Subtle glow for small text/links */
 footer p, footer a, figure figcaption, strong, em, main a{
-  text-shadow: 0 0 3px var(--glow-euca-soft), 0 0 7px var(--glow-sage-med), 0 0 12px var(--glow-lav-soft);
+  text-shadow:0 0 3px var(--glow-euca-soft),0 0 7px var(--glow-sage-med),0 0 12px var(--glow-lav-soft);
 }
 
-/* Stronger glow for mascot only */
+/* Mascot glow */
 .dragon{
   color:#ffffff;
-  text-shadow: 0 0 4px var(--glow-euca-med), 0 0 10px var(--glow-lav-soft), 0 0 16px var(--glow-euca-strong);
+  text-shadow:0 0 4px var(--glow-euca-med),0 0 10px var(--glow-lav-soft),0 0 16px var(--glow-euca-strong);
 }
 
-/* Swatches (Brand Guide) */
+/* Swatches */
 .swatches{ display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:1rem; padding:0; list-style:none; }
 .swatch{
   background:#fff; border:1px solid rgba(62,87,75,0.12);
@@ -149,7 +149,6 @@ footer p, footer a, figure figcaption, strong, em, main a{
 /* Accessibility */
 a:focus{ outline:3px solid rgba(111,143,107,0.35); outline-offset:2px; border-radius:6px; }
 @media (prefers-reduced-motion: reduce){
-  /* remove !important to satisfy Accumulus */
   a, button, nav a, img, figure, h1, h2, h3, p, blockquote{ transition:none; animation:none; }
 }
 
