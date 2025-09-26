@@ -12,25 +12,22 @@ function useForm(event) {
         return;
     }
 
-    // Replace original greeting text with full name 
     const greeting=document.getElementById('greeting');
-    const parts=[ 'Welcome to Iridescent Cinderwyrm Bodywork,',
+    const parts=['Welcome to Iridescent Cinderwyrm Bodywork,',
     first.value.trim()];
-    if (mid.value.trim()) parts.push(mid.value.trim().charAt(0) + '.');
+    if (mid.value.trim()) parts.push(mid.value.trim().charAt(0).toUpperCase() + '.');
     parts.push(last.value.trim() + '!');
     greeting.textContent=parts.join(' ');
 
-    // Output exactly 125 lines, two words only, numbers shown by <ol>
     const dd=document.getElementById('datas');
     dd.innerHTML='';
-    const phrase='cinder wyrm'; // two-word theme
-    const total=125;
 
+    const phrase='cinder wyrm'; 
     const frag=document.createDocumentFragment();
 
-    for (let i=1; i <=total; i++) {
+    for (let i=1; i <=125; i++) {
         const li=document.createElement('li');
-        li.textContent=phrase; // numbering comes from <ol>
+        li.textContent=phrase;
         frag.appendChild(li);
     }
 
