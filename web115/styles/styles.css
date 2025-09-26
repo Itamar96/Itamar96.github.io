@@ -1,10 +1,6 @@
-/* Desert Matcha — Iridescent Cinderwyrm Bodywork */
+/* Desert Matcha — Iridescent Cinderwyrm Bodywork (merged & standardized) */
 /* Base */
-html,
-html::before,
-html::after {
-    box-sizing: border-box;
-}
+html, html::before, html::after { box-sizing: border-box; }
 
 :root {
     /* Palette */
@@ -16,8 +12,9 @@ html::after {
     --accent: #6F8F6B;
     --accent-deep: #3E574B;
     --accent-soft: #8DA3A6;
-    --lavender-soft: #C4633A;
+    --clay: #C4633A;
     --white: #FFFFFF;
+    --gold: #D4AF37;
 
     /* Fonts */
     --brand-heading: "Playfair Display", ui-serif, Georgia, serif;
@@ -56,8 +53,7 @@ body {
     background-position: center;
 }
 
-header,
-footer {
+header, footer {
     background-color: var(--surface);
     color: var(--text);
     text-align: center;
@@ -66,12 +62,10 @@ footer {
 
 main {
     padding: 2rem;
-    max-width: var(--content-width);
-    margin-inline: auto;
 }
 
-header,
-footer {
+/* Align header/main/footer edges per teacher */
+header, main, footer {
     max-width: var(--content-width);
     margin-inline: auto;
 }
@@ -114,12 +108,7 @@ nav a[aria-current="page"] {
 }
 
 /* Buttons */
-.btn-row {
-    display: flex;
-    gap: .5rem;
-    flex-wrap: wrap;
-}
-
+.btn-row { display: flex; gap: .5rem; flex-wrap: wrap; }
 .btn {
     display: inline-block;
     padding: .55rem .9rem;
@@ -130,22 +119,9 @@ nav a[aria-current="page"] {
     background: #fff;
     transition: transform 120ms ease, background-color 160ms ease, border-color 160ms ease, color 120ms ease;
 }
-
-.btn:hover {
-    background: #FAF3E8;
-    transform: translateY(-1px);
-}
-
-/* single class (no adjoining classes) */
-.btn-brand {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #fff;
-}
-
-.btn-brand:hover {
-    filter: brightness(0.96);
-}
+.btn:hover { background: #FAF3E8; transform: translateY(-1px); }
+.btn-brand { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn-brand:hover { filter: brightness(0.96); }
 
 /* Figures */
 figure {
@@ -157,7 +133,6 @@ figure {
     box-shadow: var(--shadow);
     border: 1px solid rgba(62, 87, 75, 0.12);
 }
-
 figure img {
     display: block;
     max-width: 320px;
@@ -167,67 +142,40 @@ figure img {
     border: 6px solid #fff;
     box-shadow: 0 8px 24px rgba(47, 58, 52, .12);
 }
-
-figure figcaption {
+figcaption {
     margin-top: .75rem;
     margin-bottom: 1rem;
-    font-size: .9rem;
+    font-size: .95rem;
     color: var(--accent-deep);
+}
+
+/* Optional gold ring for special images */
+.img-gold-border {
+    box-shadow: 0 0 0 3px #fff, 0 0 0 6px var(--gold), 0 8px 24px rgba(47, 58, 52, .12);
+    border: 0 !important;
 }
 
 /* Links */
-a {
-    color: var(--accent-deep);
-    text-decoration: underline;
-}
+a { color: var(--accent-deep); text-decoration: underline; }
+a:hover, a:focus { color: var(--accent); }
 
-a:hover,
-a:focus {
-    color: var(--accent);
-}
-
-/* Headings — each defined once (prevents Accumulus warning) */
-h1 {
+/* Headings — single consistent h1; h2 ok */
+h1, h2, h3 {
     font-family: var(--brand-heading);
-    font-weight: 800;
     line-height: 1.2;
     margin: 0 0 var(--space-4);
-    font-size: clamp(1.6rem, 1.1rem + 2.2vw, 2.4rem);
     text-shadow: 0 0 3px var(--glow-euca-soft), 0 0 7px var(--glow-sage-med), 0 0 12px var(--glow-lav-soft);
 }
+h1 { font-weight: 800; font-size: clamp(1.6rem, 1.1rem + 2.2vw, 2.4rem); }
+h2 { font-weight: 700; font-size: clamp(1.3rem, 1.05rem + 1.2vw, 1.9rem); }
+h3 { font-weight: 700; font-size: 1.15rem; }
 
-h2 {
-    font-family: var(--brand-heading);
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 0 0 var(--space-4);
-    font-size: clamp(1.3rem, 1.05rem + 1.2vw, 1.9rem);
-    text-shadow: 0 0 3px var(--glow-euca-soft), 0 0 7px var(--glow-sage-med), 0 0 12px var(--glow-lav-soft);
-}
+p, ul, ol, blockquote, figure { margin-block: var(--space-4); }
 
-h3 {
-    font-family: var(--brand-heading);
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 0 0 var(--space-4);
-    font-size: 1.15rem;
-    text-shadow: 0 0 3px var(--glow-euca-soft), 0 0 7px var(--glow-sage-med), 0 0 12px var(--glow-lav-soft);
-}
+/* Meta text (replacing .small) — keep .small for backward-compat */
+.meta, .small { font-size: .9rem; opacity: .9; }
 
-p,
-ul,
-ol,
-blockquote,
-figure {
-    margin-block: var(--space-4);
-}
-
-.small {
-    font-size: .9rem;
-    opacity: .9;
-}
-
-/* Blockquote with its own glow */
+/* Blockquote */
 blockquote {
     padding: var(--space-4);
     border-left: 4px solid var(--accent);
@@ -237,21 +185,13 @@ blockquote {
     text-shadow: 0 0 3px var(--glow-euca-soft), 0 0 7px var(--glow-sage-med), 0 0 12px var(--glow-lav-soft);
 }
 
-/* Subtle glow (no headings here) */
-footer p,
-footer a,
-figure figcaption,
-strong,
-em,
-main a {
+/* Subtle glow */
+footer p, footer a, figcaption, strong, em, main a {
     text-shadow: 0 0 3px var(--glow-euca-soft), 0 0 7px var(--glow-sage-med), 0 0 12px var(--glow-lav-soft);
 }
 
 /* Mascot glow */
-.dragon {
-    color: #ffffff;
-    text-shadow: 0 0 4px var(--glow-euca-med), 0 0 10px var(--glow-lav-soft), 0 0 16px var(--glow-euca-strong);
-}
+.dragon { color: #ffffff; text-shadow: 0 0 4px var(--glow-euca-med), 0 0 10px var(--glow-lav-soft), 0 0 16px var(--glow-euca-strong); }
 
 /* Swatches */
 .swatches {
@@ -261,7 +201,6 @@ main a {
     padding: 0;
     list-style: none;
 }
-
 .swatch {
     background: #fff;
     border: 1px solid rgba(62, 87, 75, 0.12);
@@ -270,7 +209,6 @@ main a {
     text-align: center;
     box-shadow: var(--shadow);
 }
-
 .swatch::before {
     content: "";
     display: block;
@@ -280,21 +218,8 @@ main a {
     background: var(--swatch, var(--accent));
     box-shadow: inset 0 0 0 2px rgba(62, 87, 75, 0.08);
 }
-
-.swatch span {
-    display: block;
-    font-weight: 600;
-    color: #2F3A34;
-}
-
-.swatch em {
-    display: block;
-    font-style: normal;
-    opacity: .85;
-    font-size: .9rem;
-    margin-top: .15rem;
-    color: #3E574B;
-}
+.swatch span { display: block; font-weight: 600; color: #2F3A34; }
+.swatch em { display: block; font-style: normal; opacity: .85; font-size: .9rem; margin-top: .15rem; color: #3E574B; }
 
 /* Type demo cards */
 .type-card {
@@ -305,110 +230,38 @@ main a {
     margin-block: 1rem;
     box-shadow: var(--shadow);
 }
-
-.type-label {
-    margin: 0 0 .5rem;
-    font-size: .95rem;
-    color: #3E574B;
-}
-
-.demo-h1 {
-    font-size: clamp(1.8rem, 1.2rem + 2.2vw, 2.6rem);
-}
-
-.demo-h2 {
-    font-size: clamp(1.4rem, 1.1rem + 1.4vw, 2.0rem);
-}
+.type-label { margin: 0 0 .5rem; font-size: .95rem; color: #3E574B; }
+.demo-h1 { font-size: clamp(1.8rem, 1.2rem + 2.2vw, 2.6rem); }
+.demo-h2 { font-size: clamp(1.4rem, 1.1rem + 1.4vw, 2.0rem); }
 
 /* Accessibility */
-a:focus {
-    outline: 3px solid rgba(111, 143, 107, 0.35);
-    outline-offset: 2px;
-    border-radius: 6px;
-}
+a:focus { outline: 3px solid rgba(111, 143, 107, 0.35); outline-offset: 2px; border-radius: 6px; }
 
-/* Remove transitions/animations if user prefers reduced motion (exclude headings so they aren't “defined twice”) */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-
-    a,
-    button,
-    nav a,
-    img,
-    figure,
-    p,
-    blockquote {
-        transition: none;
-        animation: none;
-    }
+    a, button, nav a, img, figure, p, blockquote { transition: none; animation: none; }
 }
 
 /* Responsive header */
 @media (min-width:700px) {
-    header {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        align-items: end;
-        gap: var(--space-4);
-    }
+    header { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: var(--space-4); }
 }
 
-/* Two-line site title */
-.site-title {
-    margin: 0;
-    line-height: 1.1;
-    font-family: var(--brand-heading);
-    font-weight: 800;
-    letter-spacing: .2px;
-}
+/* Two-line site title — same size on both lines (fix: no mixed sizes within h1) */
+.site-title { margin: 0; line-height: 1.1; font-family: var(--brand-heading); font-weight: 800; letter-spacing: .2px; }
+.site-title .line-1, .site-title .line-2 { display: block; font-size: clamp(1.35rem, 1rem + 2vw, 2.1rem); }
+.site-title .dot { margin: 0 .4rem; font-weight: 800; color: var(--accent); }
 
-.site-title .line-1,
-.site-title .line-2 {
-    display: block;
-}
+/* Lists */
+ul { list-style-type: disc; padding-left: 1.5rem; margin-block: var(--space-4); }
+ul ul { list-style-type: circle; padding-left: 1.5rem; }
+ul li::marker { color: var(--accent-deep); }
+ul ul li::marker { color: var(--accent-soft); }
 
-.site-title .line-1 {
-    font-size: clamp(1.35rem, 1rem + 2vw, 2.1rem);
-}
+/* Form helpers for FizzBuzz */
+.form-grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); align-items: end; }
+.field label { display: block; font-weight: 600; margin-bottom: .35rem; }
+.field input { width: 100%; padding: .55rem .65rem; border: 1px solid rgba(62, 87, 75, .25); border-radius: 10px; }
+.muted { color: var(--accent-soft); }
+#datas { margin-left: 1.25rem; }
 
-.site-title .line-2 {
-    font-size: clamp(1.1rem, .95rem + 1.6vw, 1.6rem);
-    opacity: .95;
-}
-
-.site-title .sep,
-.site-title .dot {
-    margin: 0 .4rem;
-    font-weight: 800;
-    color: var(--accent);
-}
-
-/* === Bulleted Lists === */
-
-/* Main bullets (first-level <ul>) */
-ul {
-    list-style-type: disc;
-    /* solid bullet */
-    padding-left: 1.5rem;
-    /* space for bullets */
-    margin-block: var(--space-4);
-}
-
-/* Sub-bullets (nested <ul>) */
-ul ul {
-    list-style-type: circle;
-    /* open circle (lighter look) */
-    padding-left: 1.5rem;
-    /* indent sub-bullets */
-}
-
-/* Change color of bullet markers (modern browsers) */
-ul li::marker {
-    color: var(--accent-deep);
-    /* main bullet color */
-}
-
-/* Sub-bullets marker color lighter */
-ul ul li::marker {
-    color: var(--accent-soft);
-    /* lighter accent color for sub-bullets */
-}
