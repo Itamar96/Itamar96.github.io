@@ -3,25 +3,42 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Iridescent Cinderwyrm Bodywork • Fizz Buzz 0" />
 		<title>Iridescent Cinderwyrm Bodywork — Fizz Buzz 0</title>
-	
+
+		<!-- Same fonts + stylesheet as your index -->
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" href="styles/styles.css" />
 
-		<!-- Favicon -->
 		<link rel="icon" type="image/png" href="images/dragon-favicon.png" />
 	</head>
 	<body>
 		<header>
-			<h2>Iridescent Cinderwyrm Bodywork</h2>
-			<h3>Iridescent Cinderwyrm Fizz Buzz 0</h3>
+			<h1 class="site-title">
+				<span class="line-1">Itamar Castillo’s</span>
+				<span class="line-2"><span class="sep">||</span> Iridescent Cinderwyrm <span class="dot">•</span> WEB115 <span class="dragon" aria-hidden="true">🐉</span></span>
+			</h1>
+			<nav>
+				<a href="index.html">Home</a>
+				<a href="introduction.html">Introduction</a>
+				<a href="contract.html">Contract</a>
+				<a href="brand.html">Brand Guide</a>
+				<a href="fizzbuzz0.html" aria-current="page">Fizz Buzz 0</a>
+			</nav>
 		</header>
 
 		<main>
-			
+			<!-- Normal page name -->
+			<h2>Fizz Buzz 0</h2>
+
+			<!-- Page title under h2 (teacher suggested h3) -->
+			<h3>Iridescent Cinderwyrm Fizz Buzz 0</h3>
+
+			<!-- Greeting heading (will be replaced by JS) -->
 			<h3 id="greeting">Welcome to Iridescent Cinderwyrm Bodywork!</h3>
 
+			<!-- Form -->
 			<form id="name-form" aria-describedby="form-hint" class="form-grid">
 				<div class="field">
 					<label for="first_name">First Name</label>
@@ -41,47 +58,16 @@
 			</form>
 			<p id="form-hint" class="muted">Middle initial is optional (one character). First &amp; last are required.</p>
 
+			<!-- Numbered output (exactly 125 items, two words each) -->
 			<ol id="datas"></ol>
 		</main>
 
-		<script>
-			document.getElementById('name-form').addEventListener('submit', useForm);
+		<footer>
+			<p class="small">Page built by Iridescent Cinderwyrm Design</p>
+		</footer>
 
-			function useForm(event) {
-			  event.preventDefault();
-
-			  const first = document.getElementById('first_name');
-			  const mid   = document.getElementById('middle_initial');
-			  const last  = document.getElementById('last_name');
-
-			  if (!first.value.trim() || !last.value.trim()) {
-			    alert('Please enter both first and last name.');
-			    return;
-			  }
-
-			  const greeting = document.getElementById('greeting');
-			  const parts = [
-			    'Welcome to Iridescent Cinderwyrm Bodywork,',
-			    first.value.trim()
-			  ];
-			  if (mid.value.trim()) parts.push(mid.value.trim().charAt(0) + '.');
-			  parts.push(last.value.trim() + '!');
-			  greeting.textContent = parts.join(' ');
-
-			  const dd = document.getElementById('datas');
-			  dd.innerHTML = '';
-			  const phrase = 'cinder wyrm'; 
-			  const total = 125;
-
-			  const frag = document.createDocumentFragment();
-			  for (let i = 1; i <= total; i++) {
-			    const li = document.createElement('li');
-			    li.textContent = phrase;
-			    frag.appendChild(li);
-			  }
-			  dd.appendChild(frag);
-			}
-		</script>
+		<!-- Load behavior -->
+		<script src="scripts/fizzbuzz.js"></script>
 	</body>
 </html>
 
