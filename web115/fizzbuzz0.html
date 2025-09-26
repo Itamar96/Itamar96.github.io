@@ -1,74 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content="Iridescent Cinderwyrm Bodywork • Fizz Buzz 0" />
-		<title>Iridescent Cinderwyrm Bodywork — Fizz Buzz 0</title>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Iridescent Cinderwyrm Bodywork • Fizz Buzz 0" />
+    <title>Iridescent Cinderwyrm Bodywork — Fizz Buzz 0</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
+</head>
+<body>
+<header>
+  <h1 class="site-title">
+    <span class="line-1">Itamar Castillo’s Iridescent Cinderwyrm</span>
+    <span class="line-2"><span class="dot">•</span> WEB115 <span class="dragon" aria-hidden="true">🐉</span></span>
+  </h1>
+  <nav>
+        <a href="index.html">Home</a>
+        <a href="introduction.html">Introduction</a>
+        <a href="contract.html">Contract</a>
+        <a href="brand.html">Brand Guide</a>
+        <a href="fizzbuzz0.html" aria-current="page">Fizz Buzz 0</a>
+  </nav>
+</header>
 
-		<!-- Same fonts + stylesheet as your index -->
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
-		<link rel="stylesheet" href="styles/styles.css" />
+<main>
+  <h2>Fizz Buzz 0</h2>
+  <h3>Iridescent Cinderwyrm Fizz Buzz 0</h3>
+  <h3 id="greeting">Welcome to Iridescent Cinderwyrm Bodywork!</h3>
 
-		<link rel="icon" type="image/png" href="images/dragon-favicon.png" />
-	</head>
-	<body>
-		<header>
-			<h1 class="site-title">
-				<span class="line-1">Itamar Castillo’s</span>
-				<span class="line-2"><span class="sep">||</span> Iridescent Cinderwyrm <span class="dot">•</span> WEB115 <span class="dragon" aria-hidden="true">🐉</span></span>
-			</h1>
-			<nav>
-				<a href="index.html">Home</a>
-				<a href="introduction.html">Introduction</a>
-				<a href="contract.html">Contract</a>
-				<a href="brand.html">Brand Guide</a>
-				<a href="fizzbuzz0.html" aria-current="page">Fizz Buzz 0</a>
-			</nav>
-		</header>
+  <form id="name-form" aria-describedby="form-hint" class="form-grid">
+    <div class="field">
+      <label for="first_name">First Name</label>
+      <input id="first_name" name="first_name" type="text" placeholder="Enter your first name" required />
+    </div>
+    <div class="field">
+      <label for="middle_initial">Middle Initial <span class="muted">(optional)</span></label>
+      <input id="middle_initial" name="middle_initial" type="text" placeholder="M" maxlength="1" pattern="[A-Za-z]" title="One letter only" />
+    </div>
+    <div class="field">
+      <label for="last_name">Last Name</label>
+      <input id="last_name" name="last_name" type="text" placeholder="Enter your last name" required />
+    </div>
+    <div class="field">
+      <button type="submit" class="btn btn-brand">Greet Me</button>
+    </div>
+  </form>
+  <p id="form-hint" class="muted">Middle initial is optional (one character). First &amp; last are required.</p>
 
-		<main>
-			<!-- Normal page name -->
-			<h2>Fizz Buzz 0</h2>
+  <ol id="datas"></ol>
+</main>
 
-			<!-- Page title under h2 (teacher suggested h3) -->
-			<h3>Iridescent Cinderwyrm Fizz Buzz 0</h3>
+<footer>
+  <p class="meta">Page built by Iridescent Cinderwyrm Design</p>
+</footer>
 
-			<!-- Greeting heading (will be replaced by JS) -->
-			<h3 id="greeting">Welcome to Iridescent Cinderwyrm Bodywork!</h3>
-
-			<!-- Form -->
-			<form id="name-form" aria-describedby="form-hint" class="form-grid">
-				<div class="field">
-					<label for="first_name">First Name</label>
-					<input id="first_name" name="first_name" type="text" placeholder="Enter your first name" required />
-				</div>
-				<div class="field">
-					<label for="middle_initial">Middle Initial <span class="muted">(optional)</span></label>
-					<input id="middle_initial" name="middle_initial" type="text" placeholder="M" maxlength="1" pattern="[A-Za-z]" title="One letter only" />
-				</div>
-				<div class="field">
-					<label for="last_name">Last Name</label>
-					<input id="last_name" name="last_name" type="text" placeholder="Enter your last name" required />
-				</div>
-				<div class="field">
-					<button type="submit" class="btn btn-brand">Greet Me</button>
-				</div>
-			</form>
-			<p id="form-hint" class="muted">Middle initial is optional (one character). First &amp; last are required.</p>
-
-			<!-- Numbered output (exactly 125 items, two words each) -->
-			<ol id="datas"></ol>
-		</main>
-
-		<footer>
-			<p class="small">Page built by Iridescent Cinderwyrm Design</p>
-		</footer>
-
-		<!-- Load behavior -->
-		<script src="scripts/fizzbuzz.js"></script>
-	</body>
+<script src="scripts/fizzbuzz.js"></script>
+</body>
 </html>
-
 
