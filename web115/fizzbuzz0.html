@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Iridescent Cinderwyrm Bodywork — Fizz Buzz 0</title>
+		<!-- Link your existing CSS -->
+		<link rel="stylesheet" href="your-styles.css" />
+	</head>
+	<body>
+		<header>
+			<h2>Iridescent Cinderwyrm Bodywork</h2>
+			<h3>Iridescent Cinderwyrm Fizz Buzz 0</h3>
+		</header>
+
+		<main>
+			<!-- Greeting heading under the page title -->
+			<h3 id="greeting">Welcome to Iridescent Cinderwyrm Bodywork!</h3>
+
+			<!-- Name form -->
+			<form id="name-form" aria-describedby="form-hint" class="form-grid">
+				<div class="field">
+					<label for="first_name">First Name</label>
+					<input id="first_name" name="first_name" type="text" placeholder="Enter your first name" required />
+				</div>
+				<div class="field">
+					<label for="middle_initial">Middle Initial <span class="muted">(optional)</span></label>
+					<input id="middle_initial" name="middle_initial" type="text" placeholder="M" maxlength="1" pattern="[A-Za-z]" title="One letter only" />
+				</div>
+				<div class="field">
+					<label for="last_name">Last Name</label>
+					<input id="last_name" name="last_name" type="text" placeholder="Enter your last name" required />
+				</div>
+				<div class="field">
+					<button type="submit" class="btn btn-brand">Greet Me</button>
+				</div>
+			</form>
+			<p id="form-hint" class="muted">Middle initial is optional (one character). First &amp; last are required.</p>
+
+			<!-- Numbered output (exactly 125 items, two words each) -->
+			<ol id="datas"></ol>
+		</main>
+
+		<script>
+			document.getElementById('name-form').addEventListener('submit', useForm);
+
+			function useForm(event) {
+			  event.preventDefault();
+
+			  const first = document.getElementById('first_name');
+			  const mid   = document.getElementById('middle_initial');
+			  const last  = document.getElementById('last_name');
+
+			  if (!first.value.trim() || !last.value.trim()) {
+			    alert('Please enter both first and last name.');
+			    return;
+			  }
+
+			  // Replace original greeting text with full name (M. is optional)
+			  const greeting = document.getElementById('greeting');
+			  const parts = [
+			    'Welcome to Iridescent Cinderwyrm Bodywork,',
+			    first.value.trim()
+			  ];
+			  if (mid.value.trim()) parts.push(mid.value.trim().charAt(0) + '.');
+			  parts.push(last.value.trim() + '!');
+			  greeting.textContent = parts.join(' ');
+
+			  // Output exactly 125 lines, two words only, numbers shown by <ol>
+			  const dd = document.getElementById('datas');
+			  dd.innerHTML = '';
+			  const phrase = 'cinder wyrm'; // two-word theme
+			  const total = 125;
+
+			  const frag = document.createDocumentFragment();
+			  for (let i = 1; i <= total; i++) {
+			    const li = document.createElement('li');
+			    li.textContent = phrase; // numbering comes from <ol>
+			    frag.appendChild(li);
+			  }
+			  dd.appendChild(frag);
+			}
+		</script>
+	</body>
+</html>
+
+
