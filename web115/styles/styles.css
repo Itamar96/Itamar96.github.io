@@ -1,8 +1,8 @@
 /* Desert Matcha — Iridescent Cinderwyrm Bodywork */
 /* Base */
-*,
-*::before,
-*::after {
+html,
+html::before,
+html::after {
     box-sizing: border-box;
 }
 
@@ -48,9 +48,7 @@ body {
     padding: 0;
     font-family: var(--brand-body);
     color: var(--text);
-
-    /* Fallback color */
-    background-color: var(--bg-grad-1);
+    background: linear-gradient(var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
     background-image: url("/web115/images/spa-bg.svg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -64,13 +62,16 @@ footer {
     color: var(--text);
     text-align: center;
     padding: 1rem;
-
-    max-width: var(--content-width);
-    margin-inline: auto;
 }
 
 main {
     padding: 2rem;
+    max-width: var(--content-width);
+    margin-inline: auto;
+}
+
+header,
+footer {
     max-width: var(--content-width);
     margin-inline: auto;
 }
@@ -98,7 +99,6 @@ nav a:focus {
     text-decoration: underline;
     background: rgba(62, 87, 75, .08);
     transform: translateY(-1px);
-    color: inherit;
 }
 
 nav a:focus {
@@ -136,6 +136,7 @@ nav a[aria-current="page"] {
     transform: translateY(-1px);
 }
 
+/* single class (no adjoining classes) */
 .btn-brand {
     background: var(--accent);
     border-color: var(--accent);
@@ -174,21 +175,18 @@ figure figcaption {
     color: var(--accent-deep);
 }
 
-/* Links (content areas) */
+/* Links */
 a {
     color: var(--accent-deep);
     text-decoration: underline;
 }
 
-/* Scope hover color to (content links only) */
-main a:hover,
-main a:focus,
-footer a:hover,
-footer a:focus {
+a:hover,
+a:focus {
     color: var(--accent);
 }
 
-/* Headings — each defined once */
+/* Headings — each defined once (prevents Accumulus warning) */
 h1 {
     font-family: var(--brand-heading);
     font-weight: 800;
@@ -219,7 +217,8 @@ h3 {
 p,
 ul,
 ol,
-blockquote {
+blockquote,
+figure {
     margin-block: var(--space-4);
 }
 
@@ -328,7 +327,7 @@ a:focus {
     border-radius: 6px;
 }
 
-/* Respect reduced motion */
+/* Remove transitions/animations if user prefers reduced motion (exclude headings so they aren't “defined twice”) */
 @media (prefers-reduced-motion: reduce) {
 
     a,
@@ -384,98 +383,32 @@ a:focus {
 }
 
 /* === Bulleted Lists === */
+
+/* Main bullets (first-level <ul>) */
 ul {
     list-style-type: disc;
+    /* solid bullet */
     padding-left: 1.5rem;
+    /* space for bullets */
     margin-block: var(--space-4);
 }
 
+/* Sub-bullets (nested <ul>) */
 ul ul {
     list-style-type: circle;
+    /* open circle (lighter look) */
     padding-left: 1.5rem;
+    /* indent sub-bullets */
 }
 
+/* Change color of bullet markers (modern browsers) */
 ul li::marker {
     color: var(--accent-deep);
+    /* main bullet color */
 }
 
+/* Sub-bullets marker color lighter */
 ul ul li::marker {
     color: var(--accent-soft);
-}
-
-/* --- Utilities --- */
-.figure-highlight {
-    background-color: #FFF8DC;
-}
-
-.img-gold-border {
-    border: 6px solid #D4AF37;
-    border-radius: 12px;
-    display: block;
-    margin: 0 auto;
-}
-
-.fig-gold {
-    font-style: italic;
-    color: #D4AF37;
-    margin-top: .5rem;
-}
-
-.note-gold {
-    font-style: italic;
-    color: #D4AF37;
-}
-
-/* === FizzBuzz minimal additions (no overrides) === */
-.form-grid {
-    display: grid;
-    gap: var(--space-3, .75rem);
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    align-items: end;
-    margin-block: var(--space-4, 1rem);
-}
-
-.field label {
-    display: block;
-    margin-bottom: .35rem;
-    color: var(--accent-deep);
-    font-weight: 600;
-}
-
-.field input[type="text"] {
-    width: 100%;
-    box-sizing: border-box;
-    padding: .6rem .7rem;
-    border: 1px solid rgba(62, 87, 75, 0.20);
-    border-radius: 10px;
-    background: #fff;
-}
-
-.field input[type="text"]:focus {
-    outline: 3px solid rgba(111, 143, 107, 0.35);
-    outline-offset: 2px;
-}
-
-/* small, brand-harmonized helper for hints */
-.muted {
-    color: var(--accent-soft);
-    font-size: .95rem;
-}
-
-/* Numbered output list */
-#datas {
-    padding-left: 1.25rem;
-    /* clean indent for list numbers */
-    margin-block: var(--space-4, 1rem);
-}
-
-#datas li {
-    padding: .2rem 0;
-}
-
-/* Optional: slightly denser layout on narrow screens */
-@media (max-width: 420px) {
-    .form-grid {
-        gap: var(--space-2, .5rem);
-    }
+    /* lighter accent color for sub-bullets */
 }
