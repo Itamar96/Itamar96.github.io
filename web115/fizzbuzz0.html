@@ -4,8 +4,8 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Iridescent Cinderwyrm Bodywork — Fizz Buzz 0</title>
-		<!-- Link your existing CSS -->
-		<link rel="stylesheet" href="your-styles.css" />
+	
+		<link rel="stylesheet" href="styles.css" />
 	</head>
 	<body>
 		<header>
@@ -14,10 +14,9 @@
 		</header>
 
 		<main>
-			<!-- Greeting heading under the page title -->
+			
 			<h3 id="greeting">Welcome to Iridescent Cinderwyrm Bodywork!</h3>
 
-			<!-- Name form -->
 			<form id="name-form" aria-describedby="form-hint" class="form-grid">
 				<div class="field">
 					<label for="first_name">First Name</label>
@@ -37,7 +36,6 @@
 			</form>
 			<p id="form-hint" class="muted">Middle initial is optional (one character). First &amp; last are required.</p>
 
-			<!-- Numbered output (exactly 125 items, two words each) -->
 			<ol id="datas"></ol>
 		</main>
 
@@ -56,7 +54,6 @@
 			    return;
 			  }
 
-			  // Replace original greeting text with full name (M. is optional)
 			  const greeting = document.getElementById('greeting');
 			  const parts = [
 			    'Welcome to Iridescent Cinderwyrm Bodywork,',
@@ -66,16 +63,15 @@
 			  parts.push(last.value.trim() + '!');
 			  greeting.textContent = parts.join(' ');
 
-			  // Output exactly 125 lines, two words only, numbers shown by <ol>
 			  const dd = document.getElementById('datas');
 			  dd.innerHTML = '';
-			  const phrase = 'cinder wyrm'; // two-word theme
+			  const phrase = 'cinder wyrm'; 
 			  const total = 125;
 
 			  const frag = document.createDocumentFragment();
 			  for (let i = 1; i <= total; i++) {
 			    const li = document.createElement('li');
-			    li.textContent = phrase; // numbering comes from <ol>
+			    li.textContent = phrase;
 			    frag.appendChild(li);
 			  }
 			  dd.appendChild(frag);
