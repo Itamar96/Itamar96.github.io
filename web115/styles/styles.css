@@ -1,8 +1,8 @@
 /* Desert Matcha — Iridescent Cinderwyrm Bodywork */
 /* Base */
-html,
-html::before,
-html::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -426,8 +426,7 @@ ul ul li::marker {
     color: #D4AF37;
 }
 
-/* === FizzBuzz additions === */
-
+/* === FizzBuzz minimal additions (no overrides) === */
 .form-grid {
     display: grid;
     gap: var(--space-3, .75rem);
@@ -474,7 +473,7 @@ ul ul li::marker {
     padding: .2rem 0;
 }
 
-/* Slightly denser layout on narrow screens */
+/* Optional: slightly denser layout on narrow screens */
 @media (max-width: 420px) {
     .form-grid {
         gap: var(--space-2, .5rem);
