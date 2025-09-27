@@ -17,6 +17,11 @@ html {
   --accent-soft: #8DA3A6;
   --lavender-soft: #C4633A;
   --white: #FFFFFF;
+    /* Holiday palette */
+  --holiday-gold: #D4AF37;
+  --holiday-pine: #2F6F4F;
+  --holiday-berry: #B8403A;
+  --holiday-cream: #FFF8DC;
 
   /* Fonts */
   --brand-heading: "Playfair Display", ui-serif, Georgia, serif;
@@ -40,11 +45,6 @@ html {
   --glow-sage-med: rgba(141, 163, 166, .18);
   --glow-lav-soft: rgba(196, 99, 58, .14);
 
-  /* Holiday palette */
-  --holiday-gold: #D4AF37;
-  --holiday-pine: #2F6F4F;
-  --holiday-berry: #B8403A;
-  --holiday-cream: #FFF8DC;
 }
 
 /* Layout + background */
