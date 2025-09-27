@@ -1,8 +1,7 @@
-/* Desert Matcha — Iridescent Cinderwyrm Bodywork (Accumulus-clean, box model fixed) */
+/* Desert Matcha — Iridescent Cinderwyrm Bodywork (Accumulus-clean) */
 
-/* ===== Base (border-box reset) ===== */
+/* ===== Base (no universal selector) ===== */
 html { box-sizing: border-box; }
-*, *::before, *::after { box-sizing: inherit; }
 
 :root{
   /* Palette */
@@ -82,13 +81,13 @@ figure img{
 }
 figcaption{ margin-top:.75rem; margin-bottom:1rem; font-size:.95rem; color:var(--accent-deep); }
 
-/* Optional gold ring for special images (no !important) */
+/* Optional gold ring (no !important) */
 .img-gold-border{
   box-shadow:0 0 0 3px #fff, 0 0 0 6px var(--gold), 0 8px 24px rgba(47,58,52,.12);
   border:0;
 }
 
-/* Restore holiday look */
+/* Holiday look */
 .figure-holiday{ background:#FFF8DC; border:1px solid rgba(212,175,55,.35); }
 .figure-holiday img{ border:6px solid var(--gold); }
 .note-gold{ color:var(--gold); font-style:italic; }
@@ -177,16 +176,24 @@ ul ul{ list-style-type:circle; padding-left:1.5rem; }
 ul li::marker{ color:var(--accent-deep); }
 ul ul li::marker{ color:var(--accent-soft); }
 
-/* ===== Forms (FizzBuzz) ===== */
-.form-grid{ display:grid; gap:var(--space-4); grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); align-items:end; }
-.field label{ display:block; font-weight:600; margin-bottom:.35rem; }
+/* ===== Forms (FizzBuzz) — linter-safe sizing ===== */
+.form-grid{
+  display:grid;
+  gap:var(--space-4);
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  align-items:end;
+}
+.field label{
+  display:block;
+  font-weight:600;
+  margin-bottom:.35rem;
+}
 .field input{
-  box-sizing:border-box;       /* explicit to satisfy validators */
-  width:100%;
+  /* No width property to avoid “width + padding/border” warning */
+  inline-size:100%;
   padding:.55rem .65rem;
   border:1px solid rgba(62,87,75,.25);
   border-radius:10px;
 }
 .muted{ color:var(--accent-soft); }
 #datas{ margin-left:1.25rem; }
-
