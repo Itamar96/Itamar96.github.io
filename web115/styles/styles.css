@@ -35,7 +35,6 @@ html { box-sizing: border-box; }
 body{
   margin:0; padding:0; font-family:var(--brand-body); color:var(--text);
   background:linear-gradient(var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
-  /* If this path fails on Pages, switch to url("images/spa-bg.svg") */
   background-image:url("/web115/images/spa-bg.svg");
   background-size:cover; background-repeat:no-repeat; background-attachment:fixed; background-position:center;
 }
@@ -81,7 +80,7 @@ figure img{
 }
 figcaption{ margin-top:.75rem; margin-bottom:1rem; font-size:.95rem; color:var(--accent-deep); }
 
-/* Optional gold ring (no !important) */
+/* Optional gold ring */
 .img-gold-border{
   box-shadow:0 0 0 3px #fff, 0 0 0 6px var(--gold), 0 8px 24px rgba(47,58,52,.12);
   border:0;
@@ -96,7 +95,7 @@ figcaption{ margin-top:.75rem; margin-bottom:1rem; font-size:.95rem; color:var(-
 a{ color:var(--accent-deep); text-decoration:underline; }
 a:hover, a:focus{ color:var(--accent); }
 
-/* ===== Headings (each defined ONCE) ===== */
+/* ===== Headings ===== */
 h1{
   font-family:var(--brand-heading); font-weight:800; line-height:1.2;
   margin:var(--heading-margin); text-shadow:var(--heading-shadow);
@@ -165,7 +164,7 @@ a:focus{ outline:3px solid rgba(111,143,107,.35); outline-offset:2px; border-rad
   header{ display:grid; grid-template-columns:1fr auto; align-items:end; gap:var(--space-4); }
 }
 
-/* Two-line site title (same size on both lines) */
+/* Two-line site title */
 .site-title{ margin:0; line-height:1.1; font-family:var(--brand-heading); font-weight:800; letter-spacing:.2px; }
 .site-title .line-1, .site-title .line-2{ display:block; font-size:clamp(1.35rem, 1rem + 2vw, 2.1rem); }
 .site-title .dot{ margin:0 .4rem; font-weight:800; color:var(--accent); }
@@ -176,7 +175,7 @@ ul ul{ list-style-type:circle; padding-left:1.5rem; }
 ul li::marker{ color:var(--accent-deep); }
 ul ul li::marker{ color:var(--accent-soft); }
 
-/* ===== Forms (FizzBuzz) — linter-safe sizing ===== */
+/* ===== Forms (FizzBuzz) ===== */
 .form-grid{
   display:grid;
   gap:var(--space-4);
@@ -191,7 +190,7 @@ ul ul li::marker{ color:var(--accent-soft); }
 }
 
 .field input{
-  /* No width property to avoid “width + padding/border” warning */
+  /* No width property to avoid width + padding/border warning */
   width:100%;
   padding:.55rem .65rem;
   border:1px solid rgba(62,87,75,.25);
@@ -201,4 +200,3 @@ ul ul li::marker{ color:var(--accent-soft); }
 
 .muted{ color:var(--accent-soft); }
 #datas{ margin-left:1.25rem; }
-
