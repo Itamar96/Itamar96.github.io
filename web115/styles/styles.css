@@ -5,10 +5,6 @@ html {
   box-sizing: border-box;
 }
 
-*, *::before, *::after {
-  box-sizing: inherit;
-}
-
 :root {
   /* Palette */
   --bg-grad-1: #F7EAD9;
