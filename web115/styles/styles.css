@@ -465,39 +465,3 @@ blockquote.holiday {
   background: linear-gradient(180deg, rgba(163,191,175,.18), rgba(212,175,55,.10));
   border-left-color: var(--holiday-pine);
 }
-
-/* ---- Dark Theme ---- */
-body.dark-theme {
-  --bg-grad-1: #1E1E1E;
-  --bg-grad-2: #1E1E1E;
-  --bg-grad-3: #121212;
-  --surface: #1E1E1E;
-  --text: #E4E4E4;
-  --accent: #8FCB9B;
-  --accent-deep: #B6E0B9;
-  --accent-soft: #A7C7C2;
-  --lavender-soft: #D47F5E;
-
-  --glow-euca-strong: rgba(143, 214, 167, .32);
-  --glow-euca-med: rgba(143, 214, 167, .18);
-  --glow-euca-soft: rgba(143, 214, 167, .10);
-  --glow-sage-med: rgba(190, 210, 213, .18);
-  --glow-lav-soft: rgba(212, 127, 94, .14);
-}
-
-body.dark-theme {
-  background-image: none; /* optional */
-}
-
-body.dark-theme header,
-body.dark-theme footer {
-  background-color: var(--surface);
-  color: var(--text);
-}
-
-body.dark-theme figure,
-body.dark-theme .type-card,
-body.dark-theme .swatch {
-  background: #1E1E1E;
-  border-color: rgba(255, 255, 255, .15);
-}
