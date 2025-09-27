@@ -65,20 +65,29 @@ body {
   background-position: center;
 }
 
+/* --- NEW: Shared container to unify left/right edges across header, main, footer --- */
+.container {
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+/* Header/Footer/Main shells (width now controlled by .container) */
 header,
 footer {
   background-color: var(--surface);
   color: var(--text);
   text-align: center;
   padding: 1rem;
-  max-width: var(--content-width);
-  margin-inline: auto;
+  /* Removed per-element max-width; use .container for consistent edges */
+  max-width: none;
+  margin-inline: 0;
 }
 
 main {
-  padding: 2rem;
-  max-width: var(--content-width);
-  margin-inline: auto;
+  padding: 2rem 0; /* vertical padding only; horizontal handled by .container */
+  max-width: none;
+  margin-inline: 0;
 }
 
 /* Nav */
@@ -343,10 +352,7 @@ a:focus {
 /* Responsive header */
 @media (min-width:700px) {
   header {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: end;
-    gap: var(--space-4);
+    display: block; /* container will manage internal grid */
   }
 }
 
@@ -481,3 +487,102 @@ ul ul li::marker { color: var(--accent-soft); }
   background: #1E1E1E;
   border-color: rgba(255, 255, 255, .15);
 }
+
+/* =========================
+   MERGED PATCH OVERRIDES
+   (applied after originals)
+   ========================= */
+
+/* Normalize typography & remove excessive text glow for readability */
+body { font-size: 1rem; }
+
+h1 {
+  /* Single, uniform H1 sizing; remove heavy glow */
+  font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
+  text-shadow: none;
+}
+
+/* Prefer semantic targeting; if you had .nav-top, you can drop it */
+header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  justify-content: center;
+  margin-top: var(--space-2);
+}
+
+/* Use .container to manage inner width in all major regions */
+header > .container,
+main > .container,
+footer > .container {
+  display: block;
+  padding-inline: var(--space-4);
+}
+
+@media (min-width:700px) {
+  header > .container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: var(--space-4);
+  }
+}
+
+/* Figures: remove white halo border, keep consistent max width */
+figure {
+  margin: var(--space-6) auto;
+}
+figure img {
+  max-width: min(100%, 360px);
+  border: 0; /* remove halo */
+}
+
+/* Blockquote: align with container and reduce background intensity */
+blockquote {
+  background: rgba(141, 163, 166, 0.10);
+  text-shadow: none;
+}
+
+/* Ensure figure/blockquote align with content edges inside container */
+main .container > figure,
+main .container > blockquote {
+  margin-inline: 0;
+}
+
+/* Lists: normalize LI spacing for proximity consistency */
+ul { padding-left: 1.25rem; }
+ul li { margin-block: .35rem; }
+ul ul { padding-left: 1.25rem; }
+
+/* Contrast & accessibility: avoid gold text on light backgrounds */
+.note-gold {
+  color: var(--text); /* readable on light bg */
+  font-style: italic;
+}
+
+/* Holiday image: avoid gold borders on images if contrast feels heavy */
+.figure-holiday img { border: 0; }
+
+/* Holiday links: ensure AA contrast on hover */
+.link-festive:hover,
+.link-festive:focus { color: #1F4F3A; }
+
+/* Badges: pine background with white text for strong contrast */
+.badge-festive {
+  background: var(--holiday-pine);
+  color: #fff;
+  border: 1px solid var(--holiday-gold);
+}
+
+/* Remove global text glow from body text areas that impact legibility */
+footer p,
+footer a,
+figure figcaption,
+strong,
+em,
+main a {
+  text-shadow: none;
+}
+
+/* De-emphasize the .small utility; prefer consistent base body size */
+.small { font-size: inherit; opacity: 1; }
