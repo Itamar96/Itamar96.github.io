@@ -40,11 +40,32 @@
 				</p>
 
 				<figure class="figure-holiday">
-					<img class="img-gold-border" src="images/hiking-mountain-lake-colorado.jpg" alt="Itamar Castillo in Segovia, Spain" />
-					<figcaption class="note-gold">
-						Grounded in nature, inspired to heal, CO 2025.
-					</figcaption>
-				</figure>
+  <picture>
+    <!-- Modern, smaller files -->
+    <source
+      type="image/webp"
+      srcset="
+        images/mountain-lake-tranquility-1200.webp 1200w,
+        images/mountain-lake-tranquility-1000.webp 1000w,
+        images/mountain-lake-tranquility-800.webp   800w">
+      <!-- Fallback JPEGs -->
+    <img
+      class="img-gold-border intro-landscape"
+      src="images/mountain-lake-tranquility-1000.jpg"
+      srcset="
+        images/mountain-lake-tranquility-1200.jpg 1200w,
+        images/mountain-lake-tranquility-1000.jpg 1000w,
+        images/mountain-lake-tranquility-800.jpg   800w"
+      sizes="(min-width: 900px) 700px, 100vw"
+      alt="Hiker above a serene mountain lake with pines and ridgelines in the distance"
+      width="1200" height="800"
+      loading="lazy" decoding="async">
+  </picture>
+  <figcaption class="note-gold">
+    Grounded in nature, inspired to heal. Colorado, 2025.
+  </figcaption>
+</figure>
+
 
 				<p>
 					Hello, my name is <strong>Itamar Castillo</strong>. I am in my final year of study as a Software Developer. I enjoy music, hiking, and fitness. I am using this site to practice web skills and to present a sample massage
