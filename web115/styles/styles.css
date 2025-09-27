@@ -5,23 +5,35 @@ html {
   box-sizing: border-box;
 }
 
+/* Accumulus-friendly inheritance (no universal selector) */
+body {
+  box-sizing: inherit;
+}
+
 :root {
-  /* Palette */
-  --bg-grad-1: #F7EAD9;
+  /* Palette (matches the brand guide swatches) */
+  --bg-grad-1: #F7EAD9;   /* sand background */
   --bg-grad-2: #F7EAD9;
   --bg-grad-3: #F7EAD9;
-  --surface: #FFFFFF;
-  --text: #2F3A34;
-  --accent: #6F8F6B;
-  --accent-deep: #3E574B;
-  --accent-soft: #8DA3A6;
-  --lavender-soft: #C4633A;
-  --white: #FFFFFF;
-    /* Holiday palette */
-  --holiday-gold: #D4AF37;
-  --holiday-pine: #2F6F4F;
+  --surface:   #FFFFFF;   /* surface and cards */
+  --text:      #2F3A34;   /* primary text */
+  --accent:    #6F8F6B;   /* accent buttons */
+  --accent-deep: #3E574B; /* links and small text */
+  --accent-soft: #8DA3A6; /* mist subtle UI */
+  --lavender-soft: #C4633A; /* clay glow */
+
+  /* Glow tokens */
+  --glow-euca-strong: rgba(111, 143, 107, .32);
+  --glow-euca-med:    rgba(111, 143, 107, .18);
+  --glow-euca-soft:   rgba(111, 143, 107, .10);
+  --glow-sage-med:    rgba(141, 163, 166, .18);
+  --glow-lav-soft:    rgba(196, 99, 58, .14);
+
+  /* Holiday palette you asked for */
+  --holiday-cream: #FFF8DC; /* Holiday light background */
+  --holiday-gold:  #D4AF37; /* Gold accent */
+  --holiday-pine:  #2F6F4F;
   --holiday-berry: #B8403A;
-  --holiday-cream: #FFF8DC;
 
   /* Fonts */
   --brand-heading: "Playfair Display", ui-serif, Georgia, serif;
@@ -37,14 +49,6 @@ html {
   --space-8: 2rem;
   --radius: 14px;
   --shadow: 0 8px 30px rgba(47, 58, 52, .12);
-
-  /* Glow tokens */
-  --glow-euca-strong: rgba(111, 143, 107, .32);
-  --glow-euca-med: rgba(111, 143, 107, .18);
-  --glow-euca-soft: rgba(111, 143, 107, .10);
-  --glow-sage-med: rgba(141, 163, 166, .18);
-  --glow-lav-soft: rgba(196, 99, 58, .14);
-
 }
 
 /* Layout + background */
@@ -109,7 +113,7 @@ nav a:focus {
 
 nav a[aria-current="page"] {
   background: var(--accent);
-  color: white; /* named color */
+  color: white; /* named color example */
   font-weight: 600;
   box-shadow: 0 0 0 2px rgba(62, 87, 75, .08) inset, var(--shadow);
 }
@@ -186,7 +190,7 @@ a:focus {
   color: var(--accent);
 }
 
-/* Headings */
+/* Headings (each defined once) */
 h1 {
   font-family: var(--brand-heading);
   font-weight: 800;
@@ -231,7 +235,7 @@ figure {
 blockquote {
   padding: var(--space-4);
   border-left: 4px solid var(--accent);
-  background: linear-gradient(180deg, rgba(141, 163, 166, 0.18), rgba(196, 99, 58, 0.10));
+  background: linear-gradient(180deg, rgba(141, 163, 166, 0.18), rgba(196, 99, 58, 0.10)); /* rgba example */
   border-radius: 0 var(--radius) var(--radius) 0;
   font-style: italic;
   text-shadow: 0 0 3px var(--glow-euca-soft), 0 0 7px var(--glow-sage-med), 0 0 12px var(--glow-lav-soft);
@@ -312,13 +316,8 @@ main a {
   color: #3E574B;
 }
 
-.demo-h1 {
-  font-size: clamp(1.8rem, 1.2rem + 2.2vw, 2.6rem);
-}
-
-.demo-h2 {
-  font-size: clamp(1.4rem, 1.1rem + 1.4vw, 2.0rem);
-}
+.demo-h1 { font-size: clamp(1.8rem, 1.2rem + 2.2vw, 2.6rem); }
+.demo-h2 { font-size: clamp(1.4rem, 1.1rem + 1.4vw, 2.0rem); }
 
 /* Accessibility */
 a:focus {
@@ -361,9 +360,7 @@ a:focus {
 }
 
 .site-title .line-1,
-.site-title .line-2 {
-  display: block;
-}
+.site-title .line-2 { display: block; }
 
 .site-title .line-1 {
   font-size: clamp(1.35rem, 1rem + 2vw, 2.1rem);
@@ -393,53 +390,38 @@ ul ul {
   padding-left: 1.5rem;
 }
 
-ul li::marker {
-  color: var(--accent-deep);
-}
+ul li::marker { color: var(--accent-deep); }
+ul ul li::marker { color: var(--accent-soft); }
 
-ul ul li::marker {
-  color: var(--accent-soft);
-}
-
-/* ---- Holiday Styles ---- */
+/* ---- Holiday Styles (class-only, Accumulus-friendly) ---- */
 .img-gold-border {
-  box-shadow: 0 0 0 3px #fff, 0 0 0 6px var(--holiday-gold), 0 8px 24px rgba(47, 58, 52, .12);
+  box-shadow: 0 0 0 3px #fff,
+              0 0 0 6px var(--holiday-gold),
+              0 8px 24px rgba(47,58,52,.12);
   border: 0;
 }
 
 .figure-holiday {
   background: var(--holiday-cream);
-  border: 1px solid rgba(212, 175, 55, .35);
+  border: 1px solid rgba(212,175,55,.35);
 }
+.figure-holiday img { border: 6px solid var(--holiday-gold); }
 
-.figure-holiday img {
-  border: 6px solid var(--holiday-gold);
-}
-
-.note-gold {
-  color: var(--holiday-gold);
-  font-style: italic;
-}
+.note-gold { color: var(--holiday-gold); font-style: italic; }
 
 .btn-festive {
   background: var(--holiday-pine);
   border-color: var(--holiday-pine);
   color: white;
 }
-
 .btn-festive:hover {
   filter: brightness(.96);
-  box-shadow: 0 0 0 2px rgba(212, 175, 55, .25) inset, var(--shadow);
+  box-shadow: 0 0 0 2px rgba(212,175,55,.25) inset, var(--shadow);
 }
 
-.link-festive {
-  color: var(--holiday-pine);
-}
-
+.link-festive { color: var(--holiday-pine); }
 .link-festive:hover,
-.link-festive:focus {
-  color: var(--holiday-berry);
-}
+.link-festive:focus { color: var(--holiday-berry); }
 
 .badge-festive {
   display: inline-block;
@@ -447,17 +429,55 @@ ul ul li::marker {
   border-radius: 999px;
   background: var(--holiday-berry);
   color: white;
-  border: 1px solid rgba(212, 175, 55, .45);
-  box-shadow: 0 0 0 2px rgba(212, 175, 55, .15), var(--shadow);
+  border: 1px solid var(--holiday-gold);
+  box-shadow: 0 0 0 2px rgba(212,175,55,.15), var(--shadow);
 }
 
-body.holiday-theme {
+/* Site-wide holiday accent swap when applied to <body> */
+.holiday-theme {
   --accent: var(--holiday-pine);
   --accent-deep: #234F3B;
   --accent-soft: #A3BFAF;
 }
 
-blockquote.holiday {
-  background: linear-gradient(180deg, rgba(163,191,175,.18), rgba(212,175,55,.10));
+/* Holiday blockquote variant */
+.holiday {
+  background: linear-gradient(180deg,
+              rgba(163,191,175,.18),
+              rgba(212,175,55,.10));
   border-left-color: var(--holiday-pine);
+}
+
+/* ---- Dark Theme (manual toggle with .dark-theme on <body>) ---- */
+.dark-theme {
+  --bg-grad-1: #1E1E1E;
+  --bg-grad-2: #1E1E1E;
+  --bg-grad-3: #121212;
+  --surface: #1E1E1E;
+  --text: #E4E4E4;
+  --accent: #8FCB9B;
+  --accent-deep: #B6E0B9;
+  --accent-soft: #A7C7C2;
+  --lavender-soft: #D47F5E;
+
+  --glow-euca-strong: rgba(143, 214, 167, .32);
+  --glow-euca-med: rgba(143, 214, 167, .18);
+  --glow-euca-soft: rgba(143, 214, 167, .10);
+  --glow-sage-med: rgba(190, 210, 213, .18);
+  --glow-lav-soft: rgba(212, 127, 94, .14);
+}
+
+.dark-theme { background-image: none; }
+
+.dark-theme header,
+.dark-theme footer {
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+.dark-theme figure,
+.dark-theme .type-card,
+.dark-theme .swatch {
+  background: #1E1E1E;
+  border-color: rgba(255, 255, 255, .15);
 }
