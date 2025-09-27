@@ -168,7 +168,7 @@ figure img {
   height: auto;
   border-radius: 12px;
   margin: 0 auto;
-  border: 6px solid hsl(0, 0%, 100%); 
+  border: 6px solid hsl(0, 0%, 100%); /* HSL example */
   box-shadow: 0 8px 24px rgba(47, 58, 52, .12);
 }
 
@@ -231,7 +231,7 @@ figure {
   opacity: .9;
 }
 
-/* Blockquote with its own glow */
+/* Blockquote */
 blockquote {
   padding: var(--space-4);
   border-left: 4px solid var(--accent);
@@ -241,7 +241,7 @@ blockquote {
   text-shadow: 0 0 3px var(--glow-euca-soft), 0 0 7px var(--glow-sage-med), 0 0 12px var(--glow-lav-soft);
 }
 
-/* Subtle glow (non-heading elements) */
+/* Subtle glow */
 footer p,
 footer a,
 figure figcaption,
@@ -406,49 +406,45 @@ ul ul li::marker {
 }
 
 /* ---- Holiday Styles ---- */
-
-/* Gold ring for images */
 .img-gold-border {
   box-shadow: 0 0 0 3px #fff, 0 0 0 6px var(--holiday-gold), 0 8px 24px rgba(47, 58, 52, .12);
   border: 0;
 }
 
-/* Festive figure card */
 .figure-holiday {
   background: var(--holiday-cream);
   border: 1px solid rgba(212, 175, 55, .35);
 }
+
 .figure-holiday img {
   border: 6px solid var(--holiday-gold);
 }
 
-/* Gold text note */
 .note-gold {
   color: var(--holiday-gold);
   font-style: italic;
 }
 
-/* Optional festive button */
 .btn-festive {
   background: var(--holiday-pine);
   border-color: var(--holiday-pine);
   color: white;
 }
+
 .btn-festive:hover {
   filter: brightness(.96);
   box-shadow: 0 0 0 2px rgba(212, 175, 55, .25) inset, var(--shadow);
 }
 
-/* Optional festive link */
 .link-festive {
   color: var(--holiday-pine);
 }
+
 .link-festive:hover,
 .link-festive:focus {
   color: var(--holiday-berry);
 }
 
-/* Festive badge */
 .badge-festive {
   display: inline-block;
   padding: .25rem .5rem;
@@ -459,15 +455,49 @@ ul ul li::marker {
   box-shadow: 0 0 0 2px rgba(212, 175, 55, .15), var(--shadow);
 }
 
-/* Optional page-wide toggle */
 body.holiday-theme {
   --accent: var(--holiday-pine);
   --accent-deep: #234F3B;
   --accent-soft: #A3BFAF;
 }
 
-/* Holiday blockquote variant */
 blockquote.holiday {
   background: linear-gradient(180deg, rgba(163,191,175,.18), rgba(212,175,55,.10));
   border-left-color: var(--holiday-pine);
+}
+
+/* ---- Dark Theme ---- */
+body.dark-theme {
+  --bg-grad-1: #1E1E1E;
+  --bg-grad-2: #1E1E1E;
+  --bg-grad-3: #121212;
+  --surface: #1E1E1E;
+  --text: #E4E4E4;
+  --accent: #8FCB9B;
+  --accent-deep: #B6E0B9;
+  --accent-soft: #A7C7C2;
+  --lavender-soft: #D47F5E;
+
+  --glow-euca-strong: rgba(143, 214, 167, .32);
+  --glow-euca-med: rgba(143, 214, 167, .18);
+  --glow-euca-soft: rgba(143, 214, 167, .10);
+  --glow-sage-med: rgba(190, 210, 213, .18);
+  --glow-lav-soft: rgba(212, 127, 94, .14);
+}
+
+body.dark-theme {
+  background-image: none; /* optional */
+}
+
+body.dark-theme header,
+body.dark-theme footer {
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+body.dark-theme figure,
+body.dark-theme .type-card,
+body.dark-theme .swatch {
+  background: #1E1E1E;
+  border-color: rgba(255, 255, 255, .15);
 }
