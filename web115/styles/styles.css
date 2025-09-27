@@ -1,4 +1,4 @@
-/* Desert Matcha - Iridescent Cinderwyrm Bodywork - Cleaned */
+/* Desert Matcha - Iridescent Cinderwyrm Bodywork - Accumulus Clean */
 
 html { box-sizing: border-box; }
 *, *::before, *::after { box-sizing: inherit; }
@@ -112,14 +112,31 @@ a{ color:var(--accent-deep); text-decoration:underline; }
 a:hover, a:focus{ color:var(--accent); }
 a:focus{ outline:3px solid rgba(111,143,107,.35); outline-offset:2px; border-radius:6px; }
 
-/* Headings */
-h1, h2, h3{
-  font-family:var(--brand-heading); font-weight:700; line-height:1.2;
-  margin:0 0 var(--space-4); text-shadow:var(--heading-shadow);
+/* Headings - defined once each for Accumulus */
+h1{
+  font-family: var(--brand-heading);
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0 0 var(--space-4);
+  text-shadow: var(--heading-shadow);
+  font-size: clamp(1.6rem, 1.1rem + 2.2vw, 2.4rem);
 }
-h1{ font-weight:800; font-size:clamp(1.6rem, 1.1rem + 2.2vw, 2.4rem); }
-h2{ font-size:clamp(1.3rem, 1.05rem + 1.2vw, 1.9rem); }
-h3{ font-size:1.15rem; }
+h2{
+  font-family: var(--brand-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 var(--space-4);
+  text-shadow: var(--heading-shadow);
+  font-size: clamp(1.3rem, 1.05rem + 1.2vw, 1.9rem);
+}
+h3{
+  font-family: var(--brand-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 var(--space-4);
+  text-shadow: var(--heading-shadow);
+  font-size: 1.15rem;
+}
 
 p, ul, ol, blockquote, figure{ margin-block:var(--space-4); }
 .meta, .small{ font-size:.9rem; opacity:.9; }
@@ -215,25 +232,15 @@ ul ul li::marker{ color:var(--accent-soft); }
 /* ---- CSS Colors Review - optional demo helpers (safe add-on) ---- */
 
 /* Named color */
-.demo-named-color {
-  color: blue; /* only if you add this class */
-}
+.demo-named-color { color: blue; }
 
 /* RGB and RGBA examples */
-.demo-rgb {
-  color: rgb(255, 0, 0); /* red text */
-}
-.demo-rgba {
-  background-color: rgba(0, 0, 255, 0.15); /* light blue backdrop */
-}
+.demo-rgb { color: rgb(255, 0, 0); }
+.demo-rgba { background-color: rgba(0, 0, 255, 0.15); }
 
 /* HSL and HSLA examples */
-.demo-hsl {
-  color: hsl(200, 50%, 40%); /* dark teal text */
-}
-.demo-hsla {
-  background-color: hsla(120, 60%, 50%, 0.15); /* light green backdrop */
-}
+.demo-hsl { color: hsl(200, 50%, 40%); }
+.demo-hsla { background-color: hsla(120, 60%, 50%, 0.15); }
 
 /* Linear gradient example */
 .demo-linear-gradient {
@@ -246,9 +253,10 @@ ul ul li::marker{ color:var(--accent-soft); }
 }
 
 /* Optional demo box style to make gradient backgrounds visible */
-.demo-box {
+.demo-box{
   padding: .75rem 1rem;
   border-radius: 10px;
   border: 1px solid rgba(62, 87, 75, .2);
   color: var(--text);
 }
+
