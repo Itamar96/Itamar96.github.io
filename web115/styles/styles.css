@@ -157,7 +157,6 @@ blockquote{
   display:grid;
   gap:var(--space-4);
   grid-template-columns:1fr;
-  max-width:640px;
   margin-left:auto;
   margin-right:auto;
 }
