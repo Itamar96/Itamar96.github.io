@@ -183,17 +183,22 @@ ul ul li::marker{ color:var(--accent-soft); }
   grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
   align-items:end;
 }
+
 .field label{
   display:block;
   font-weight:600;
   margin-bottom:.35rem;
 }
+
 .field input{
   /* No width property to avoid “width + padding/border” warning */
-  inline-size:100%;
+  width:100%;
   padding:.55rem .65rem;
   border:1px solid rgba(62,87,75,.25);
   border-radius:10px;
+  box-sizing:border-box;
 }
+
 .muted{ color:var(--accent-soft); }
 #datas{ margin-left:1.25rem; }
+
