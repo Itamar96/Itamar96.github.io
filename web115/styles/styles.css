@@ -115,6 +115,17 @@ figure img{
   display:block; max-width:min(100%, 1200px); height:auto; border-radius:12px; margin:0 auto;
   box-shadow:0 8px 24px rgba(47,58,52,0.12);
 }
+/* ---------- Responsive Figures Override ---------- */
+figure img {
+  max-width: min(100%, 1200px);
+  height: auto;
+}
+/* Specific class for intro image */
+.img-gold-border.intro-landscape {
+  max-width: 100%;
+  height: auto;
+}
+
 figure figcaption{ margin-top:0.75rem; font-size:0.95rem; color:var(--accent-deep); }
 
 /* Holiday variant used on Home/Intro */
