@@ -39,20 +39,30 @@
         <em class="note-gold">(<time datetime="2025-08-31">I. C., 31 August 2025</time>)</em>
       </p>
 
+      <!-- Responsive figure (sizes added to <source> for Accumulus) -->
       <figure class="figure-holiday">
         <picture>
-          <!-- WebP sources -->
-          <source type="image/webp"
+          <!-- WebP -->
+          <source
+            type="image/webp"
             srcset="images/hiking_mountain_lake_600w.webp 600w,
                     images/hiking_mountain_lake_800w.webp 800w,
-                    images/hiking_mountain_lake_1200w.webp 1200w" />
+                    images/hiking_mountain_lake_1200w.webp 1200w"
+            sizes="(max-width: 640px) 600px,
+                   (max-width: 960px) 800px,
+                   1200px" />
 
           <!-- JPEG fallback -->
-          <source type="image/jpeg"
+          <source
+            type="image/jpeg"
             srcset="images/hiking_mountain_lake_600w.jpg 600w,
                     images/hiking_mountain_lake_800w.jpg 800w,
-                    images/hiking_mountain_lake_1200w.jpg 1200w" />
+                    images/hiking_mountain_lake_1200w.jpg 1200w"
+            sizes="(max-width: 640px) 600px,
+                   (max-width: 960px) 800px,
+                   1200px" />
 
+          <!-- Default img -->
           <img
             class="img-gold-border intro-landscape"
             src="images/hiking_mountain_lake_800w.jpg"
