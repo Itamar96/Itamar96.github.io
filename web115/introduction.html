@@ -40,29 +40,31 @@
       </p>
 
       <!-- Responsive figure -->
-      <figure class="figure-holiday">
+     <figure class="figure-holiday">
   <picture>
-    <!-- WebP -->
-    <source
+    <!-- WebP sources -->
+    <source 
       type="image/webp"
-      srcset="images/hiking_mountain_lake_600w.webp 600w,
-              images/hiking_mountain_lake_800w.webp 800w,
-              images/hiking_mountain_lake_1200w.webp 1200w"
+      srcset="
+        images/hiking_mountain_lake_600w.webp 600w,
+        images/hiking_mountain_lake_800w.webp 800w,
+        images/hiking_mountain_lake_1200w.webp 1200w"
       sizes="(max-width: 640px) 600px,
              (max-width: 960px) 800px,
-             1200px" />
+             1200px">
 
     <!-- JPEG fallback -->
-    <source
+    <source 
       type="image/jpeg"
-      srcset="images/hiking_mountain_lake_600w.jpg 600w,
-              images/hiking_mountain_lake_800w.jpg 800w,
-              images/hiking_mountain_lake_1200w.jpg 1200w"
+      srcset="
+        images/hiking_mountain_lake_600w.jpg 600w,
+        images/hiking_mountain_lake_800w.jpg 800w,
+        images/hiking_mountain_lake_1200w.jpg 1200w"
       sizes="(max-width: 640px) 600px,
              (max-width: 960px) 800px,
-             1200px" />
+             1200px">
 
-    <!-- Default -->
+    <!-- Default image -->
     <img
       class="img-gold-border intro-landscape"
       src="images/hiking_mountain_lake_800w.jpg"
@@ -71,13 +73,14 @@
              (max-width: 960px) 800px,
              1200px"
       alt="Hiker above a serene mountain lake with pines and ridgelines in the distance"
-      loading="lazy" decoding="async" />
+      loading="lazy" decoding="async">
   </picture>
 
   <figcaption class="note-gold">
-    Grounded in nature, inspired to heal, Colorado 2025.
+    Grounded in nature, inspired to heal. Colorado 2025.
   </figcaption>
 </figure>
+
 
 
       <p>
