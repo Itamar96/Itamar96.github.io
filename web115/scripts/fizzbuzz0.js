@@ -1,11 +1,20 @@
 "use strict";
 
-// Wire up submit handler (script is loaded with `defer`, so DOM is ready)
-document.getElementById("name-form").addEventListener("submit", useForm);
+/* Initialize when DOM is ready (works with or without `defer`) */
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}
 
-// Add subtle live counters for first/last names (max 20)
-initLengthCounters();
+function init() {
+  const form = document.getElementById("name-form");
+  if (form) form.addEventListener("submit", useForm);
 
+  initLengthCounters();
+}
+
+/* Live character counters for first/last name (max 20) */
 function initLengthCounters() {
   const MAX = 20;
   const fields = [
@@ -17,31 +26,27 @@ function initLengthCounters() {
     const input = document.getElementById(f.id);
     if (!input) continue;
 
-    // Create counter element (muted, live-updating)
     const counter = document.createElement("div");
     counter.className = "muted";
     counter.setAttribute("aria-live", "polite");
     counter.style.marginTop = "0.25rem";
     counter.style.fontSize = "0.9em";
 
-    // Insert right after the input (no HTML edits needed)
     input.insertAdjacentElement("afterend", counter);
 
     const update = () => {
       const len = input.value.length;
       const left = MAX - len;
       if (left <= 0) {
-        counter.textContent = `${f.label}: 20/20 — max reached`;
+        counter.textContent = `${f.label}: 20/20 - max reached`;
       } else if (left <= 3) {
-        counter.textContent = `${f.label}: ${len}/20 — ${left} left`;
+        counter.textContent = `${f.label}: ${len}/20 - ${left} left`;
       } else {
         counter.textContent = `${f.label}: ${len}/20`;
       }
-      // Keep constraint-valid (maxlength already prevents >20)
-      input.setCustomValidity(""); // clear any prior message
+      input.setCustomValidity(""); // keep constraint-valid
     };
 
-    // Initialize and attach listeners
     update();
     input.addEventListener("input", update);
     input.addEventListener("blur", update);
@@ -51,24 +56,54 @@ function initLengthCounters() {
 function useForm(event) {
   event.preventDefault();
 
-  const first = document.getElementById("first_name");
-  const mid = document.getElementById("middle_initial");
-  const last = document.getElementById("last_name");
+  const firstEl = document.getElementById("first_name");
+  const midEl   = document.getElementById("middle_initial");
+  const lastEl  = document.getElementById("last_name");
+  const datas   = document.getElementById("datas");
+  const greeting = document.getElementById("greeting");
 
-  // Basic required fields check
-  if (!first.value.trim() || !last.value.trim()) {
+  const first = (firstEl?.value || "").trim();
+  const mid   = (midEl?.value || "").trim();
+  const last  = (lastEl?.value || "").trim();
+
+  if (!first || !last) {
     alert("Please enter both first and last name.");
     return;
   }
 
-  // Greeting target
-  const greeting = document.getElementById("greeting");
-
-  // Normalize names a bit (capitalize first letters, collapse extra spaces)
-  const cap = (s) =>
+  // Normalize names (capitalize words)
+  const capWords = (s) =>
     s
-      .trim()
       .replace(/\s+/g, " ")
-      // Capitalize the first letter of each word (Unicode-aware in modern browsers)
-      .replace(/
+      .trim()
+      .replace(/\b([a-z])/gi, (m, ch) => ch.toUpperCase());
+
+  const firstName = capWords(first);
+  const lastName  = capWords(last);
+  let middle = "";
+
+  if (mid) {
+    // Keep only the first A-Z letter for middle initial
+    const m = mid.match(/[A-Za-z]/);
+    if (m) middle = m[0].toUpperCase() + ".";
+  }
+
+  const fullName = [firstName, middle, lastName].filter(Boolean).join(" ");
+  if (greeting) greeting.textContent = `Welcome, ${fullName}!`;
+
+  // Render FizzBuzz 1..125
+  if (datas) {
+    datas.innerHTML = "";
+    for (let i = 1; i <= 125; i++) {
+      let text = "";
+      if (i % 3 === 0) text += "Fizz";
+      if (i % 5 === 0) text += "Buzz";
+      if (!text) text = String(i);
+
+      const li = document.createElement("li");
+      li.textContent = text;
+      datas.appendChild(li);
+    }
+  }
+}
 
