@@ -4,8 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Iridescent Cinderwyrm Bodywork • Fizz Buzz 0" />
+    <title>Itamar Castillo’s Iridescent Cinderwyrm • WEB115 • Fizz Buzz 0</title>
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
@@ -13,11 +14,8 @@
   <body>
     <header>
       <div class="container">
-        <h1 class="site-title">
-          <span class="line-1">Itamar Castillo’s Iridescent Cinderwyrm</span>
-          <span class="line-2"><span class="dot">•</span> WEB115 <span class="dragon" aria-hidden="true">🐉</span></span>
-        </h1>
-        <nav>
+        <h1>Itamar Castillo’s Iridescent Cinderwyrm</h1>
+        <nav aria-label="Primary">
           <a href="index.html">Home</a>
           <a href="introduction.html">Introduction</a>
           <a href="contract.html">Contract</a>
@@ -41,7 +39,7 @@
             <input id="first_name" name="first_name" type="text" placeholder="Enter your first name" required />
           </div>
           <div class="field">
-            <label for="middle_initial">Middle Initial <span class="muted">(optional)</span></label>
+            <label for="middle_initial">Middle Initial <span>(optional)</span></label>
             <input id="middle_initial" name="middle_initial" type="text" placeholder="M" maxlength="1" pattern="[A-Za-z]" title="One letter only" />
           </div>
           <div class="field">
@@ -49,21 +47,26 @@
             <input id="last_name" name="last_name" type="text" placeholder="Enter your last name" required />
           </div>
           <div class="field">
-            <button type="submit" class="btn btn-brand">Greet Me</button>
+            <button type="submit">Greet Me</button>
           </div>
         </form>
 
-        <p id="form-hint" class="muted">Middle initial is optional (one character). First &amp; last are required.</p>
+        <p id="form-hint">Middle initial is optional (one character). First &amp; last are required.</p>
 
-        <ol id="datas"></ol>
+        <ol id="datas" aria-live="polite"></ol>
       </div>
     </main>
 
     <footer>
       <div class="container">
-        <p class="meta">Page built by Iridescent Cinderwyrm Design</p>
+        <p>Page built by Iridescent Cinderwyrm Design</p>
       </div>
     </footer>
+
+    <script src="scripts/fizzbuzz.js"></script>
+  </body>
+</html>
+
 
     <script src="scripts/fizzbuzz.js"></script>
   </body>
