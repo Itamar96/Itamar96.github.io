@@ -193,6 +193,8 @@ blockquote{
   grid-template-columns: 1fr;
 
   max-width: 640px;
+
+  max-width: 640px;
   margin-left: auto;
   margin-right: auto;
 
