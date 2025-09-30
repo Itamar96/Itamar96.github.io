@@ -52,13 +52,15 @@
 							sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px"
 						/>
 
-						<!-- Default image -->
+						<!-- Default image (no sizes here because there's no srcset on the img) -->
 						<img
+							class="img-gold-border intro-landscape"
 							src="images/hiking_portrait_800w.jpg"
 							width="800"
 							height="1067"
-							sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px"
 							alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle."
+							loading="lazy"
+							decoding="async"
 						/>
 					</picture>
 
@@ -91,4 +93,3 @@
 		<script src="scripts/a11y-dev.js" defer></script>
 	</body>
 </html>
-
