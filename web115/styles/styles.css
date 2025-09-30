@@ -47,11 +47,22 @@ header{ padding:1rem 0; text-align:center; }
 
 @media (min-width:700px){
   header .container{
-    display:grid; grid-template-columns:1fr auto; align-items:end; gap:var(--space-4);
+    display:grid;
+    grid-template-columns:1fr;   /* full width for children */
+    grid-template-rows:auto auto;
+    justify-items:center;        /* center items horizontally */
+    gap:var(--space-4);
   }
 }
 
-.site-title{ margin:0; line-height:1.1; font-family:var(--brand-heading); font-weight:800; letter-spacing:0.2px; }
+.site-title{ 
+  margin:0; 
+  line-height:1.1; 
+  font-family:var(--brand-heading); 
+  font-weight:800; 
+  letter-spacing:0.2px; 
+  text-align:center;              /* ensure text is centered */
+}
 .site-title .line-1{ display:block; font-size:clamp(1.35rem,1rem + 2vw,2.1rem); }
 .site-title .line-2{ display:block; font-size:clamp(1.1rem,0.95rem + 1.6vw,1.6rem); opacity:0.95; }
 .site-title .dot{ margin:0 0.4rem; font-weight:800; color:var(--accent); }
@@ -74,7 +85,11 @@ header{ padding:1rem 0; text-align:center; }
 }
 
 header nav{
-  display:flex; flex-wrap:wrap; gap:var(--space-2) var(--space-4); justify-content:center; margin-top:var(--space-2);
+  display:flex;
+  flex-wrap:wrap;
+  gap:var(--space-2) var(--space-4);
+  justify-content:center;
+  margin-top:var(--space-2);
 }
 nav a{
   color:var(--accent-deep); text-decoration:none; padding:0.4rem 0.75rem; border-radius:999px;
@@ -191,13 +206,9 @@ blockquote{
   display: grid;
   gap: var(--space-4);
   grid-template-columns: 1fr;
-
-  max-width: 640px;
-
   max-width: 640px;
   margin-left: auto;
   margin-right: auto;
-
   box-sizing: border-box;
 }
 
@@ -208,7 +219,7 @@ blockquote{
   width:100%;
   padding:0.6rem 0.75rem;
   border-radius:10px;
-  border:2px solid var(--holiday-gold);        /* GOLD borders restored */
+  border:2px solid var(--holiday-gold);        
   font:inherit; color:inherit; background:#fff;
   box-shadow:0 1px 3px rgba(0,0,0,0.05);
   transition:border-color .2s ease, box-shadow .2s ease;
