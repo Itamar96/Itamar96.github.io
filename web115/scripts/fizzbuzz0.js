@@ -41,7 +41,7 @@ function useForm(event) {
   // Move focus so screen readers announce the updated greeting
   temporarilyFocus(greeting);
 
-  // Build FizzBuzz-style list
+  // Build classic FizzBuzz list (1–125)
   const dd = document.getElementById("datas");
   dd.innerHTML = "";
   dd.setAttribute("aria-live", "polite");
@@ -50,10 +50,10 @@ function useForm(event) {
   for (let i = 1; i <= 125; i++) {
     const li = document.createElement("li");
     let text = "";
-    if (i % 15 === 0) text = "Fizz Buzz"; // divisible by 3 & 5
-    else if (i % 3 === 0) text = "Fizz Only";
-    else if (i % 5 === 0) text = "Buzz Only";
-    else text = `Number ${i}`;
+    if (i % 15 === 0) text = "FizzBuzz"; // divisible by 3 & 5
+    else if (i % 3 === 0) text = "Fizz";
+    else if (i % 5 === 0) text = "Buzz";
+    else text = String(i);
     li.textContent = text;
     frag.appendChild(li);
   }
@@ -76,4 +76,3 @@ function temporarilyFocus(el) {
     );
   }
 }
-
