@@ -50,7 +50,7 @@ body {
     background-position: center;
 }
 
-/* ---------- Containers (align header/main/footer exactly) ---------- */
+/* ---------- Containers ---------- */
 .container {
     max-width: var(--content-width);
     margin-left: auto;
@@ -80,7 +80,7 @@ header {
     }
 }
 
-/* One clean H1: no internal size mixing or dividers */
+/* One clean H1 */
 h1 {
     font-family: var(--brand-heading);
     margin: 0 0 var(--space-4);
@@ -205,6 +205,26 @@ figure figcaption {
     color: var(--accent-deep);
 }
 
+/* Gold accent helpers (restored) */
+.text-gold {
+    color: var(--holiday-gold);
+    font-weight: bold;
+}
+
+.note-gold {
+    color: var(--holiday-gold);
+    font-style: italic;
+}
+
+.img-gold-border {
+    border: 6px solid var(--holiday-gold);
+}
+
+.figure-holiday {
+    background: var(--holiday-cream);
+    border: 1px solid rgba(212, 175, 55, 0.35);
+}
+
 /* ---------- Blockquotes ---------- */
 blockquote {
     padding: var(--space-4);
@@ -292,7 +312,7 @@ blockquote cite {
     font-size: clamp(1.4rem, 1.1rem + 1.4vw, 2rem);
 }
 
-/* ---------- Forms ---------- */
+/* ---------- Forms (FizzBuzz; semantic) ---------- */
 .form-grid {
     display: grid;
     gap: var(--space-4);
@@ -331,7 +351,8 @@ footer {
     padding: 2rem 0;
     margin-top: 3rem;
     text-align: center;
-    border-top: 4px solid var(--accent);
+    border-top: 4px solid var(--holiday-gold);
+    /* gold rule restored */
     background-color: var(--bg-grad-1);
 }
 
@@ -376,7 +397,7 @@ footer p:last-child {
     }
 }
 
-/* ---------- Dark Theme ---------- */
+/* ---------- Dark Theme (optional) ---------- */
 .dark-theme {
     --bg-grad-1: #1E1E1E;
     --bg-grad-2: #1E1E1E;
@@ -406,7 +427,7 @@ footer p:last-child {
     border-color: rgba(255, 255, 255, 0.15);
 }
 
-/* ---------- Mobile fix ---------- */
+/* Mobile background fix */
 @media (max-width:768px) {
     body {
         background-attachment: scroll;
