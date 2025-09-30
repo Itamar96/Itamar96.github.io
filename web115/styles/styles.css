@@ -12,7 +12,7 @@
 
 /* Accumulus-friendly: use descendant selector (no adjoining classes) */
 .intro--landscape .img-gold-border {
-  max-width: 100% ;
+  max-width: 100%;
   height: auto;
 }
 
@@ -71,13 +71,13 @@ blockquote{
 
 /* ---------- Forms (FizzBuzz) ---------- */
 .form-grid{
-  display: grid ;
+  display: grid;
   gap: var(--space-4);             /* ASCII hyphens only */
   grid-template-columns: 1fr;
 
-  width: 100% ;
-  max-width: 640px ;
-  margin-inline: auto ;
+  width: 100%;
+  max-width: 640px;
+  margin-inline: auto;
 
   box-sizing: border-box;
 }
@@ -92,10 +92,19 @@ blockquote{
   font-family: var(--brand-body);
 }
 .field input{
-  width: 100% ;
+  width: 100%;
   padding: 0.6rem 0.75rem;
   border-radius: 10px;
   border: 2px solid var(--holiday-gold);
   font: inherit;
   color: inherit;
-  background:
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: border-color .2s ease, box-shadow .2s ease;
+  box-sizing: border-box;
+}
+.field input:focus{
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 6px rgba(212,175,55,0.5);
+}
