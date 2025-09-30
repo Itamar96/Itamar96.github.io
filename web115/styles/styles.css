@@ -146,7 +146,7 @@ figure figcaption{ margin-top:0.75rem; font-size:0.95rem; color:var(--accent-dee
 
 /* Gold frame utility + intro image responsiveness */
 .img-gold-border{ border:6px solid var(--holiday-gold); border-radius:12px; }
-.img-gold-border.intro-landscape{ max-width:100%; height:auto; }
+.intro-landscape .img-gold-border{ max-width:100%; height:auto; } /* changed to descendant selector */
 
 /* ---------- Blockquotes ---------- */
 blockquote{
