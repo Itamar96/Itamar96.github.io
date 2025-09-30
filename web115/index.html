@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
-    <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous"></script>
+    <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous" defer></script>
   </head>
   <body>
     <header>
@@ -37,36 +37,29 @@
           <strong>Iridescent Cinderwyrm Bodywork</strong>. Please use the menu above to explore my work.
         </p>
 
-        <!-- Responsive portrait (WebP + JPEG, 600/800/1200) -->
         <figure class="figure-holiday">
           <picture>
-            <!-- WebP sources -->
-            <source
-              type="image/webp"
+            <!-- WebP -->
+            <source type="image/webp"
               srcset="images/hiking_portrait_600w.webp 600w, images/hiking_portrait_800w.webp 800w, images/hiking_portrait_1200w.webp 1200w"
               sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-
-            <!-- JPEG fallback -->
-            <source
-              type="image/jpeg"
+            <!-- JPEG -->
+            <source type="image/jpeg"
               srcset="images/hiking_portrait_600w.jpg 600w, images/hiking_portrait_800w.jpg 800w, images/hiking_portrait_1200w.jpg 1200w"
               sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-
-            <!-- Default image -->
-            <img
-              class="img-gold-border intro-landscape"
+            <!-- Fallback -->
+            <img class="img-gold-border intro-landscape"
               src="images/hiking_portrait_800w.jpg"
               width="800" height="1067"
-              sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px"
-              alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle.">
+              alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle." />
           </picture>
-
-          <figcaption class="note-gold">
-            Exploring Colorado’s alpine trails, 2025.
-          </figcaption>
+          <figcaption class="note-gold">Exploring Colorado’s alpine trails, 2025.</figcaption>
         </figure>
 
-        <blockquote>“If I have seen further it is by standing on the shoulders of giants.” <span class="highlight-name">— Isaac Newton</span></blockquote>
+        <blockquote>
+          “If I have seen further it is by standing on the shoulders of giants.”
+          <span class="highlight-name">— Isaac Newton</span>
+        </blockquote>
       </div>
     </main>
 
@@ -80,7 +73,7 @@
           <a href="https://jsfiddle.net/u/Itamar96/fiddles/" target="_blank" rel="noopener noreferrer">JSFiddle</a> ✶
           <a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </p>
-        <p class="meta">Page built by Iridescent Cinderwyrm Design</p>
+        <p class="meta note-gold">Page built by Iridescent Cinderwyrm Design</p>
       </div>
     </footer>
   </body>
