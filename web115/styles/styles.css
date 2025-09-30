@@ -250,7 +250,7 @@ figure img {
 	border: 6px solid var(--holiday-gold);
 }
 
-/* ✅ split for clarity and to avoid validator warnings */
+/* Split for clarity and to avoid validator warnings */
 .intro-landscape {
 	display: block;
 	max-width: 100%;
