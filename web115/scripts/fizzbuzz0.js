@@ -1,109 +1,70 @@
 "use strict";
 
-/* Initialize when DOM is ready (works with or without `defer`) */
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", init);
-} else {
-  init();
-}
+// Wire up submit handler
+document.getElementById("name-form").addEventListener("submit", useForm);
 
-function init() {
-  const form = document.getElementById("name-form");
-  if (form) form.addEventListener("submit", useForm);
+// Attach live counters to first and last name fields
+setupCounter("first_name", "First name");
+setupCounter("last_name", "Last name");
 
-  initLengthCounters();
-}
-
-/* Live character counters for first/last name (max 20) */
-function initLengthCounters() {
+function setupCounter(id, label) {
   const MAX = 20;
-  const fields = [
-    { id: "first_name", label: "First name" },
-    { id: "last_name",  label: "Last name"  },
-  ];
+  const input = document.getElementById(id);
 
-  for (const f of fields) {
-    const input = document.getElementById(f.id);
-    if (!input) continue;
+  if (!input) return;
 
-    const counter = document.createElement("div");
-    counter.className = "muted";
-    counter.setAttribute("aria-live", "polite");
-    counter.style.marginTop = "0.25rem";
-    counter.style.fontSize = "0.9em";
+  // Create counter element
+  const counter = document.createElement("div");
+  counter.className = "muted";
+  counter.style.marginTop = "0.25rem";
+  counter.style.fontSize = "0.9em";
 
-    input.insertAdjacentElement("afterend", counter);
+  // Insert after the input
+  input.insertAdjacentElement("afterend", counter);
 
-    const update = () => {
-      const len = input.value.length;
-      const left = MAX - len;
-      if (left <= 0) {
-        counter.textContent = `${f.label}: 20/20 - max reached`;
-      } else if (left <= 3) {
-        counter.textContent = `${f.label}: ${len}/20 - ${left} left`;
-      } else {
-        counter.textContent = `${f.label}: ${len}/20`;
-      }
-      input.setCustomValidity(""); // keep constraint-valid
-    };
+  const update = () => {
+    const len = input.value.length;
+    counter.textContent = `${label}: ${len}/${MAX}`;
+  };
 
-    update();
-    input.addEventListener("input", update);
-    input.addEventListener("blur", update);
-  }
+  // Initialize and listen
+  update();
+  input.addEventListener("input", update);
 }
 
 function useForm(event) {
   event.preventDefault();
 
-  const firstEl = document.getElementById("first_name");
-  const midEl   = document.getElementById("middle_initial");
-  const lastEl  = document.getElementById("last_name");
-  const datas   = document.getElementById("datas");
+  const first = document.getElementById("first_name").value.trim();
+  const mid = document.getElementById("middle_initial").value.trim();
+  const last = document.getElementById("last_name").value.trim();
+
+  // Greeting target
   const greeting = document.getElementById("greeting");
 
-  const first = (firstEl?.value || "").trim();
-  const mid   = (midEl?.value || "").trim();
-  const last  = (lastEl?.value || "").trim();
-
-  if (!first || !last) {
-    alert("Please enter both first and last name.");
-    return;
-  }
-
-  // Normalize names (capitalize words)
-  const capWords = (s) =>
-    s
-      .replace(/\s+/g, " ")
-      .trim()
-      .replace(/\b([a-z])/gi, (m, ch) => ch.toUpperCase());
-
-  const firstName = capWords(first);
-  const lastName  = capWords(last);
-  let middle = "";
-
+  // Build full name
+  let fullName = first;
   if (mid) {
-    // Keep only the first A-Z letter for middle initial
-    const m = mid.match(/[A-Za-z]/);
-    if (m) middle = m[0].toUpperCase() + ".";
+    fullName += " " + mid + ".";
   }
+  fullName += " " + last;
 
-  const fullName = [firstName, middle, lastName].filter(Boolean).join(" ");
-  if (greeting) greeting.textContent = `Welcome, ${fullName}!`;
+  greeting.textContent = `Welcome, ${fullName}!`;
 
-  // Render FizzBuzz 1..125
-  if (datas) {
-    datas.innerHTML = "";
-    for (let i = 1; i <= 125; i++) {
-      let text = "";
-      if (i % 3 === 0) text += "Fizz";
-      if (i % 5 === 0) text += "Buzz";
-      if (!text) text = String(i);
+  // FizzBuzz output (1–125)
+  const datas = document.getElementById("datas");
+  datas.innerHTML = "";
 
-      const li = document.createElement("li");
-      li.textContent = text;
-      datas.appendChild(li);
-    }
+  for (let i = 1; i <= 125; i++) {
+    let output = "";
+    if (i % 3 === 0) output += "Fizz";
+    if (i % 5 === 0) output += "Buzz";
+    if (output === "") output = i;
+
+    const li = document.createElement("li");
+    li.textContent = output;
+    datas.appendChild(li);
   }
 }
+
 
