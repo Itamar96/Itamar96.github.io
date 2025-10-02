@@ -205,11 +205,11 @@ blockquote{
 .form-grid{
   display: grid;
   gap: var(--space-4);
-  grid-template-columns: 1fr;
-  max-width: 640px;
-  margin-left: auto;
-  margin-right: auto;
+  /* more resilient than only max-width */
+  width: min(100%, 640px);
+  margin-inline: auto;       /* centers LTR/RTL */
   box-sizing: border-box;
+  grid-template-columns: 1fr;
 }
 
 .field{ margin-bottom:var(--space-4); display:flex; flex-direction:column; }
