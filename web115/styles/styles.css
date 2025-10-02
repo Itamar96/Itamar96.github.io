@@ -204,7 +204,7 @@ blockquote{
 /* ---------- Forms (FizzBuzz) ---------- */
 .form-grid {
   display: grid;
-  gap: var(-space-4);
+  gap: var(--space-4);
   width: 100%;
   max-width: 640px;   
   margin-inline: auto;       
