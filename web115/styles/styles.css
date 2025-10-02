@@ -206,7 +206,7 @@ blockquote{
   display: grid;
   gap: var(--space-4);
   /* more resilient than only max-width */
-  width: min(100%, 640px);
+  max-width:var(--content-width);
   margin-inline: auto;       /* centers LTR/RTL */
   box-sizing: border-box;
   grid-template-columns: 1fr;
