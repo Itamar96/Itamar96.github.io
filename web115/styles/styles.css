@@ -205,8 +205,9 @@ blockquote{
 .form-grid {
   display: grid;
   gap: var(--space-4);
-  width: min(100%, 720px);   /* flexible, maxes out at 720px */
-  margin-inline: auto;       /* centers form in both LTR and RTL */
+  width: 100%;
+  width: 640px;   
+  margin-inline: auto;       
   box-sizing: border-box;
   grid-template-columns: 1fr;
 }
