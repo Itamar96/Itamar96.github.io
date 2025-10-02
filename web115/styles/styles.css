@@ -202,35 +202,45 @@ blockquote{
 .demo-h2{ font-size:clamp(1.4rem, 1.1rem + 1.4vw, 2rem); }
 
 /* ---------- Forms (FizzBuzz) ---------- */
-.form-grid{
+.form-grid {
   display: grid;
   gap: var(--space-4);
-  /* more resilient than only max-width */
-  max-width:var(--content-width);
-  margin-inline: auto;       /* centers LTR/RTL */
+  width: min(100%, 720px);   /* flexible, maxes out at 720px */
+  margin-inline: auto;       /* centers form in both LTR and RTL */
   box-sizing: border-box;
   grid-template-columns: 1fr;
 }
 
-.field{ margin-bottom:var(--space-4); display:flex; flex-direction:column; }
-.field label{ margin-bottom:var(--space-2); font-weight:600; font-family:var(--brand-body); }
-
-.field input{
-  width:100%;
-  padding:0.6rem 0.75rem;
-  border-radius:10px;
-  border:2px solid var(--holiday-gold);        
-  font:inherit; color:inherit; background:#fff;
-  box-shadow:0 1px 3px rgba(0,0,0,0.05);
-  transition:border-color .2s ease, box-shadow .2s ease;
-  box-sizing:border-box;
-}
-.field input:focus{
-  outline:none;
-  border-color:var(--accent);
-  box-shadow:0 0 6px rgba(212,175,55,0.5);
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-4);
 }
 
+.field label {
+  margin-bottom: var(--space-2);
+  font-weight: 600;
+  font-family: var(--brand-body);
+}
+
+.field input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 2px solid var(--holiday-gold);
+  border-radius: 10px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: border-color .2s ease, box-shadow .2s ease;
+  box-sizing: border-box;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 6px rgba(212,175,55,0.5);
+}
 /* Buttons */
 .btn{
   display:inline-block; padding:.55rem .95rem; border-radius:999px; border:2px solid transparent;
