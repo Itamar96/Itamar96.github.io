@@ -19,6 +19,7 @@
 /* ---------- Base Layout ---------- */
 body {
   margin: 0;
+  padding: 2rem; /* Adds space around the entire page */
   font-family: "Inter", sans-serif;
   font-size: 1.1rem;
   line-height: 1.6;
@@ -27,7 +28,7 @@ body {
 }
 
 main {
-  padding: 1.5rem;
+  padding: 1.5rem 0;
   max-width: 800px;
   margin: 0 auto;
 }
@@ -99,13 +100,6 @@ h2 {
   margin-top: 2rem;
 }
 
-h3 {
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: var(--accent-deep);
-  margin-top: 1.5rem;
-}
-
 blockquote {
   margin: 2rem 0;
   padding: 1rem;
@@ -137,6 +131,11 @@ cite {
   max-width: 960px;
   margin: 0 auto;
   padding: 1rem;
+}
+
+/* Center header and footer content only */
+header .container,
+footer .container {
   text-align: center;
 }
 
@@ -145,7 +144,13 @@ cite {
   position: absolute;
   top: 1rem;
   left: 1rem;
-  font-size: 3rem;
+  width: 4rem;
+  height: 4rem;
+  font-size: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
   color: var(--gold);
   line-height: 1;
   z-index: 10;
@@ -250,4 +255,5 @@ cite {
     animation: none;
   }
 }
+
 
