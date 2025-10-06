@@ -28,9 +28,8 @@
         <a href="fizzbuzz0.html">Fizz Buzz 0</a>
       </nav>
 
-      <button id="theme-toggle" aria-label="Toggle dark mode" class="btn btn-brand" style="margin-top: 1rem;">
-        Toggle Dark Mode
-      </button>
+      <!-- 🌗 Dark Mode Toggle -->
+      <button id="theme-toggle" aria-label="Toggle dark mode">Toggle Dark Mode</button>
     </section>
   </header>
 
@@ -55,7 +54,7 @@
             width="800" height="1067"
             alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle." />
         </picture>
-        <figcaption class="note-gold">Exploring Colorado’s alpine trails, 2025.</figcaption>
+        <figcaption>Exploring Colorado’s alpine trails, 2025.</figcaption>
       </figure>
 
       <blockquote>
@@ -67,7 +66,7 @@
 
   <footer>
     <section>
-      <p class="footer-links">
+      <p>
         <a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer">GitHub.io</a> ✶
         <a href="https://itamar96.github.io" target="_blank" rel="noopener noreferrer">Portfolio Site</a> ✶
         <a href="https://web115.io" target="_blank" rel="noopener noreferrer">WEB115.io</a> ✶
@@ -75,11 +74,12 @@
         <a href="https://jsfiddle.net/u/Itamar96/fiddles/" target="_blank" rel="noopener noreferrer">JSFiddle</a> ✶
         <a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </p>
-      <p class="meta note-gold">Page built by Iridescent Cinderwyrm Design</p>
+      <p><em>Page built by Iridescent Cinderwyrm Design</em></p>
     </section>
   </footer>
 
   <script>
+    // 🌗 Dark Mode Toggle Script
     const toggleButton = document.getElementById('theme-toggle');
     toggleButton.addEventListener('click', () => {
       document.body.classList.toggle('dark-theme');
