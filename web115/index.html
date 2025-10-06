@@ -10,15 +10,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles/default.css" />
   <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
-  <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous" defer></script>
 </head>
 <body>
   <header>
     <section>
-      <h1 class="site-title">
-        <span class="line-1">Itamar Castillo’s Iridescent Cinderwyrm</span>
-        <span class="dragon" aria-hidden="true">🐉</span>
-      </h1>
+      <h1>Itamar Castillo’s Iridescent Cinderwyrm</h1>
+      <p class="dragon" aria-hidden="true">🐉</p>
 
       <nav aria-label="Primary">
         <a href="index.html" aria-current="page">Home</a>
@@ -28,7 +25,6 @@
         <a href="fizzbuzz0.html">Fizz Buzz 0</a>
       </nav>
 
-      <!-- 🌗 Dark Mode Toggle -->
       <button id="theme-toggle" aria-label="Toggle dark mode">Toggle Dark Mode</button>
     </section>
   </header>
@@ -37,11 +33,11 @@
     <section>
       <h2>Welcome</h2>
       <p>
-        This site presents my coursework and highlights my evolving skills in accessible, standards-based web development. It also introduces my sample massage brand,
+        Welcome to my WEB115 portfolio. This site presents my coursework and highlights my evolving skills in accessible, standards-based web development. It also introduces my sample massage brand,
         <strong>Iridescent Cinderwyrm Bodywork</strong>. Please use the menu above to explore my work.
       </p>
 
-      <figure class="figure-holiday">
+      <figure>
         <picture>
           <source type="image/webp"
             srcset="images/hiking_portrait_600w.webp 600w, images/hiking_portrait_800w.webp 800w, images/hiking_portrait_1200w.webp 1200w"
@@ -49,12 +45,12 @@
           <source type="image/jpeg"
             srcset="images/hiking_portrait_600w.jpg 600w, images/hiking_portrait_800w.jpg 800w, images/hiking_portrait_1200w.jpg 1200w"
             sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-          <img class="img-gold-border intro-landscape"
+          <img class="img-gold-border"
             src="images/hiking_portrait_800w.jpg"
             width="800" height="1067"
             alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle." />
         </picture>
-        <figcaption>Exploring Colorado’s alpine trails, 2025.</figcaption>
+        <figcaption class="note-gold">Exploring Colorado’s alpine trails, 2025.</figcaption>
       </figure>
 
       <blockquote>
@@ -79,14 +75,13 @@
   </footer>
 
   <script>
-    // 🌗 Dark Mode Toggle Script
-    const toggleButton = document.getElementById('theme-toggle');
-    toggleButton.addEventListener('click', () => {
+    document.getElementById('theme-toggle').addEventListener('click', () => {
       document.body.classList.toggle('dark-theme');
     });
   </script>
 </body>
 </html>
+
 
 
 
