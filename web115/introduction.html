@@ -3,21 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Introduction • Itamar Castillo — Iridescent Cinderwyrm Bodywork" />
-  <title>Itamar Castillo’s Iridescent Cinderwyrm</title>
-
+  <meta name="description" content="Introduction page for Itamar Castillo — Iridescent Cinderwyrm Bodywork" />
+  <title>Itamar Castillo’s Iridescent Cinderwyrm • Introduction</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="default.css" />
+  <link rel="stylesheet" href="styles/default.css" />
   <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
   <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous" defer></script>
 </head>
 <body>
   <header>
-    <div class="container">
+    <section>
       <h1 class="site-title">
-        <span class="line-1">Itamar Castillo <span class="dot">•</span> Iridescent Cinderwyrm</span>
-        <span class="line-2 dragon">WEB115</span>
+        <span class="line-1">Itamar Castillo’s Iridescent Cinderwyrm</span>
+        <span class="dragon" aria-hidden="true">🐉</span>
       </h1>
       <nav aria-label="Primary">
         <a href="index.html">Home</a>
@@ -26,28 +25,29 @@
         <a href="brand.html">Brand Guide</a>
         <a href="fizzbuzz0.html">Fizz Buzz 0</a>
       </nav>
-      <button id="theme-toggle">Toggle Theme</button>
-    </div>
+      <button id="theme-toggle" aria-label="Toggle dark mode">Toggle Dark Mode</button>
+    </section>
   </header>
 
   <main>
-    <div class="container">
+    <section>
       <h2>Introduction</h2>
-      <p><strong>IC</strong> – 31 August 2025</p>
+      <p><strong>IC — 31 August 2025</strong></p>
 
       <figure class="figure-holiday">
         <picture>
           <source type="image/webp"
             srcset="images/hiking_mountain_lake_600w.webp 600w, images/hiking_mountain_lake_800w.webp 800w, images/hiking_mountain_lake_1200w.webp 1200w"
-            sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px">
+            sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
           <source type="image/jpeg"
             srcset="images/hiking_mountain_lake_600w.jpg 600w, images/hiking_mountain_lake_800w.jpg 800w, images/hiking_mountain_lake_1200w.jpg 1200w"
-            sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px">
+            sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
           <img class="img-gold-border intro-landscape"
-            src="images/hiking_mountain_lake_800w.jpg" width="800" height="1063"
-            alt="Hiker above a serene mountain lake with pines and ridgelines in the distance">
+            src="images/hiking_mountain_lake_800w.jpg"
+            width="800" height="1063"
+            alt="Hiker above a serene mountain lake with pines and ridgelines in the distance" />
         </picture>
-        <figcaption class="note-gold">Grounded in nature, inspired to heal. Colorado 2025.</figcaption>
+        <figcaption>Grounded in nature, inspired to heal. Colorado 2025.</figcaption>
       </figure>
 
       <p>
@@ -92,27 +92,29 @@
       </ul>
 
       <blockquote>
-        “Strength does not come from physical capacity. It comes from an indomitable will.”
+        Strength does not come from physical capacity. It comes from an indomitable will.
+        <cite>— Mahatma Gandhi</cite>
       </blockquote>
-      <p><strong>— Mahatma Gandhi</strong></p>
-    </div>
+    </section>
   </main>
 
   <footer>
-    <div class="container">
+    <section>
       <p>
-        <a href="https://Itamar96.github.io" target="_blank" rel="noopener noreferrer">GitHub.io</a> ✶
-        <a href="https://itamar96.github.io/web115/" target="_blank" rel="noopener noreferrer">WEB115.io</a> ✶
+        <a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer">GitHub.io</a> ✶
+        <a href="https://itamar96.github.io" target="_blank" rel="noopener noreferrer">Portfolio Site</a> ✶
+        <a href="https://web115.io" target="_blank" rel="noopener noreferrer">WEB115.io</a> ✶
         <a href="https://www.codecademy.com/profiles/Itamar96" target="_blank" rel="noopener noreferrer">Codecademy</a> ✶
         <a href="https://jsfiddle.net/u/Itamar96/fiddles/" target="_blank" rel="noopener noreferrer">JSFiddle</a> ✶
         <a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </p>
-      <p>Page built by Iridescent Cinderwyrm Design</p>
-    </div>
+      <p><em>Page built by Iridescent Cinderwyrm Design</em></p>
+    </section>
   </footer>
 
   <script>
-    document.getElementById('theme-toggle').addEventListener('click', () => {
+    const toggleButton = document.getElementById('theme-toggle');
+    toggleButton.addEventListener('click', () => {
       document.body.classList.toggle('dark-theme');
     });
   </script>
