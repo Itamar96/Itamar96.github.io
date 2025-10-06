@@ -1,6 +1,10 @@
-/* ====================================================
-   BRAND PALETTE
-   ==================================================== */
+/* Iridescent Cinderwyrm Bodywork — Desert Matcha Theme */
+
+/* ---------- Base & Tokens ---------- */
+html {
+  box-sizing: border-box;
+}
+
 :root {
   --bg-grad-1: #F7EAD9;
   --bg-grad-2: #F7EAD9;
@@ -19,101 +23,221 @@
   --holiday-pine: #2F6F4F;
   --holiday-berry: #B8403A;
 
-  --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --brand-heading: "Playfair Display", serif;
+  --brand-body: "Inter", sans-serif;
+
+  --content-width: 960px;
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+
+  --radius: 14px;
+  --shadow: 0 8px 30px rgba(47, 58, 52, 0.12);
 }
 
-/* ====================================================
-   ELEMENT-BASED STYLING
-   ==================================================== */
+/* ---------- Layout ---------- */
 body {
   margin: 0;
-  padding: 2rem;
-  font-family: "Inter", sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-family: var(--brand-body);
   color: var(--text);
+  line-height: 1.6;
   background: linear-gradient(var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
+  background-image: url("/web115/images/spa-bg.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 main {
-  padding: 1.5rem 0;
-  max-width: 800px;
+  padding: 2rem 0;
+}
+
+.container {
+  max-width: var(--content-width);
   margin: 0 auto;
+  padding: 0 var(--space-4);
+  box-sizing: border-box;
 }
 
+/* ---------- Header ---------- */
 header {
-  position: relative;
-  padding: 2.5rem 1rem;
-  background: var(--holiday-cream);
-  box-shadow: var(--shadow);
+  padding: 1rem 0;
+  text-align: center;
+  background: var(--surface);
+  color: var(--text);
 }
 
+.site-title {
+  margin: 0;
+  line-height: 1.1;
+  font-family: var(--brand-heading);
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.site-title .line-1 {
+  display: block;
+  font-size: clamp(1.35rem, 1rem + 2vw, 2.1rem);
+}
+
+.site-title .dragon {
+  display: inline-block;
+  color: var(--holiday-gold);
+  filter: drop-shadow(0 0 2px rgba(212,175,55,.65)) drop-shadow(0 0 6px rgba(212,175,55,.35));
+  text-shadow: 0 0 1px rgba(0,0,0,.15);
+  animation: dragonShimmer 2.6s ease-in-out infinite;
+}
+
+@keyframes dragonShimmer {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px rgba(212,175,55,.55)) drop-shadow(0 0 6px rgba(212,175,55,.28));
+  }
+  50% {
+    filter: drop-shadow(0 0 3px rgba(212,175,55,.85)) drop-shadow(0 0 10px rgba(212,175,55,.45));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dragon {
+    animation: none;
+  }
+}
+
+/* ---------- Navigation ---------- */
 nav {
-  margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.5rem;
+  gap: var(--space-2) var(--space-4);
+  margin-top: var(--space-2);
 }
 
 nav a {
+  color: var(--accent-deep);
   text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  background: transparent;
-  color: var(--accent);
-  transition: background-color 160ms ease, color 160ms ease;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  transition: background-color 160ms ease, transform 120ms ease, color 120ms ease;
 }
 
 nav a:hover,
 nav a:focus {
-  background: var(--accent);
-  color: #fff;
+  text-decoration: underline;
+  background: rgba(62, 87, 75, 0.08);
+  transform: translateY(-1px);
 }
 
 nav a[aria-current="page"] {
-  background: var(--accent-deep);
+  background: var(--accent);
   color: #fff;
   font-weight: 600;
+  box-shadow: 0 0 0 2px rgba(62, 87, 75, 0.08) inset, var(--shadow);
 }
 
-footer p {
-  margin: 0.5rem 0;
-  font-size: 0.95rem;
-  color: var(--text);
+a:focus {
+  outline: 3px solid rgba(111, 143, 107, 0.35);
+  outline-offset: 2px;
+  border-radius: 6px;
 }
 
-footer a {
-  color: var(--accent);
-  text-decoration: none;
+/* ---------- Typography ---------- */
+h1, h2, h3 {
+  font-family: var(--brand-heading);
+  line-height: 1.2;
+  margin: 0 0 var(--space-4);
 }
 
-footer a:hover {
-  text-decoration: underline;
-}
-
-/* Typography */
 h1 {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(2.4rem, 2rem + 2vw, 3.6rem);
   font-weight: 800;
-  color: var(--accent-deep);
-  margin: 0.5rem 0;
+  font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
 }
 
 h2 {
-  font-size: 1.6rem;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: clamp(1.3rem, 1.05rem + 1.2vw, 1.9rem);
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+p, ul, ol, blockquote, figure {
+  margin-block: var(--space-4);
+}
+
+ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+
+ul ul {
+  list-style: circle;
+  padding-left: 1.25rem;
+}
+
+a {
+  color: var(--accent-deep);
+  text-decoration: underline;
+}
+
+a:hover,
+a:focus {
   color: var(--accent);
-  margin-top: 2rem;
+}
+
+/* ---------- Figures & Quotes ---------- */
+figure {
+  margin: var(--space-6) auto;
+  text-align: center;
+  background: #fff;
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(62, 87, 75, 0.12);
+}
+
+figure img {
+  display: block;
+  max-width: min(100%, 1200px);
+  height: auto;
+  border-radius: 12px;
+  margin: 0 auto;
+  box-shadow: 0 8px 24px rgba(47, 58, 52, 0.12);
+}
+
+figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--accent-deep);
+}
+
+.figure-holiday {
+  background: var(--holiday-cream);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+}
+
+.img-gold-border {
+  border: 6px solid var(--holiday-gold);
+  border-radius: 12px;
+}
+
+.intro-landscape .img-gold-border {
+  max-width: 100%;
+  height: auto;
 }
 
 blockquote {
-  margin: 2rem 0;
-  padding: 1rem;
+  padding: var(--space-4);
   border-left: 4px solid var(--accent);
-  background: rgba(0, 0, 0, 0.03);
-  font-style: italic;
+  background: rgba(141, 163, 166, 0.10);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 cite {
@@ -123,154 +247,37 @@ cite {
   color: var(--accent);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-  }
+/* ---------- Forms (FizzBuzz) ---------- */
+.form-grid {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 640px;
+  margin-inline: auto;
+  box-sizing: border-box;
 }
 
-/* ====================================================
-   CLASS-BASED STYLING
-   ==================================================== */
-.container {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-header .container,
-footer .container {
-  text-align: center;
-}
-
-/* Dragon Icon */
-.logo {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  width: 6rem;
-  height: 6rem;
-  font-size: 5rem;
+.field {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--holiday-gold);
-  background-color: transparent;
-  line-height: 1;
-  z-index: 10;
-  transition: filter 0.3s ease;
+  flex-direction: column;
+  margin-bottom: var(--space-4);
 }
 
-/* Image Frame */
-.img-gold-border {
-  border: 6px solid var(--holiday-gold);
-  border-radius: 0.5rem;
-  background-color: var(--holiday-cream);
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
-  padding: 0.5rem;
-}
-
-/* Utility */
-.note-gold {
-  color: var(--holiday-gold);
-}
-
-/* ---------- Dark Theme ---------- */
-.dark-theme {
-  --bg-grad-1: #1B1F1D;
-  --bg-grad-2: #1B1F1D;
-  --bg-grad-3: #1B1F1D;
-
-  --surface: #232825;
-  --text: #E4E4E4;
-
-  --accent: #8FCB9B;
-  --accent-deep: #B6E0B9;
-  --accent-soft: #A7C7C2;
-  --clay: #D47F5E;
-
-  --holiday-cream: #2E2E2E;
-  --holiday-gold: #FFD700;
-  --holiday-pine: #2F6F4F;
-  --holiday-berry: #B8403A;
-
-  --shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  background-image: none;
-  background-color: var(--bg-grad-1);
-  color: var(--text);
-}
-
-.dark-theme header,
-.dark-theme footer,
-.dark-theme main {
-  background: var(--surface);
-  color: var(--text);
-}
-
-.dark-theme h1,
-.dark-theme h2,
-.dark-theme h3,
-.dark-theme p,
-.dark-theme figcaption,
-.dark-theme cite,
-.dark-theme blockquote {
-  color: var(--text);
-}
-
-.dark-theme nav a {
-  color: var(--accent-soft);
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-.dark-theme nav a:hover,
-.dark-theme nav a:focus {
-  background: var(--accent);
-  color: #1B1F1D;
-}
-
-.dark-theme nav a[aria-current="page"] {
-  background: var(--accent-deep);
-  color: #1B1F1D;
+.field label {
+  margin-bottom: var(--space-2);
   font-weight: 600;
 }
 
-.dark-theme figure {
-  background: var(--surface);
-  border-color: rgba(255, 255, 255, 0.15);
+.field input {
+  padding: 0.6rem 0.75rem;
+  border: 2px solid var(--holiday-gold);
+  border-radius: 10px;
+  background: #fff;
+  font: inherit;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: border-color .2s ease, box-shadow .2s ease;
 }
 
-.dark-theme blockquote {
-  background: rgba(255, 255, 255, 0.05);
-  border-left-color: var(--accent);
-}
-
-.dark-theme button {
-  background: var(--accent);
-  color: #1B1F1D;
-}
-
-.dark-theme button:hover {
-  background: var(--accent-deep);
-}
-
-/* ---------- Dragon Shine Animation ---------- */
-.dark-theme .logo {
-  filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.6)) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
-  animation: dragonShine 2.8s ease-in-out infinite;
-}
-
-@keyframes dragonShine {
-  0%, 100% {
-    filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.6)) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
-  }
-  50% {
-    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.9)) drop-shadow(0 0 12px rgba(255, 215, 0, 0.6));
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .logo {
-    animation: none;
-  }
-}
+.field input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 6px rgba
