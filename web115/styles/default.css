@@ -19,7 +19,7 @@
 /* ---------- Base Layout ---------- */
 body {
   margin: 0;
-  padding: 2rem; /* Adds space around the entire page */
+  padding: 2rem;
   font-family: "Inter", sans-serif;
   font-size: 1.1rem;
   line-height: 1.6;
@@ -35,8 +35,8 @@ main {
 
 header {
   position: relative;
-  padding: 2rem 1rem;
-  background: var(--surface);
+  padding: 2.5rem 1rem;
+  background: var(--holiday);
   box-shadow: var(--shadow);
 }
 
@@ -50,8 +50,8 @@ nav {
 
 nav a {
   text-decoration: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
   background: transparent;
   color: var(--accent);
   transition: background-color 160ms ease, color 160ms ease;
@@ -87,10 +87,10 @@ footer a:hover {
 /* ---------- Typography ---------- */
 h1 {
   font-family: "Playfair Display", serif;
-  font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
+  font-size: clamp(2.4rem, 2rem + 2vw, 3.6rem);
   font-weight: 800;
   color: var(--accent-deep);
-  margin-bottom: 0.5rem;
+  margin: 0.5rem 0;
 }
 
 h2 {
@@ -144,14 +144,14 @@ footer .container {
   position: absolute;
   top: 1rem;
   left: 1rem;
-  width: 4rem;
-  height: 4rem;
-  font-size: 3.5rem;
+  width: 6rem;
+  height: 6rem;
+  font-size: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
   color: var(--gold);
+  background-color: transparent;
   line-height: 1;
   z-index: 10;
   transition: filter 0.3s ease;
@@ -163,8 +163,11 @@ footer .container {
 }
 
 .img-gold-border {
-  border: 4px solid var(--gold);
+  border: 6px solid var(--gold);
   border-radius: 0.5rem;
+  background-color: #fff8dc;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  padding: 0.5rem;
 }
 
 /* ---------- Dark Theme ---------- */
@@ -255,5 +258,6 @@ footer .container {
     animation: none;
   }
 }
+
 
 
