@@ -218,15 +218,57 @@ footer p:last-child {
   --accent-soft: #A7C7C2;
   --clay: #D47F5E;
   background-image: none;
+  background-color: var(--bg-grad-1);
+  color: var(--text);
 }
 
 .dark-theme header,
-.dark-theme footer {
+.dark-theme footer,
+.dark-theme main {
   background: var(--surface);
   color: var(--text);
 }
 
+.dark-theme h1,
+.dark-theme h2,
+.dark-theme h3,
+.dark-theme p,
+.dark-theme figcaption,
+.dark-theme cite,
+.dark-theme blockquote {
+  color: var(--text);
+}
+
+.dark-theme nav a {
+  color: var(--accent-deep);
+}
+
+.dark-theme nav a:hover,
+.dark-theme nav a:focus {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--accent);
+}
+
+.dark-theme nav a[aria-current="page"] {
+  background: var(--accent);
+  color: #1E1E1E;
+}
+
 .dark-theme figure {
-  background: #1E1E1E;
+  background: var(--surface);
   border-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark-theme blockquote {
+  background: rgba(255, 255, 255, 0.05);
+  border-left-color: var(--accent);
+}
+
+.dark-theme button {
+  background: var(--accent);
+  color: #1E1E1E;
+}
+
+.dark-theme button:hover {
+  background: var(--accent-deep);
 }
