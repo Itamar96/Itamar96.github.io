@@ -71,4 +71,3 @@ function useForm(event) {
       .replace(/\s+/g, " ")
       // Capitalize the first letter of each word (Unicode-aware in modern browsers)
       .replace(/
-
