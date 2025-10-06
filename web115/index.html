@@ -4,19 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Itamar Castillo’s WEB115 workspace and brand demo: Iridescent Cinderwyrm Bodywork" />
-  <title>Itamar Castillo’s Iridescent Cinderwyrm • Home</title>
+  <title>Itamar Castillo’s Iridescent Cinderwyrm</title>
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles/default.css" />
+  <link rel="stylesheet" href="default.css" />
   <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
+  <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous" defer></script>
 </head>
 <body>
   <header>
-    <section>
-      <h1>Itamar Castillo’s Iridescent Cinderwyrm</h1>
-      <p class="dragon" aria-hidden="true">🐉</p>
-
+    <div class="container">
+      <h1 class="site-title">
+        <span class="line-1">Itamar Castillo <span class="dot">•</span> Iridescent Cinderwyrm</span>
+        <span class="line-2 dragon">WEB115</span>
+      </h1>
       <nav aria-label="Primary">
         <a href="index.html" aria-current="page">Home</a>
         <a href="introduction.html">Introduction</a>
@@ -24,20 +26,19 @@
         <a href="brand.html">Brand Guide</a>
         <a href="fizzbuzz0.html">Fizz Buzz 0</a>
       </nav>
-
-      <button id="theme-toggle" aria-label="Toggle dark mode">Toggle Dark Mode</button>
-    </section>
+      <button id="theme-toggle">Toggle Theme</button>
+    </div>
   </header>
 
   <main>
-    <section>
+    <div class="container">
       <h2>Welcome</h2>
       <p>
-        Welcome to my WEB115 portfolio. This site presents my coursework and highlights my evolving skills in accessible, standards-based web development. It also introduces my sample massage brand,
+        This site is my workspace for <strong>WEB115</strong> and a demo of my brand concept:
         <strong>Iridescent Cinderwyrm Bodywork</strong>. Please use the menu above to explore my work.
       </p>
 
-      <figure>
+      <figure class="figure-holiday">
         <picture>
           <source type="image/webp"
             srcset="images/hiking_portrait_600w.webp 600w, images/hiking_portrait_800w.webp 800w, images/hiking_portrait_1200w.webp 1200w"
@@ -45,7 +46,7 @@
           <source type="image/jpeg"
             srcset="images/hiking_portrait_600w.jpg 600w, images/hiking_portrait_800w.jpg 800w, images/hiking_portrait_1200w.jpg 1200w"
             sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-          <img class="img-gold-border"
+          <img class="img-gold-border intro-landscape"
             src="images/hiking_portrait_800w.jpg"
             width="800" height="1067"
             alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle." />
@@ -54,24 +55,23 @@
       </figure>
 
       <blockquote>
-        If I have seen further it is by standing on the shoulders of giants.
-        <cite>— Isaac Newton</cite>
+        “If I have seen further it is by standing on the shoulders of giants.”
       </blockquote>
-    </section>
+      <p><strong>— Isaac Newton</strong></p>
+    </div>
   </main>
 
   <footer>
-    <section>
+    <div class="container">
       <p>
-        <a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer">GitHub.io</a> ✶
-        <a href="https://itamar96.github.io" target="_blank" rel="noopener noreferrer">Portfolio Site</a> ✶
-        <a href="https://web115.io" target="_blank" rel="noopener noreferrer">WEB115.io</a> ✶
+        <a href="https://Itamar96.github.io" target="_blank" rel="noopener noreferrer">GitHub.io</a> ✶
+        <a href="https://itamar96.github.io/web115/" target="_blank" rel="noopener noreferrer">WEB115.io</a> ✶
         <a href="https://www.codecademy.com/profiles/Itamar96" target="_blank" rel="noopener noreferrer">Codecademy</a> ✶
         <a href="https://jsfiddle.net/u/Itamar96/fiddles/" target="_blank" rel="noopener noreferrer">JSFiddle</a> ✶
         <a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </p>
-      <p><em>Page built by Iridescent Cinderwyrm Design</em></p>
-    </section>
+      <p>Page built by Iridescent Cinderwyrm Design</p>
+    </div>
   </footer>
 
   <script>
@@ -81,7 +81,6 @@
   </script>
 </body>
 </html>
-
 
 
 
