@@ -24,13 +24,15 @@
         <a href="brand.html" aria-current="page">Brand Guide</a>
         <a href="fizzbuzz0.html">Fizz Buzz 0</a>
       </nav>
+
+      <button id="theme-toggle" aria-label="Toggle dark mode">Toggle Dark Mode</button>
     </section>
   </header>
 
   <main>
     <section>
       <h2>Brand Guide</h2>
-      <p><strong>Brand name:</strong> Iridescent Cinderwyrm Bodywork<br><strong>Tagline:</strong> Breathe. Unwind. Renew.</p>
+      <p><strong>Brand name:</strong> Iridescent Cinderwyrm Bodywork<br><strong>Tagline:</strong> <em>Breathe. Unwind. Renew.</em></p>
     </section>
 
     <section aria-labelledby="brand-concept">
@@ -45,26 +47,26 @@
     <section aria-labelledby="brand-colors">
       <h3 id="brand-colors">Color Palette (Desert Matcha)</h3>
       <ul>
-        <li><strong>#F7EAD9</strong> — Sand background</li>
-        <li><strong>#FFFFFF</strong> — Surface and cards</li>
-        <li><strong>#2F3A34</strong> — Primary text</li>
-        <li><strong>#6F8F6B</strong> — Accent buttons</li>
-        <li><strong>#3E574B</strong> — Links and small text</li>
-        <li><strong>#8DA3A6</strong> — Mist (subtle UI)</li>
-        <li><strong>#C4633A</strong> — Clay glow</li>
-        <li><strong>#FFF8DC</strong> — Holiday light background</li>
-        <li><strong>#D4AF37</strong> — Gold accent</li>
+        <li><span class="color-box" style="background:#F7EAD9;"></span> <strong>#F7EAD9</strong> — Sand background</li>
+        <li><span class="color-box" style="background:#FFFFFF;"></span> <strong>#FFFFFF</strong> — Surface and cards</li>
+        <li><span class="color-box" style="background:#2F3A34;"></span> <strong>#2F3A34</strong> — Primary text</li>
+        <li><span class="color-box" style="background:#6F8F6B;"></span> <strong>#6F8F6B</strong> — Accent buttons</li>
+        <li><span class="color-box" style="background:#3E574B;"></span> <strong>#3E574B</strong> — Links and small text</li>
+        <li><span class="color-box" style="background:#8DA3A6;"></span> <strong>#8DA3A6</strong> — Mist (subtle UI)</li>
+        <li><span class="color-box" style="background:#C4633A;"></span> <strong>#C4633A</strong> — Clay glow</li>
+        <li><span class="color-box" style="background:#FFF8DC;"></span> <strong>#FFF8DC</strong> — Holiday light background</li>
+        <li><span class="color-box" style="background:#D4AF37;"></span> <strong>#D4AF37</strong> — <span class="text-gold">Gold accent</span></li>
       </ul>
       <p><strong>Contrast:</strong> #2F3A34 on #F7EAD9 passes for body copy. White text on #6F8F6B passes on buttons.</p>
     </section>
 
     <section aria-labelledby="brand-type">
       <h3 id="brand-type">Typography</h3>
-      <p><strong>Headings:</strong> Playfair Display 700 and 800</p>
-      <h1>Iridescent Cinderwyrm Bodywork</h1>
-      <h2>Therapeutic Massage and Relaxation</h2>
+      <p class="type-label">Headings — Playfair Display 700 and 800</p>
+      <p class="demo-h1">Iridescent Cinderwyrm Bodywork</p>
+      <p class="demo-h2">Therapeutic Massage and Relaxation</p>
 
-      <p><strong>Body:</strong> Inter 400, 500, 600</p>
+      <p class="type-label">Body — Inter 400, 500, 600</p>
       <p>
         Sessions are guided by comfort and intention. Book a service to reduce stress and improve recovery.
         Read policies and recommendations before your visit. Contact us with any questions.
@@ -81,7 +83,7 @@
         <li><strong>Tone:</strong> calm, clear, and reassuring</li>
         <li><strong>Structure:</strong> header, main, footer with a consistent menu</li>
         <li><strong>Accessibility:</strong> good contrast, focus outlines, reduced motion support</li>
-        <li><strong>Branding:</strong> Desert Matcha palette with gold accents, Playfair Display headings, Inter body, soft glow</li>
+        <li><strong>Branding:</strong> Desert Matcha palette with <span class="text-gold">gold accents</span>, Playfair Display headings, Inter body, soft glow</li>
       </ul>
     </section>
   </main>
@@ -99,6 +101,12 @@
       <p><em>Page built by Iridescent Cinderwyrm Design</em></p>
     </section>
   </footer>
+
+  <script>
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+    });
+  </script>
 </body>
 </html>
 
