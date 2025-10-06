@@ -1,22 +1,30 @@
 /* ====================================================
-   ELEMENT-BASED STYLING
+   BRAND PALETTE
    ==================================================== */
-
-/* ---------- Theme Variables ---------- */
 :root {
-  --sand: #F7EAD9;
+  --bg-grad-1: #F7EAD9;
+  --bg-grad-2: #F7EAD9;
+  --bg-grad-3: #F7EAD9;
+
   --surface: #FFFFFF;
   --text: #2F3A34;
+
   --accent: #6F8F6B;
   --accent-deep: #3E574B;
-  --mist: #8DA3A6;
+  --accent-soft: #8DA3A6;
   --clay: #C4633A;
-  --gold: #D4AF37;
-  --holiday: #FFF8DC;
+
+  --holiday-cream: #FFF8DC;
+  --holiday-gold: #D4AF37;
+  --holiday-pine: #2F6F4F;
+  --holiday-berry: #B8403A;
+
   --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* ---------- Base Layout ---------- */
+/* ====================================================
+   ELEMENT-BASED STYLING
+   ==================================================== */
 body {
   margin: 0;
   padding: 2rem;
@@ -24,7 +32,7 @@ body {
   font-size: 1.1rem;
   line-height: 1.6;
   color: var(--text);
-  background: linear-gradient(var(--sand), var(--surface));
+  background: linear-gradient(var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
 }
 
 main {
@@ -36,7 +44,7 @@ main {
 header {
   position: relative;
   padding: 2.5rem 1rem;
-  background: var(--holiday);
+  background: var(--holiday-cream);
   box-shadow: var(--shadow);
 }
 
@@ -84,7 +92,7 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* ---------- Typography ---------- */
+/* Typography */
 h1 {
   font-family: "Playfair Display", serif;
   font-size: clamp(2.4rem, 2rem + 2vw, 3.6rem);
@@ -115,7 +123,7 @@ cite {
   color: var(--accent);
 }
 
-/* ---------- Responsive ---------- */
+/* Responsive */
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
@@ -125,21 +133,18 @@ cite {
 /* ====================================================
    CLASS-BASED STYLING
    ==================================================== */
-
-/* ---------- Layout Utilities ---------- */
 .container {
   max-width: 960px;
   margin: 0 auto;
   padding: 1rem;
 }
 
-/* Center header and footer content only */
 header .container,
 footer .container {
   text-align: center;
 }
 
-/* ---------- Decorative Elements ---------- */
+/* Dragon Icon */
 .logo {
   position: absolute;
   top: 1rem;
@@ -150,40 +155,49 @@ footer .container {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--gold);
+  color: var(--holiday-gold);
   background-color: transparent;
   line-height: 1;
   z-index: 10;
   transition: filter 0.3s ease;
 }
 
-/* ---------- Utility Classes ---------- */
-.note-gold {
-  color: var(--gold);
-}
-
+/* Image Frame */
 .img-gold-border {
-  border: 6px solid var(--gold);
+  border: 6px solid var(--holiday-gold);
   border-radius: 0.5rem;
-  background-color: #fff8dc;
+  background-color: var(--holiday-cream);
   box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
   padding: 0.5rem;
 }
 
-/* ---------- Dark Theme ---------- */
+/* Utility */
+.note-gold {
+  color: var(--holiday-gold);
+}
+
+/* Dark Theme */
 .dark-theme {
-  --sand: #1E1E1E;
+  --bg-grad-1: #1E1E1E;
+  --bg-grad-2: #1E1E1E;
+  --bg-grad-3: #1E1E1E;
+
   --surface: #1E1E1E;
   --text: #E4E4E4;
+
   --accent: #8FCB9B;
   --accent-deep: #B6E0B9;
-  --mist: #A7C7C2;
+  --accent-soft: #A7C7C2;
   --clay: #D47F5E;
-  --gold: #FFD700;
-  --holiday: #2E2E2E;
+
+  --holiday-cream: #2E2E2E;
+  --holiday-gold: #FFD700;
+  --holiday-pine: #1F3F2F;
+  --holiday-berry: #802020;
+
   --shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   background-image: none;
-  background-color: var(--sand);
+  background-color: var(--bg-grad-1);
   color: var(--text);
 }
 
@@ -238,7 +252,7 @@ footer .container {
   background: var(--accent-deep);
 }
 
-/* ---------- Dragon Shine Animation ---------- */
+/* Dragon Shine Animation */
 .dark-theme .logo {
   filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.6)) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
   animation: dragonShine 2.8s ease-in-out infinite;
@@ -258,6 +272,3 @@ footer .container {
     animation: none;
   }
 }
-
-
-
