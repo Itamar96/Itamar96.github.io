@@ -1,11 +1,11 @@
-/* Iridescent Cinderwyrm Bodywork — Desert Matcha Theme */
+/* ----------------------------------------
+   Iridescent Cinderwyrm Bodywork — Desert Matcha Theme
+   Cleaned and annotated 
+---------------------------------------- */
 
-/* ---------- Base & Tokens ---------- */
-html {
-  box-sizing: border-box;
-}
-
+/* ---------- Base Tokens ---------- */
 :root {
+  /* Brand palette */
   --bg-grad-1: #F7EAD9;
   --bg-grad-2: #F7EAD9;
   --bg-grad-3: #F7EAD9;
@@ -16,79 +16,58 @@ html {
   --accent: #6F8F6B;
   --accent-deep: #3E574B;
   --accent-soft: #8DA3A6;
-  --clay: #C4633A;
-
-  --holiday-cream: #FFF8DC;
   --holiday-gold: #D4AF37;
-  --holiday-pine: #2F6F4F;
-  --holiday-berry: #B8403A;
+  --holiday-cream: #FFF8DC;
 
+  /* Typography */
   --brand-heading: "Playfair Display", serif;
   --brand-body: "Inter", sans-serif;
 
+  /* Layout spacing */
   --content-width: 960px;
-  --space-1: .25rem;
-  --space-2: .5rem;
-  --space-3: .75rem;
   --space-4: 1rem;
   --space-6: 1.5rem;
-  --space-8: 2rem;
-
   --radius: 14px;
   --shadow: 0 8px 30px rgba(47, 58, 52, 0.12);
 }
 
-/* ---------- Layout ---------- */
+/* ---------- Global Layout ---------- */
 body {
   margin: 0;
   font-family: var(--brand-body);
   color: var(--text);
   line-height: 1.6;
   background: linear-gradient(var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
-  background-image: url("/web115/images/spa-bg.svg");
+  background-image: url("/web115/images/spa-bg.svg"); /* Used on index.html */
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
 }
 
-main {
-  padding: 2rem 0;
-}
-
 .container {
   max-width: var(--content-width);
   margin: 0 auto;
   padding: 0 var(--space-4);
-  box-sizing: border-box;
 }
 
 /* ---------- Header ---------- */
 header {
-  padding: 1rem 0;
+  padding: var(--space-4) 0;
   text-align: center;
   background: var(--surface);
-  color: var(--text);
 }
 
 .site-title {
-  margin: 0;
-  line-height: 1.1;
   font-family: var(--brand-heading);
   font-weight: 800;
-  letter-spacing: 0.2px;
+  font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
+  margin: 0;
 }
 
-.site-title .line-1 {
-  display: block;
-  font-size: clamp(1.35rem, 1rem + 2vw, 2.1rem);
-}
-
-.site-title .dragon {
-  display: inline-block;
+.dragon {
   color: var(--holiday-gold);
   filter: drop-shadow(0 0 2px rgba(212,175,55,.65)) drop-shadow(0 0 6px rgba(212,175,55,.35));
-  text-shadow: 0 0 1px rgba(0,0,0,.15);
   animation: dragonShimmer 2.6s ease-in-out infinite;
 }
 
@@ -107,13 +86,35 @@ header {
   }
 }
 
+/* ---------- Headings ---------- */
+h1, h2, h3 {
+  font-family: var(--brand-heading);
+  line-height: 1.2;
+  margin: 0 0 var(--space-4);
+}
+
+h1 {
+  font-weight: 800;
+  font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
+}
+
+h2 {
+  font-weight: 700;
+  font-size: clamp(1.3rem, 1.05rem + 1.2vw, 1.9rem);
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
 /* ---------- Navigation ---------- */
 nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--space-2) var(--space-4);
-  margin-top: var(--space-2);
+  gap: 0.5rem 1rem;
+  margin-top: 0.5rem;
 }
 
 nav a {
@@ -138,34 +139,7 @@ nav a[aria-current="page"] {
   box-shadow: 0 0 0 2px rgba(62, 87, 75, 0.08) inset, var(--shadow);
 }
 
-a:focus {
-  outline: 3px solid rgba(111, 143, 107, 0.35);
-  outline-offset: 2px;
-  border-radius: 6px;
-}
-
-/* ---------- Typography ---------- */
-h1, h2, h3 {
-  font-family: var(--brand-heading);
-  line-height: 1.2;
-  margin: 0 0 var(--space-4);
-}
-
-h1 {
-  font-weight: 800;
-  font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
-}
-
-h2 {
-  font-weight: 700;
-  font-size: clamp(1.3rem, 1.05rem + 1.2vw, 1.9rem);
-}
-
-h3 {
-  font-weight: 700;
-  font-size: 1.15rem;
-}
-
+/* ---------- Typography & Lists ---------- */
 p, ul, ol, blockquote, figure {
   margin-block: var(--space-4);
 }
@@ -217,7 +191,7 @@ figcaption {
 }
 
 .figure-holiday {
-  background: var(--holiday-cream);
+  background: var(--holiday-cream); /* Used on index.html */
   border: 1px solid rgba(212, 175, 55, 0.35);
 }
 
@@ -236,8 +210,6 @@ blockquote {
   border-left: 4px solid var(--accent);
   background: rgba(141, 163, 166, 0.10);
   border-radius: 0 var(--radius) var(--radius) 0;
-  margin-left: 0;
-  margin-right: 0;
 }
 
 cite {
@@ -247,13 +219,12 @@ cite {
   color: var(--accent);
 }
 
-/* ---------- Forms (FizzBuzz) ---------- */
+/* ---------- Forms (FizzBuzz only) ---------- */
 .form-grid {
   display: grid;
   gap: var(--space-4);
   max-width: 640px;
   margin-inline: auto;
-  box-sizing: border-box;
 }
 
 .field {
@@ -263,7 +234,7 @@ cite {
 }
 
 .field label {
-  margin-bottom: var(--space-2);
+  margin-bottom: 0.5rem;
   font-weight: 600;
 }
 
@@ -280,4 +251,45 @@ cite {
 .field input:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 6px rgba
+  box-shadow: 0 0 6px rgba(212,175,55,0.5);
+}
+
+/* ---------- Buttons (used for dark mode toggle and FizzBuzz) ---------- */
+button {
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  font-weight: 600;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+button:hover,
+button:focus {
+  background: var(--accent-deep);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  padding: 2rem 0;
+  margin-top: 3rem;
+  text-align: center;
+  border-top: 4px solid var(--accent);
+  background-color: var(--bg-grad-1);
+}
+
+footer p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+footer a {
+  color: var(--accent-deep);
+  text-decoration: none;
+  margin: 0 0.3rem;
+}
+
+
