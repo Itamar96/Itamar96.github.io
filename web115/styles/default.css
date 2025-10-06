@@ -1,11 +1,6 @@
-/* ----------------------------------------
-   Iridescent Cinderwyrm Bodywork — Desert Matcha Theme
-   Cleaned and annotated 
----------------------------------------- */
-
-/* ---------- Base Tokens ---------- */
+/* ---------- Brand Palette & Tokens ---------- */
 :root {
-  /* Brand palette */
+  /* 🎨 Brand Colors */
   --bg-grad-1: #F7EAD9;
   --bg-grad-2: #F7EAD9;
   --bg-grad-3: #F7EAD9;
@@ -19,83 +14,39 @@
   --holiday-gold: #D4AF37;
   --holiday-cream: #FFF8DC;
 
-  /* Typography */
+  /* 🖋 Typography */
   --brand-heading: "Playfair Display", serif;
   --brand-body: "Inter", sans-serif;
 
-  /* Layout spacing */
-  --content-width: 960px;
-  --space-4: 1rem;
-  --space-6: 1.5rem;
+  /* 📐 Layout */
   --radius: 14px;
   --shadow: 0 8px 30px rgba(47, 58, 52, 0.12);
 }
 
-/* ---------- Global Layout ---------- */
+/* ---------- 🌐 Global Element Styles ---------- */
 body {
   margin: 0;
   font-family: var(--brand-body);
   color: var(--text);
   line-height: 1.6;
   background: linear-gradient(var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
-  background-image: url("/web115/images/spa-bg.svg"); /* Used on index.html */
+  background-image: url("/web115/images/spa-bg.svg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
 }
 
-.container {
-  max-width: var(--content-width);
-  margin: 0 auto;
-  padding: 0 var(--space-4);
-}
-
-/* ---------- Header ---------- */
-header {
-  padding: var(--space-4) 0;
-  text-align: center;
-  background: var(--surface);
-}
-
-.site-title {
-  font-family: var(--brand-heading);
-  font-weight: 800;
-  font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
-  margin: 0;
-}
-
-.dragon {
-  color: var(--holiday-gold);
-  filter: drop-shadow(0 0 2px rgba(212,175,55,.65)) drop-shadow(0 0 6px rgba(212,175,55,.35));
-  animation: dragonShimmer 2.6s ease-in-out infinite;
-}
-
-@keyframes dragonShimmer {
-  0%, 100% {
-    filter: drop-shadow(0 0 2px rgba(212,175,55,.55)) drop-shadow(0 0 6px rgba(212,175,55,.28));
-  }
-  50% {
-    filter: drop-shadow(0 0 3px rgba(212,175,55,.85)) drop-shadow(0 0 10px rgba(212,175,55,.45));
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .dragon {
-    animation: none;
-  }
-}
-
-/* ---------- Headings ---------- */
 h1, h2, h3 {
   font-family: var(--brand-heading);
   line-height: 1.2;
-  margin: 0 0 var(--space-4);
+  margin: 0 0 1rem;
 }
 
 h1 {
   font-weight: 800;
   font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
+  text-align: center;
 }
 
 h2 {
@@ -108,13 +59,13 @@ h3 {
   font-size: 1.15rem;
 }
 
-/* ---------- Navigation ---------- */
+/* ---------- 🧭 Navigation (Element-Based) ---------- */
 nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.5rem 1rem;
-  margin-top: 0.5rem;
+  margin: 1rem 0;
 }
 
 nav a {
@@ -139,154 +90,7 @@ nav a[aria-current="page"] {
   box-shadow: 0 0 0 2px rgba(62, 87, 75, 0.08) inset, var(--shadow);
 }
 
-/* ---------- Typography & Lists ---------- */
-p, ul, ol, blockquote, figure {
-  margin-block: var(--space-4);
-}
-
-ul {
-  list-style: disc;
-  padding-left: 1.25rem;
-}
-
-ul ul {
-  list-style: circle;
-  padding-left: 1.25rem;
-}
-
-a {
-  color: var(--accent-deep);
-  text-decoration: underline;
-}
-
-a:hover,
-a:focus {
-  color: var(--accent);
-}
-
-/* ---------- Figures & Quotes ---------- */
-figure {
-  margin: var(--space-6) auto;
-  text-align: center;
-  background: #fff;
-  border-radius: var(--radius);
-  padding: var(--space-4);
-  box-shadow: var(--shadow);
-  border: 1px solid rgba(62, 87, 75, 0.12);
-}
-
-figure img {
-  display: block;
-  max-width: min(100%, 1200px);
-  height: auto;
-  border-radius: 12px;
-  margin: 0 auto;
-  box-shadow: 0 8px 24px rgba(47, 58, 52, 0.12);
-}
-
-figcaption {
-  margin-top: 0.75rem;
-  font-size: 0.95rem;
-  color: var(--accent-deep);
-}
-
-.figure-holiday {
-  background: var(--holiday-cream); /* Used on index.html */
-  border: 1px solid rgba(212, 175, 55, 0.35);
-}
-
-.img-gold-border {
-  border: 6px solid var(--holiday-gold);
-  border-radius: 12px;
-}
-
-.intro-landscape .img-gold-border {
-  max-width: 100%;
-  height: auto;
-}
-
-blockquote {
-  padding: var(--space-4);
-  border-left: 4px solid var(--accent);
-  background: rgba(141, 163, 166, 0.10);
-  border-radius: 0 var(--radius) var(--radius) 0;
-}
-
-cite {
-  display: block;
-  margin-top: 0.5rem;
-  font-weight: 500;
-  color: var(--accent);
-}
-
-/* ---------- Forms (FizzBuzz only) ---------- */
-.form-grid {
-  display: grid;
-  gap: var(--space-4);
-  max-width: 640px;
-  margin-inline: auto;
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: var(--space-4);
-}
-
-.field label {
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
-.field input {
-  padding: 0.6rem 0.75rem;
-  border: 2px solid var(--holiday-gold);
-  border-radius: 10px;
-  background: #fff;
-  font: inherit;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  transition: border-color .2s ease, box-shadow .2s ease;
-}
-
-.field input:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 6px rgba(212,175,55,0.5);
-}
-
-/* ---------- Forms (FizzBuzz) — Element-Based ---------- */
-form {
-  display: grid;
-  gap: 1rem;
-  max-width: 640px;
-  margin-inline: auto;
-}
-
-label {
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  display: block;
-}
-
-input {
-  padding: 0.6rem 0.75rem;
-  border: 2px solid var(--holiday-gold);
-  border-radius: 10px;
-  background: #fff;
-  font: inherit;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  transition: border-color .2s ease, box-shadow .2s ease;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-input:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 6px rgba(212,175,55,0.5);
-}
-
-/* ---------- Buttons — Styled by Element ---------- */
+/* ---------- 🔘 Buttons (Element-Based) ---------- */
 button {
   padding: 0.55rem 0.95rem;
   border-radius: 999px;
@@ -303,7 +107,72 @@ button:focus {
   background: var(--accent-deep);
 }
 
-/* ---------- Footer ---------- */
+/* ---------- 🐉 Dragon (Class-Based for Branding) ---------- */
+.dragon {
+  font-size: 2.5rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  color: var(--holiday-gold);
+  filter: drop-shadow(0 0 2px rgba(212,175,55,.65)) drop-shadow(0 0 6px rgba(212,175,55,.35));
+  animation: dragonShimmer 2.6s ease-in-out infinite;
+}
+
+@keyframes dragonShimmer {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px rgba(212,175,55,.55)) drop-shadow(0 0 6px rgba(212,175,55,.28));
+  }
+  50% {
+    filter: drop-shadow(0 0 3px rgba(212,175,55,.85)) drop-shadow(0 0 10px rgba(212,175,55,.45));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dragon {
+    animation: none;
+  }
+}
+
+/* ---------- 🖼️ Figures & Images (Element-Based) ---------- */
+figure {
+  margin: 2rem auto;
+  text-align: center;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(62, 87, 75, 0.12);
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(47, 58, 52, 0.12);
+}
+
+figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--accent-deep);
+}
+
+/* ---------- 🗣️ Quotes (Element-Based) ---------- */
+blockquote {
+  margin: 2rem 0;
+  padding: 1rem;
+  border-left: 4px solid var(--accent);
+  background: rgba(141, 163, 166, 0.10);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+cite {
+  display: block;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+/* ---------- 🦶 Footer (Element-Based) ---------- */
 footer {
   padding: 2rem 0;
   margin-top: 3rem;
@@ -324,4 +193,55 @@ footer a {
   margin: 0 0.3rem;
 }
 
+footer a:hover,
+footer a:focus {
+  color: var(--accent);
+  text-decoration: underline;
+}
 
+footer p:last-child {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+/* ---------- 🌗 Dark Theme Overrides ---------- */
+.dark-theme {
+  --bg-grad-1: #1E1E1E;
+  --bg-grad-2: #1E1E1E;
+  --bg-grad-3: #121212;
+  --surface: #1E1E1E;
+  --text: #E4E4E4;
+  --accent: #8FCB9B;
+  --accent-deep: #B6E0B9;
+  --accent-soft: #A7C7C2;
+  --holiday-gold: #FFD700;
+}
+
+.dark-theme body {
+  background: none;
+  background-color: var(--bg-grad-1);
+  color: var(--text);
+}
+
+.dark-theme header,
+.dark-theme footer,
+.dark-theme figure {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.dark-theme nav a {
+  color: var(--accent-soft);
+}
+
+.dark-theme nav a[aria-current="page"] {
+  background: var(--accent-deep);
+  color: #1E1E1E;
+}
+
+.dark-theme figcaption,
+.dark-theme cite {
+  color: var(--accent-soft);
+}
