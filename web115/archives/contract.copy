@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="WEB115 contract acknowledgment for Itamar Castillo." />
+    <title>Itamar Castillo’s Iridescent Cinderwyrm • WEB115 • Contract</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
+    <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous" defer></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <h1 class="site-title">
+          <span class="line-1">Itamar Castillo’s Iridescent Cinderwyrm</span>
+          <span class="line-2"><span class="dot" aria-hidden="true">•</span> WEB115 <span class="dragon" aria-hidden="true">🐉</span></span>
+        </h1>
+        <nav aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="introduction.html">Introduction</a>
+          <a href="contract.html" aria-current="page">Contract</a>
+          <a href="brand.html">Brand Guide</a>
+          <a href="fizzbuzz0.html">Fizz Buzz 0</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <h2>Contract</h2>
+        <p>
+          I, <a href="introduction.html"><em class="meta note-gold">Itamar Castillo</em></a>, agree to abide by the terms in my
+          <strong>Fall 2025</strong> <strong>WEB115</strong> with my instructor, <strong>D.I. von Briesen</strong>.
+        </p>
+        <p>
+          I understand that all work that I do on my school and personal websites will be publicly available to the world. I will not put
+          information there that is inappropriate for schoolwork or that I want to keep private.
+        </p>
+        <p>
+          I also understand that it is my work that counts for attendance, not logins or showing up for class. Failure to turn in assignments may
+          show as absences.
+        </p>
+        <p>
+          Signed: <em class="meta note-gold">Itamar Castillo</em>,
+          <time datetime="2025-08-31" class="meta note-gold">31 August 2025</time>.
+        </p>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p class="footer-links">
+          <a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer">Personal GitHub</a> ✶
+          <a href="https://github.com/Itamar96/Itamar96.github.io" target="_blank" rel="noopener noreferrer">GitHub Pages</a> ✶
+          <a href="https://itamar96.github.io/web115/" target="_blank" rel="noopener noreferrer">WEB115 Course Site</a> ✶
+          <a href="https://www.codecademy.com/profiles/Itamar96" target="_blank" rel="noopener noreferrer">Codecademy</a> ✶
+          <a href="https://jsfiddle.net/u/Itamar96/fiddles/" target="_blank" rel="noopener noreferrer">JSFiddle</a> ✶
+          <a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </p>
+        <p class="meta note-gold">Page built by Iridescent Cinderwyrm Design</p>
+      </div>
+    </footer>
+  </body>
+</html>
