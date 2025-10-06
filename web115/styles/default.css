@@ -254,7 +254,39 @@ cite {
   box-shadow: 0 0 6px rgba(212,175,55,0.5);
 }
 
-/* ---------- Buttons (used for dark mode toggle and FizzBuzz) ---------- */
+/* ---------- Forms (FizzBuzz) — Element-Based ---------- */
+form {
+  display: grid;
+  gap: 1rem;
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+input {
+  padding: 0.6rem 0.75rem;
+  border: 2px solid var(--holiday-gold);
+  border-radius: 10px;
+  background: #fff;
+  font: inherit;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: border-color .2s ease, box-shadow .2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 6px rgba(212,175,55,0.5);
+}
+
+/* ---------- Buttons — Styled by Element ---------- */
 button {
   padding: 0.55rem 0.95rem;
   border-radius: 999px;
