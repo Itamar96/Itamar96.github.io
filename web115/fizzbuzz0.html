@@ -12,12 +12,15 @@
   <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous" defer></script>
 </head>
 <body>
+
+  <!-- Header -->
   <header>
-    <section>
-      <h1 class="site-title">
+    <div class="container">
+      <h1>
         <span class="line-1">Itamar Castillo’s Iridescent Cinderwyrm</span>
         <span class="dragon" aria-hidden="true">🐉</span>
       </h1>
+
       <nav aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="introduction.html">Introduction</a>
@@ -25,41 +28,55 @@
         <a href="brand.html">Brand Guide</a>
         <a href="fizzbuzz0.html" aria-current="page">Fizz Buzz 0</a>
       </nav>
+
       <button id="theme-toggle" aria-label="Toggle dark mode">Toggle Dark Mode</button>
-    </section>
+    </div>
   </header>
 
+  <!-- Main Content -->
   <main>
-    <section>
-      <h2>Fizz Buzz 0</h2>
-      <p>Welcome to <strong>Iridescent Cinderwyrm Bodywork</strong>. Enter your name below and receive a personalized greeting along with a FizzBuzz output from 1 to 125.</p>
+    <section class="intro-band">
+      <div class="container flow">
+        <h2>Fizz Buzz 0</h2>
+        <p>
+          Welcome to <strong>Iridescent Cinderwyrm Bodywork</strong>.
+          Enter your name below and receive a personalized greeting along with a FizzBuzz output from 1 to 125.
+        </p>
 
-      <form id="name-form" aria-describedby="form-hint" class="form-grid">
-        <div class="field">
-          <label for="first_name">First Name</label>
-          <input id="first_name" name="first_name" type="text" placeholder="Enter your first name" required autocomplete="given-name" maxlength="20" />
-        </div>
-        <div class="field">
-          <label for="middle_initial">Middle Initial <span class="muted">(optional)</span></label>
-          <input id="middle_initial" name="middle_initial" type="text" placeholder="M" maxlength="1" pattern="[A-Za-z]" title="One letter only" autocomplete="additional-name" />
-        </div>
-        <div class="field">
-          <label for="last_name">Last Name</label>
-          <input id="last_name" name="last_name" type="text" placeholder="Enter your last name" required autocomplete="family-name" maxlength="20" />
-        </div>
-        <div class="field">
-          <button type="submit" class="btn btn-brand">Greet Me</button>
-        </div>
-      </form>
-      <p id="form-hint" class="muted">Middle initial is optional. First and last name are required (max 20 characters each).</p>
+        <form id="name-form" aria-describedby="form-hint" class="form-grid">
+          <div class="field">
+            <label for="first_name">First Name</label>
+            <input id="first_name" name="first_name" type="text" placeholder="Enter your first name" required autocomplete="given-name" maxlength="20" />
+          </div>
 
-      <h3>FizzBuzz Output (1–125)</h3>
-      <ol id="datas" aria-live="polite"></ol>
+          <div class="field">
+            <label for="middle_initial">Middle Initial <span class="muted">(optional)</span></label>
+            <input id="middle_initial" name="middle_initial" type="text" placeholder="M" maxlength="1" pattern="[A-Za-z]" title="One letter only" autocomplete="additional-name" />
+          </div>
+
+          <div class="field">
+            <label for="last_name">Last Name</label>
+            <input id="last_name" name="last_name" type="text" placeholder="Enter your last name" required autocomplete="family-name" maxlength="20" />
+          </div>
+
+          <div class="field">
+            <button type="submit" class="btn btn-brand">Greet Me</button>
+          </div>
+        </form>
+
+        <p id="form-hint" class="muted">
+          Middle initial is optional. First and last name are required (max 20 characters each).
+        </p>
+
+        <h3>FizzBuzz Output (1–125)</h3>
+        <ol id="datas" aria-live="polite"></ol>
+      </div>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
-    <section>
+    <div class="container">
       <p>
         <a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer">GitHub.io</a> ✶
         <a href="https://itamar96.github.io" target="_blank" rel="noopener noreferrer">Portfolio Site</a> ✶
@@ -69,11 +86,13 @@
         <a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </p>
       <p><em>Page built by Iridescent Cinderwyrm Design</em></p>
-    </section>
+    </div>
   </footer>
 
+  <!-- Scripts -->
   <script src="scripts/fizzbuzz.js" defer></script>
   <script>
+    // 🌗 Dark Mode Toggle Script
     const toggleButton = document.getElementById('theme-toggle');
     toggleButton.addEventListener('click', () => {
       document.body.classList.toggle('dark-theme');
@@ -81,5 +100,4 @@
   </script>
 </body>
 </html>
-
 
