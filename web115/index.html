@@ -12,12 +12,15 @@
   <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous" defer></script>
 </head>
 <body>
+
+  <!-- Header band spans full width, content centered by .container -->
   <header>
-    <section>
-      <h1 class="site-title">
+    <div class="container">
+      <h1>
         <span class="line-1">Itamar Castillo’s Iridescent Cinderwyrm</span>
         <span class="dragon" aria-hidden="true">🐉</span>
       </h1>
+
       <nav aria-label="Primary">
         <a href="index.html" aria-current="page">Home</a>
         <a href="introduction.html">Introduction</a>
@@ -25,40 +28,48 @@
         <a href="brand.html">Brand Guide</a>
         <a href="fizzbuzz0.html">Fizz Buzz 0</a>
       </nav>
+
       <!-- 🌗 Dark Mode Toggle -->
       <button id="theme-toggle" aria-label="Toggle dark mode">Toggle Dark Mode</button>
-    </section>
+    </div>
   </header>
+
   <main>
-    <section>
-      <h2>Welcome</h2>
-      <p>
-        This site presents my coursework and highlights my evolving skills in accessible, standards-based web development. It also introduces my sample massage brand,
-        <strong>Iridescent Cinderwyrm Bodywork</strong>. Please use the menu above to explore my work.
-      </p>
-      <figure class="figure-holiday">
-        <picture>
-          <source type="image/webp"
-            srcset="images/hiking_portrait_600w.webp 600w, images/hiking_portrait_800w.webp 800w, images/hiking_portrait_1200w.webp 1200w"
-            sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-          <source type="image/jpeg"
-            srcset="images/hiking_portrait_600w.jpg 600w, images/hiking_portrait_800w.jpg 800w, images/hiking_portrait_1200w.jpg 1200w"
-            sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-          <img class="img-gold-border intro-landscape"
-            src="images/hiking_portrait_800w.jpg"
-            width="800" height="1067"
-            alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle." />
-        </picture>
-        <figcaption>Exploring Colorado’s alpine trails, 2025.</figcaption>
-      </figure>
-      <blockquote>
-        If I have seen further it is by standing on the shoulders of giants.
-        <cite>— Isaac Newton</cite>
-      </blockquote>
+    <!-- Full-width band + centered content column -->
+    <section class="intro-band">
+      <div class="container flow">
+        <h2>Welcome</h2>
+        <p>
+          This site presents my coursework and highlights my evolving skills in accessible, standards-based web development. It also introduces my sample massage brand,
+          <strong>Iridescent Cinderwyrm Bodywork</strong>. Please use the menu above to explore my work.
+        </p>
+
+        <figure class="figure-holiday">
+          <picture>
+            <source type="image/webp"
+              srcset="images/hiking_portrait_600w.webp 600w, images/hiking_portrait_800w.webp 800w, images/hiking_portrait_1200w.webp 1200w"
+              sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
+            <source type="image/jpeg"
+              srcset="images/hiking_portrait_600w.jpg 600w, images/hiking_portrait_800w.jpg 800w, images/hiking_portrait_1200w.jpg 1200w"
+              sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
+            <img class="img-gold-border intro-landscape"
+              src="images/hiking_portrait_800w.jpg"
+              width="800" height="1067"
+              alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle." />
+          </picture>
+          <figcaption>Exploring Colorado’s alpine trails, 2025.</figcaption>
+        </figure>
+
+        <blockquote>
+          If I have seen further it is by standing on the shoulders of giants.
+          <cite>— Isaac Newton</cite>
+        </blockquote>
+      </div>
     </section>
   </main>
+
   <footer>
-    <section>
+    <div class="container">
       <p>
         <a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer">GitHub.io</a> ✶
         <a href="https://itamar96.github.io" target="_blank" rel="noopener noreferrer">Portfolio Site</a> ✶
@@ -68,8 +79,9 @@
         <a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </p>
       <p><em>Page built by Iridescent Cinderwyrm Design</em></p>
-    </section>
+    </div>
   </footer>
+
   <script>
     // 🌗 Dark Mode Toggle Script
     const toggleButton = document.getElementById('theme-toggle');
@@ -79,3 +91,4 @@
   </script>
 </body>
 </html>
+
