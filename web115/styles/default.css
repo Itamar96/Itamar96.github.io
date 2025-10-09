@@ -1,7 +1,8 @@
 /* ----------------------------------------
    Iridescent Cinderwyrm Bodywork — Desert Matcha Theme
-   Cleaned and annotated 
+   Cleaned, optimized for HTML includes, and annotated
 ---------------------------------------- */
+
 /* ---------- Base Tokens ---------- */
 :root {
   /* Brand palette */
@@ -15,9 +16,11 @@
   --accent-soft: #8DA3A6;
   --holiday-gold: #D4AF37;
   --holiday-cream: #FFF8DC;
+
   /* Typography */
   --brand-heading: "Playfair Display", serif;
   --brand-body: "Inter", sans-serif;
+
   /* Layout spacing */
   --content-width: 960px;
   --space-4: 1rem;
@@ -25,12 +28,19 @@
   --radius: 14px;
   --shadow: 0 8px 30px rgba(47, 58, 52, 0.12);
 }
+
+/* ---------- Smooth transitions ---------- */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 /* ---------- Global Layout ---------- */
 body {
   margin: 0;
   font-family: var(--brand-body);
   color: var(--text);
   line-height: 1.6;
+  background-color: #F7EAD9; /* fallback for gradient load */
   background: linear-gradient(var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
   background-image: url("/web115/images/spa-bg.svg"); /* Used on index.html */
   background-size: cover;
@@ -38,17 +48,42 @@ body {
   background-attachment: fixed;
   background-position: center;
 }
-.container { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-4); }
+
+.container {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
 
 /* optional band styling */
-.intro-band { background: var(--surface); padding: var(--space-6) 0; }
+.intro-band {
+  background: var(--surface);
+  padding: var(--space-6) 0;
+}
 
-/* nice vertical rhythm inside container */
-.flow > * + * { margin-top: var(--space-4); }
+/* vertical rhythm */
+.flow > * + * {
+  margin-top: var(--space-4);
+}
 
 /* readable line length */
-.container p, .container ul, .container ol, .container blockquote, .container figure, 
-.container h2, .container h3 { max-width: 70ch; margin-inline: auto; }
+.container p,
+.container ul,
+.container ol,
+.container blockquote,
+.container figure,
+.container h2,
+.container h3 {
+  max-width: 70ch;
+  margin-inline: auto;
+}
+
+/* ensure main area stays spaced */
+main {
+  display: block;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
 
 /* ---------- Header ---------- */
 header {
@@ -56,7 +91,8 @@ header {
   text-align: center;
   background: var(--surface);
 }
-/* Apply all styling directly to h1 */
+
+/* Main title */
 h1 {
   font-family: var(--brand-heading);
   font-weight: 800;
@@ -64,6 +100,7 @@ h1 {
   margin: 0;
   color: var(--text);
 }
+
 /* Section titles */
 h2 {
   font-weight: 700;
@@ -75,25 +112,32 @@ h3 {
   font-weight: 700;
   font-size: 1.15rem;
 }
-/* Gold shimmer for the dragon icon only */
+
+/* Gold shimmer for the dragon icon */
 .dragon {
   color: var(--holiday-gold);
-  filter: drop-shadow(0 0 2px rgba(212,175,55,.65)) drop-shadow(0 0 6px rgba(212,175,55,.35));
+  filter: drop-shadow(0 0 2px rgba(212,175,55,.65))
+          drop-shadow(0 0 6px rgba(212,175,55,.35));
   animation: dragonShimmer 2.6s ease-in-out infinite;
 }
-   @keyframes dragonShimmer {
+
+@keyframes dragonShimmer {
   0%, 100% {
-    filter: drop-shadow(0 0 2px rgba(212,175,55,.55)) drop-shadow(0 0 6px rgba(212,175,55,.28));
+    filter: drop-shadow(0 0 2px rgba(212,175,55,.55))
+            drop-shadow(0 0 6px rgba(212,175,55,.28));
   }
   50% {
-    filter: drop-shadow(0 0 3px rgba(212,175,55,.85)) drop-shadow(0 0 10px rgba(212,175,55,.45));
+    filter: drop-shadow(0 0 3px rgba(212,175,55,.85))
+            drop-shadow(0 0 10px rgba(212,175,55,.45));
   }
 }
+
 @media (prefers-reduced-motion: reduce) {
   .dragon {
     animation: none;
   }
 }
+
 /* ---------- Navigation ---------- */
 nav {
   display: flex;
@@ -102,6 +146,7 @@ nav {
   gap: 0.5rem 1rem;
   margin-top: 0.5rem;
 }
+
 nav a {
   color: var(--accent-deep);
   text-decoration: none;
@@ -109,38 +154,46 @@ nav a {
   border-radius: 999px;
   transition: background-color 160ms ease, transform 120ms ease, color 120ms ease;
 }
+
 nav a:hover,
 nav a:focus {
   text-decoration: underline;
   background: rgba(62, 87, 75, 0.08);
   transform: translateY(-1px);
 }
+
 nav a[aria-current="page"] {
   background: var(--accent);
   color: #fff;
   font-weight: 600;
   box-shadow: 0 0 0 2px rgba(62, 87, 75, 0.08) inset, var(--shadow);
 }
+
 /* ---------- Typography & Lists ---------- */
 p, ul, ol, blockquote, figure {
   margin-block: var(--space-4);
 }
+
 ul {
   list-style: disc;
   padding-left: 1.25rem;
 }
+
 ul ul {
   list-style: circle;
   padding-left: 1.25rem;
 }
+
 a {
   color: var(--accent-deep);
   text-decoration: underline;
 }
+
 a:hover,
 a:focus {
   color: var(--accent);
 }
+
 /* ---------- Figures & Quotes ---------- */
 figure {
   margin: var(--space-6) auto;
@@ -151,6 +204,7 @@ figure {
   box-shadow: var(--shadow);
   border: 1px solid rgba(62, 87, 75, 0.12);
 }
+
 figure img {
   display: block;
   max-width: min(100%, 1200px);
@@ -159,35 +213,37 @@ figure img {
   margin: 0 auto;
   box-shadow: 0 8px 24px rgba(47, 58, 52, 0.12);
 }
+
 figcaption {
   margin-top: 0.75rem;
   font-size: 0.95rem;
   color: var(--accent-deep);
 }
+
 .figure-holiday {
   background: var(--holiday-cream); /* Used on index.html */
   border: 1px solid rgba(212, 175, 55, 0.35);
 }
+
 .img-gold-border {
   border: 6px solid var(--holiday-gold);
   border-radius: 12px;
 }
-.intro-landscape .img-gold-border {
-  max-width: 100%;
-  height: auto;
-}
+
 blockquote {
   padding: var(--space-4);
   border-left: 4px solid var(--accent);
   background: rgba(141, 163, 166, 0.10);
   border-radius: 0 var(--radius) var(--radius) 0;
 }
+
 cite {
   display: block;
   margin-top: 0.5rem;
   font-weight: 500;
   color: var(--accent);
 }
+
 /* ---------- Forms (FizzBuzz only) ---------- */
 .form-grid {
   display: grid;
@@ -195,15 +251,18 @@ cite {
   max-width: 640px;
   margin-inline: auto;
 }
+
 .field {
   display: flex;
   flex-direction: column;
   margin-bottom: var(--space-4);
 }
+
 .field label {
   margin-bottom: 0.5rem;
   font-weight: 600;
 }
+
 .field input {
   padding: 0.6rem 0.75rem;
   border: 2px solid var(--holiday-gold);
@@ -213,12 +272,14 @@ cite {
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   transition: border-color .2s ease, box-shadow .2s ease;
 }
+
 .field input:focus {
   outline: none;
   border-color: var(--accent);
   box-shadow: 0 0 6px rgba(212,175,55,0.5);
 }
-/* ---------- Buttons (used for dark mode toggle and FizzBuzz) ---------- */
+
+/* ---------- Buttons ---------- */
 button {
   padding: 0.55rem 0.95rem;
   border-radius: 999px;
@@ -229,10 +290,12 @@ button {
   cursor: pointer;
   box-shadow: var(--shadow);
 }
+
 button:hover,
 button:focus {
   background: var(--accent-deep);
 }
+
 /* ---------- Footer ---------- */
 footer {
   padding: 2rem 0;
@@ -241,13 +304,45 @@ footer {
   border-top: 4px solid var(--accent);
   background-color: var(--bg-grad-1);
 }
+
 footer p {
   font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 1rem;
 }
+
 footer a {
   color: var(--accent-deep);
   text-decoration: none;
   margin: 0 0.3rem;
+}
+
+/* ---------- Dark Theme ---------- */
+.dark-theme {
+  --bg-grad-1: #2F3A34;
+  --bg-grad-2: #3E574B;
+  --bg-grad-3: #2F3A34;
+  --surface: #3E574B;
+  --text: #F7EAD9;
+  --accent: #8DA3A6;
+  --accent-deep: #FFF8DC;
+  --holiday-gold: #D4AF37;
+  background-color: var(--bg-grad-1);
+  color: var(--text);
+}
+
+.dark-theme header,
+.dark-theme footer {
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+.dark-theme nav a[aria-current="page"] {
+  background: var(--holiday-gold);
+  color: #2F3A34;
+}
+
+/* ---------- Include Container Fix ---------- */
+[w3-include-html] {
+  display: contents;
 }
