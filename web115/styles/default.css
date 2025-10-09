@@ -49,18 +49,32 @@ header {
   text-align: center;
   background: var(--surface);
 }
-.site-title {
+/* Apply all styling directly to h1 */
+h1 {
   font-family: var(--brand-heading);
   font-weight: 800;
   font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
   margin: 0;
+  color: var(--text);
 }
+/* Section titles */
+h2 {
+  font-weight: 700;
+  font-size: clamp(1.3rem, 1.05rem + 1.2vw, 1.9rem);
+}
+
+/* Subsection titles */
+h3 {
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+/* Gold shimmer for the dragon icon only */
 .dragon {
   color: var(--holiday-gold);
   filter: drop-shadow(0 0 2px rgba(212,175,55,.65)) drop-shadow(0 0 6px rgba(212,175,55,.35));
   animation: dragonShimmer 2.6s ease-in-out infinite;
 }
-@keyframes dragonShimmer {
+   @keyframes dragonShimmer {
   0%, 100% {
     filter: drop-shadow(0 0 2px rgba(212,175,55,.55)) drop-shadow(0 0 6px rgba(212,175,55,.28));
   }
@@ -72,24 +86,6 @@ header {
   .dragon {
     animation: none;
   }
-}
-/* ---------- Headings ---------- */
-h1, h2, h3 {
-  font-family: var(--brand-heading);
-  line-height: 1.2;
-  margin: 0 0 var(--space-4);
-}
-h1 {
-  font-weight: 800;
-  font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
-}
-h2 {
-  font-weight: 700;
-  font-size: clamp(1.3rem, 1.05rem + 1.2vw, 1.9rem);
-}
-h3 {
-  font-weight: 700;
-  font-size: 1.15rem;
 }
 /* ---------- Navigation ---------- */
 nav {
