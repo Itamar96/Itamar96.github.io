@@ -1,61 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Include reusable head -->
-<div w3-include-html="components/head.html"></div>
+
+<!-- 🧠 Include reusable head section and send page title variable -->
+<div w3-include-html="components/head.html"
+     w3-include-html-var-pagetitle="Itamar Castillo’s Iridescent Cinderwyrm • Home"></div>
+
 <body>
-<!-- Include reusable header -->
+  <!-- 🐉 Include header -->
   <div w3-include-html="components/header.html"></div>
 
-  <!-- Include reusable navigation -->
+  <!-- 🧭 Include navigation -->
   <div w3-include-html="components/nav.html"></div>
+
+  <!-- 🌿 Main content -->
   <main>
-    <!-- Full-width band + centered content column -->
-    <section class="intro-band">
-      <div class="container flow">
-        <h2>Welcome</h2>
-        <p>
-          This site presents my coursework and highlights my evolving skills in accessible, standards-based web development. It also introduces my sample massage brand,
-          <strong>Iridescent Cinderwyrm Bodywork</strong>. Please use the menu above to explore my work.
-        </p>
+    <section>
+      <h2>Welcome</h2>
+      <p>
+        Welcome to <strong>Iridescent Cinderwyrm Bodywork</strong> — a sample professional brand site created by
+        <strong>Itamar Castillo</strong> as part of the <strong>WEB115</strong> course.
+      </p>
 
-        <figure class="figure-holiday">
-          <picture>
-            <source type="image/webp"
-              srcset="images/hiking_portrait_600w.webp 600w, images/hiking_portrait_800w.webp 800w, images/hiking_portrait_1200w.webp 1200w"
-              sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-            <source type="image/jpeg"
-              srcset="images/hiking_portrait_600w.jpg 600w, images/hiking_portrait_800w.jpg 800w, images/hiking_portrait_1200w.jpg 1200w"
-              sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-            <img class="img-gold-border intro-landscape"
-              src="images/hiking_portrait_800w.jpg"
-              width="800" height="1067"
-              alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle." />
-          </picture>
-          <figcaption>Exploring Colorado’s alpine trails, 2025.</figcaption>
-        </figure>
+      <p>
+        This website demonstrates clean, accessible design and semantic structure using HTML5 and CSS.
+        Each page shares a consistent header, navigation, and footer — all built using reusable components
+        for maintainability and simplicity.
+      </p>
 
-        <blockquote>
-          If I have seen further it is by standing on the shoulders of giants.
-          <cite>— Isaac Newton</cite>
-        </blockquote>
-      </div>
+      <h3>About This Site</h3>
+      <ul>
+        <li><strong>Introduction:</strong> Learn more about my background and studies.</li>
+        <li><strong>Contract:</strong> Acknowledgment of WEB115 course policies.</li>
+        <li><strong>Brand Guide:</strong> Design principles, color palette, and typography for Iridescent Cinderwyrm Bodywork.</li>
+        <li><strong>Fizz Buzz 0:</strong> A JavaScript-powered mini exercise demonstrating dynamic output.</li>
+      </ul>
+
+      <blockquote>
+        <em>“Excellence is not a skill, it’s an attitude.”</em><br />
+        — Ralph Marston
+      </blockquote>
     </section>
   </main>
 
-  <!-- Include reusable footer -->
+  <!-- 🪶 Include footer -->
   <div w3-include-html="components/footer.html"></div>
 
-  <!-- Include the HTMLInclude script -->
+  <!-- ⚙️ Include HTMLInclude script -->
   <script src="https://cdn.jsdelivr.net/gh/Paul-Browne/HTMLInclude/include.min.js"></script>
   <script>includeHTML();</script>
 
+  <!-- 🌗 Optional Dark Mode Script -->
   <script>
-    // 🌗 Dark Mode Toggle Script
-    const toggleButton = document.getElementById('theme-toggle');
-    toggleButton.addEventListener('click', () => {
-      document.body.classList.toggle('dark-theme');
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleButton = document.getElementById("theme-toggle");
+      if (toggleButton) {
+        toggleButton.addEventListener("click", () => {
+          document.body.classList.toggle("dark-theme");
+        });
+      }
     });
   </script>
 </body>
 </html>
-
