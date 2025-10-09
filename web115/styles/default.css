@@ -38,11 +38,18 @@ body {
   background-attachment: fixed;
   background-position: center;
 }
-.container {
-  max-width: var(--content-width);
-  margin: 0 auto;
-  padding: 0 var(--space-4);
-}
+.container { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-4); }
+
+/* optional band styling */
+.intro-band { background: var(--surface); padding: var(--space-6) 0; }
+
+/* nice vertical rhythm inside container */
+.flow > * + * { margin-top: var(--space-4); }
+
+/* readable line length */
+.container p, .container ul, .container ol, .container blockquote, .container figure, 
+.container h2, .container h3 { max-width: 70ch; margin-inline: auto; }
+
 /* ---------- Header ---------- */
 header {
   padding: var(--space-4) 0;
