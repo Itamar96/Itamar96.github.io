@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Introduction page for Itamar Castillo — Iridescent Cinderwyrm Bodywork" />
-  <title>Itamar Castillo’s Iridescent Cinderwyrm • Introduction</title>
+  <meta name="description" content="Fizz Buzz 0 interactive form and output for WEB115." />
+  <title>Itamar Castillo’s Iridescent Cinderwyrm • Fizz Buzz 0</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles/default.css" />
@@ -23,10 +23,10 @@
 
       <nav aria-label="Primary">
         <a href="index.html">Home</a>
-        <a href="introduction.html" aria-current="page">Introduction</a>
+        <a href="introduction.html">Introduction</a>
         <a href="contract.html">Contract</a>
         <a href="brand.html">Brand Guide</a>
-        <a href="fizzbuzz0.html">Fizz Buzz 0</a>
+        <a href="fizzbuzz0.html" aria-current="page">Fizz Buzz 0</a>
       </nav>
 
       <button id="theme-toggle" aria-label="Toggle dark mode">Toggle Dark Mode</button>
@@ -37,70 +37,39 @@
   <main>
     <section class="intro-band">
       <div class="container flow">
-        <h2>Introduction</h2>
-        <p><strong>IC — 31 August 2025</strong></p>
-
-        <figure class="figure-holiday">
-          <picture>
-            <source type="image/webp"
-              srcset="images/hiking_mountain_lake_600w.webp 600w, images/hiking_mountain_lake_800w.webp 800w, images/hiking_mountain_lake_1200w.webp 1200w"
-              sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-            <source type="image/jpeg"
-              srcset="images/hiking_mountain_lake_600w.jpg 600w, images/hiking_mountain_lake_800w.jpg 800w, images/hiking_mountain_lake_1200w.jpg 1200w"
-              sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-            <img class="img-gold-border intro-landscape"
-              src="images/hiking_mountain_lake_800w.jpg"
-              width="800" height="1063"
-              alt="Hiker above a serene mountain lake with pines and ridgelines in the distance" />
-          </picture>
-          <figcaption>Grounded in nature, inspired to heal. Colorado 2025.</figcaption>
-        </figure>
-
+        <h2>Fizz Buzz 0</h2>
         <p>
-          Hello, my name is <strong>Itamar Castillo</strong>. I am in my final year of study as a Software Developer. I enjoy music, hiking, and fitness. I am using this site to practice web skills and to present a sample massage brand for the class.
+          Welcome to <strong>Iridescent Cinderwyrm Bodywork</strong>.
+          Enter your name below and receive a personalized greeting along with a FizzBuzz output from 1 to 125.
         </p>
 
-        <ul>
-          <li>
-            <strong>Personal Background:</strong><br />
-            I’ve always carried a blend of interests: on one side, communication and health, and on the other, technology and problem-solving. This unique combination shapes how I approach challenges with creativity, persistence, and an eagerness to keep learning.
-          </li>
-          <li>
-            <strong>Academic Background:</strong><br />
-            As I complete my Software Development program, I’ve been able to build a strong foundation in programming, systems, and project-based work. My courses are helping me refine both my technical and professional skills, preparing me for real-world challenges in the tech field.
-          </li>
-          <li>
-            <strong>Courses I’m Taking – Why:</strong>
-            <ul>
-              <li><strong>CSC 249</strong>: Data Structures &amp; Algorithms – Strengthen my problem-solving and coding efficiency.</li>
-              <li><strong>CTS 118</strong>: IS Professional Communication – Build professional communication skills essential for teamwork and documentation.</li>
-              <li><strong>CTS 240</strong>: Project Management – Learn project organization, leadership, and collaboration for software projects in industry.</li>
-              <li><strong>WEB 115</strong>: Web Markup and Scripting – Sharpen web development skills and gain more confidence in creating user-friendly websites.</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Primary Computer:</strong>
-            <ul>
-              <li><strong>Device</strong>: Apple MacBook Pro (2017)</li>
-              <li><strong>OS</strong>: macOS</li>
-              <li><strong>Type</strong>: Laptop</li>
-              <li><strong>Location</strong>: Home</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Interesting Item to Remember Me By:</strong><br />
-            I enjoy exploring new hiking trails and challenging myself physically. Being outdoors keeps me balanced and gives me the energy I need to stay focused on my goals.
-          </li>
-          <li>
-            <strong>Something I’d Like to Share:</strong><br />
-            One of my biggest takeaways from this journey is that technology becomes less intimidating the more you explore it. I’ve grown from just using tools to actually building and understanding them.
-          </li>
-        </ul>
+        <form id="name-form" aria-describedby="form-hint" class="form-grid">
+          <div class="field">
+            <label for="first_name">First Name</label>
+            <input id="first_name" name="first_name" type="text" placeholder="Enter your first name" required autocomplete="given-name" maxlength="20" />
+          </div>
 
-        <blockquote>
-          Strength does not come from physical capacity. It comes from an indomitable will.
-          <cite>— Mahatma Gandhi</cite>
-        </blockquote>
+          <div class="field">
+            <label for="middle_initial">Middle Initial <span class="muted">(optional)</span></label>
+            <input id="middle_initial" name="middle_initial" type="text" placeholder="M" maxlength="1" pattern="[A-Za-z]" title="One letter only" autocomplete="additional-name" />
+          </div>
+
+          <div class="field">
+            <label for="last_name">Last Name</label>
+            <input id="last_name" name="last_name" type="text" placeholder="Enter your last name" required autocomplete="family-name" maxlength="20" />
+          </div>
+
+          <div class="field">
+            <button type="submit" class="btn btn-brand">Greet Me</button>
+          </div>
+        </form>
+
+        <p id="form-hint" class="muted">
+          Middle initial is optional. First and last name are required (max 20 characters each).
+        </p>
+
+        <h3>FizzBuzz Output (1–125)</h3>
+        <ol id="datas" aria-live="polite"></ol>
       </div>
     </section>
   </main>
@@ -120,7 +89,10 @@
     </div>
   </footer>
 
+  <!-- Scripts -->
+  <script src="scripts/fizzbuzz.js" defer></script>
   <script>
+    // 🌗 Dark Mode Toggle Script
     const toggleButton = document.getElementById('theme-toggle');
     toggleButton.addEventListener('click', () => {
       document.body.classList.toggle('dark-theme');
