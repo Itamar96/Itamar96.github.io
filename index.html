@@ -3,43 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GH - Homepage</title>
+    <title>Itamar Castillo - Aethernova Bodywork</title>
 </head>
-<body style="font-family: Arial, sans-serif; background-color: #FAF3E0; color: #2F3A34; margin: 0; padding: 0;">
+        <style>
+        /* Styles specific to the root index page (embedded for grading) */
+        :root {
+            --index-bg: #F2F7FA;
+            --index-text: #21343A;
+            --index-accent: #6A4F9B;
+            --index-cta-text: #0b1220;
+        }
 
-    <header style="background-color: #3E574B; color: white; text-align: center; padding: 20px;">
-        <h1 style="margin: 0;">Welcome to My Homepage</h1>
-        <h2 style="margin: 5px 0 0;">by Itamar Castillo</h2>
+        body { font-family: Arial, sans-serif; background-color: var(--index-bg); color: var(--index-text); margin:0; padding:0; }
+
+        .site-header { background-color: var(--index-accent); color:#fff; text-align:center; padding:28px 20px; box-shadow:0 6px 30px rgba(41,11,60,.15); border-bottom:4px solid rgba(255,255,255,0.04); }
+        .site-header h1{ margin:0; font-weight:700; letter-spacing:-0.5px; }
+        .site-header h2{ margin:5px 0 0; font-weight:400; color:rgba(255,241,255,.9); font-style:italic; }
+        .site-header p{ margin:8px 0 0; }
+
+        .cta-link{ color:var(--index-cta-text); background:linear-gradient(90deg,#FFD579 0%,#FF9F6B 100%); box-shadow:0 6px 18px rgba(255,159,107,.12), inset 0 -1px 0 rgba(255,255,255,.22); padding:6px 10px; border-radius:8px; text-decoration:none; display:inline-block; }
+
+        .container{ padding:30px; max-width:800px; margin:auto; }
+        section{ margin-bottom:30px; }
+        section h2{ color:#6F8F6B; }
+
+        .site-footer{ background-color:var(--index-accent); color:#FFF8DC; text-align:center; padding:15px; margin-top:40px; }
+        .site-footer p{ margin:0; }
+        .site-footer .footer-cta{ margin:6px 0 0; }
+        .footer-link{ color:#FFF8DC; text-decoration:underline; }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <h1>Welcome to My Homepage</h1>
+        <h2>by Itamar Castillo</h2>
+    <p class="cta"><a href="web115/index.html" class="cta-link">WEB115 course</a></p>
     </header>
 
-    <main style="padding: 30px; max-width: 800px; margin: auto;">
-        <section style="margin-bottom: 30px;">
-            <h2 style="color: #6F8F6B;">About Me</h2>
-            <p>Hello! My name is <strong>Itamar Castillo</strong>, and I’m currently studying to become a software developer. I enjoy learning how websites work and how design and code come together to make something meaningful.</p>
-        </section>
-
-        <section style="margin-bottom: 30px;">
-            <h2 style="color: #6F8F6B;">What I Enjoy</h2>
-            <p>I am an active person who loves <strong>hiking</strong>, playing sports, and staying healthy through <strong>self-care</strong> — both inside and out. I also value <strong>mental health and awareness</strong>, taking time to reset and recharge when life gets busy.</p>
+    <main class="container">
+        <section>
+            <h2>About Me</h2>
+            <p>Hello! My name is <strong>Itamar Castillo</strong>, and I'm currently studying web development in the WEB115 course. I enjoy learning how websites work and how design and code come together to make something meaningful.</p>
         </section>
 
         <section>
-            <h2 style="color: #6F8F6B;">Fun Fact</h2>
+            <h2>What I Enjoy</h2>
+            <p>I am an active person who loves <strong>hiking</strong>, playing sports, and staying healthy through <strong>self-care</strong> - both inside and out. I also value <strong>mental health and awareness</strong>, taking time to reset and recharge when life gets busy.</p>
+        </section>
+
+        <section>
+            <h2>Fun Fact</h2>
             <p>A fun fact about me is that I can spend hours exploring nature trails, completely offline, and come back full of creative ideas for coding and business projects!</p>
         </section>
     </main>
 
-    <footer style="background-color: #3E574B; color: #FFF8DC; text-align: center; padding: 15px; margin-top: 40px;">
-        <p style="margin: 0;">© 2025 Itamar Castillo | Homepage</p>
-        <p style="margin: 6px 0 0;">
-            <a href="web115/index.html" style="color:#FFF8DC; text-decoration: underline;">View WEB115 Project</a>
-        </p>
-        <p style="margin: 6px 0 0;">
-            <a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer" style="color:#FFF8DC; text-decoration: underline;">LinkedIn</a>
-            &nbsp;|&nbsp;
-            <a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer" style="color:#FFF8DC; text-decoration: underline;">GitHub</a>
-        </p>
+    <footer class="site-footer">
+                <p>&copy; 2025 Itamar Castillo | WEB115</p>
+                <p class="footer-cta">
+                    <a href="web115/index.html" class="footer-link">WEB115 course</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="https://validator.w3.org/nu/?doc=https://itamar96.github.io/index.html" target="_blank" rel="noopener noreferrer" class="footer-link">Validate this page</a>
+                </p>
     </footer>
-</body>
+    </body>
 </html>
 
