@@ -1,1 +1,62 @@
+/* Styles specific to the root index page */
+
+:root {
+  /* Distinct palette for root index (different from WEB115) */
+  --index-bg: #F2F7FA;      /* a cool pale blue */
+  --index-text: #21343A;    /* deep slate */
+  --index-accent: #6A4F9B;  /* muted purple accent */
+  --index-cta-text: #0b1220;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--index-bg);
+  color: var(--index-text);
+  margin: 0;
+  padding: 0;
+}
+
+.site-header {
+  background-color: var(--index-accent);
+  color: #ffffff;
+  text-align: center;
+  padding: 28px 20px;
+  box-shadow: 0 6px 30px rgba(41, 11, 60, 0.15);
+  border-bottom: 4px solid rgba(255,255,255,0.04);
+}
+
+.site-header h1 { margin: 0; font-weight: 700; letter-spacing: -0.5px; }
+.site-header h2 { margin: 5px 0 0; font-weight: 400; color: rgba(255,241,255,0.9); font-style: italic; }
+.site-header p { margin: 8px 0 0; }
+
+.cta-link {
+  color: var(--index-cta-text);
+  background: linear-gradient(90deg, #FFD579 0%, #FF9F6B 100%);
+  box-shadow: 0 6px 18px rgba(255,159,107,0.12), inset 0 -1px 0 rgba(255,255,255,0.22);
+  padding: 6px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.container {
+  padding: 30px;
+  max-width: 800px;
+  margin: auto;
+}
+
+section { margin-bottom: 30px; }
+section h2 { color: #6F8F6B; }
+
+.site-footer {
+  background-color: var(--index-accent);
+  color: #FFF8DC;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+}
+
+.site-footer p { margin: 0; }
+.site-footer .footer-cta { margin: 6px 0 0; }
+.footer-link { color: #FFF8DC; text-decoration: underline; }
 
