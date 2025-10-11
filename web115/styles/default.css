@@ -448,3 +448,4 @@ footer a {
 
 /* Img safety: ensure images never overflow their containers */
 img { max-width:100%; height:auto; display:block }
+
