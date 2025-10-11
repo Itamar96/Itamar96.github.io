@@ -14,67 +14,97 @@
       --link-color: #FFE87C;  /* brighter gold-yellow for contrast on purple */
       --link-hover: #FFD04D;  /* slightly deeper for hover */
       --focus-ring: rgba(255, 232, 124, 0.65);
+      --footer-star-color: #FFE87C; /* default star color */
+      --footer-star-size: 0.95rem;   /* star size (can be changed easily) */
     }
 
     body {
-      font-family: Arial, sans-serif;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       background-color: var(--index-bg);
       color: var(--index-text);
       margin: 0;
-      padding: 0;
+      padding: 28px 18px 60px;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      background-image: radial-gradient(circle at 10% 10%, rgba(106,79,155,0.04) 0%, transparent 20%), linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.85));
     }
 
     .site-header {
-      background-color: var(--index-accent);
+      background: linear-gradient(135deg, var(--index-accent) 0%, #5a3f8a 100%);
       color: #fff;
       text-align: center;
-      padding: 28px 20px;
-      box-shadow: 0 6px 30px rgba(41, 11, 60, .15);
-      border-bottom: 4px solid rgba(255, 255, 255, 0.04);
+      padding: 36px 20px;
+      box-shadow: 0 10px 30px rgba(41, 11, 60, .18), inset 0 -2px 0 rgba(255,255,255,0.02);
+      border-radius: 12px;
+      margin: 0 auto 18px;
+      max-width: 980px;
     }
-    .site-header h1 { margin: 0; font-weight: 700; letter-spacing: -0.5px; }
-    .site-header h2 { margin: 5px 0 0; font-weight: 400; color: rgba(255,241,255,.9); font-style: italic; }
-    .site-header p { margin: 8px 0 0; }
+    .site-header h1 { margin: 0; font-weight: 800; letter-spacing: -0.6px; font-size: 1.6rem; }
+    .site-header h2 { margin: 6px 0 0; font-weight: 400; color: rgba(255,241,255,.92); font-style: italic; font-size: 1rem; }
+    .site-header p { margin: 12px 0 0; }
 
     .cta-link {
       color: var(--index-cta-text);
       background: linear-gradient(90deg,#FFD579 0%,#FF9F6B 100%);
-      box-shadow: 0 6px 18px rgba(255,159,107,.12), inset 0 -1px 0 rgba(255,255,255,.22);
-      padding: 6px 10px;
-      border-radius: 8px;
+      box-shadow: 0 10px 22px rgba(106,55,24,0.12), inset 0 -1px 0 rgba(255,255,255,.18);
+      padding: 10px 14px;
+      border-radius: 12px;
       text-decoration: none;
       display: inline-block;
+      font-weight:700;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .cta-link:hover { transform: translateY(-3px); box-shadow: 0 16px 30px rgba(106,55,24,0.14); }
     }
 
-    .container { padding: 30px; max-width: 800px; margin: auto; }
-    section { margin-bottom: 30px; }
-    section h3 { color: #6F8F6B; margin-top: 0; }
+  .container { padding: 32px; max-width: 980px; margin: 0 auto; background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.92)); border-radius:14px; box-shadow: 0 8px 30px rgba(25,25,30,0.06); margin-top: 10px; }
+  section { margin-bottom: 26px; }
+  section h3 { color: #3a6046; margin-top: 0; font-size:1.125rem; }
+  p { line-height:1.6; }
 
     /* Footer styling */
     .site-footer {
-      background-color: var(--index-accent);
+      background: linear-gradient(180deg, #543874, #4a2f66);
       color: #FFF8DC;
       text-align: center;
-      padding: 15px;
-      margin-top: 40px;
+      padding: 20px 12px;
+      margin-top: 34px;
+      border-radius: 10px;
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .site-footer p { margin: 0; }
-    .site-footer .footer-cta { margin: 6px 0 0; }
+    .site-footer .footer-cta { margin: 10px 0 0; }
 
     .footer-link {
       color: var(--link-color);
       text-decoration: none;
       font-weight: 600;
-      transition: color 0.25s ease, text-shadow 0.25s ease;
+      transition: color 0.25s ease, text-shadow 0.25s ease, transform .12s ease;
     }
     .footer-link:hover {
       color: var(--link-hover);
       text-shadow: 0 0 6px rgba(255,255,200,0.6);
+      transform: translateY(-2px);
     }
     .footer-link:focus-visible {
       outline: 3px solid transparent;
       box-shadow: 0 0 0 3px var(--focus-ring);
       border-radius: 6px;
+    }
+    /* footer list separators (visual only) */
+    .footer-links { display:inline-flex; gap:12px; padding:0; margin:6px 0 0; }
+    .footer-links li { list-style:none; margin:0; }
+    .footer-links li:not(:last-child)::after {
+      content: '✶';
+      color: var(--footer-star-color);
+      margin-left: 6px;
+      margin-right: 6px;
+      font-size: var(--footer-star-size);
+      vertical-align: middle;
+      opacity: 0.98;
     }
   </style>
 </head>
@@ -105,15 +135,17 @@
 
   <footer class="site-footer">
     <p>&copy; 2025 Aethernova Bodywork</p>
-    <p class="footer-cta">
-      <a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a> ✶
-      <a href="https://itamar96.github.io/index.html" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub.io</a> ✶
-      <a href="https://www.codecademy.com/profiles/Itamar96" target="_blank" rel="noopener noreferrer" class="footer-link">Codecademy</a> ✶
-      <a href="https://www.freecodecamp.org/itamar96" target="_blank" rel="noopener noreferrer" class="footer-link">freeCodeCamp</a> ✶
-      <a href="https://jsfiddle.net/u/Itamar96/fiddles/" target="_blank" rel="noopener noreferrer" class="footer-link">JSFiddle</a> ✶
-      <a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a> ✶
-      <a href="https://validator.w3.org/nu/?doc=https://itamar96.github.io/index.html" target="_blank" rel="noopener noreferrer" class="footer-link">Validate this page</a>
-    </p>
+    <nav aria-label="Footer links">
+      <ul class="footer-links" style="list-style:none;margin:8px 0;padding:0;display:inline-flex;gap:10px;flex-wrap:wrap;align-items:center;">
+        <li><a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
+        <li><a href="https://itamar96.github.io/index.html" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub.io</a></li>
+        <li><a href="https://www.codecademy.com/profiles/Itamar96" target="_blank" rel="noopener noreferrer" class="footer-link">Codecademy</a></li>
+        <li><a href="https://www.freecodecamp.org/itamar96" target="_blank" rel="noopener noreferrer" class="footer-link">freeCodeCamp</a></li>
+        <li><a href="https://jsfiddle.net/u/Itamar96/fiddles/" target="_blank" rel="noopener noreferrer" class="footer-link">JSFiddle</a></li>
+        <li><a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a></li>
+        <li><a href="https://validator.w3.org/nu/?doc=https://itamar96.github.io/index.html" target="_blank" rel="noopener noreferrer" class="footer-link">Validate this page</a></li>
+      </ul>
+    </nav>
   </footer>
 </body>
 </html>
