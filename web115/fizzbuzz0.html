@@ -6,6 +6,7 @@
   <meta name="description" content="Fizz Buzz 0 interactive form and output for WEB115." />
   <!-- per-page title used by components/head.html -->
   <meta name="page-title" content="Itamar Castillo’s Iridescent Cinderwyrm • Fizz Buzz 0" />
+  
 </head>
 
 <body>
@@ -62,64 +63,5 @@
   <script src="scripts/fizzbuzz.js" defer></script>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<!-- standard head include -->
-<head>
-  <div w3-include-html="components/head.html" w3-include-html-var-pagetitle="Itamar Castillo’s Iridescent Cinderwyrm • Fizz Buzz 0"></div>
-<head>
-  <div w3-include-html="components/head.html" w3-include-html-var-pagetitle="Itamar Castillo’s Iridescent Cinderwyrm • Fizz Buzz 0"></div>
-</head>
-  <div w3-include-html="components/header.html"></div>
-  <div w3-include-html="components/nav.html"></div>
 
-  <!-- Main Content -->
-  <main id="main-content">
-    <section class="intro-band">
-      <div class="container flow">
-        <h2>Fizz Buzz 0</h2>
-        <p>
-          Welcome to <strong>Iridescent Cinderwyrm Bodywork</strong>.
-          Enter your name below and receive a personalized greeting along with a FizzBuzz output from 1 to 125.
-        </p>
 
-        <form id="name-form" aria-describedby="form-hint" class="form-grid">
-          <div class="field">
-            <label for="first_name">First Name</label>
-            <input id="first_name" name="first_name" type="text" placeholder="Enter your first name" required autocomplete="given-name" maxlength="20" />
-          </div>
-
-          <div class="field">
-            <label for="middle_initial">Middle Initial <span class="muted">(optional)</span></label>
-            <input id="middle_initial" name="middle_initial" type="text" placeholder="M" maxlength="1" pattern="[A-Za-z]" title="One letter only" autocomplete="additional-name" />
-          </div>
-
-          <div class="field">
-            <label for="last_name">Last Name</label>
-            <input id="last_name" name="last_name" type="text" placeholder="Enter your last name" required autocomplete="family-name" maxlength="20" />
-          </div>
-
-          <div class="field">
-            <button type="submit" class="btn btn-brand">Greet Me</button>
-          </div>
-        </form>
-
-        <p id="form-hint" class="muted">
-          Middle initial is optional. First and last name are required (max 20 characters each).
-        </p>
-
-        <h3>FizzBuzz Output (1–125)</h3>
-        <ol id="datas" aria-live="polite"></ol>
-      </div>
-    </section>
-  </main>
-
-  </main>
-
-  <div w3-include-html="components/footer.html"></div>
-
-  <!-- Page-specific scripts -->
-  <script src="scripts/fizzbuzz.js" defer></script>
-
-</body>
-</html>
