@@ -1,348 +1,151 @@
-/* ----------------------------------------
-   Iridescent Cinderwyrm Bodywork — Desert Matcha Theme
-   Cleaned, optimized for HTML includes, and annotated
----------------------------------------- */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Itamar Castillo - Aethernova Bodywork</title>
+  <style>
+    /* Styles specific to the root index page */
+    :root {
+      --index-bg: #F2F7FA;
+      --index-text: #21343A;
+      --index-accent: #6A4F9B;
+      --index-cta-text: #0b1220;
+      --link-color: #FFE87C;  /* brighter gold-yellow for contrast on purple */
+      --link-hover: #FFD04D;  /* slightly deeper for hover */
+      --focus-ring: rgba(255, 232, 124, 0.65);
+      --footer-star-color: #FFE87C; /* default star color */
+      --footer-star-size: 0.95rem;   /* star size (can be changed easily) */
+    }
 
-/* ---------- Base Tokens ---------- */
-:root {
-  /* Brand palette */
-  --bg-grad-1: #F7EAD9;
-  --bg-grad-2: #F7EAD9;
-  --bg-grad-3: #F7EAD9;
-  --surface: #FFFFFF;
-  --text: #2F3A34;
-  --accent: #6F8F6B;
-  --accent-deep: #3E574B;
-  --accent-soft: #8DA3A6;
-  --holiday-gold: #D4AF37;
-  --holiday-cream: #FFF8DC;
+    body {
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: var(--index-bg);
+      color: var(--index-text);
+      margin: 0;
+      padding: 28px 18px 60px;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      background-image: radial-gradient(circle at 10% 10%, rgba(106,79,155,0.04) 0%, transparent 20%), linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.85));
+    }
 
-  /* Typography */
-  --brand-heading: "Playfair Display", serif;
-  --brand-body: "Inter", sans-serif;
+    .site-header {
+      background: linear-gradient(135deg, var(--index-accent) 0%, #5a3f8a 100%);
+      color: #fff;
+      text-align: center;
+      padding: 36px 20px;
+      box-shadow: 0 10px 30px rgba(41, 11, 60, .18), inset 0 -2px 0 rgba(255,255,255,0.02);
+      border-radius: 12px;
+      margin: 0 auto 18px;
+      max-width: 980px;
+    }
+    .site-header h1 { margin: 0; font-weight: 800; letter-spacing: -0.6px; font-size: 1.6rem; }
+    .site-header h2 { margin: 6px 0 0; font-weight: 400; color: rgba(255,241,255,.92); font-style: italic; font-size: 1rem; }
+    .site-header p { margin: 12px 0 0; }
 
-  /* Layout spacing */
-  --content-width: 960px;
-  --space-4: 1rem;
-  --space-6: 1.5rem;
-  --radius: 14px;
-  --shadow: 0 8px 30px rgba(47, 58, 52, 0.12);
-}
+    .cta-link {
+      color: var(--index-cta-text);
+      background: linear-gradient(90deg,#FFD579 0%,#FF9F6B 100%);
+      box-shadow: 0 10px 22px rgba(106,55,24,0.12), inset 0 -1px 0 rgba(255,255,255,.18);
+      padding: 10px 14px;
+      border-radius: 12px;
+      text-decoration: none;
+      display: inline-block;
+      font-weight:700;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .cta-link:hover { transform: translateY(-3px); box-shadow: 0 16px 30px rgba(106,55,24,0.14); }
+    }
 
-/* ---------- Smooth transitions ---------- */
-* {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
+  .container { padding: 32px; max-width: 980px; margin: 0 auto; background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.92)); border-radius:14px; box-shadow: 0 8px 30px rgba(25,25,30,0.06); margin-top: 10px; }
+  section { margin-bottom: 26px; }
+  section h3 { color: #3a6046; margin-top: 0; font-size:1.125rem; }
+  p { line-height:1.6; }
 
-/* ---------- Global Layout ---------- */
-body {
-  margin: 0;
-  font-family: var(--brand-body);
-  color: var(--text);
-  line-height: 1.6;
-  background-color: #F7EAD9; /* fallback for gradient load */
-  background: linear-gradient(var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
-  background-image: url("/web115/images/spa-bg.svg"); /* Used on index.html */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-}
+    /* Footer styling */
+    .site-footer {
+      background: linear-gradient(180deg, #543874, #4a2f66);
+      color: #FFF8DC;
+      text-align: center;
+      padding: 20px 12px;
+      margin-top: 34px;
+      border-radius: 10px;
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .site-footer p { margin: 0; }
+    .site-footer .footer-cta { margin: 10px 0 0; }
 
-.container {
-  max-width: var(--content-width);
-  margin: 0 auto;
-  padding: 0 var(--space-4);
-}
+    .footer-link {
+      color: var(--link-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.25s ease, text-shadow 0.25s ease, transform .12s ease;
+    }
+    .footer-link:hover {
+      color: var(--link-hover);
+      text-shadow: 0 0 6px rgba(255,255,200,0.6);
+      transform: translateY(-2px);
+    }
+    .footer-link:focus-visible {
+      outline: 3px solid transparent;
+      box-shadow: 0 0 0 3px var(--focus-ring);
+      border-radius: 6px;
+    }
+  /* footer list separators (visual only) */
+  .footer-links { display:inline-flex; gap:12px; padding:0; margin:6px 0 0; list-style:none; flex-wrap:wrap; align-items:center; }
+    .footer-links li { list-style:none; margin:0; }
+    .footer-links li:not(:last-child)::after {
+      content: '✶';
+      color: var(--footer-star-color);
+      margin-left: 6px;
+      margin-right: 6px;
+      font-size: var(--footer-star-size);
+      vertical-align: middle;
+      opacity: 0.98;
+    }
+  </style>
+</head>
+<body>
 
-/* optional band styling */
-.intro-band {
-  background: var(--surface);
-  padding: var(--space-6) 0;
-}
+  <header class="site-header">
+    <h1>Itamar Castillo — Aethernova Bodywork</h1>
+    <h2>by Aethernova Bodywork</h2>
+    <p class="cta"><a href="web115/index.html" class="cta-link">WEB115 course</a></p>
+  </header>
 
-/* vertical rhythm */
-.flow > * + * {
-  margin-top: var(--space-4);
-}
+  <main class="container">
+    <section>
+      <h3>About Me</h3>
+      <p>Hello! My name is <strong>Itamar Castillo</strong>, and I'm currently studying web development. I enjoy learning how websites work and how design and code come together to make something meaningful.</p>
+    </section>
 
-/* readable line length */
-.container p,
-.container ul,
-.container ol,
-.container blockquote,
-.container figure,
-.container h2,
-.container h3 {
-  max-width: 70ch;
-  margin-inline: auto;
-}
+    <section>
+      <h3>What I Enjoy</h3>
+      <p>I am an active person who loves <strong>hiking</strong>, playing sports, and staying healthy through <strong>self-care</strong>—both inside and out. I also value <strong>mental health and awareness</strong>, taking time to reset and recharge when life gets busy.</p>
+    </section>
 
-/* ensure main area stays spaced */
-main {
-  display: block;
-  padding-top: 1rem;
-  padding-bottom: 2rem;
-}
+    <section>
+      <h3>Fun Fact</h3>
+      <p>A fun fact about me is that I can spend hours exploring nature trails, completely offline, and come back full of creative ideas for coding and business projects!</p>
+    </section>
+  </main>
 
-/* ---------- Header ---------- */
-header {
-  padding: var(--space-4) 0;
-  text-align: center;
-  background: var(--surface);
-}
-
-/* Main title */
-h1 {
-  font-family: var(--brand-heading);
-  font-weight: 800;
-  font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
-  margin: 0;
-  color: var(--text);
-}
-
-/* Section titles */
-h2 {
-  font-weight: 700;
-  font-size: clamp(1.3rem, 1.05rem + 1.2vw, 1.9rem);
-}
-
-/* Subsection titles */
-h3 {
-  font-weight: 700;
-  font-size: 1.15rem;
-}
-
-/* Gold shimmer for the dragon icon */
-.dragon {
-  color: var(--holiday-gold);
-  filter: drop-shadow(0 0 2px rgba(212,175,55,.65))
-          drop-shadow(0 0 6px rgba(212,175,55,.35));
-  animation: dragonShimmer 2.6s ease-in-out infinite;
-}
-
-@keyframes dragonShimmer {
-  0%, 100% {
-    filter: drop-shadow(0 0 2px rgba(212,175,55,.55))
-            drop-shadow(0 0 6px rgba(212,175,55,.28));
-  }
-  50% {
-    filter: drop-shadow(0 0 3px rgba(212,175,55,.85))
-            drop-shadow(0 0 10px rgba(212,175,55,.45));
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .dragon {
-    animation: none;
-  }
-}
-
-/* ---------- Navigation ---------- */
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem 1rem;
-  margin-top: 0.5rem;
-}
-
-nav a {
-  color: var(--accent-deep);
-  text-decoration: none;
-  padding: 0.4rem 0.75rem;
-  border-radius: 999px;
-  transition: background-color 160ms ease, transform 120ms ease, color 120ms ease;
-}
-
-nav a:hover,
-nav a:focus {
-  text-decoration: underline;
-  background: rgba(62, 87, 75, 0.08);
-  transform: translateY(-1px);
-}
-
-nav a[aria-current="page"] {
-  background: var(--accent);
-  color: #fff;
-  font-weight: 600;
-  box-shadow: 0 0 0 2px rgba(62, 87, 75, 0.08) inset, var(--shadow);
-}
-
-/* ---------- Typography & Lists ---------- */
-p, ul, ol, blockquote, figure {
-  margin-block: var(--space-4);
-}
-
-ul {
-  list-style: disc;
-  padding-left: 1.25rem;
-}
-
-ul ul {
-  list-style: circle;
-  padding-left: 1.25rem;
-}
-
-a {
-  color: var(--accent-deep);
-  text-decoration: underline;
-}
-
-a:hover,
-a:focus {
-  color: var(--accent);
-}
-
-/* ---------- Figures & Quotes ---------- */
-figure {
-  margin: var(--space-6) auto;
-  text-align: center;
-  background: #fff;
-  border-radius: var(--radius);
-  padding: var(--space-4);
-  box-shadow: var(--shadow);
-  border: 1px solid rgba(62, 87, 75, 0.12);
-}
-
-figure img {
-  display: block;
-  max-width: min(100%, 1200px);
-  height: auto;
-  border-radius: 12px;
-  margin: 0 auto;
-  box-shadow: 0 8px 24px rgba(47, 58, 52, 0.12);
-}
-
-figcaption {
-  margin-top: 0.75rem;
-  font-size: 0.95rem;
-  color: var(--accent-deep);
-}
-
-.figure-holiday {
-  background: var(--holiday-cream); /* Used on index.html */
-  border: 1px solid rgba(212, 175, 55, 0.35);
-}
-
-.img-gold-border {
-  border: 6px solid var(--holiday-gold);
-  border-radius: 12px;
-}
-
-blockquote {
-  padding: var(--space-4);
-  border-left: 4px solid var(--accent);
-  background: rgba(141, 163, 166, 0.10);
-  border-radius: 0 var(--radius) var(--radius) 0;
-}
-
-cite {
-  display: block;
-  margin-top: 0.5rem;
-  font-weight: 500;
-  color: var(--accent);
-}
-
-/* ---------- Forms (FizzBuzz only) ---------- */
-.form-grid {
-  display: grid;
-  gap: var(--space-4);
-  max-width: 640px;
-  margin-inline: auto;
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: var(--space-4);
-}
-
-.field label {
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
-.field input {
-  padding: 0.6rem 0.75rem;
-  border: 2px solid var(--holiday-gold);
-  border-radius: 10px;
-  background: #fff;
-  font: inherit;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  transition: border-color .2s ease, box-shadow .2s ease;
-}
-
-.field input:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 6px rgba(212,175,55,0.5);
-}
-
-/* ---------- Buttons ---------- */
-button {
-  padding: 0.55rem 0.95rem;
-  border-radius: 999px;
-  font-weight: 600;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  box-shadow: var(--shadow);
-}
-
-button:hover,
-button:focus {
-  background: var(--accent-deep);
-}
-
-/* ---------- Footer ---------- */
-footer {
-  padding: 2rem 0;
-  margin-top: 3rem;
-  text-align: center;
-  border-top: 4px solid var(--accent);
-  background-color: var(--bg-grad-1);
-}
-
-footer p {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-footer a {
-  color: var(--accent-deep);
-  text-decoration: none;
-  margin: 0 0.3rem;
-}
-
-/* ---------- Dark Theme ---------- */
-.dark-theme {
-  --bg-grad-1: #2F3A34;
-  --bg-grad-2: #3E574B;
-  --bg-grad-3: #2F3A34;
-  --surface: #3E574B;
-  --text: #F7EAD9;
-  --accent: #8DA3A6;
-  --accent-deep: #FFF8DC;
-  --holiday-gold: #D4AF37;
-  background-color: var(--bg-grad-1);
-  color: var(--text);
-}
-
-.dark-theme header,
-.dark-theme footer {
-  background-color: var(--surface);
-  color: var(--text);
-}
-
-.dark-theme nav a[aria-current="page"] {
-  background: var(--holiday-gold);
-  color: #2F3A34;
-}
-
-/* ---------- Include Container Fix ---------- */
-[w3-include-html] {
-  display: contents;
-}
+  <footer class="site-footer">
+    <p>&copy; 2025 Aethernova Bodywork</p>
+    <nav aria-label="Footer links">
+  <ul class="footer-links">
+        <li><a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
+        <li><a href="https://itamar96.github.io/index.html" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub.io</a></li>
+        <li><a href="https://www.codecademy.com/profiles/Itamar96" target="_blank" rel="noopener noreferrer" class="footer-link">Codecademy</a></li>
+        <li><a href="https://www.freecodecamp.org/itamar96" target="_blank" rel="noopener noreferrer" class="footer-link">freeCodeCamp</a></li>
+        <li><a href="https://jsfiddle.net/u/Itamar96/fiddles/" target="_blank" rel="noopener noreferrer" class="footer-link">JSFiddle</a></li>
+        <li><a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a></li>
+        <li><a href="https://validator.w3.org/nu/?doc=https://itamar96.github.io/index.html" target="_blank" rel="noopener noreferrer" class="footer-link">Validate this page</a></li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+</html>
