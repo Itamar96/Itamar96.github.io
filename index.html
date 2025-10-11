@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Itamar Castillo - Aethernova Bodywork</title>
-</head>
-        <style>
+    <style>
         /* Styles specific to the root index page (embedded for grading) */
         :root {
             --index-bg: #F2F7FA;
@@ -27,6 +26,11 @@
         section{ margin-bottom:30px; }
         section h2{ color:#6F8F6B; }
 
+        /* Quick links strip */
+        .quick-links{ margin:14px 0; font-size:0.95rem; }
+        .quick-links a{ color:var(--index-accent); text-decoration:none; padding:0 6px; }
+        .quick-links .sep{ color:#7b7b7b; padding:0 6px; }
+
         .site-footer{ background-color:var(--index-accent); color:#FFF8DC; text-align:center; padding:15px; margin-top:40px; }
         .site-footer p{ margin:0; }
         .site-footer .footer-cta{ margin:6px 0 0; }
@@ -42,6 +46,22 @@
     </header>
 
     <main class="container">
+        <section class="quick-links" aria-label="Quick links">
+            <strong>Quick Links:</strong>
+            <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <span class="sep">|</span>
+            <a href="https://USERNAME.github.io/" target="_blank" rel="noopener noreferrer">GitHub.io</a>
+            <span class="sep">|</span>
+            <a href="https://itamar96.github.io/web115/" target="_blank" rel="noopener noreferrer">WEB115.io</a>
+            <span class="sep">|</span>
+            <a href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer">freeCodeCamp</a>
+            <span class="sep">|</span>
+            <a href="https://www.codecademy.com/" target="_blank" rel="noopener noreferrer">Codecademy</a>
+            <span class="sep">|</span>
+            <a href="https://jsfiddle.net/" target="_blank" rel="noopener noreferrer">JSFiddle</a>
+            <span class="sep">|</span>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </section>
         <section>
             <h2>About Me</h2>
             <p>Hello! My name is <strong>Itamar Castillo</strong>, and I'm currently studying web development in the WEB115 course. I enjoy learning how websites work and how design and code come together to make something meaningful.</p>
@@ -75,3 +95,4 @@
     </footer>
     </body>
 </html>
+
