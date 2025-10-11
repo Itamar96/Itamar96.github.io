@@ -3,63 +3,96 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="FizzBuzz demo for Iridescent Cinderwyrm Bodywork" />
+  <meta name="description" content="Fizz Buzz 0 interactive form and output for WEB115." />
   <title>Itamar Castillo’s Iridescent Cinderwyrm • Fizz Buzz 0</title>
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles/default.css" />
   <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
+  <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous" defer></script>
 </head>
-<body>
-  <div w3-include-html="components/header.html"></div>
-  <div w3-include-html="components/nav.html"></div>
 
-  <!-- Main Content -->
-  <main id="main-content">
-    <section class="intro-band">
-      <div class="container flow">
-        <h2>Fizz Buzz 0</h2>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="site-title">
+        <span class="line-1">Itamar Castillo <span class="dot" aria-hidden="true">•</span> Iridescent Cinderwyrm</span>
+        <span class="line-2 dragon">WEB115 <span aria-hidden="true">🐉</span></span>
+      </h1>
+      <nav aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="introduction.html">Introduction</a>
+        <a href="contract.html">Contract</a>
+        <a href="brand.html">Brand Guide</a>
+        <a href="fizzbuzz0.html" aria-current="page">Fizz Buzz 0</a>
+      </nav>
+      <button id="theme-toggle" aria-label="Toggle dark mode">Toggle Dark Mode</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section aria-labelledby="fb0-heading">
+        <h2 id="fb0-heading">Fizz Buzz 0</h2>
+
+        <h3 id="greeting" aria-live="polite">Welcome to Iridescent Cinderwyrm Bodywork!</h3>
         <p>
-          Welcome to <strong>Iridescent Cinderwyrm Bodywork</strong>.
-          Enter your name below and receive a personalized greeting along with a FizzBuzz output from 1 to 125.
+          Welcome to <strong>Iridescent Cinderwyrm Bodywork</strong>. Enter your name below and receive a personalized greeting along with a FizzBuzz output from 1 to 125.
         </p>
 
-        <form id="name-form" aria-describedby="form-hint" class="form-grid">
+        <form id="name-form" class="form-grid" aria-describedby="form-hint">
           <div class="field">
-            <label for="first_name">First Name</label>
-            <input id="first_name" name="first_name" type="text" placeholder="Enter your first name" required autocomplete="given-name" maxlength="20" />
+            <label for="first-name">First Name</label>
+            <input id="first-name" name="firstName" type="text" required maxlength="20" autocomplete="given-name" />
           </div>
 
           <div class="field">
-            <label for="middle_initial">Middle Initial <span class="muted">(optional)</span></label>
-            <input id="middle_initial" name="middle_initial" type="text" placeholder="M" maxlength="1" pattern="[A-Za-z]" title="One letter only" autocomplete="additional-name" />
+            <label for="middle-initial">Middle Initial <span class="muted">(optional)</span></label>
+            <input id="middle-initial" name="middleInitial" type="text" maxlength="1" pattern="[A-Za-z]" />
           </div>
 
           <div class="field">
-            <label for="last_name">Last Name</label>
-            <input id="last_name" name="last_name" type="text" placeholder="Enter your last name" required autocomplete="family-name" maxlength="20" />
+            <label for="last-name">Last Name</label>
+            <input id="last-name" name="lastName" type="text" required maxlength="20" autocomplete="family-name" />
           </div>
 
-          <div class="field">
+          <div class="actions">
             <button type="submit" class="btn btn-brand">Greet Me</button>
           </div>
         </form>
-
-        <p id="form-hint" class="muted">
+        <p id="form-hint" class="small muted">
           Middle initial is optional. First and last name are required (max 20 characters each).
         </p>
 
         <h3>FizzBuzz Output (1–125)</h3>
         <ol id="datas" aria-live="polite"></ol>
-      </div>
-    </section>
+      </section>
+    </div>
   </main>
 
-  <div w3-include-html="components/footer.html"></div>
+  <footer>
+    <div class="container">
+      <p class="footer-links">
+        <a href="https://itamar96.github.io" target="_blank" rel="noopener noreferrer">Portfolio Site</a> ✶
+        <a href="https://itamar96.github.io/web115/" target="_blank" rel="noopener noreferrer">WEB115 Course Site</a> ✶
+        <a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer">GitHub</a> ✶
+        <a href="https://www.codecademy.com/profiles/Itamar96" target="_blank" rel="noopener noreferrer">Codecademy</a> ✶
+        <a href="https://jsfiddle.net/u/Itamar96/fiddles/" target="_blank" rel="noopener noreferrer">JSFiddle</a> ✶
+        <a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </p>
+      <p class="meta"><em>Page built by Iridescent Cinderwyrm Design</em></p>
+    </div>
+  </footer>
 
-  <!-- Page-specific scripts -->
   <script src="scripts/fizzbuzz.js" defer></script>
-
+  <script>
+    const toggleButton = document.getElementById('theme-toggle');
+    toggleButton.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+    });
+  </script>
 </body>
 </html>
+
 
