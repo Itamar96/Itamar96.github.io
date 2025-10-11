@@ -4,7 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Itamar Castillo’s WEB115 workspace and brand demo: Iridescent Cinderwyrm Bodywork" />
-  <title>Itamar Castillo’s Iridescent Cinderwyrm • Home</title>
+  <title>Itamar Castillo’s Iridescent Cinderwyrm • WEB115 • Home</title>
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles/default.css" />
@@ -12,93 +13,41 @@
   <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous" defer></script>
 </head>
 <body>
-
-  <!-- include shared header -->
   <div w3-include-html="components/header.html"></div>
-
-  <!-- include nav (contains the theme toggle button) -->
   <div w3-include-html="components/nav.html"></div>
 
-  <main>
-    <section class="intro-band">
-      <div class="container flow">
-        <h2>Welcome</h2>
-        <p>
-          This site presents my coursework and highlights my evolving skills in accessible, standards-based web development. It also introduces my sample massage brand,
-          <strong>Iridescent Cinderwyrm Bodywork</strong>. Please use the menu above to explore my work.
-        </p>
+  <main id="main-content">
+    <div class="container">
+      <h2>Welcome</h2>
+      <p>
+        Welcome to my WEB115 portfolio. This site presents my coursework and highlights my evolving skills in accessible, standards-based web development. It also introduces my sample massage brand,
+        <strong>Iridescent Cinderwyrm Bodywork</strong>. Please use the menu above to explore my work.
+      </p>
 
-        <figure class="figure-holiday">
-          <picture>
-            <!-- WebP -->
-            <source type="image/webp"
-              srcset="images/hiking_portrait_600w.webp 600w, images/hiking_portrait_800w.webp 800w, images/hiking_portrait_1200w.webp 1200w"
-              sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-            <!-- JPEG -->
-            <source type="image/jpeg"
-              srcset="images/hiking_portrait_600w.jpg 600w, images/hiking_portrait_800w.jpg 800w, images/hiking_portrait_1200w.jpg 1200w"
-              sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-            <!-- Fallback -->
-            <img class="img-gold-border intro-landscape"
-              src="images/hiking_portrait_800w.jpg"
-              width="800" height="1067"
-              alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle." />
-          </picture>
-          <figcaption class="note-gold">Exploring Colorado’s alpine trails, 2025.</figcaption>
-        </figure>
+      <figure class="figure-holiday">
+        <picture>
+          <source type="image/webp"
+            srcset="images/hiking_portrait_600w.webp 600w, images/hiking_portrait_800w.webp 800w, images/hiking_portrait_1200w.webp 1200w"
+            sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
+          <source type="image/jpeg"
+            srcset="images/hiking_portrait_600w.jpg 600w, images/hiking_portrait_800w.jpg 800w, images/hiking_portrait_1200w.jpg 1200w"
+            sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
+          <img class="img-gold-border intro-landscape"
+            src="images/hiking_portrait_800w.jpg"
+            width="800" height="1067"
+            alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle." />
+        </picture>
+        <figcaption class="note-gold">Exploring Colorado’s alpine trails, 2025.</figcaption>
+      </figure>
 
-        <blockquote>
-          “If I have seen further it is by standing on the shoulders of giants.”
-          <span class="highlight-name">— Isaac Newton</span>
-        </blockquote>
-      </div>
-    </section>
+      <blockquote>
+        “If I have seen further it is by standing on the shoulders of giants.”
+        <span class="highlight-name">— Isaac Newton</span>
+      </blockquote>
+    </div>
   </main>
 
-  <!-- include shared footer -->
   <div w3-include-html="components/footer.html"></div>
-
-  <!-- unified include + theme toggle script -->
-  <script>
-    // Load all [w3-include-html] fragments, then resolve when finished
-    async function includeHTML() {
-      const nodes = Array.from(document.querySelectorAll('[w3-include-html]'));
-      await Promise.all(nodes.map(async (el) => {
-        const file = el.getAttribute('w3-include-html');
-        if (!file) return;
-        try {
-          const res = await fetch(file, {cache: 'no-store'});
-          if (!res.ok) throw new Error(res.statusText);
-          el.innerHTML = await res.text();
-        } catch (_) {
-          el.innerHTML = '<!-- include failed: ' + file + ' -->';
-        } finally {
-          el.removeAttribute('w3-include-html');
-        }
-      }));
-    }
-
-    // Wire up dark mode toggle (button lives in header or nav)
-    function initThemeToggle() {
-      const btn = document.getElementById('theme-toggle');
-      if (!btn) return;
-      const saved = localStorage.getItem('ic-theme');
-      if (saved === 'dark') document.body.classList.add('dark-theme');
-      const syncPressed = () =>
-        btn.setAttribute('aria-pressed', document.body.classList.contains('dark-theme') ? 'true' : 'false');
-      syncPressed();
-      btn.addEventListener('click', () => {
-        document.body.classList.toggle('dark-theme');
-        localStorage.setItem('ic-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
-        syncPressed();
-      });
-    }
-
-    (async () => {
-      await includeHTML();
-      initThemeToggle();
-    })();
-  </script>
-
 </body>
 </html>
+
