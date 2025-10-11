@@ -1,117 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Brand guide for Iridescent Cinderwyrm Bodywork: colors, typography, and usage rules." />
-  <title>Itamar Castillo’s Iridescent Cinderwyrm • Brand Guide</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles/default.css" />
-  <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
-  <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous" defer></script>
-</head>
+
+<!-- 🧠 Include reusable head section and send page title variable -->
+<div w3-include-html="components/head.html"
+     w3-include-html-var-pagetitle="Itamar Castillo’s Iridescent Cinderwyrm • Brand Guide"></div>
+
 <body>
+  <!-- 🐉 Include site header -->
+  <div w3-include-html="components/header.html"></div>
 
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <h1>
-        <span class="line-1">Itamar Castillo’s Iridescent Cinderwyrm</span>
-        <span class="dragon" aria-hidden="true">🐉</span>
-      </h1>
+  <!-- 🧭 Include navigation -->
+  <div w3-include-html="components/nav.html"></div>
 
-      <nav aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="introduction.html">Introduction</a>
-        <a href="contract.html">Contract</a>
-        <a href="brand.html" aria-current="page">Brand Guide</a>
-        <a href="fizzbuzz0.html">Fizz Buzz 0</a>
-      </nav>
-
-      <button id="theme-toggle" aria-label="Toggle dark mode">Toggle Dark Mode</button>
-    </div>
-  </header>
-
-  <!-- Main Content -->
+  <!-- 🌿 Main page content -->
   <main>
-    <section class="intro-band">
-      <div class="container flow">
-        <h2>Brand Guide</h2>
-        <p class="meta">
-          Brand name: <strong>Iridescent Cinderwyrm Bodywork</strong> • Tagline: <em>Breathe. Unwind. Renew.</em>
+    <section>
+      <h2>Brand Guide</h2>
+      <p class="meta">
+        Brand name: <strong>Iridescent Cinderwyrm Bodywork</strong> •
+        Tagline: <em>Breathe. Unwind. Renew.</em>
+      </p>
+
+      <h3 id="brand-concept">Concept and Mission</h3>
+      <p>
+        Iridescent Cinderwyrm Bodywork offers massage and relaxation services that focus on calm,
+        comfort, and intentional relief. The Desert Matcha palette uses warm sand, herbal greens,
+        and a hint of clay to feel natural and restorative. The voice is simple, warm, and professional.
+      </p>
+
+      <h3 id="brand-colors">Color Palette (Desert Matcha)</h3>
+      <ul class="swatches">
+        <li class="swatch"><span class="color-box color-sand" aria-hidden="true"></span><span>#F7EAD9</span><em>Sand background</em></li>
+        <li class="swatch"><span class="color-box color-surface" aria-hidden="true"></span><span>#FFFFFF</span><em>Surface and cards</em></li>
+        <li class="swatch"><span class="color-box color-text" aria-hidden="true"></span><span>#2F3A34</span><em>Primary text</em></li>
+        <li class="swatch"><span class="color-box color-accent" aria-hidden="true"></span><span>#6F8F6B</span><em>Accent buttons</em></li>
+        <li class="swatch"><span class="color-box color-accent-deep" aria-hidden="true"></span><span>#3E574B</span><em>Links and small text</em></li>
+        <li class="swatch"><span class="color-box color-accent-soft" aria-hidden="true"></span><span>#8DA3A6</span><em>Mist (subtle UI)</em></li>
+        <li class="swatch"><span class="color-box color-clay" aria-hidden="true"></span><span>#C4633A</span><em>Clay glow</em></li>
+        <li class="swatch"><span class="color-box color-holiday-cream" aria-hidden="true"></span><span>#FFF8DC</span><em>Holiday light background</em></li>
+        <li class="swatch"><span class="color-box color-gold" aria-hidden="true"></span><span>#D4AF37</span><em>Gold accent</em></li>
+      </ul>
+      <p class="meta">Contrast: #2F3A34 on #F7EAD9 passes for body copy. White text on #6F8F6B passes on buttons.</p>
+
+      <h3 id="brand-type">Typography</h3>
+      <div class="type-card">
+        <p class="type-label">Headings — Playfair Display 700 and 800</p>
+        <p class="demo-h1">Iridescent Cinderwyrm Bodywork</p>
+        <p class="demo-h2">Therapeutic Massage and Relaxation</p>
+        <p class="type-label">Body — Inter 400, 500, 600</p>
+        <p class="demo-body">
+          Iridescent Cinderwyrm Bodywork uses a soothing tone that feels trustworthy and natural.
         </p>
-
-        <h3 id="brand-concept">Concept and Mission</h3>
-        <p>
-          Iridescent Cinderwyrm Bodywork offers massage and relaxation services that focus on calm, comfort, and intentional relief.
-          The Desert Matcha palette uses warm sand, herbal greens, and a hint of clay to feel natural and restorative.
-          The voice is simple, warm, and professional.
-        </p>
-
-        <h3 id="brand-colors">Color Palette (Desert Matcha)</h3>
-        <ul class="swatches">
-          <li class="swatch"><span class="color-box" style="background:#F7EAD9;"></span><span>#F7EAD9</span><em>Sand background</em></li>
-          <li class="swatch"><span class="color-box" style="background:#FFFFFF;"></span><span>#FFFFFF</span><em>Surface and cards</em></li>
-          <li class="swatch"><span class="color-box" style="background:#2F3A34;"></span><span>#2F3A34</span><em>Primary text</em></li>
-          <li class="swatch"><span class="color-box" style="background:#6F8F6B;"></span><span>#6F8F6B</span><em>Accent buttons</em></li>
-          <li class="swatch"><span class="color-box" style="background:#3E574B;"></span><span>#3E574B</span><em>Links and small text</em></li>
-          <li class="swatch"><span class="color-box" style="background:#8DA3A6;"></span><span>#8DA3A6</span><em>Mist (subtle UI)</em></li>
-          <li class="swatch"><span class="color-box" style="background:#C4633A;"></span><span>#C4633A</span><em>Clay glow</em></li>
-          <li class="swatch"><span class="color-box" style="background:#FFF8DC;"></span><span>#FFF8DC</span><em>Holiday light background</em></li>
-          <li class="swatch"><span class="color-box" style="background:#D4AF37;"></span><span>#D4AF37</span><em>Gold accent</em></li>
-        </ul>
-        <p class="meta">
-          Contrast: #2F3A34 on #F7EAD9 passes for body copy. White text on #6F8F6B passes on buttons.
-        </p>
-
-        <h3 id="brand-type">Typography</h3>
-        <div class="type-card">
-          <p class="type-label">Headings — Playfair Display 700 and 800</p>
-          <p class="demo-h1">Iridescent Cinderwyrm Bodywork</p>
-          <p class="demo-h2">Therapeutic Massage and Relaxation</p>
-          <p class="type-label">Body — Inter 400, 500, 600</p>
-          <p class="demo-body">
-            The Iridescent Cinderwyrm Bodywork brand uses clean, modern sans-serif text for clarity and ease of reading.
-          </p>
-        </div>
-
-        <h3 id="brand-usage">Usage and Tone</h3>
-        <p>
-          Use the brand palette consistently across all materials. Accent colors should enhance but never overpower the content.
-          Maintain calm, neutral backgrounds with readable contrast. Write in a friendly, grounded, and knowledgeable tone.
-        </p>
-
-        <blockquote>
-          Breathe deeply. Move gently. Speak kindly.  
-          <cite>— Iridescent Cinderwyrm Bodywork Motto</cite>
-        </blockquote>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>
-        <a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer">GitHub.io</a> ✶
-        <a href="https://itamar96.github.io" target="_blank" rel="noopener noreferrer">Portfolio Site</a> ✶
-        <a href="https://web115.io" target="_blank" rel="noopener noreferrer">WEB115.io</a> ✶
-        <a href="https://www.codecademy.com/profiles/Itamar96" target="_blank" rel="noopener noreferrer">Codecademy</a> ✶
-        <a href="https://jsfiddle.net/u/Itamar96/fiddles/" target="_blank" rel="noopener noreferrer">JSFiddle</a> ✶
-        <a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </p>
-      <p><em>Page built by Iridescent Cinderwyrm Design</em></p>
-    </div>
-  </footer>
+  <!-- 🪶 Include footer -->
+  <div w3-include-html="components/footer.html"></div>
 
+  <!-- ⚙️ Include HTMLInclude script -->
+  <script src="https://cdn.jsdelivr.net/gh/Paul-Browne/HTMLInclude/include.min.js"></script>
+  <script>includeHTML();</script>
+
+  <!-- 🌗 Optional Dark Mode Script -->
   <script>
-    // 🌗 Dark Mode Toggle Script
-    const toggleButton = document.getElementById('theme-toggle');
-    toggleButton.addEventListener('click', () => {
-      document.body.classList.toggle('dark-theme');
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleButton = document.getElementById("theme-toggle");
+      if (toggleButton) {
+        toggleButton.addEventListener("click", () => {
+          document.body.classList.toggle("dark-theme");
+        });
+      }
     });
   </script>
-
 </body>
 </html>
+
