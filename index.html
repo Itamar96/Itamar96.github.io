@@ -1,114 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* Styles specific to the root index page */
-        :root {
-            --index-bg: #F2F7FA;
-            --index-text: #21343A;
-            --index-accent: #6A4F9B;
-            --index-cta-text: #0b1220;
-            --link-color: #FFE87C;  /* brighter gold-yellow for contrast */
-            --link-hover: #FFD04D; /* deeper warm tone for hover */
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Itamar Castillo - Aethernova Bodywork</title>
+  <style>
+    /* Styles specific to the root index page */
+    :root {
+      --index-bg: #F2F7FA;
+      --index-text: #21343A;
+      --index-accent: #6A4F9B;
+      --index-cta-text: #0b1220;
+      --link-color: #FFE87C;  /* brighter gold-yellow for contrast on purple */
+      --link-hover: #FFD04D;  /* slightly deeper for hover */
+      --focus-ring: rgba(255, 232, 124, 0.65);
+    }
 
-        body { 
-            font-family: Arial, sans-serif; 
-            background-color: var(--index-bg); 
-            color: var(--index-text); 
-            margin:0; 
-            padding:0; 
-        }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--index-bg);
+      color: var(--index-text);
+      margin: 0;
+      padding: 0;
+    }
 
-        .site-header { 
-            background-color: var(--index-accent); 
-            color:#fff; 
-            text-align:center; 
-            padding:28px 20px; 
-            box-shadow:0 6px 30px rgba(41,11,60,.15); 
-            border-bottom:4px solid rgba(255,255,255,0.04); 
-        }
-        .site-header h1{ margin:0; font-weight:700; letter-spacing:-0.5px; }
-        .site-header h2{ margin:5px 0 0; font-weight:400; color:rgba(255,241,255,.9); font-style:italic; }
-        .site-header p{ margin:8px 0 0; }
+    .site-header {
+      background-color: var(--index-accent);
+      color: #fff;
+      text-align: center;
+      padding: 28px 20px;
+      box-shadow: 0 6px 30px rgba(41, 11, 60, .15);
+      border-bottom: 4px solid rgba(255, 255, 255, 0.04);
+    }
+    .site-header h1 { margin: 0; font-weight: 700; letter-spacing: -0.5px; }
+    .site-header h2 { margin: 5px 0 0; font-weight: 400; color: rgba(255,241,255,.9); font-style: italic; }
+    .site-header p { margin: 8px 0 0; }
 
-        .cta-link{ 
-            color:var(--index-cta-text); 
-            background:linear-gradient(90deg,#FFD579 0%,#FF9F6B 100%); 
-            box-shadow:0 6px 18px rgba(255,159,107,.12), inset 0 -1px 0 rgba(255,255,255,.22); 
-            padding:6px 10px; 
-            border-radius:8px; 
-            text-decoration:none; 
-            display:inline-block; 
-        }
+    .cta-link {
+      color: var(--index-cta-text);
+      background: linear-gradient(90deg,#FFD579 0%,#FF9F6B 100%);
+      box-shadow: 0 6px 18px rgba(255,159,107,.12), inset 0 -1px 0 rgba(255,255,255,.22);
+      padding: 6px 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-block;
+    }
 
-        .container{ padding:30px; max-width:800px; margin:auto; }
-        section{ margin-bottom:30px; }
-        section h2{ color:#6F8F6B; }
+    .container { padding: 30px; max-width: 800px; margin: auto; }
+    section { margin-bottom: 30px; }
+    section h3 { color: #6F8F6B; margin-top: 0; }
 
-        /* Footer styling */
-        .site-footer{ 
-            background-color:var(--index-accent); 
-            color:#FFF8DC; 
-            text-align:center; 
-            padding:15px; 
-            margin-top:40px; 
-        }
-        .site-footer p{ margin:0; }
-        .site-footer .footer-cta{ margin:6px 0 0; }
+    /* Footer styling */
+    .site-footer {
+      background-color: var(--index-accent);
+      color: #FFF8DC;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+    .site-footer p { margin: 0; }
+    .site-footer .footer-cta { margin: 6px 0 0; }
 
-        .footer-link{ 
-            color: var(--link-color); 
-            text-decoration: none; 
-            font-weight: 500;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-        }
-        .footer-link:hover { 
-            color: var(--link-hover);
-            text-shadow: 0 0 6px rgba(255,255,200,0.6);
-        }
-    </style>
+    .footer-link {
+      color: var(--link-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.25s ease, text-shadow 0.25s ease;
+    }
+    .footer-link:hover {
+      color: var(--link-hover);
+      text-shadow: 0 0 6px rgba(255,255,200,0.6);
+    }
+    .footer-link:focus-visible {
+      outline: 3px solid transparent;
+      box-shadow: 0 0 0 3px var(--focus-ring);
+      border-radius: 6px;
+    }
+  </style>
 </head>
 <body>
 
-    <header class="site-header">
-        <h1><title>Itamar Castillo - Aethernova Bodywork</title></h1>
-        <h2>by Aethernova Bodywork</h2>
-        <p class="cta"><a href="web115/index.html" class="cta-link">WEB115 course</a></p>
-    </header>
+  <header class="site-header">
+    <h1>Itamar Castillo — Aethernova Bodywork</h1>
+    <h2>by Aethernova Bodywork</h2>
+    <p class="cta"><a href="web115/index.html" class="cta-link">WEB115 course</a></p>
+  </header>
 
-    <main class="container">
-        <section>
-            <h3>About Me</h3>
-            <p>Hello! My name is <strong>Itamar Castillo</strong>, and I'm currently studying web development. I enjoy learning how websites work and how design and code come together to make something meaningful.</p>
-        </section>
+  <main class="container">
+    <section>
+      <h3>About Me</h3>
+      <p>Hello! My name is <strong>Itamar Castillo</strong>, and I'm currently studying web development. I enjoy learning how websites work and how design and code come together to make something meaningful.</p>
+    </section>
 
-        <section>
-            <h3>What I Enjoy</h3>
-            <p>I am an active person who loves <strong>hiking</strong>, playing sports, and staying healthy through <strong>self-care</strong> - both inside and out. I also value <strong>mental health and awareness</strong>, taking time to reset and recharge when life gets busy.</p>
-        </section>
+    <section>
+      <h3>What I Enjoy</h3>
+      <p>I am an active person who loves <strong>hiking</strong>, playing sports, and staying healthy through <strong>self-care</strong>—both inside and out. I also value <strong>mental health and awareness</strong>, taking time to reset and recharge when life gets busy.</p>
+    </section>
 
-        <section>
-            <h3>Fun Fact</h3>
-            <p>A fun fact about me is that I can spend hours exploring nature trails, completely offline, and come back full of creative ideas for coding and business projects!</p>
-        </section>
-    </main>
+    <section>
+      <h3>Fun Fact</h3>
+      <p>A fun fact about me is that I can spend hours exploring nature trails, completely offline, and come back full of creative ideas for coding and business projects!</p>
+    </section>
+  </main>
 
-    <footer class="site-footer">
-        <p>&copy; 2025 Aethernova Bodywork</p>
-        <p class="footer-cta">
-            <a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a> ✶
-            <a href="https://itamar96.github.io/index.html" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub.io</a> ✶
-            <a href="https://www.codecademy.com/profiles/Itamar96" target="_blank" rel="noopener noreferrer" class="footer-link">Codecademy</a> ✶
-            <a href="https://www.freecodecamp.org/itamar96" target="_blank" rel="noopener noreferrer" class="footer-link">freeCodeCamp</a> ✶
-            <a href="https://jsfiddle.net/u/Itamar96/fiddles/" target="_blank" rel="noopener noreferrer" class="footer-link">JSFiddle</a> ✶
-            <a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a> ✶
-            <a href="https://validator.w3.org/nu/?doc=https://itamar96.github.io/index.html" target="_blank" rel="noopener noreferrer" class="footer-link">Validate this page</a>
-        </p>
-    </footer>
+  <footer class="site-footer">
+    <p>&copy; 2025 Aethernova Bodywork</p>
+    <p class="footer-cta">
+      <a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a> ✶
+      <a href="https://itamar96.github.io/index.html" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub.io</a> ✶
+      <a href="https://www.codecademy.com/profiles/Itamar96" target="_blank" rel="noopener noreferrer" class="footer-link">Codecademy</a> ✶
+      <a href="https://www.freecodecamp.org/itamar96" target="_blank" rel="noopener noreferrer" class="footer-link">freeCodeCamp</a> ✶
+      <a href="https://jsfiddle.net/u/Itamar96/fiddles/" target="_blank" rel="noopener noreferrer" class="footer-link">JSFiddle</a> ✶
+      <a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a> ✶
+      <a href="https://validator.w3.org/nu/?doc=https://itamar96.github.io/index.html" target="_blank" rel="noopener noreferrer" class="footer-link">Validate this page</a>
+    </p>
+  </footer>
 </body>
 </html>
+
 
 
