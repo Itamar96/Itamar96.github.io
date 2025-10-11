@@ -1,308 +1,269 @@
 /* ----------------------------------------
-   Iridescent Cinderwyrm Bodywork — Desert Matcha Theme
-   Single-definition headings; includes color swatches
----------------------------------------- */
-
+	 Iridescent Cinderwyrm Bodywork — Desert Matcha Theme
+	 Cleaned and annotated 
 /* ---------- Base Tokens ---------- */
 :root {
-  /* Brand palette */
-  --bg-grad-1: #F7EAD9;
-  --bg-grad-2: #F7EAD9;
-  --bg-grad-3: #F7EAD9;
-  --surface: #FFFFFF;
-  --text: #2F3A34;
-  --accent: #6F8F6B;
-  --accent-deep: #3E574B;
-  --accent-soft: #8DA3A6;
-  --holiday-gold: #D4AF37;
-  --holiday-cream: #FFF8DC;
-
-  /* Typography */
-  --brand-heading: "Playfair Display", serif;
-  --brand-body: "Inter", sans-serif;
-
-  /* Layout spacing */
-  --content-width: 960px;
-  --space-4: 1rem;
-  --space-6: 1.5rem;
-  --radius: 14px;
-  --shadow: 0 8px 30px rgba(47, 58, 52, 0.12);
+	/* Brand palette */
+	--bg-grad-1: #F7EAD9;
+	--bg-grad-2: #F7EAD9;
+	--bg-grad-3: #F7EAD9;
+	--surface: #FFFFFF;
+	--text: #2F3A34;
+	--accent: #6F8F6B;
+	--accent-deep: #3E574B;
+	--accent-soft: #8DA3A6;
+	--holiday-gold: #D4AF37;
+	--holiday-cream: #FFF8DC;
+	/* Typography */
+	--brand-heading: "Playfair Display", serif;
+	--brand-body: "Inter", sans-serif;
+	/* Layout spacing */
+	--content-width: 960px;
+	--space-4: 1rem;
+	--space-6: 1.5rem;
+	--radius: 14px;
+	--shadow: 0 8px 30px rgba(47, 58, 52, 0.12);
 }
-
 /* ---------- Global Layout ---------- */
 body {
-  margin: 0;
-  font-family: var(--brand-body);
-  color: var(--text);
-  line-height: 1.6;
-  background: linear-gradient(var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
-  background-image: url("images/spa-bg.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
+	margin: 0;
+	font-family: var(--brand-body);
+	color: var(--text);
+	line-height: 1.6;
+	background: linear-gradient(var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
+	background-image: url("/web115/images/spa-bg.svg"); /* Used on index.html */
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
 }
+.container { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-4); }
 
-.container {
-  max-width: var(--content-width);
-  margin: 0 auto;
-  padding: 0 var(--space-4);
-}
+/* optional band styling */
+.intro-band { background: var(--surface); padding: var(--space-6) 0; }
+
+/* nice vertical rhythm inside container */
+.flow > * + * { margin-top: var(--space-4); }
+
+/* readable line length */
+.container p, .container ul, .container ol, .container blockquote, .container figure, 
+.container h2, .container h3 { max-width: 70ch; margin-inline: auto; }
 
 /* ---------- Header ---------- */
 header {
-  padding: var(--space-4) 0;
-  text-align: center;
-  background: var(--surface);
+	padding: var(--space-4) 0;
+	text-align: center;
+	background: var(--surface);
 }
-
-.site-title {
-  font-family: var(--brand-heading);
-  font-weight: 800;
-  font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
-  margin: 0;
-}
-
-.dragon {
-  color: var(--holiday-gold);
-  filter: drop-shadow(0 0 2px rgba(212,175,55,.65))
-          drop-shadow(0 0 6px rgba(212,175,55,.35));
-  animation: dragonShimmer 2.6s ease-in-out infinite;
-}
-
-@keyframes dragonShimmer {
-  0%, 100% { filter: drop-shadow(0 0 2px rgba(212,175,55,.55))
-                     drop-shadow(0 0 6px rgba(212,175,55,.28)); }
-  50%      { filter: drop-shadow(0 0 3px rgba(212,175,55,.85))
-                     drop-shadow(0 0 10px rgba(212,175,55,.45)); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .dragon { animation: none; }
-}
-
-/* ---------- Headings ---------- */
-h1, h2, h3 {
-  font-family: var(--brand-heading);
-  line-height: 1.2;
-  margin: 0 0 var(--space-4);
-}
-
+/* Apply all styling directly to h1 */
 h1 {
-  font-weight: 800;
-  font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
+	font-family: var(--brand-heading);
+	font-weight: 800;
+	font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
+	margin: 0;
+	color: var(--text);
 }
-
+/* Section titles */
 h2 {
-  font-weight: 700;
-  font-size: clamp(1.3rem, 1.05rem + 1.2vw, 1.9rem);
+	font-weight: 700;
+	font-size: clamp(1.3rem, 1.05rem + 1.2vw, 1.9rem);
 }
 
+/* Subsection titles */
 h3 {
-  font-weight: 700;
-  font-size: 1.15rem;
+	font-weight: 700;
+	font-size: 1.15rem;
 }
+/* Gold shimmer for the dragon icon only */
+.dragon {
+	color: var(--holiday-gold);
+	filter: drop-shadow(0 0 2px rgba(212,175,55,.65)) drop-shadow(0 0 6px rgba(212,175,55,.35));
+	animation: dragonShimmer 2.6s ease-in-out infinite;
+}
+	 @keyframes dragonShimmer {
+	0%, 100% {
+		filter: drop-shadow(0 0 2px rgba(212,175,55,.55)) drop-shadow(0 0 6px rgba(212,175,55,.28));
+	}
+	50% {
+		filter: drop-shadow(0 0 3px rgba(212,175,55,.85)) drop-shadow(0 0 10px rgba(212,175,55,.45));
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.dragon {
+		animation: none;
+	}
+	/* Minor fixes requested by teacher/user */
+	/* Ensure <em> text isn't smaller than surrounding text */
+	em { font-style: italic; font-size: inherit; }
 
+	/* Provide a small top gap for form area so the button doesn't crowd headers */
+	.form-grid { margin-top: var(--space-4); }
+
+	/* Make image gold accent use a ring so it looks even on all devices */
+	.img-gold-border { border-radius: 12px; box-shadow: 0 0 0 6px rgba(212,175,55,0.95), 0 8px 24px rgba(47,58,52,0.12); }
+
+}
 /* ---------- Navigation ---------- */
 nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem 1rem;
-  margin-top: 0.5rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.5rem 1rem;
+	margin-top: 0.5rem;
 }
-
 nav a {
-  color: var(--accent-deep);
-  text-decoration: none;
-  padding: 0.4rem 0.75rem;
-  border-radius: 999px;
-  transition: background-color 160ms ease, transform 120ms ease, color 120ms ease;
-  will-change: transform;
+	color: var(--accent-deep);
+	text-decoration: none;
+	padding: 0.4rem 0.75rem;
+	border-radius: 999px;
+	transition: background-color 160ms ease, transform 120ms ease, color 120ms ease;
 }
-
 nav a:hover,
-nav a:focus-visible {
-  text-decoration: underline;
-  background: rgba(62, 87, 75, 0.08);
-  transform: translateY(-1px);
+nav a:focus {
+	text-decoration: underline;
+	background: rgba(62, 87, 75, 0.08);
+	transform: translateY(-1px);
 }
-
 nav a[aria-current="page"] {
-  background: var(--accent);
-  color: #fff;
-  font-weight: 600;
-  box-shadow: 0 0 0 2px rgba(62, 87, 75, 0.08) inset, var(--shadow);
+	background: var(--accent);
+	color: #fff;
+	font-weight: 600;
+	box-shadow: 0 0 0 2px rgba(62, 87, 75, 0.08) inset, var(--shadow);
 }
-
 /* ---------- Typography & Lists ---------- */
-p, ul, ol, blockquote, figure { margin-block: var(--space-4); }
-
-ul { list-style: disc; padding-left: 1.25rem; }
-ul ul { list-style: circle; padding-left: 1.25rem; }
-
-a { color: var(--accent-deep); text-decoration: underline; }
-a:hover, a:focus-visible { color: var(--accent); }
-
-/* ---------- Swatches (Brand Colors) ---------- */
-.swatches {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
-  padding: 0;
-  list-style: none;
+p, ul, ol, blockquote, figure {
+	margin-block: var(--space-4);
 }
-
-.swatch {
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-  padding: .75rem 1rem;
-  background: var(--surface);
-  border: 1px solid rgba(62,87,75,.15);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+ul {
+	list-style: disc;
+	padding-left: 1.25rem;
 }
-
-.swatch .color, .swatch .color-box {
-  flex: 0 0 40px;
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  box-shadow: 0 0 0 1px rgba(62,87,75,.20) inset;
+ul ul {
+	list-style: circle;
+	padding-left: 1.25rem;
 }
-
-.swatch > span:not(.color):not(.color-box) {
-  font-family: var(--brand-body);
-  font-weight: 600;
-  color: var(--text);
+a {
+	color: var(--accent-deep);
+	text-decoration: underline;
 }
-
-.swatch em {
-  margin-left: auto;
-  font-style: normal;
-  color: var(--accent-deep);
-  opacity: .85;
-  font-size: .95rem;
+a:hover,
+a:focus {
+	color: var(--accent);
 }
-
 /* ---------- Figures & Quotes ---------- */
 figure {
-  margin: var(--space-6) auto;
-  text-align: center;
-  background: #fff;
-  border-radius: var(--radius);
-  padding: var(--space-4);
-  box-shadow: var(--shadow);
-  border: 1px solid rgba(62, 87, 75, 0.12);
-}
+	margin: var(--space-6) auto;
+	text-align: center;
+	background: #fff;
+	border-radius: var(--radius);
+	padding: var(--space-4);
+/* Header layout helper: move logo to left and keep title visually centered */
+header .header-inner { display: flex; align-items: center; gap: 1rem; }
+.site-logo { flex: 0 0 auto; font-size: 1.4rem; margin-right: 0.5rem; }
+.site-title { flex: 1 1 auto; text-align: left; }
 
+	box-shadow: var(--shadow);
+	border: 1px solid rgba(62, 87, 75, 0.12);
+}
 figure img {
-  display: block;
-  max-width: min(100%, 1200px);
-  height: auto;
-  border-radius: 12px;
-  margin: 0 auto;
-  box-shadow: 0 8px 24px rgba(47, 58, 52, 0.12);
+	display: block;
+	max-width: min(100%, 1200px);
+	height: auto;
+	border-radius: 12px;
+	margin: 0 auto;
+	box-shadow: 0 8px 24px rgba(47, 58, 52, 0.12);
 }
-
 figcaption {
-  margin-top: 0.75rem;
-  font-size: 0.95rem;
-  color: var(--accent-deep);
+	margin-top: 0.75rem;
+	font-size: 0.95rem;
+	color: var(--accent-deep);
 }
-
 .figure-holiday {
-  background: var(--holiday-cream);
-  border: 1px solid rgba(212, 175, 55, 0.35);
+	background: var(--holiday-cream); /* Used on index.html */
+	border: 1px solid rgba(212, 175, 55, 0.35);
 }
-
 .img-gold-border {
-  border: 6px solid var(--holiday-gold);
-  border-radius: 12px;
-  max-width: 100%;
-  height: auto;
+	/* Use a gold ring via box-shadow instead of an actual border so the visual edge is consistent across image aspect ratios and when images have transparency. */
+	border-radius: 12px;
+	box-shadow: 0 0 0 6px rgba(212,175,55,0.95), 0 8px 24px rgba(47,58,52,0.12);
 }
-
-/* ---------- Blockquote ---------- */
+.intro-landscape .img-gold-border {
+	max-width: 100%;
+	height: auto;
+}
 blockquote {
-  padding: var(--space-4);
-  border-left: 4px solid var(--accent);
-  background: rgba(141, 163, 166, 0.10);
-  border-radius: 0 var(--radius) var(--radius) 0;
+	padding: var(--space-4);
+	border-left: 4px solid var(--accent);
+	background: rgba(141, 163, 166, 0.10);
+	border-radius: 0 var(--radius) var(--radius) 0;
 }
-
 cite {
-  display: block;
-  margin-top: 0.5rem;
-  font-weight: 500;
-  color: var(--accent);
+	display: block;
+	margin-top: 0.5rem;
+	font-weight: 500;
+	color: var(--accent);
 }
-
-/* ---------- Buttons ---------- */
+/* ---------- Forms (FizzBuzz only) ---------- */
+.form-grid {
+	display: grid;
+	gap: var(--space-4);
+	max-width: 640px;
+	margin-inline: auto;
+}
+.field {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: var(--space-4);
+}
+.field label {
+	margin-bottom: 0.5rem;
+	font-weight: 600;
+}
+.field input {
+	padding: 0.6rem 0.75rem;
+	border: 2px solid var(--holiday-gold);
+	border-radius: 10px;
+	background: #fff;
+	font: inherit;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+	transition: border-color .2s ease, box-shadow .2s ease;
+}
+.field input:focus {
+	outline: none;
+	border-color: var(--accent);
+	box-shadow: 0 0 6px rgba(212,175,55,0.5);
+}
+/* ---------- Buttons (used for dark mode toggle and FizzBuzz) ---------- */
 button {
-  padding: 0.55rem 0.95rem;
-  border-radius: 999px;
-  font-weight: 600;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  box-shadow: var(--shadow);
+	padding: 0.55rem 0.95rem;
+	border-radius: 999px;
+	font-weight: 600;
+	background: var(--accent);
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	box-shadow: var(--shadow);
 }
-
 button:hover,
-button:focus-visible {
-  background: var(--accent-deep);
+button:focus {
+	background: var(--accent-deep);
 }
-
 /* ---------- Footer ---------- */
 footer {
-  padding: 2rem 0;
-  margin-top: 3rem;
-  text-align: center;
-  border-top: 4px solid var(--accent);
-  background-color: var(--bg-grad-1);
+	padding: 2rem 0;
+	margin-top: 3rem;
+	text-align: center;
+	border-top: 4px solid var(--accent);
+	background-color: var(--bg-grad-1);
 }
-
 footer p {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
+	font-size: 0.95rem;
+	line-height: 1.6;
+	margin-bottom: 1rem;
 }
-
 footer a {
-  color: var(--accent-deep);
-  text-decoration: none;
-  margin: 0 0.3rem;
-}
-
-footer a:hover,
-footer a:focus-visible {
-  color: var(--accent);
-  text-decoration: underline;
-}
-
-/* ---------- Dark Theme ---------- */
-.dark-theme {
-  --bg-grad-1: #1E1E1E;
-  --bg-grad-2: #1E1E1E;
-  --bg-grad-3: #121212;
-  --surface: #202020;
-  --text: #EAEAEA;
-  --accent: #88BFA2;
-  --accent-deep: #64A083;
-  --accent-soft: #A6C9B6;
-  --holiday-gold: #E1C964;
-}
-
-.dark-theme figure { background: #1E1E1E; border-color: rgba(255,255,255,0.15); }
-.dark-theme a { color: var(--accent-soft); }
-.dark-theme a:hover, .dark-theme a:focus-visible { color: var(--accent); }
-
-/* ---------- Mobile ---------- */
-@media (max-width: 768px) {
-  body { background-attachment: scroll; }
+	color: var(--accent-deep);
+	text-decoration: none;
+	margin: 0 0.3rem;
 }
 
