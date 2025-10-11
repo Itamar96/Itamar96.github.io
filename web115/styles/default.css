@@ -1,170 +1,105 @@
-/* ----------------------------------------
-   Iridescent Cinderwyrm Bodywork — Desert Matcha Theme
-   Clean single version for GitHub Pages
----------------------------------------- */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Itamar Castillo’s WEB115 workspace and brand demo: Iridescent Cinderwyrm Bodywork" />
+  <title>Itamar Castillo’s Iridescent Cinderwyrm • Home</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/default.css" />
+  <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
+  <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous" defer></script>
+</head>
+<body>
 
-/* ---------- Base Tokens ---------- */
-:root {
-  /* Brand palette */
-  --bg-grad-1: #F7EAD9;
-  --bg-grad-2: #F7EAD9;
-  --bg-grad-3: #F7EAD9;
-  --surface: #FFFFFF;
-  --text: #2F3A34;
-  --accent: #6F8F6B;
-  --accent-deep: #3E574B;
-  --accent-soft: #8DA3A6;
-  --holiday-gold: #D4AF37;
-  --holiday-cream: #FFF8DC;
+  <!-- include shared header -->
+  <div w3-include-html="components/header.html"></div>
 
-  /* Typography */
-  --brand-heading: "Playfair Display", serif;
-  --brand-body: "Inter", sans-serif;
+  <!-- include nav (contains the theme toggle button) -->
+  <div w3-include-html="components/nav.html"></div>
 
-  /* Layout spacing */
-  --content-width: 960px;
-  --space-4: 1rem;
-  --space-6: 1.5rem;
-  --radius: 14px;
-  --shadow: 0 8px 30px rgba(47, 58, 52, 0.12);
-}
+  <main>
+    <section class="intro-band">
+      <div class="container flow">
+        <h2>Welcome</h2>
+        <p>
+          This site presents my coursework and highlights my evolving skills in accessible, standards-based web development. It also introduces my sample massage brand,
+          <strong>Iridescent Cinderwyrm Bodywork</strong>. Please use the menu above to explore my work.
+        </p>
 
-/* ---------- Global Layout ---------- */
-body {
-  margin: 0;
-  font-family: var(--brand-body);
-  color: var(--text);
-  line-height: 1.6;
-  background: linear-gradient(var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
-  background-image: url("/web115/images/spa-bg.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-}
+        <figure class="figure-holiday">
+          <picture>
+            <!-- WebP -->
+            <source type="image/webp"
+              srcset="images/hiking_portrait_600w.webp 600w, images/hiking_portrait_800w.webp 800w, images/hiking_portrait_1200w.webp 1200w"
+              sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
+            <!-- JPEG -->
+            <source type="image/jpeg"
+              srcset="images/hiking_portrait_600w.jpg 600w, images/hiking_portrait_800w.jpg 800w, images/hiking_portrait_1200w.jpg 1200w"
+              sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
+            <!-- Fallback -->
+            <img class="img-gold-border intro-landscape"
+              src="images/hiking_portrait_800w.jpg"
+              width="800" height="1067"
+              alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle." />
+          </picture>
+          <figcaption class="note-gold">Exploring Colorado’s alpine trails, 2025.</figcaption>
+        </figure>
 
-.container {
-  max-width: var(--content-width);
-  margin: 0 auto;
-  padding: 0 var(--space-4);
-}
+        <blockquote>
+          “If I have seen further it is by standing on the shoulders of giants.”
+          <span class="highlight-name">— Isaac Newton</span>
+        </blockquote>
+      </div>
+    </section>
+  </main>
 
-/* ---------- Header ---------- */
-header {
-  padding: var(--space-4) 0;
-  text-align: center;
-  background: var(--surface);
-}
+  <!-- include shared footer -->
+  <div w3-include-html="components/footer.html"></div>
 
-.site-title {
-  font-family: var(--brand-heading);
-  font-weight: 800;
-  font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
-  margin: 0;
-}
+  <!-- unified include + theme toggle script -->
+  <script>
+    // Load all [w3-include-html] fragments, then resolve when finished
+    async function includeHTML() {
+      const nodes = Array.from(document.querySelectorAll('[w3-include-html]'));
+      await Promise.all(nodes.map(async (el) => {
+        const file = el.getAttribute('w3-include-html');
+        if (!file) return;
+        try {
+          const res = await fetch(file, {cache: 'no-store'});
+          if (!res.ok) throw new Error(res.statusText);
+          el.innerHTML = await res.text();
+        } catch (_) {
+          el.innerHTML = '<!-- include failed: ' + file + ' -->';
+        } finally {
+          el.removeAttribute('w3-include-html');
+        }
+      }));
+    }
 
-.dragon {
-  color: var(--holiday-gold);
-  filter: drop-shadow(0 0 2px rgba(212,175,55,.65))
-          drop-shadow(0 0 6px rgba(212,175,55,.35));
-  animation: dragonShimmer 2.6s ease-in-out infinite;
-}
+    // Wire up dark mode toggle (button lives in header or nav)
+    function initThemeToggle() {
+      const btn = document.getElementById('theme-toggle');
+      if (!btn) return;
+      const saved = localStorage.getItem('ic-theme');
+      if (saved === 'dark') document.body.classList.add('dark-theme');
+      const syncPressed = () =>
+        btn.setAttribute('aria-pressed', document.body.classList.contains('dark-theme') ? 'true' : 'false');
+      syncPressed();
+      btn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme');
+        localStorage.setItem('ic-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+        syncPressed();
+      });
+    }
 
-@keyframes dragonShimmer {
-  0%, 100% {
-    filter: drop-shadow(0 0 2px rgba(212,175,55,.55))
-            drop-shadow(0 0 6px rgba(212,175,55,.28));
-  }
-  50% {
-    filter: drop-shadow(0 0 3px rgba(212,175,55,.85))
-            drop-shadow(0 0 10px rgba(212,175,55,.45));
-  }
-}
+    (async () => {
+      await includeHTML();
+      initThemeToggle();
+    })();
+  </script>
 
-@media (prefers-reduced-motion: reduce) {
-  .dragon { animation: none; }
-}
+</body>
+</html>
 
-/* ---------- Headings ---------- */
-h1, h2, h3 {
-  font-family: var(--brand-heading);
-  line-height: 1.2;
-  margin: 0 0 var(--space-4);
-}
-
-h1 {
-  font-weight: 800;
-  font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
-}
-
-h2 {
-  font-weight: 700;
-  font-size: clamp(1.3rem, 1.05rem + 1.2vw, 1.9rem);
-}
-
-h3 {
-  font-weight: 700;
-  font-size: 1.15rem;
-}
-
-/* ---------- Navigation ---------- */
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem 1rem;
-  margin-top: 0.5rem;
-}
-
-nav a {
-  color: var(--accent-deep);
-  text-decoration: none;
-  padding: 0.4rem 0.75rem;
-  border-radius: 999px;
-  transition: background-color 160ms ease, transform 120ms ease, color 120ms ease;
-}
-
-nav a:hover,
-nav a:focus-visible {
-  text-decoration: underline;
-  background: rgba(62, 87, 75, 0.08);
-  transform: translateY(-1px);
-}
-
-nav a[aria-current="page"] {
-  background: var(--accent);
-  color: #fff;
-  font-weight: 600;
-  box-shadow: 0 0 0 2px rgba(62, 87, 75, 0.08) inset, var(--shadow);
-}
-
-/* ---------- Typography & Lists ---------- */
-p, ul, ol, blockquote, figure {
-  margin-block: var(--space-4);
-}
-
-ul { list-style: disc; padding-left: 1.25rem; }
-ul ul { list-style: circle; padding-left: 1.25rem; }
-
-a { color: var(--accent-deep); text-decoration: underline; }
-a:hover, a:focus-visible { color: var(--accent); }
-
-/* ---------- Swatches (Brand Colors) ---------- */
-.swatches {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
-  padding: 0;
-  list-style: none;
-}
-
-.swatch {
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-  padding: .75rem 1rem;
-  background: var(--surface);
-  border: 1px solid rgba(62,87,75,.15);
-  border-radius: var(--radius);
-  box-shadow: var(-
