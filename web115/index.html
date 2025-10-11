@@ -19,7 +19,7 @@
   <!-- include nav (contains the theme toggle button) -->
   <div w3-include-html="components/nav.html"></div>
 
-  <main id="main-content">
+  <main>
     <section class="intro-band">
       <div class="container flow">
         <h2>Welcome</h2>
@@ -58,49 +58,47 @@
   <!-- include shared footer -->
   <div w3-include-html="components/footer.html"></div>
 
+  <!-- unified include + theme toggle script -->
   <script>
-    // Initialize client-side HTML includes (keeps site DRY), then wire theme toggle
-    (async function () {
-      async function includeHTML() {
-        const elements = Array.from(document.querySelectorAll('[w3-include-html]'));
-        const promises = elements.map(el => {
-          const file = el.getAttribute('w3-include-html');
-          if (!file) return Promise.resolve();
-          return fetch(file).then(r => r.text()).then(html => { el.innerHTML = html; el.removeAttribute('w3-include-html'); }).catch(() => {});
-        });
-        await Promise.all(promises);
-      }
-
-      await includeHTML();
-
-      // Accessible theme toggle: attach after includes are inserted
-      (function () {
-        const STORAGE_KEY = 'ic-dark';
-        const btn = document.getElementById('theme-toggle');
-        if (!btn) return;
-
-        function setDark(isDark, persist = true) {
-          document.body.classList.toggle('dark-theme', isDark);
-          btn.setAttribute('aria-pressed', String(!!isDark));
-          if (persist) {
-            try { localStorage.setItem(STORAGE_KEY, isDark ? '1' : '0'); } catch (e) {}
-          }
-        }
-
+    // Load all [w3-include-html] fragments, then resolve when finished
+    async function includeHTML() {
+      const nodes = Array.from(document.querySelectorAll('[w3-include-html]'));
+      await Promise.all(nodes.map(async (el) => {
+        const file = el.getAttribute('w3-include-html');
+        if (!file) return;
         try {
-          const stored = localStorage.getItem(STORAGE_KEY);
-          if (stored !== null) setDark(stored === '1', false);
-        } catch (e) { /* ignore */ }
+          const res = await fetch(file, {cache: 'no-store'});
+          if (!res.ok) throw new Error(res.statusText);
+          el.innerHTML = await res.text();
+        } catch (_) {
+          el.innerHTML = '<!-- include failed: ' + file + ' -->';
+        } finally {
+          el.removeAttribute('w3-include-html');
+        }
+      }));
+    }
 
-        btn.addEventListener('click', () => {
-          const isDark = document.body.classList.toggle('dark-theme');
-          btn.setAttribute('aria-pressed', String(!!isDark));
-          try { localStorage.setItem(STORAGE_KEY, isDark ? '1' : '0'); } catch (e) {}
-        });
-      }());
-    }());
+    // Wire up dark mode toggle (button lives in header or nav)
+    function initThemeToggle() {
+      const btn = document.getElementById('theme-toggle');
+      if (!btn) return;
+      const saved = localStorage.getItem('ic-theme');
+      if (saved === 'dark') document.body.classList.add('dark-theme');
+      const syncPressed = () =>
+        btn.setAttribute('aria-pressed', document.body.classList.contains('dark-theme') ? 'true' : 'false');
+      syncPressed();
+      btn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme');
+        localStorage.setItem('ic-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+        syncPressed();
+      });
+    }
+
+    (async () => {
+      await includeHTML();
+      initThemeToggle();
+    })();
   </script>
 
 </body>
 </html>
-
