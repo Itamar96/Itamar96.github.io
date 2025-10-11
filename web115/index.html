@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,7 +21,7 @@
   <!-- include nav (contains the theme toggle button) -->
   <div w3-include-html="components/nav.html"></div>
 
-  <main>
+  <main id="main-content">
     <section class="intro-band">
       <div class="container flow">
         <h2>Welcome</h2>
@@ -59,19 +61,48 @@
   <div w3-include-html="components/footer.html"></div>
 
   <script>
-    // Initialize client-side HTML includes (keeps site DRY)
-    (function () {
-      function includeHTML() {
-        const elements = document.querySelectorAll('[w3-include-html]');
-        elements.forEach(el => {
+    // Initialize client-side HTML includes (keeps site DRY), then wire theme toggle
+    (async function () {
+      async function includeHTML() {
+        const elements = Array.from(document.querySelectorAll('[w3-include-html]'));
+        const promises = elements.map(el => {
           const file = el.getAttribute('w3-include-html');
-          if (!file) return;
-          fetch(file).then(r => r.text()).then(html => { el.innerHTML = html; el.removeAttribute('w3-include-html'); }).catch(()=>{});
+          if (!file) return Promise.resolve();
+          return fetch(file).then(r => r.text()).then(html => { el.innerHTML = html; el.removeAttribute('w3-include-html'); }).catch(() => {});
         });
+        await Promise.all(promises);
       }
-      includeHTML();
+
+      await includeHTML();
+
+      // Accessible theme toggle: attach after includes are inserted
+      (function () {
+        const STORAGE_KEY = 'ic-dark';
+        const btn = document.getElementById('theme-toggle');
+        if (!btn) return;
+
+        function setDark(isDark, persist = true) {
+          document.body.classList.toggle('dark-theme', isDark);
+          btn.setAttribute('aria-pressed', String(!!isDark));
+          if (persist) {
+            try { localStorage.setItem(STORAGE_KEY, isDark ? '1' : '0'); } catch (e) {}
+          }
+        }
+
+        try {
+          const stored = localStorage.getItem(STORAGE_KEY);
+          if (stored !== null) setDark(stored === '1', false);
+        } catch (e) { /* ignore */ }
+
+        btn.addEventListener('click', () => {
+          const isDark = document.body.classList.toggle('dark-theme');
+          btn.setAttribute('aria-pressed', String(!!isDark));
+          try { localStorage.setItem(STORAGE_KEY, isDark ? '1' : '0'); } catch (e) {}
+        });
+      }());
     }());
   </script>
 
 </body>
 </html>
+
