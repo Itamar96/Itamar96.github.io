@@ -1,4 +1,4 @@
-/* ----------------------------------------
+* ----------------------------------------
 	 Iridescent Cinderwyrm Bodywork — Desert Matcha Theme
 	 Cleaned and annotated 
 /* ---------- Base Tokens ---------- */
@@ -38,6 +38,9 @@ body {
 	background-position: center;
 }
 .container { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-4); }
+
+/* Align section headings in intro-band to match content column */
+.intro-band .container h2 { text-align: left; margin-left: 0; }
 
 /* optional band styling */
 .intro-band { background: var(--surface); padding: var(--space-6) 0; }
@@ -266,4 +269,3 @@ footer a {
 	text-decoration: none;
 	margin: 0 0.3rem;
 }
-
