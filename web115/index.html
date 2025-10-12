@@ -3,104 +3,53 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Itamar Castillo’s WEB115 workspace and brand demo: Iridescent Cinderwyrm Bodywork" />
+  <meta name="description" content="Home page of Iridescent Cinderwyrm Bodywork — WEB115 project by Itamar Castillo." />
   <title>Itamar Castillo’s Iridescent Cinderwyrm • Home</title>
-
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles/default.css" />
   <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
-  <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="site-header">
+  <header>
     <div class="container">
       <h1 class="site-title">
-        <span class="line-1">Itamar Castillo’s Iridescent Cinderwyrm</span>
-        <span class="dragon" aria-hidden="true">🐉</span>
+        Itamar Castillo • Iridescent Cinderwyrm <span class="dragon" aria-hidden="true">🐉</span>
       </h1>
-
       <nav aria-label="Primary">
-        <ul class="primary-nav">
-          <li><a href="index.html" aria-current="page">Home</a></li>
-          <li><a href="introduction.html">Introduction</a></li>
-          <li><a href="contract.html">Contract</a></li>
-          <li><a href="brand.html">Brand Guide</a></li>
-          <li><a href="fizzbuzz0.html">Fizz Buzz 0</a></li>
-        </ul>
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="introduction.html">Introduction</a>
+        <a href="contract.html">Contract</a>
+        <a href="brand.html">Brand Guide</a>
+        <a href="fizzbuzz0.html">Fizz Buzz 0</a>
       </nav>
-
-      <button id="theme-toggle" class="btn btn-brand" aria-label="Toggle color theme" aria-pressed="false">
-        Toggle Theme
-      </button>
+      <button id="theme-toggle" aria-label="Toggle dark mode">Toggle Theme</button>
     </div>
   </header>
 
-  <main id="main">
+  <main>
     <div class="container">
-      <section aria-labelledby="welcome-heading">
-        <h2 id="welcome-heading">Welcome</h2>
-        <p>
-          This site presents my coursework and highlights my evolving skills in accessible, standards-based web development. It also introduces my sample massage brand,
-          <strong>Iridescent Cinderwyrm Bodywork</strong>, which I use as a design sandbox for WEB115.
-        </p>
-      </section>
-
-      <section aria-labelledby="features-heading">
-        <h3 id="features-heading">What you’ll find here</h3>
-        <ul>
-          <li>Semantic, accessible HTML with responsive layouts.</li>
-          <li>Progressively enhanced scripts (no framework required).</li>
-          <li>Clean, readable CSS with light/dark theme support.</li>
-          <li>Course exercises and small demos (e.g., Fizz Buzz, brand guide).</li>
-        </ul>
-      </section>
-
-      <figure class="pull-quote">
-        <blockquote>
-          <p>“If I have seen further it is by standing on the shoulders of giants.”</p>
-        </blockquote>
-        <figcaption>— Isaac Newton</figcaption>
+      <h2>Welcome to Iridescent Cinderwyrm Bodywork</h2>
+      <p><strong>Breathe. Unwind. Renew.</strong> This site presents my WEB115 projects and brand materials using the Desert Matcha theme.</p>
+      <figure>
+        <img src="images/spa-bg.svg" alt="Desert Matcha illustration" />
+        <figcaption>Serene balance in color and tone — the core of Desert Matcha.</figcaption>
       </figure>
     </div>
   </main>
 
-  <footer class="site-footer">
+  <footer>
     <div class="container">
-      <nav aria-label="Social links">
-        <ul class="footer-links">
-          <li><a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-          <li><a href="https://itamar96.github.io" target="_blank" rel="noopener noreferrer">Portfolio Site</a></li>
-          <li><a href="https://itamar96.github.io/web115/" target="_blank" rel="noopener noreferrer">Course Site</a></li>
-          <li><a href="https://www.codecademy.com/profiles/Itamar96" target="_blank" rel="noopener noreferrer">Codecademy</a></li>
-          <li><a href="https://jsfiddle.net/u/Itamar96/fiddles/" target="_blank" rel="noopener noreferrer">JSFiddle</a></li>
-          <li><a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-        </ul>
-      </nav>
-      <p class="meta note-gold">Page built by Iridescent Cinderwyrm Design</p>
+      <p>
+        <a href="https://itamar96.github.io" target="_blank">Portfolio Site</a> ✶
+        <a href="https://github.com/Itamar96" target="_blank">GitHub</a> ✶
+        <a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank">LinkedIn</a>
+      </p>
+      <p><em>Page built by Iridescent Cinderwyrm Design</em></p>
     </div>
   </footer>
 
-  <script>
-    // Accessible theme toggle with persistence
-    const btn = document.getElementById('theme-toggle');
-    const root = document.documentElement;
-
-    const stored = localStorage.getItem('theme');
-    if (stored) {
-      root.setAttribute('data-theme', stored);
-      btn.setAttribute('aria-pressed', stored === 'dark' ? 'true' : 'false');
-    }
-
-    btn?.addEventListener('click', () => {
-      const isDark = root.getAttribute('data-theme') === 'dark';
-      const next = isDark ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      btn.setAttribute('aria-pressed', String(!isDark));
-      localStorage.setItem('theme', next);
-    });
-  </script>
+  <script src="scripts/theme-toggle.js" defer></script>
 </body>
 </html>
+
