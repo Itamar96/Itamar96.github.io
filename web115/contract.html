@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Contract acknowledgment for Itamar Castillo — WEB115." />
+  <meta name="description" content="Contract acknowledgment for Itamar Castillo — WEB115" />
   <title>Itamar Castillo’s Iridescent Cinderwyrm • Contract</title>
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,31 +14,35 @@
 </head>
 
 <body>
-  <header>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
     <div class="container">
       <h1 class="site-title">
         <span class="line-1">Itamar Castillo <span class="dot" aria-hidden="true">•</span> Iridescent Cinderwyrm</span>
         <span class="line-2 dragon">WEB115 <span aria-hidden="true">🐉</span></span>
       </h1>
+
       <nav aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="introduction.html">Introduction</a>
-        <a href="contract.html" aria-current="page">Contract</a>
-        <a href="brand.html">Brand Guide</a>
-        <a href="fizzbuzz0.html">Fizz Buzz 0</a>
+        <ul class="primary-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="introduction.html">Introduction</a></li>
+          <li><a href="contract.html" aria-current="page">Contract</a></li>
+          <li><a href="brand.html">Brand Guide</a></li>
+          <li><a href="fizzbuzz0.html">Fizz Buzz 0</a></li>
+        </ul>
       </nav>
-      <button id="theme-toggle" aria-label="Toggle dark mode">Toggle Dark Mode</button>
+
+      <button id="theme-toggle" class="btn btn-brand" aria-label="Toggle color theme" aria-pressed="false">Toggle Theme</button>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <div class="container">
       <section aria-labelledby="contract-heading">
         <h2 id="contract-heading">Contract</h2>
         <p>
-          I, <strong>Itamar Castillo</strong>, agree to abide by the terms in my
-          <strong>Fall 2025 WEB115</strong> course with my instructor,
-          <strong>D.I. von Briesen</strong>.
+          I, <strong>Itamar Castillo</strong>, agree to abide by the terms in my <strong>Fall 2025 WEB115</strong> course with my instructor, <strong>D.I. von Briesen</strong>.
         </p>
         <p>
           I understand that all work I do on my school and personal websites will be publicly available to the world. I will not put information there that is inappropriate for schoolwork or that I want to keep private.
@@ -53,28 +57,40 @@
     </div>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <div class="container">
-      <p class="footer-links">
-        <a href="https://itamar96.github.io" target="_blank" rel="noopener noreferrer">Portfolio Site</a> ✶
-        <a href="https://itamar96.github.io/web115/" target="_blank" rel="noopener noreferrer">WEB115 Course Site</a> ✶
-        <a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer">GitHub</a> ✶
-        <a href="https://www.codecademy.com/profiles/Itamar96" target="_blank" rel="noopener noreferrer">Codecademy</a> ✶
-        <a href="https://jsfiddle.net/u/Itamar96/fiddles/" target="_blank" rel="noopener noreferrer">JSFiddle</a> ✶
-        <a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </p>
+      <nav aria-label="Social links">
+        <ul class="footer-links">
+          <li><a href="https://itamar96.github.io" target="_blank" rel="noopener noreferrer">Portfolio Site</a></li>
+          <li><a href="https://itamar96.github.io/web115/" target="_blank" rel="noopener noreferrer">WEB115 Course Site</a></li>
+          <li><a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://www.codecademy.com/profiles/Itamar96" target="_blank" rel="noopener noreferrer">Codecademy</a></li>
+          <li><a href="https://jsfiddle.net/u/Itamar96/fiddles/" target="_blank" rel="noopener noreferrer">JSFiddle</a></li>
+          <li><a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </nav>
       <p class="meta"><em>Page built by Iridescent Cinderwyrm Design</em></p>
     </div>
   </footer>
 
   <script>
-    const toggleButton = document.getElementById('theme-toggle');
-    toggleButton.addEventListener('click', () => {
-      document.body.classList.toggle('dark-theme');
+    // Accessible theme toggle with persistence
+    const btn = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+    const stored = localStorage.getItem('theme');
+    if (stored) {
+      root.setAttribute('data-theme', stored);
+      btn.setAttribute('aria-pressed', stored === 'dark' ? 'true' : 'false');
+    }
+    btn?.addEventListener('click', () => {
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      const next = isDark ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      btn.setAttribute('aria-pressed', String(!isDark));
+      localStorage.setItem('theme', next);
     });
   </script>
 </body>
 </html>
-
 
 
