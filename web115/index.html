@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Itamar Castillo’s WEB115 workspace and brand demo: Iridescent Cinderwyrm Bodywork" />
   <title>Itamar Castillo’s Iridescent Cinderwyrm • Home</title>
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles/default.css" />
@@ -14,57 +13,94 @@
   <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- 🐉 Include header -->
-  <div w3-include-html="components/header.html"></div>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">
+        <span class="line-1">Itamar Castillo’s Iridescent Cinderwyrm</span>
+        <span class="dragon" aria-hidden="true">🐉</span>
+      </h1>
 
-  <!-- 🧭 Include navigation -->
-  <div w3-include-html="components/nav.html"></div>
+      <nav aria-label="Primary">
+        <ul class="primary-nav">
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="introduction.html">Introduction</a></li>
+          <li><a href="contract.html">Contract</a></li>
+          <li><a href="brand.html">Brand Guide</a></li>
+          <li><a href="fizzbuzz0.html">Fizz Buzz 0</a></li>
+        </ul>
+      </nav>
 
-  <main>
-    <!-- Full-width band + centered content column -->
-    <section class="intro-band">
-      <div class="container flow">
-        <h2>Welcome</h2>
+      <button id="theme-toggle" class="btn btn-brand" aria-label="Toggle color theme" aria-pressed="false">
+        Toggle Theme
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <section aria-labelledby="welcome-heading">
+        <h2 id="welcome-heading">Welcome</h2>
         <p>
           This site presents my coursework and highlights my evolving skills in accessible, standards-based web development. It also introduces my sample massage brand,
-          <strong>Iridescent Cinderwyrm Bodywork</strong>. Please use the menu above to explore my work.
+          <strong>Iridescent Cinderwyrm Bodywork</strong>, which I use as a design sandbox for WEB115.
         </p>
+      </section>
 
-        <figure class="figure-holiday">
-          <picture>
-            <source type="image/webp"
-              srcset="images/hiking_portrait_600w.webp 600w, images/hiking_portrait_800w.webp 800w, images/hiking_portrait_1200w.webp 1200w"
-              sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-            <source type="image/jpeg"
-              srcset="images/hiking_portrait_600w.jpg 600w, images/hiking_portrait_800w.jpg 800w, images/hiking_portrait_1200w.jpg 1200w"
-              sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-            <img class="img-gold-border intro-landscape"
-              src="images/hiking_portrait_800w.jpg"
-              width="800" height="1067"
-              alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle." />
-          </picture>
-          <figcaption>Exploring Colorado’s alpine trails, 2025.</figcaption>
-        </figure>
+      <section aria-labelledby="features-heading">
+        <h3 id="features-heading">What you’ll find here</h3>
+        <ul>
+          <li>Semantic, accessible HTML with responsive layouts.</li>
+          <li>Progressively enhanced scripts (no framework required).</li>
+          <li>Clean, readable CSS with light/dark theme support.</li>
+          <li>Course exercises and small demos (e.g., Fizz Buzz, brand guide).</li>
+        </ul>
+      </section>
 
+      <figure class="pull-quote">
         <blockquote>
-          If I have seen further it is by standing on the shoulders of giants.
-          <cite>— Isaac Newton</cite>
+          <p>“If I have seen further it is by standing on the shoulders of giants.”</p>
         </blockquote>
-      </div>
-    </section>
+        <figcaption>— Isaac Newton</figcaption>
+      </figure>
+    </div>
   </main>
 
-  <!-- 🪶 Include footer -->
-  <div w3-include-html="components/footer.html"></div>
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="Social links">
+        <ul class="footer-links">
+          <li><a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://itamar96.github.io" target="_blank" rel="noopener noreferrer">Portfolio Site</a></li>
+          <li><a href="https://itamar96.github.io/web115/" target="_blank" rel="noopener noreferrer">Course Site</a></li>
+          <li><a href="https://www.codecademy.com/profiles/Itamar96" target="_blank" rel="noopener noreferrer">Codecademy</a></li>
+          <li><a href="https://jsfiddle.net/u/Itamar96/fiddles/" target="_blank" rel="noopener noreferrer">JSFiddle</a></li>
+          <li><a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </nav>
+      <p class="meta note-gold">Page built by Iridescent Cinderwyrm Design</p>
+    </div>
+  </footer>
 
   <script>
-    // 🌗 Dark Mode Toggle Script
-    const toggleButton = document.getElementById('theme-toggle');
-    toggleButton.addEventListener('click', () => {
-      document.body.classList.toggle('dark-theme');
+    // Accessible theme toggle with persistence
+    const btn = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+
+    const stored = localStorage.getItem('theme');
+    if (stored) {
+      root.setAttribute('data-theme', stored);
+      btn.setAttribute('aria-pressed', stored === 'dark' ? 'true' : 'false');
+    }
+
+    btn?.addEventListener('click', () => {
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      const next = isDark ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      btn.setAttribute('aria-pressed', String(!isDark));
+      localStorage.setItem('theme', next);
     });
   </script>
 </body>
 </html>
-
