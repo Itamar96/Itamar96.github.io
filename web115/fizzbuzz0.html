@@ -1,3 +1,7 @@
+<!-- =========================
+  File: fizzbuzz0.html (final)
+  Copy this into your project at /fizzbuzz0.html
+  ========================= -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +12,7 @@
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <!-- Use a single stylesheet path -->
   <link rel="stylesheet" href="styles/default.css" />
   <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
   <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous" defer></script>
@@ -91,64 +96,7 @@
     </div>
   </footer>
 
-  <script>
-    // Theme toggle with persistence
-    const themeBtn = document.getElementById('theme-toggle');
-    const root = document.documentElement;
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme) {
-      root.setAttribute('data-theme', storedTheme);
-      themeBtn.setAttribute('aria-pressed', storedTheme === 'dark' ? 'true' : 'false');
-    }
-    themeBtn?.addEventListener('click', () => {
-      const isDark = root.getAttribute('data-theme') === 'dark';
-      const next = isDark ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      themeBtn.setAttribute('aria-pressed', String(!isDark));
-      localStorage.setItem('theme', next);
-    });
-
-    // FizzBuzz + greeting logic
-    function sanitize(text) {
-      return text.replace(/[&<>"']/g, (ch) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[ch]));
-    }
-
-    function buildFullName(first, middle, last) {
-      const f = first.trim();
-      const m = (middle || '').trim();
-      const l = last.trim();
-      return m ? `${f} ${m[0].toUpperCase()}. ${l}` : `${f} ${l}`;
-    }
-
-    function fizzBuzz(n) {
-      if (n % 15 === 0) return 'FizzBuzz';
-      if (n % 3 === 0) return 'Fizz';
-      if (n % 5 === 0) return 'Buzz';
-      return String(n);
-    }
-
-    function renderFizzBuzz(listEl, start = 1, end = 125) {
-      listEl.textContent = '';
-      const frag = document.createDocumentFragment();
-      for (let i = start; i <= end; i++) {
-        const li = document.createElement('li');
-        li.textContent = fizzBuzz(i);
-        frag.appendChild(li);
-      }
-      listEl.appendChild(frag);
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const form = document.getElementById('name-form');
-      const greeting = document.getElementById('greeting');
-      const output = document.getElementById('datas');
-      const fizzbuzzHeading = document.getElementById('fizzbuzz-heading');
-
-      // Initial FizzBuzz render
-      renderFizzBuzz(output, 1, 125);
-
-      form?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const first = /** @type {HTMLInputElement} */(document.getElementById('first-name')).value;
-        const middle = /
-
+  <!-- External script (provided below) -->
+  <script src="scripts/fizzbuzz.js" defer></script>
+</body>
+</html>
