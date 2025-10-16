@@ -1,401 +1,148 @@
-/* ====================================================
-   BRAND PALETTE — Desert Matcha Theme (CLEANED)
-   Iridescent Cinderwyrm Bodywork
-   ----------------------------------------------------
-   Notes:
-   - Duplicates removed and variables normalized
-   - Broken braces fixed
-   - Accessible focus states added
-   - Light & Dark themes supported via `.dark-theme`
-   ==================================================== */
+/*
+  default.noclass.css
+  A "no-classes" variant of web115/styles/default.css intended as a demonstration.
+  This file converts common layout and component classes to element selectors where
+  reasonable (header, main, nav, footer, h1-h3, button, ul, li, figure). Some
+  component-specific rules (swatches, swatch, img-gold-border, dragon animation)
+  are left as comments because removing those classes requires HTML changes.
 
-/* ---------- Base & Tokens ---------- */
-html {
-  box-sizing: border-box;
-}
-*, *::before, *::after {
-  box-sizing: inherit;
-}
+  NOTES / DUPLICATION SUMMARY
+  - This file intentionally repeats core tokens and many rules from default.css so
+    you can compare side-by-side. After reviewing, we should dedupe by keeping
+    common tokens (:root) and shared rules in one file and page-specific overrides
+    in another.
+  - Duplicates with `index.html` (in-head stylesheet): body fonts/backgrounds,
+    header styles, max-width/content widths, button defaults, footer link rules.
+    Recommendation: keep tokens and generic rules in this external file and remove
+    matching rules from `index.html` head to avoid duplication.
+*/
 
 :root {
-  /* Background gradient stops */
   --bg-grad-1: #F7EAD9;
   --bg-grad-2: #F7EAD9;
-  --bg-grad-3: #EFE2CF;
-
-  /* Surfaces & text */
+  --bg-grad-3: #F7EAD9;
   --surface: #FFFFFF;
-  --text: #2f3a34;
-
-  /* Accents */
-  --accent: #6F8F6B;      /* sage tea */
-  --accent-deep: #3E574B; /* matcha leaf */
-  --accent-soft: #8DA3A6; /* mist */
-  --clay: #D47F5E;        /* terra */
-
-  /* Holiday metallics (used sparingly) */
-  --holiday-cream: #FFF7EC;
+  --text: #2F3A34;
+  --accent: #6F8F6B;
+  --accent-deep: #3E574B;
+  --accent-soft: #8DA3A6;
   --holiday-gold: #D4AF37;
-  --holiday-pine: #2F6F4F;
-  --holiday-berry: #B8403A;
+  --holiday-cream: #FFF8DC;
 
-  /* Layout & rhythm */
+  --brand-heading: "Playfair Display", serif;
+  --brand-body: "Inter", sans-serif;
+
   --content-width: 960px;
-  --space-1: .25rem;
-  --space-2: .5rem;
-  --space-3: .75rem;
   --space-4: 1rem;
   --space-6: 1.5rem;
-  --space-8: 2rem;
-
   --radius: 14px;
   --shadow: 0 8px 30px rgba(47, 58, 52, 0.12);
-
-  /* Type */
-  --brand-heading: "Playfair Display", serif;
-  --brand-body: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
 
-/* ====================================================
-   ELEMENT-BASED STYLING
-   ==================================================== */
-
-/* ---------- Layout ---------- */
+/* Global layout & typography (element-based) */
+html, body { height:100%; }
 body {
   margin: 0;
-  padding: var(--space-8);
   font-family: var(--brand-body);
-  font-size: 1.1rem;
-  line-height: 1.6;
   color: var(--text);
+  line-height: 1.6;
   background: linear-gradient(var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
-  background-image: url("/web115/images/spa-bg.svg");
+  background-image: url("images/spa-bg.svg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
 }
 
+/* Container -> main (single content area) */
 main {
-  max-width: 800px;
-  margin-inline: auto;
-  padding: var(--space-8) 0;
-}
-
-.container {
   max-width: var(--content-width);
   margin: 0 auto;
   padding: 0 var(--space-4);
 }
 
-/* ---------- Header ---------- */
+/* Header */
 header {
-  position: relative;
-  padding: 2.5rem 1rem;
-  background: var(--holiday-cream);
-  color: var(--text);
-  box-shadow: var(--shadow);
+  padding: var(--space-4) 0;
   text-align: center;
+  background: var(--surface);
 }
-
-.site-title {
-  margin: 0;
-  line-height: 1.1;
-  font-family: var(--brand-heading);
+header h1, header h2 { font-family: var(--brand-heading); }
+header h1 {
   font-weight: 800;
-  letter-spacing: 0.2px;
+  font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
+  margin: 0;
 }
+header h2 { font-weight: 700; margin: .5rem 0 0; }
 
-.site-title .line-1 {
-  display: block;
-  font-size: clamp(1.35rem, 1rem + 2vw, 2.1rem);
-}
+/* Decorative "dragon" shimmer in original used a .dragon class; converting
+   that behavior requires HTML change (e.g., header em or span). If you want a
+   no-class transform, target header em.dragonText or restructure the markup.
+*/
 
-.site-title .dragon {
-  display: inline-block;
-  color: var(--holiday-gold);
-  filter: drop-shadow(0 0 2px rgba(212,175,55,.65)) drop-shadow(0 0 6px rgba(212,175,55,.35));
-  text-shadow: 0 0 1px rgba(0,0,0,.15);
-  animation: dragonShimmer 2.6s ease-in-out infinite;
-}
+/* Headings */
+h1, h2, h3 { font-family: var(--brand-heading); line-height:1.2; margin: 0 0 var(--space-4); }
+h1{ font-weight:800 }
+h2{ font-weight:700 }
+h3{ font-weight:700; font-size:1.15rem }
 
-@keyframes dragonShimmer {
-  0%, 100% {
-    filter: drop-shadow(0 0 2px rgba(212,175,55,.55)) drop-shadow(0 0 6px rgba(212,175,55,.28));
-  }
-  50% {
-    filter: drop-shadow(0 0 3px rgba(212,175,55,.85)) drop-shadow(0 0 10px rgba(212,175,55,.45));
-  }
-}
+/* Navigation (element) */
+nav { display:flex; flex-wrap:wrap; justify-content:center; gap: .5rem 1rem; margin-top:.5rem }
+nav a { color: var(--accent-deep); text-decoration:none; padding:.4rem .75rem; border-radius:999px; transition: background-color 160ms ease, transform 120ms ease; }
+nav a:hover, nav a:focus-visible { text-decoration: underline; background: rgba(62,87,75,0.08); transform: translateY(-1px); }
+nav a[aria-current="page"] { background: var(--accent); color:#fff; font-weight:600; box-shadow: 0 0 0 2px rgba(62,87,75,0.08) inset, var(--shadow); }
 
-@media (prefers-reduced-motion: reduce) {
-  .site-title .dragon { animation: none; }
-}
+/* Text & lists */
+p, ul, ol, blockquote, figure { margin-block: var(--space-4); }
+ul { list-style: disc; padding-left: 1.25rem; }
 
-/* ---------- Navigation ---------- */
-nav {
-  margin-top: var(--space-2);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-2) var(--space-4);
-}
-
-nav a {
-  text-decoration: none;
-  padding: 0.4rem 0.75rem;
+/* Buttons (element) */
+button {
+  padding: 0.55rem 0.95rem;
   border-radius: 999px;
-  background: transparent;
-  color: var(--accent);
-  transition: background-color 160ms ease, transform 120ms ease, color 120ms ease;
-}
-
-nav a:hover,
-nav a:focus {
-  background: rgba(62, 87, 75, 0.08);
-  color: var(--accent-deep);
-  transform: translateY(-1px);
-}
-
-nav a[aria-current="page"] {
+  font-weight: 600;
   background: var(--accent);
   color: #fff;
-  font-weight: 600;
-  box-shadow: 0 0 0 2px rgba(62, 87, 75, 0.08) inset, var(--shadow);
-}
-
-/* ---------- Footer ---------- */
-footer {
-  margin-top: var(--space-8);
-}
-footer p {
-  margin: 0.5rem 0;
-  font-size: 0.95rem;
-  color: var(--text);
-}
-
-footer a { color: var(--accent); text-decoration: none; }
-footer a:hover { text-decoration: underline; }
-
-/* ---------- Typography ---------- */
-h1, h2, h3 { 
-  font-family: var(--brand-heading);
-  line-height: 1.2;
-  margin: 0 0 var(--space-4);
-}
-
-h1 {
-  font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
-  font-weight: 800;
-  color: var(--accent-deep);
-  margin: 0.5rem 0;
-}
-
-h2 {
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--accent);
-  margin-top: 2rem;
-}
-
-h3 {
-  font-weight: 700;
-  font-size: 1.15rem;
-}
-
-p, ul, ol, blockquote, figure { margin-block: var(--space-4); }
-
-ul { list-style: disc; padding-left: 1.25rem; }
-ul ul { list-style: circle; padding-left: 1.25rem; }
-
-/* Links */
-a { color: var(--accent-deep); text-decoration: underline; }
-a:hover, a:focus { color: var(--accent); }
-
-a:focus {
-  outline: 3px solid rgba(111, 143, 107, 0.35);
-  outline-offset: 2px;
-  border-radius: 6px;
-}
-
-/* ---------- Figures & Quotes ---------- */
-figure {
-  margin: var(--space-6) auto;
-  text-align: center;
-  background: #fff;
-  border-radius: var(--radius);
-  padding: var(--space-4);
+  border: none;
+  cursor: pointer;
   box-shadow: var(--shadow);
-  border: 1px solid rgba(62, 87, 75, 0.12);
 }
+button:hover, button:focus-visible { background: var(--accent-deep); }
 
-figure img {
-  display: block;
-  max-width: min(100%, 1200px);
-  height: auto;
-  border-radius: 12px;
-  margin: 0 auto;
-  box-shadow: 0 8px 24px rgba(47, 58, 52, 0.12);
-}
+/* Figures */
+figure { margin: var(--space-6) auto; text-align:center; background:#fff; border-radius: var(--radius); padding: var(--space-4); box-shadow: var(--shadow); border: 1px solid rgba(62,87,75,.12); }
+figure img { display:block; max-width:min(100%,1200px); height:auto; border-radius:12px; margin:0 auto; box-shadow:0 8px 24px rgba(47,58,52,0.12); }
+figcaption { margin-top:.75rem; font-size:.95rem; color:var(--accent-deep); }
 
-figcaption {
-  margin-top: 0.75rem;
-  font-size: 0.95rem;
-  color: var(--accent-deep);
-}
+/* Footer (element) */
+footer { padding: 2rem 0; margin-top: 3rem; text-align:center; border-top: 4px solid var(--accent); background-color: var(--bg-grad-1); }
+footer p { font-size: .95rem; line-height:1.6; margin-bottom:1rem; }
+footer a { color: var(--accent-deep); text-decoration:none; margin:0 .3rem; }
+footer a:hover, footer a:focus-visible { color: var(--accent); text-decoration: underline; }
 
-.figure-holiday {
-  background: var(--holiday-cream);
-  border: 1px solid rgba(212, 175, 55, 0.35);
-}
+/* Utility: simple footer list separators using element selectors */
+footer ul { list-style:none; margin: .5rem 0; padding:0; display:inline-flex; gap: .6rem .9rem; align-items:center; }
+footer ul li { display:flex; align-items:center; }
+footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold); padding:0 .5rem; font-size: .9rem; line-height:1; display:inline-block; }
 
-blockquote {
-  padding: var(--space-4);
-  border-left: 4px solid var(--accent);
-  background: rgba(141, 163, 166, 0.10);
-  border-radius: 0 var(--radius) var(--radius) 0;
-  margin-left: 0;
-  margin-right: 0;
-  font-style: italic;
-}
+/* Dark theme (prefixed -- same approach as original) */
+.dark-theme { --bg-grad-1: #1E1E1E; --bg-grad-2:#1E1E1E; --bg-grad-3:#121212; --surface:#202020; --text:#EAEAEA; --accent:#88BFA2; --accent-deep:#64A083; --accent-soft:#A6C9B6; --holiday-gold:#E1C964; }
 
-cite {
-  display: block;
-  margin-top: 0.5rem;
-  font-weight: 700;
-  color: var(--accent);
-  font-size: clamp(1.3rem, 1.05rem + 1.2vw, 1.9rem);
-}
+/* NOTES: component classes that exist in original default.css but cannot be
+   sensibly removed without HTML changes:
+   - .swatches, .swatch, .swatch .color: these are grid/list components that
+     require specific markup to remain usable. To make them classless you'd
+     change the HTML structure (e.g., use a <section> and <article> pattern).
+   - .dragon animation: requires a targeted element; remove class by using
+     header em or header span and update markup accordingly.
+   - .img-gold-border: decorative image border — keep as class or convert to
+     specific figure > img selector when HTML uses that pattern.
 
-/* ---------- Dragon Icon ---------- */
-.logo {
-  position: absolute;
-  top: 1rem; left: 1rem;
-  width: 6rem; height: 6rem;
-  font-size: 5rem;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--holiday-gold);
-  background-color: transparent;
-  line-height: 1;
-  z-index: 10;
-  transition: filter 0.3s ease;
-}
-
-/* ---------- Image Frame Utility ---------- */
-.img-gold-border {
-  border: 6px solid var(--holiday-gold);
-  border-radius: 12px;
-  background-color: var(--holiday-cream);
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
-  padding: 0.5rem;
-}
-
-.intro-landscape .img-gold-border {
-  max-width: 100%;
-  height: auto;
-}
-
-/* ---------- Utility ---------- */
-.note-gold { color: var(--holiday-gold); }
-
-/* ====================================================
-   DARK THEME
-   ==================================================== */
-.dark-theme {
-  --bg-grad-1: #1B1F1D;
-  --bg-grad-2: #1B1F1D;
-  --bg-grad-3: #1B1F1D;
-
-  --surface: #232825;
-  --text: #E4E4E4;
-
-  --accent: #8FCB9B;
-  --accent-deep: #B6E0B9;
-  --accent-soft: #A7C7C2;
-  --clay: #D47F5E;
-
-  --holiday-cream: #2E2E2E;
-  --holiday-gold: #FFD700;
-  --holiday-pine: #2F6F4F;
-  --holiday-berry: #B8403A;
-
-  --shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  background-image: none;
-  background-color: var(--bg-grad-1);
-  color: var(--text);
-}
-
-.dark-theme header,
-.dark-theme footer,
-.dark-theme main {
-  background: var(--surface);
-  color: var(--text);
-}
-
-.dark-theme h1,
-.dark-theme h2,
-.dark-theme h3,
-.dark-theme p,
-.dark-theme figcaption,
-.dark-theme cite,
-.dark-theme blockquote { color: var(--text); }
-
-.dark-theme nav a { color: var(--accent-soft); background-color: rgba(255, 255, 255, 0.05); }
-.dark-theme nav a:hover,
-.dark-theme nav a:focus { background: var(--accent); color: #1B1F1D; }
-.dark-theme nav a[aria-current="page"] { background: var(--accent-deep); color: #1B1F1D; font-weight: 600; }
-
-.dark-theme figure { background: var(--surface); border-color: rgba(255, 255, 255, 0.15); }
-.dark-theme blockquote { background: rgba(255, 255, 255, 0.05); border-left-color: var(--accent); }
-
-.dark-theme .img-gold-border { border: 6px solid var(--holiday-gold); border-radius: 12px; }
-
-/* Dragon shine variant */
-.dark-theme .logo {
-  filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.6)) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
-  animation: dragonShine 2.8s ease-in-out infinite;
-}
-
-@keyframes dragonShine {
-  0%, 100% { filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.6)) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4)); }
-  50% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.9)) drop-shadow(0 0 12px rgba(255, 215, 0, 0.6)); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .dark-theme .logo { animation: none; }
-}
-
-/* ====================================================
-   FORMS (FizzBuzz demo styles)
-   ==================================================== */
-.form-grid {
-  display: grid;
-  gap: var(--space-4);
-  max-width: 640px;
-  margin-inline: auto;
-}
-
-.field { display: flex; flex-direction: column; margin-bottom: var(--space-4); }
-.field label { margin-bottom: var(--space-2); font-weight: 600; }
-
-.field input {
-  padding: 0.6rem 0.75rem;
-  border: 2px solid var(--holiday-gold);
-  border-radius: 10px;
-  background: #fff;
-  font: inherit;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  transition: border-color .2s ease, box-shadow .2s ease;
-}
-
-.field input:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(111, 143, 107, 0.25);
-}
-
-/* ---------- Responsive ---------- */
-@media (max-width: 768px) {
-  nav { flex-direction: column; }
-}
-
+  If you want I can next:
+  - (A) Update the HTML to match this no-class stylesheet (apply edits to
+         `index.html` and other pages), or
+  - (B) Merge/dedupe rules: keep tokens and generic rules in this external
+         file and remove duplicates from `index.html` head (recommended), or
+  - (C) Produce a minimal mapping/patch that converts the original component
+         HTML to semantics that work with this no-class CSS.
+*/
