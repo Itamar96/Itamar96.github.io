@@ -1,41 +1,28 @@
-/* web115/styles/default.css
-   Desert Matcha — design tokens & element-based defaults.
+/* web115/styles/default.classless.css
+   Classless candidate derived from default.css.
 
-   Purpose: canonical stylesheet containing design tokens (CSS custom properties),
-   element-focused defaults (header, nav, main, footer, figure, forms), and a
-   small compatibility section for legacy classed pages.
-
-   Notes: detailed migration guidance is kept in `web115/styles/default.noclass.css`.
+   Purpose: a preview file that removes class-only compatibility rules and
+   relies on element- and attribute-based selectors only. Keep this file for
+   review; do not yet replace the canonical `default.css` until you confirm.
 */
 
-/* ---------- Base & Tokens ---------- */
-html { box-sizing: border-box; }
-
-/* ----------------------------------------------------
-   Tokens and element-based rules (copied from default.noclass.css)
-   ---------------------------------------------------- */
-
+/* Copy tokens from canonical stylesheet (reference only) */
 :root {
-  /* background base used for the 3-stop gradient; mapping keeps API flexible */
   --bg-base: #F7EAD9;
   --bg-grad-1: var(--bg-base);
   --bg-grad-2: var(--bg-base);
   --bg-grad-3: var(--bg-base);
   --surface: #FFFFFF;
   --text: #2F3A34;
-  /* Slightly deeper, muted green for a more upscale feel */
-  --accent: #5E7D62; /* was #6F8F6B */
-  /* warmer clay tone used sparingly for accents */
-  --clay-glow: #B85B39; /* subtle warmth */
-  --accent-deep: #365746; /* slightly deeper/muted */
-  --accent-soft: #92ABA6; /* keep soft variant similar */
-  /* Warmed gold for a richer, upscale shimmer */
-  --holiday-gold: #C9A84D; /* tuned warmer and slightly desaturated */
-  --holiday-cream: #FFF7E2; /* softer cream */
-  /* RGB helper for gold so we can use it in rgba() dynamically */
-  --holiday-gold-rgb: 201, 168, 77; /* matches #C9A84D */
-
-  /* explicit palette synonyms for clarity */
+  --accent: #5E7D62;
+  --clay-glow: #B85B39;
+  --accent-deep: #365746;
+  --accent-soft: #92ABA6;
+  --holiday-gold: #C9A84D;
+  --holiday-cream: #FFF7E2;
+  --holiday-gold-rgb: 201, 168, 77;
+  --holiday-gold-quote: #D4AF37;
+  --holiday-gold-quote-rgb: 212, 175, 55;
   --palette-sand: var(--bg-grad-1);
   --palette-surface: var(--surface);
   --palette-text: var(--text);
@@ -45,37 +32,28 @@ html { box-sizing: border-box; }
   --palette-clay: var(--clay-glow);
   --palette-holiday-cream: var(--holiday-cream);
   --palette-gold: var(--holiday-gold);
-
   --brand-heading: "Playfair Display", serif;
   --brand-body: "Inter", sans-serif;
-
   --content-width: 960px;
   --space-4: 1rem;
   --space-6: 1.5rem;
   --radius: 14px;
-  /* Softer, slightly warmer shadow to feel more inviting*/
   --shadow: 0 10px 36px rgba(33, 36, 32, 0.10);
-  /* header/footer divider colors (default) */
-  --site-divider: rgba(var(--accent-deep-rgb), 0.08);
-  /* RGB helpers for frequently used palette colors */
-  --accent-rgb: 94, 125, 98; /* #5E7D62 */
-  --accent-deep-rgb: 54, 87, 70; /* #365746 */
-  --text-rgb: 47, 58, 52; /* #2F3A34 (keep text same for accessibility) */
-  /* focus ring token (default) */
+  --accent-rgb: 94, 125, 98;
+  --accent-deep-rgb: 54, 87, 70;
+  --text-rgb: 47, 58, 52;
   --focus-ring: rgba(var(--accent-rgb), 0.18);
-  /* page overlay tint (rgb) and strength to subtly shift body tone */
-  --bg-overlay-rgb: 245, 241, 236; /* warm off-white tint for light mode */
+  --bg-overlay-rgb: 245, 241, 236;
   --bg-overlay-strength: 0.06;
 }
 
-/* Global layout & typography (element-based) */
+/* Keep element- and attribute-based rules only (pulled from default.css) */
 html, body { height:100%; }
 body {
   margin: 0;
   font-family: var(--brand-body);
   color: var(--text);
   line-height: 1.6;
-  /* Layered background: subtle color overlay, gradient stops, then image */
   background:
     linear-gradient(rgba(var(--bg-overlay-rgb), var(--bg-overlay-strength)), rgba(var(--bg-overlay-rgb), var(--bg-overlay-strength))),
     linear-gradient(var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3)),
@@ -86,405 +64,87 @@ body {
   background-position: center;
 }
 
-/* Subtle vignette overlay to add depth (luxury feel) */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  /* subtle, low-contrast vignette for depth — intentionally gentle */
-  background: radial-gradient(1200px 600px at 50% 15%, rgba(0,0,0,0.03), transparent 40%), linear-gradient(transparent, rgba(0,0,0,0.01));
-  mix-blend-mode: multiply;
-  opacity: 0.32;
-}
+body::after { content: ''; position: fixed; inset:0; pointer-events:none; background: radial-gradient(1200px 600px at 50% 15%, rgba(0,0,0,0.03), transparent 40%), linear-gradient(transparent, rgba(0,0,0,0.01)); mix-blend-mode: multiply; opacity: 0.32; }
 
-/* Container -> main (single content area) */
-main {
-  max-width: var(--content-width);
-  margin: 0 auto;
-  padding: 0 var(--space-4);
-}
+main { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-4); }
 
-/* Header */
-header {
-  padding: calc(var(--space-4) + 0.5rem) 0;
-  text-align: center;
-  background: var(--surface);
-  border-bottom: 1px solid var(--site-divider);
-}
-header h1, header h2 { font-family: var(--brand-heading); }
-header h1 {
-  font-weight: 800;
-  font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
-  margin: 0;
-}
-/* Subtle gradient title tuned for a calm, massage-oriented tone.
-   Increase contrast slightly in light mode by reducing transparency and
-   shifting stops so the heading reads stronger on pale backgrounds. */
-header h1 {
-  background: linear-gradient(90deg, var(--accent) 0%, var(--holiday-cream) 15%, rgba(var(--holiday-gold-rgb), 0.92) 55%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  opacity: 1;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.35);
-}
-header h2 { font-weight: 700; margin: .5rem 0 0; }
+header { padding: calc(var(--space-4) + 0.5rem) 0; text-align:center; background: var(--surface); border-bottom: 1px solid rgba(var(--accent-deep-rgb), 0.08); }
+header h1 { font-weight:800; font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem); margin:0; background: linear-gradient(90deg, var(--accent-deep) 0%, var(--accent) 35%, rgba(var(--holiday-gold-rgb), 0.95) 75%); -webkit-background-clip:text; background-clip:text; color:var(--accent-deep); -webkit-text-stroke: 0.2px rgba(var(--text-rgb), 0.18); text-shadow: 0 1px 0 rgba(255,255,255,0.25); }
+header h2 { font-weight:700; margin:.5rem 0 0; }
 
-/* Decorative "dragon" shimmer in original used a .dragon class; converting
-   that behavior requires HTML change (e.g., header em or span). If you want a
-   no-class transform, target header em.dragonText or restructure the markup.
-*/
-
-/* Headings */
-h1, h2, h3 { font-family: var(--brand-heading); line-height:1.2; margin: 0 0 var(--space-4); }
+h1,h2,h3 { font-family: var(--brand-heading); line-height:1.2; margin:0 0 var(--space-4); }
 h1{ font-weight:800 }
 h2{ font-weight:700 }
 h3{ font-weight:700; font-size:1.15rem }
 
-/* Navigation (element) */
 nav { display:flex; flex-wrap:wrap; justify-content:center; gap: .5rem 1rem; margin-top:.5rem }
 nav a { color: var(--accent-deep); text-decoration:none; padding:.4rem .75rem; border-radius:999px; transition: background-color 160ms ease, transform 120ms ease; }
 nav a:hover, nav a:focus-visible { text-decoration: underline; background: rgba(var(--accent-deep-rgb), 0.08); transform: translateY(-1px); }
 nav a[aria-current="page"] { background: var(--accent); color: var(--surface); font-weight:600; box-shadow: 0 0 0 2px rgba(var(--accent-deep-rgb), 0.08) inset, var(--shadow); }
 
-/* Text & lists */
 p, ul, ol, blockquote, figure { margin-block: var(--space-4); }
 ul { list-style: disc; padding-left: 1.25rem; }
 
-/* Brand enforcement per guide: links & primary buttons */
 a { color: var(--accent-deep); }
-/* All buttons are primary by default to keep markup classless */
-button, input[type="button"], input[type="submit"], a.button {
-  background: var(--accent); /* primary */
-  color: var(--surface);
-  border: none;
-}
-/* Secondary button helper for exceptions */
-.btn-secondary, button.btn-secondary {
-  background: transparent; color: var(--accent-deep); border: 2px solid var(--accent-soft); padding: 0.45rem 0.8rem; border-radius: 10px;
-}
+button, input[type="button"], input[type="submit"], a.button { background: var(--accent); color: var(--surface); border: none; }
+/* keep a tiny note: authors may use data attributes instead of classes for secondary buttons */
 
-/* Enhance focus outlines for accessibility */
 :focus { outline: 3px solid rgba(var(--accent-rgb), 0.18); outline-offset: 3px; }
 :focus:not(:focus-visible) { outline: none; }
 
-/* Imagery: rounded corners & soft shadows (brand look) */
 figure img, img { border-radius: 12px; box-shadow: 0 8px 24px rgba(var(--text-rgb), 0.08); }
 
-/* Respect user reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; animation: none !important; }
-}
+@media (prefers-reduced-motion: reduce) { * { transition:none !important; animation:none !important; } }
 
-/* Buttons (element) */
-button {
-  padding: 0.55rem 0.95rem;
-  border-radius: 999px;
-  font-weight: 600;
-  background: var(--accent);
-  color: var(--surface);
-  border: none;
-  cursor: pointer;
-  box-shadow: var(--shadow);
-}
+button { padding: 0.55rem 0.95rem; border-radius: 999px; font-weight:600; background: var(--accent); color: var(--surface); border:none; cursor:pointer; box-shadow: var(--shadow); }
 button:hover, button:focus-visible { background: var(--accent-deep); transform: translateY(-1px); box-shadow: 0 10px 26px rgba(var(--text-rgb), 0.08); }
 
-/* Primary button variant that authors can opt into */
 .btn-primary { background: linear-gradient(90deg, var(--accent) 0%, rgba(var(--holiday-gold-rgb),0.85) 80%); color: var(--surface); padding-left:1.05rem; padding-right:1.05rem; box-shadow: 0 10px 28px rgba(var(--text-rgb), 0.09); }
 
-/* Intro / hero card: sit the welcome text on a surface card for clarity */
-[data-intro], .intro-band, [data-intro] * {
-  box-sizing: border-box;
-}
-[data-intro] {
-  max-width: min(980px, 92%);
-  margin: 2.25rem auto 1.25rem;
-  padding: 2.25rem 1.25rem;
-  background: linear-gradient(180deg, rgba(var(--bg-overlay-rgb), 0.045), transparent);
-  border-radius: calc(var(--radius) + 10px);
-  border: 1px solid rgba(var(--accent-deep-rgb), 0.04);
-  box-shadow: 0 20px 48px rgba(var(--text-rgb), 0.08), inset 0 1px 0 rgba(var(--accent-rgb), 0.02);
-}
+[data-intro], [data-intro] * { box-sizing: border-box; }
+[data-intro] { max-width: min(980px, 92%); margin: 2.25rem auto 1.25rem; padding: 2.25rem 1.25rem; background: var(--accent-soft); color: var(--surface); border-radius: calc(var(--radius) + 10px); border: 1px solid rgba(var(--accent-deep-rgb), 0.08); box-shadow: 0 20px 48px rgba(var(--text-rgb), 0.06), inset 0 1px 0 rgba(var(--accent-rgb), 0.02); }
 
-/* Gold accent underline for headings to add an upscale detail */
 h2, h3 { position: relative; }
-h2::after, h3::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: -0.5rem;
-  width: 3.6rem;
-  height: 0.35rem;
-  border-radius: 6px;
-  background: linear-gradient(90deg, rgba(var(--holiday-gold-rgb), 0.95), rgba(var(--holiday-gold-rgb), 0.6));
-  box-shadow: 0 6px 18px rgba(var(--holiday-gold-rgb), 0.08);
-}
+h2::after, h3::after { content:''; position:absolute; left:50%; transform:translateX(-50%); bottom:-0.5rem; width:3.6rem; height:0.35rem; border-radius:6px; background: linear-gradient(90deg, rgba(var(--holiday-gold-rgb), 0.95), rgba(var(--holiday-gold-rgb), 0.6)); box-shadow: 0 6px 18px rgba(var(--holiday-gold-rgb), 0.08); }
 
-/* Blockquote styling: use a gentle accent-soft background and gold text
-   from the matcha palette to make quotes feel warm and refined. */
-blockquote {
-  background: var(--accent-soft);
-  color: var(--holiday-gold);
-  padding: 1rem 1.25rem;
-  border-left: 4px solid rgba(var(--holiday-gold-rgb), 0.6);
-  border-radius: 8px;
-  max-width: 64rem;
-  margin: 1.25rem auto;
-  text-align: center;
-  font-size: 1.125rem;
-  font-style: italic;
-}
+blockquote { background: var(--accent-soft); color: var(--holiday-gold-quote); padding: 1.25rem 1.5rem; border-radius:8px; max-width:70ch; margin:2rem auto; text-align:center; font-size:1.125rem; line-height:1.5; font-style:italic; position:relative; }
+blockquote::before { content:''; position:absolute; top:-0.6rem; left:50%; transform:translateX(-50%); width:3.6rem; height:0.35rem; border-radius:6px; background: linear-gradient(90deg, rgba(var(--holiday-gold-quote-rgb), 0.95), rgba(var(--holiday-gold-quote-rgb), 0.6)); box-shadow: 0 6px 18px rgba(var(--holiday-gold-quote-rgb), 0.06); }
 blockquote cite { display:block; margin-top:.6rem; color: rgba(var(--text-rgb), 0.7); font-style: normal; }
 
-/* Figures */
 figure { margin: var(--space-6) auto; text-align:center; background: var(--surface); border-radius: var(--radius); padding: var(--space-4); box-shadow: var(--shadow); border: 1px solid rgba(var(--accent-deep-rgb), .12); }
 figure img { display:block; max-width:min(100%,1200px); height:auto; border-radius:12px; margin:0 auto; box-shadow:0 8px 24px rgba(var(--text-rgb), 0.12); }
 figcaption { margin-top:.75rem; font-size:.95rem; color:var(--accent-deep); }
 
-/* Footer (element) */
-/* Footer: stronger contrast using the warmer clay tone */
 footer { padding: 2rem 0; margin-top: 3rem; text-align:center; border-top: 4px solid var(--accent); background-color: var(--clay-glow); color: var(--surface); }
 footer a { color: var(--surface); }
 footer p { font-size: .95rem; line-height:1.6; margin-bottom:1rem; }
 footer a { color: var(--accent-deep); text-decoration:none; margin:0 .3rem; }
 footer a:hover, footer a:focus-visible { color: var(--accent); text-decoration: underline; }
-
-/* Utility: simple footer list separators using element selectors */
 footer ul { list-style:none; margin: .5rem 0; padding:0; display:inline-flex; gap: .6rem .9rem; align-items:center; }
 footer ul li { display:flex; align-items:center; }
 footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold); padding:0 .5rem; font-size: .9rem; line-height:1; display:inline-block; }
 
-/* Dark theme variables — only applied when `.dark-theme` is present on <html>. */
-.dark-theme {
-  /* Earthy grey-green dark theme — muted, elegant, and high-contrast.
-     This leans greyer than a pure forest green for a calmer, studio-like look. */
-  /* DRY dark-mode: set base values and derive stops where needed */
-  --dark-bg: #0f211b;         /* earthy deep green-gray base */
-  --dark-surface: #1b2621;    /* panel surface */
-  --dark-text: #efece6;       /* readable off-white */
-  --dark-accent: #8fbf9e;     /* primary accent */
-  --dark-accent-deep: #5f8f6f;
-  --dark-accent-soft: #90b59a;
-  --dark-gold: #cdb569;
-
-  /* map RGB helper for dark mode */
-  --holiday-gold-rgb: 205, 181, 105;
-
-  /* Map derived variables so existing rules that use --bg-grad-* keep working */
-  --bg-base: var(--dark-bg);
-  --bg-grad-1: #162824;
-  --bg-grad-2: #101e1a;
-  --bg-grad-3: #0b1512;
-  --surface: var(--dark-surface);
-  /* bump contrast slightly for long-form reading */
-  --text: #f6f4ef; /* slightly brighter than --dark-text */
-  --accent: var(--dark-accent);
-  --accent-deep: var(--dark-accent-deep);
-  --accent-soft: var(--dark-accent-soft);
-  --holiday-gold: var(--dark-gold);
-
-  /* make header/footer divider a touch stronger in dark mode */
-  --site-divider: rgba(21,36,30,0.6);
-}
-
-/* stronger focus ring in dark mode for accessibility */
+/* Dark theme variables */
+.dark-theme { --dark-bg: #0f211b; --dark-surface: #1b2621; --dark-text: #efece6; --dark-accent: #8fbf9e; --dark-accent-deep: #5f8f6f; --dark-accent-soft: #90b59a; --dark-gold: #cdb569; --holiday-gold-rgb:205,181,105; --bg-base: var(--dark-bg); --bg-grad-1:#162824; --bg-grad-2:#101e1a; --bg-grad-3:#0b1512; --surface:var(--dark-surface); --text:#f6f4ef; --accent:var(--dark-accent); --accent-deep:var(--dark-accent-deep); --accent-soft:var(--dark-accent-soft); --holiday-gold:var(--dark-gold); --site-divider: rgba(21,36,30,0.6); }
 .dark-theme :focus { outline: 3px solid rgba(159,189,167,0.22); outline-offset: 3px; }
 
-/* Shimmer for gold-bordered images in dark mode */
-.img-gold-border, img[data-gold], figure[data-gold] img {
-  /* base gold border + soft shadow for light mode */
-  border-color: var(--holiday-gold);
-  box-shadow: 0 4px 12px rgba(var(--holiday-gold-rgb), 0.18);
-}
-
-/* no shimmer in light mode; shimmer is intentionally dark-mode only */
-
-/* Dark mode: stronger inset glow and slightly faster shimmer */
-.dark-theme .img-gold-border, .dark-theme img[data-gold], .dark-theme figure[data-gold] img {
-  border-color: var(--holiday-gold);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.28), 0 0 18px rgba(var(--holiday-gold-rgb), 0.06) inset;
-  animation: goldShimmerBorderDark 3.2s ease-in-out infinite;
-}
-
-@keyframes goldShimmerBorderDark {
-  0% { box-shadow: 0 10px 22px rgba(0,0,0,0.22), 0 0 8px rgba(var(--holiday-gold-rgb), 0.04) inset; }
-  50% { box-shadow: 0 18px 36px rgba(0,0,0,0.32), 0 0 18px rgba(var(--holiday-gold-rgb), 0.12) inset; }
-  100% { box-shadow: 0 10px 22px rgba(0,0,0,0.22), 0 0 8px rgba(var(--holiday-gold-rgb), 0.04) inset; }
-}
-
-/* ensure dragon logo glow uses the token and slightly stronger on dark */
-.dark-theme .logo {
-  filter: drop-shadow(0 0 3px rgba(var(--holiday-gold-rgb), 0.45)) drop-shadow(0 0 6px rgba(var(--holiday-gold-rgb), 0.28));
-  animation: dragonShine 3.6s ease-in-out infinite;
-}
-
-/* In dark mode, make the header use the same subtle color as the footer so
-   the header reads as a distinct band from the page background. */
-.dark-theme header {
-  background: linear-gradient(var(--bg-grad-1), var(--bg-grad-2));
-  border-bottom: 1px solid var(--site-divider);
-}
-
-/* Notes: some legacy, class-based components are retained for compatibility
-   (swatches, decorative image variants, animations). See
-   `web115/styles/default.noclass.css` for detailed migration guidance. */
-
-@media (max-width: 768px) {
-  nav { flex-direction: column; }
-}
-
-/* ====================================================
-   COMPATIBILITY: class -> element mappings
-   These rules preserve the original look for pages that still
-   use class-based markup (container, flow, intro-band, etc.).
-   They are intentionally minimal and mirror the element rules
-   above so you can migrate HTML gradually.
-   ==================================================== */
-
-/* Page container commonly used in templates */
-.container { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-4); }
-
-/* Attribute-based container (classless alternative) */
-[data-container], main[data-container] { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-4); }
-
-/* Utility flow spacing (stack children vertically with rhythm) */
-.flow > * + * { margin-top: var(--space-4); }
-
-/* Attribute-based flow spacing */
-[data-flow] > * + * { margin-top: var(--space-4); }
-
-/* Intro / hero band used on many pages */
-.intro-band { padding: var(--space-6) 0; }
-
-/* Attribute-based intro band */
-[data-intro] { padding: var(--space-6) 0; }
-
-/* Decorative figure variant used in templates */
-.figure-holiday { background: var(--holiday-cream); border: 1px solid rgba(var(--holiday-gold-rgb), 0.35); }
-
-/* Attribute-based figure holiday */
-figure[data-holiday] { background: var(--holiday-cream); border: 1px solid rgba(var(--holiday-gold-rgb), 0.35); }
-
-/* Decorative image border used on intro images */
-.img-gold-border { border: 6px solid var(--holiday-gold); border-radius: 12px; background-color: var(--holiday-cream); box-shadow: 0 4px 12px rgba(var(--holiday-gold-rgb), 0.3); padding: 0.5rem; }
-.intro-landscape { max-width: 100%; height: auto; display: block; }
-
-/* Attribute-based gold border for images (classless) */
+/* Attribute-based image gold border */
 img[data-gold], figure[data-gold] img { border: 6px solid var(--holiday-gold); border-radius: 12px; background-color: var(--holiday-cream); box-shadow: 0 4px 12px rgba(var(--holiday-gold-rgb), 0.3); padding: 0.5rem; }
 
-/* Swatches: apply to both class-based and attribute-based markup */
+/* Swatches (attribute-based) */
 .swatches, [data-swatches] { display:flex; gap: .75rem 1rem; flex-wrap:wrap; align-items:center; padding:0; margin:0; list-style:none; }
-.swatch, [data-swatches] li { display:flex; gap:.6rem; align-items:center; }
-.color-box, [data-swatches] [data-swatch-color] { display:inline-block; width:2.4rem; height:2.4rem; border-radius:6px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+[data-swatches] > li { display:flex; gap:.6rem; align-items:center; }
+[data-swatches] [data-swatch-color] { display:inline-block; width:2.4rem; height:2.4rem; border-radius:6px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
 
-/* Backcompat: attribute-based swatches already provided earlier; keep class rules too */
+/* Accessibility/helper tokens */
+.visually-hidden { position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; border:0; padding:0; margin:-1px; }
 
+/* Forms: attribute-based field styles */
+[data-form] { max-width:640px; margin-inline:auto; display:grid; gap:var(--space-4); }
+[data-field] { display:flex; flex-direction:column; margin-bottom:var(--space-4); }
+[data-field] label { margin-bottom:var(--space-2); font-weight:600; }
+[data-field] input { padding:0.6rem 0.75rem; border:2px solid var(--holiday-gold); border-radius:10px; background:var(--surface); font:inherit; box-shadow:0 1px 3px rgba(0,0,0,0.05); transition: border-color .2s ease, box-shadow .2s ease; }
+[data-field] input:focus { outline:none; border-color:var(--accent); box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.25); }
 
-/* Backcompat for site-title class */
-.site-title { margin: 0; line-height: 1.1; font-family: var(--brand-heading); font-weight: 800; letter-spacing: 0.2px; }
-.site-title .line-1 { display:block; font-size: clamp(1.35rem, 1rem + 2vw, 2.1rem); }
-
-.note-gold { color: var(--holiday-gold); }
-
-/* Visually hidden utility (common accessibility helper) */
-.visually-hidden {
-  position: absolute !important;
-  height: 1px; width: 1px; overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px); white-space: nowrap;
-  border: 0; padding: 0; margin: -1px;
-}
-
-/* small text helper for gold accents used in content */
-.text-gold { color: var(--holiday-gold); font-weight: 600; }
-
-/* Brand page small helpers (attribute-based equivalents for previous classes) */
-[data-meta] { font-size: .98rem; color: var(--accent-deep); }
-[data-swatch-label] { font-family: var(--brand-body); font-size: .95rem; color: var(--text); }
-[data-type-card] { margin-top: var(--space-4); padding: var(--space-4); border-radius: 10px; background: transparent; }
-[data-type-label] { font-weight: 600; margin-bottom: .35rem; display:block; }
-
-/* Palette helpers used by the /brand or swatches markup */
-
-/* Classless / attribute-based swatches so pages can be classless
-   Use markup like:
-   <ul data-swatches>
-     <li><span data-swatch-color="#F7EAD9"></span><span> #F7EAD9</span><em>Sand background</em></li>
-   </ul>
-*/
-/* attribute-only swatches merged into unified .swatches rule above */
-
-/* Convenience helper: prefabricated palette items (optional class for authors) */
-.palette-sand { background: var(--palette-sand); }
-.palette-surface { background: var(--palette-surface); }
-.palette-text { background: var(--palette-text); }
-.palette-accent { background: var(--palette-accent); }
-.palette-accent-deep { background: var(--palette-accent-deep); }
-.palette-mist { background: var(--palette-mist); }
-.palette-clay { background: var(--palette-clay); }
-.palette-holiday-cream { background: var(--palette-holiday-cream); }
-.palette-gold { background: var(--palette-gold); }
-
-.dark-theme .img-gold-border { border: 6px solid var(--holiday-gold); border-radius: 12px; }
-
-/* Dragon shine variant */
-/* Dragon shine uses the shared gold token so it follows theme overrides */
-.dark-theme .logo {
-  /* additional rule to ensure consistent styling; primary rule above wins for filter/animation */
-  filter: drop-shadow(0 0 3px rgba(var(--holiday-gold-rgb), 0.6)) drop-shadow(0 0 8px rgba(var(--holiday-gold-rgb), 0.4));
-  animation: dragonShine 2.8s ease-in-out infinite;
-}
-
-@keyframes dragonShine {
-  0%, 100% {
-    filter: drop-shadow(0 0 3px rgba(var(--holiday-gold-rgb), 0.6)) drop-shadow(0 0 8px rgba(var(--holiday-gold-rgb), 0.4));
-  }
-  50% {
-    filter: drop-shadow(0 0 5px rgba(var(--holiday-gold-rgb), 0.9)) drop-shadow(0 0 12px rgba(var(--holiday-gold-rgb), 0.6));
-  }
-}
-
-/* Intensify dragon glow on hover/focus (still dark-mode only) */
-.dark-theme .logo:hover, .dark-theme .logo:focus {
-  filter: drop-shadow(0 0 8px rgba(var(--holiday-gold-rgb), 0.95)) drop-shadow(0 0 20px rgba(var(--holiday-gold-rgb), 0.6));
-  transition: filter 220ms ease;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .dark-theme .logo { animation: none; }
-}
-
-/* ====================================================
-   FORMS (FizzBuzz demo styles)
-   ==================================================== */
-.form-grid {
-  display: grid;
-  gap: var(--space-4);
-  max-width: 640px;
-  margin-inline: auto;
-}
-
-.field { display: flex; flex-direction: column; margin-bottom: var(--space-4); }
-.field label { margin-bottom: var(--space-2); font-weight: 600; }
-
-.field input {
-  padding: 0.6rem 0.75rem;
-  border: 2px solid var(--holiday-gold);
-  border-radius: 10px;
-  background: var(--surface);
-  font: inherit;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  transition: border-color .2s ease, box-shadow .2s ease;
-}
-
-.field input:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.25);
-}
-
-/* ---------- Responsive ---------- */
-@media (max-width: 768px) {
-  nav { flex-direction: column; }
-}
+/* Small note: This file is a preview. If you want me to replace `default.css` with
+   this classless variant I can do so after you confirm. *
