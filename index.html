@@ -92,8 +92,8 @@
     footer a:hover { color: var(--link-hover); text-shadow: 0 0 6px rgba(255,255,200,0.6); transform: translateY(-2px); }
     footer a:focus-visible { outline: 3px solid transparent; box-shadow: 0 0 0 3px var(--focus-ring); border-radius: 6px; }
     footer ul { list-style:none; margin:8px 0; padding:0; display:inline-flex; gap:10px; flex-wrap:wrap; align-items:center; }
-    footer ul li { list-style:none; margin:0; }
-    footer ul li:not(:last-child)::after { content: '✶'; color: var(--footer-star-color); padding: 0 10px; font-size: var(--footer-star-size); vertical-align: middle; opacity: 0.98; }
+  footer ul li { list-style:none; margin:0; display:flex; align-items:center; }
+  footer ul li:not(:last-child)::after { content: '✶'; color: var(--footer-star-color); display:inline-block; width:1em; text-align:center; font-size: var(--footer-star-size); margin: 0 10px; line-height:1; opacity: 0.98; }
     /* target the last paragraph in footer for spacing (replaces the .copyright class) */
     footer p:last-of-type { margin-top: 10px; }
   </style>
@@ -146,4 +146,3 @@
   </script>
 </body>
 </html>
-
