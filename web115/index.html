@@ -117,9 +117,8 @@
         }
       });
 
-      // When a header (or any fragment) is injected, ensure the button's aria state
-      // matches the current theme. We use a MutationObserver so this works reliably
-      // without depending on the include implementation.
+      // When a header/footer fragment is injected the include script will dispatch
+      // a `htmlinclude:loaded` event. Listen for that event and sync the toggle.
       function syncToggleButton() {
         var btn = document.getElementById('theme-toggle');
         if (!btn) return;
@@ -127,10 +126,8 @@
         btn.setAttribute('aria-pressed', String(isDark));
       }
 
-      // Run once on load and whenever DOM changes (to catch fragment injections)
       document.addEventListener('DOMContentLoaded', syncToggleButton);
-      var mo = new MutationObserver(function(){ syncToggleButton(); });
-      mo.observe(document.documentElement, { childList: true, subtree: true });
+      document.addEventListener('htmlinclude:loaded', function (e) { syncToggleButton(); });
     })();
   </script>
 
