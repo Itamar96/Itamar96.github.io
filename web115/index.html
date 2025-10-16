@@ -1,105 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="description" content="Itamar Castillo’s WEB115 workspace and brand demo: Iridescent Cinderwyrm Bodywork" />
-	<meta name="course" content="WEB115" />
-	<title>Itamar Castillo’s Iridescent Cinderwyrm • WEB115 • Home</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Itamar Castillo’s WEB115 workspace and brand demo: Iridescent Cinderwyrm Bodywork" />
+  <meta name="course" content="WEB115" />
+  <title>Itamar Castillo’s Iridescent Cinderwyrm • WEB115 • Home</title>
 
-	<!-- Fonts -->
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
 
-	<!-- Styles (shared default) -->
-	<link rel="stylesheet" href="styles/default.css" />
+  <!-- Styles (shared default) -->
+  <link rel="stylesheet" href="styles/default.css" />
 
-	<!-- Favicon -->
-	<link rel="icon" type="image/png" href="images/dragon-favicon.png" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
 
-	<!-- Safe lint.page loader (only on http/https) -->
-	<script>
-	(function loadLintPageSafely(){
-		try {
-			var proto = location.protocol;
-			if (proto === 'http:' || proto === 'https:') {
-				var s = document.createElement('script');
-				s.src = 'https://lint.page/kit/67ff88.js';
-				s.defer = true;
-				s.crossOrigin = 'anonymous';
-				s.onerror = function(){ console.info('lint.page unavailable; continuing without it.'); };
-				document.head.appendChild(s);
-			} else {
-				console.info('Skipping lint.page (non-network environment).');
-			}
-		} catch (e) {
-			console.info('Skipping lint.page due to environment:', e);
-		}
-	})();
-	</script>
+  <!-- Safe lint.page loader (only on http/https) -->
+  <script>
+  (function loadLintPageSafely(){
+    try {
+      var proto = location.protocol;
+      if (proto === 'http:' || proto === 'https:') {
+        var s = document.createElement('script');
+        s.src = 'https://lint.page/kit/67ff88.js';
+        s.defer = true;
+        s.crossOrigin = 'anonymous';
+        s.onerror = function(){ console.info('lint.page unavailable; continuing without it.'); };
+        document.head.appendChild(s);
+      } else {
+        console.info('Skipping lint.page (non-network environment).');
+      }
+    } catch (e) {
+      console.info('Skipping lint.page due to environment:', e);
+    }
+  })();
+  </script>
 
-	<!-- Persisted theme bootstrap (prevents flash) -->
-	<script>
-	(function() {
-		try {
-			const stored = localStorage.getItem('theme');
-			// Only honor an explicit stored preference. Do not auto-apply OS-level
-			// prefers-color-scheme here so dark mode is strictly opt-in via the toggle.
-			if (stored === 'dark') {
-				document.documentElement.classList.add('dark-theme');
-			}
-		} catch (_) {}
-	})();
-	</script>
-	<!-- Validator helper: loads the appropriate lint.page kit and populates the footer validate link -->
-	<script src="scripts/validator.js" defer></script>
+  <!-- Persisted theme bootstrap (prevents flash) -->
+  <script>
+  (function() {
+    try {
+      const stored = localStorage.getItem('theme');
+      // Only honor an explicit stored preference. Do not auto-apply OS-level
+      // prefers-color-scheme here so dark mode is strictly opt-in via the toggle.
+      if (stored === 'dark') {
+        document.documentElement.classList.add('dark-theme');
+      }
+    } catch (_) {}
+  })();
+  </script>
+
+  <!-- Validator helper: loads lint.page kit and populates footer validate link -->
+  <script src="scripts/validator.js" defer></script>
 </head>
 <body>
 
-	<!-- 🐉 Include header -->
-	<div data-include="components/header.html"></div>
+  <!-- 🐉 Include header -->
+  <div data-include="components/header.html"></div>
 
+  <main>
+    <article>
+      <section>
+        <div data-container data-intro>
+          <h2>Welcome</h2>
+          <p>
+            This site presents my coursework and highlights my evolving skills in accessible,
+            standards-based web development. It also introduces my sample massage brand,
+            <strong>Iridescent Cinderwyrm Bodywork</strong>. Please use the menu above to explore my work.
+          </p>
 
-	<main>
-		<section>
-	<div data-container data-intro>
-				<h2>Welcome</h2>
-				<p>
-					This site presents my coursework and highlights my evolving skills in accessible, standards-based web development. It also introduces my sample massage brand,
-					<strong>Iridescent Cinderwyrm Bodywork</strong>. Please use the menu above to explore my work.
-				</p>
+          <figure>
+            <picture>
+              <source type="image/webp"
+                srcset="images/hiking_portrait_600w.webp 600w,
+                        images/hiking_portrait_800w.webp 800w,
+                        images/hiking_portrait_1200w.webp 1200w"
+                sizes="(max-width: 640px) 600px,
+                       (max-width: 960px) 800px,
+                       1200px" />
+              <source type="image/jpeg"
+                srcset="images/hiking_portrait_600w.jpg 600w,
+                        images/hiking_portrait_800w.jpg 800w,
+                        images/hiking_portrait_1200w.jpg 1200w"
+                sizes="(max-width: 640px) 600px,
+                       (max-width: 960px) 800px,
+                       1200px" />
+              <img data-gold loading="lazy"
+                src="images/hiking_portrait_800w.jpg"
+                width="800" height="1067"
+                alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle." />
+            </picture>
+            <figcaption>Exploring Colorado’s alpine trails, 2025.</figcaption>
+          </figure>
 
-	<figure>
-					<picture>
-						<source type="image/webp"
-							srcset="images/hiking_portrait_600w.webp 600w, images/hiking_portrait_800w.webp 800w, images/hiking_portrait_1200w.webp 1200w"
-							sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-						<source type="image/jpeg"
-							srcset="images/hiking_portrait_600w.jpg 600w, images/hiking_portrait_800w.jpg 800w, images/hiking_portrait_1200w.jpg 1200w"
-							sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-						<img data-gold
-							src="images/hiking_portrait_800w.jpg"
-							width="800" height="1067"
-							alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle." />
-					</picture>
-					<figcaption>Exploring Colorado’s alpine trails, 2025.</figcaption>
-				</figure>
+          <blockquote>
+            If I have seen further it is by standing on the shoulders of giants.
+            <cite>— Isaac Newton</cite>
+          </blockquote>
+        </div>
+      </section>
+    </article>
+  </main>
 
-				<blockquote>
-					If I have seen further it is by standing on the shoulders of giants.
-					<cite>— Isaac Newton</cite>
-				</blockquote>
-			</div>
-		</section>
-	</main>
+  <!-- 🪶 Include footer -->
+  <div data-include="components/footer.html"></div>
 
-	<!-- 🪶 Include footer -->
-	<div data-include="components/footer.html"></div>
-	<!-- HTML include script: injects components marked with data-include -->
-	<script src="scripts/HTMLInclude.js" defer></script>
-	<script src="scripts/theme-toggle.js" defer></script>
+  <!-- HTML include script: injects components marked with data-include -->
+  <script src="scripts/HTMLInclude.js" defer></script>
+  <script src="scripts/theme-toggle.js" defer></script>
 
-	<!-- theme-toggle.js handles toggle behavior and sync (loaded above) -->
+  <!-- No-script fallback -->
+  <noscript>
+    <p style="text-align:center; color:#a00; font-weight:600;">
+      Please enable JavaScript to view this page correctly.
+    </p>
+  </noscript>
 
 </body>
 </html>
