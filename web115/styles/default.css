@@ -49,6 +49,8 @@ html { box-sizing: border-box; }
   --space-6: 1.5rem;
   --radius: 14px;
   --shadow: 0 8px 30px rgba(47, 58, 52, 0.12);
+  /* header/footer divider colors (default) */
+  --site-divider: rgba(62,87,75,0.08);
 }
 
 /* Global layout & typography (element-based) */
@@ -79,6 +81,7 @@ header {
   padding: var(--space-4) 0;
   text-align: center;
   background: var(--surface);
+  border-bottom: 1px solid var(--site-divider);
 }
 header h1, header h2 { font-family: var(--brand-heading); }
 header h1 {
@@ -165,15 +168,38 @@ footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold
 
 /* Dark theme variables — only applied when `.dark-theme` is present on <html>. */
 .dark-theme {
-  /* dark theme sets a base and keeps a slightly darker bottom stop */
-  --bg-base: #1E1E1E;
-  --bg-grad-3: #121212;
-  --surface: #202020;
-  --text: #EAEAEA;
-  --accent: #88BFA2;
-  --accent-deep: #64A083;
-  --accent-soft: #A6C9B6;
-  --holiday-gold: #E1C964;
+  /* Earthy grey-green dark theme — muted, elegant, and high-contrast.
+     This leans greyer than a pure forest green for a calmer, studio-like look. */
+  /* DRY dark-mode: set base values and derive stops where needed */
+  --dark-bg: #0f211b;         /* earthy deep green-gray base */
+  --dark-surface: #1b2621;    /* panel surface */
+  --dark-text: #efece6;       /* readable off-white */
+  --dark-accent: #8fbf9e;     /* primary accent */
+  --dark-accent-deep: #5f8f6f;
+  --dark-accent-soft: #90b59a;
+  --dark-gold: #cdb569;
+
+  /* Map derived variables so existing rules that use --bg-grad-* keep working */
+  --bg-base: var(--dark-bg);
+  --bg-grad-1: #162824;
+  --bg-grad-2: #101e1a;
+  --bg-grad-3: #0b1512;
+  --surface: var(--dark-surface);
+  --text: var(--dark-text);
+  --accent: var(--dark-accent);
+  --accent-deep: var(--dark-accent-deep);
+  --accent-soft: var(--dark-accent-soft);
+  --holiday-gold: var(--dark-gold);
+
+  /* make header/footer divider a touch stronger in dark mode */
+  --site-divider: rgba(21,36,30,0.6);
+}
+
+/* In dark mode, make the header use the same subtle color as the footer so
+   the header reads as a distinct band from the page background. */
+.dark-theme header {
+  background: linear-gradient(var(--bg-grad-1), var(--bg-grad-2));
+  border-bottom: 1px solid var(--site-divider);
 }
 
 /* Notes: some legacy, class-based components are retained for compatibility
