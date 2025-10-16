@@ -19,6 +19,16 @@
                                 });
                             }
                             element.outerHTML = z;
+                            try {
+                                // Dispatch a custom event so pages can react to injected fragments.
+                                var evt = new CustomEvent('htmlinclude:loaded', { detail: { path: url }, bubbles: true });
+                                // Use a short timeout so listeners run after the DOM has settled.
+                                setTimeout(function(){
+                                    (d.documentElement || d.body).dispatchEvent(evt);
+                                }, 0);
+                            } catch (e) {
+                                // ignore if CustomEvent not supported (very old browsers)
+                            }
                             var scripts = new DOMParser().parseFromString(z, 'text/html').querySelectorAll("SCRIPT");
                             var i = 0;
                             var j = scripts.length;
