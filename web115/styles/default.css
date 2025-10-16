@@ -138,24 +138,9 @@ footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold
 /* Dark theme (prefixed -- same approach as original) */
 .dark-theme { --bg-grad-1: #1E1E1E; --bg-grad-2:#1E1E1E; --bg-grad-3:#121212; --surface:#202020; --text:#EAEAEA; --accent:#88BFA2; --accent-deep:#64A083; --accent-soft:#A6C9B6; --holiday-gold:#E1C964; }
 
-/* NOTES: component classes that exist in original default.css but cannot be
-   sensibly removed without HTML changes:
-   - .swatches, .swatch, .swatch .color: these are grid/list components that
-     require specific markup to remain usable. To make them classless you'd
-     change the HTML structure (e.g., use a <section> and <article> pattern).
-   - .dragon animation: requires a targeted element; remove class by using
-     header em or header span and update markup accordingly.
-   - .img-gold-border: decorative image border — keep as class or convert to
-     specific figure > img selector when HTML uses that pattern.
-
-  If you want I can next:
-  - (A) Update the HTML to match this no-class stylesheet (apply edits to
-         `index.html` and other pages), or
-  - (B) Merge/dedupe rules: keep tokens and generic rules in this external
-         file and remove duplicates from `index.html` head (recommended), or
-  - (C) Produce a minimal mapping/patch that converts the original component
-         HTML to semantics that work with this no-class CSS.
-*/
+/* Notes: some legacy, class-based components are retained for compatibility
+   (swatches, decorative image variants, animations). See
+   `web115/styles/default.noclass.css` for detailed migration guidance. */
 
 @media (max-width: 768px) {
   nav { flex-direction: column; }
