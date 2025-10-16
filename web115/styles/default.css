@@ -23,14 +23,17 @@ html { box-sizing: border-box; }
   --bg-grad-3: var(--bg-base);
   --surface: #FFFFFF;
   --text: #2F3A34;
-  --accent: #6F8F6B;
-  --clay-glow: #C4633A;
-  --accent-deep: #3E574B;
-  --accent-soft: #8DA3A6;
-  --holiday-gold: #D4AF37;
-  --holiday-cream: #FFF8DC;
+  /* Slightly deeper, muted green for a more upscale feel */
+  --accent: #5E7D62; /* was #6F8F6B */
+  /* warmer clay tone used sparingly for accents */
+  --clay-glow: #B85B39; /* subtle warmth */
+  --accent-deep: #365746; /* slightly deeper/muted */
+  --accent-soft: #92ABA6; /* keep soft variant similar */
+  /* Warmed gold for a richer, upscale shimmer */
+  --holiday-gold: #C9A84D; /* tuned warmer and slightly desaturated */
+  --holiday-cream: #FFF7E2; /* softer cream */
   /* RGB helper for gold so we can use it in rgba() dynamically */
-  --holiday-gold-rgb: 212, 175, 55;
+  --holiday-gold-rgb: 201, 168, 77; /* matches #C9A84D */
 
   /* explicit palette synonyms for clarity */
   --palette-sand: var(--bg-grad-1);
@@ -50,11 +53,19 @@ html { box-sizing: border-box; }
   --space-4: 1rem;
   --space-6: 1.5rem;
   --radius: 14px;
-  --shadow: 0 8px 30px rgba(47, 58, 52, 0.12);
+  /* Softer, slightly warmer shadow to feel more inviting*/
+  --shadow: 0 10px 36px rgba(33, 36, 32, 0.10);
   /* header/footer divider colors (default) */
-  --site-divider: rgba(62,87,75,0.08);
+  --site-divider: rgba(var(--accent-deep-rgb), 0.08);
+  /* RGB helpers for frequently used palette colors */
+  --accent-rgb: 94, 125, 98; /* #5E7D62 */
+  --accent-deep-rgb: 54, 87, 70; /* #365746 */
+  --text-rgb: 47, 58, 52; /* #2F3A34 (keep text same for accessibility) */
   /* focus ring token (default) */
-  --focus-ring: rgba(111,143,107,0.18);
+  --focus-ring: rgba(var(--accent-rgb), 0.18);
+  /* page overlay tint (rgb) and strength to subtly shift body tone */
+  --bg-overlay-rgb: 245, 241, 236; /* warm off-white tint for light mode */
+  --bg-overlay-strength: 0.06;
 }
 
 /* Global layout & typography (element-based) */
@@ -64,13 +75,27 @@ body {
   font-family: var(--brand-body);
   color: var(--text);
   line-height: 1.6;
-  background: linear-gradient(var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
-  /* use relative path so the image resolves whether web115 is served as root or subfolder */
-  background-image: url("images/spa-bg.svg");
+  /* Layered background: subtle color overlay, gradient stops, then image */
+  background:
+    linear-gradient(rgba(var(--bg-overlay-rgb), var(--bg-overlay-strength)), rgba(var(--bg-overlay-rgb), var(--bg-overlay-strength))),
+    linear-gradient(var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3)),
+    url("images/spa-bg.svg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+}
+
+/* Subtle vignette overlay to add depth (luxury feel) */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  /* subtle, low-contrast vignette for depth — intentionally gentle */
+  background: radial-gradient(1200px 600px at 50% 15%, rgba(0,0,0,0.03), transparent 40%), linear-gradient(transparent, rgba(0,0,0,0.01));
+  mix-blend-mode: multiply;
+  opacity: 0.32;
 }
 
 /* Container -> main (single content area) */
@@ -82,7 +107,7 @@ main {
 
 /* Header */
 header {
-  padding: var(--space-4) 0;
+  padding: calc(var(--space-4) + 0.5rem) 0;
   text-align: center;
   background: var(--surface);
   border-bottom: 1px solid var(--site-divider);
@@ -92,6 +117,14 @@ header h1 {
   font-weight: 800;
   font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
   margin: 0;
+}
+/* Subtle gradient title tuned for a calm, massage-oriented tone */
+header h1 {
+  background: linear-gradient(90deg, var(--accent) 0%, var(--holiday-cream) 20%, rgba(var(--holiday-gold-rgb), 0.8) 60%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0.95;
 }
 header h2 { font-weight: 700; margin: .5rem 0 0; }
 
@@ -109,8 +142,8 @@ h3{ font-weight:700; font-size:1.15rem }
 /* Navigation (element) */
 nav { display:flex; flex-wrap:wrap; justify-content:center; gap: .5rem 1rem; margin-top:.5rem }
 nav a { color: var(--accent-deep); text-decoration:none; padding:.4rem .75rem; border-radius:999px; transition: background-color 160ms ease, transform 120ms ease; }
-nav a:hover, nav a:focus-visible { text-decoration: underline; background: rgba(62,87,75,0.08); transform: translateY(-1px); }
-nav a[aria-current="page"] { background: var(--accent); color: var(--surface); font-weight:600; box-shadow: 0 0 0 2px rgba(62,87,75,0.08) inset, var(--shadow); }
+nav a:hover, nav a:focus-visible { text-decoration: underline; background: rgba(var(--accent-deep-rgb), 0.08); transform: translateY(-1px); }
+nav a[aria-current="page"] { background: var(--accent); color: var(--surface); font-weight:600; box-shadow: 0 0 0 2px rgba(var(--accent-deep-rgb), 0.08) inset, var(--shadow); }
 
 /* Text & lists */
 p, ul, ol, blockquote, figure { margin-block: var(--space-4); }
@@ -130,11 +163,11 @@ button, input[type="button"], input[type="submit"], a.button {
 }
 
 /* Enhance focus outlines for accessibility */
-:focus { outline: 3px solid rgba(111,143,107,0.18); outline-offset: 3px; }
+:focus { outline: 3px solid rgba(var(--accent-rgb), 0.18); outline-offset: 3px; }
 :focus:not(:focus-visible) { outline: none; }
 
 /* Imagery: rounded corners & soft shadows (brand look) */
-figure img, img { border-radius: 12px; box-shadow: 0 8px 24px rgba(47,58,52,0.08); }
+figure img, img { border-radius: 12px; box-shadow: 0 8px 24px rgba(var(--text-rgb), 0.08); }
 
 /* Respect user reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
@@ -152,11 +185,43 @@ button {
   cursor: pointer;
   box-shadow: var(--shadow);
 }
-button:hover, button:focus-visible { background: var(--accent-deep); }
+button:hover, button:focus-visible { background: var(--accent-deep); transform: translateY(-1px); box-shadow: 0 10px 26px rgba(var(--text-rgb), 0.08); }
+
+/* Primary button variant that authors can opt into */
+.btn-primary { background: linear-gradient(90deg, var(--accent) 0%, rgba(var(--holiday-gold-rgb),0.85) 80%); color: var(--surface); padding-left:1.05rem; padding-right:1.05rem; box-shadow: 0 10px 28px rgba(var(--text-rgb), 0.09); }
+
+/* Intro / hero card: sit the welcome text on a surface card for clarity */
+[data-intro], .intro-band, [data-intro] * {
+  box-sizing: border-box;
+}
+[data-intro] {
+  max-width: min(980px, 92%);
+  margin: 2.25rem auto 1.25rem;
+  padding: 2.25rem 1.25rem;
+  background: linear-gradient(180deg, rgba(var(--bg-overlay-rgb), 0.045), transparent);
+  border-radius: calc(var(--radius) + 10px);
+  border: 1px solid rgba(var(--accent-deep-rgb), 0.04);
+  box-shadow: 0 20px 48px rgba(var(--text-rgb), 0.08), inset 0 1px 0 rgba(var(--accent-rgb), 0.02);
+}
+
+/* Gold accent underline for headings to add an upscale detail */
+h2, h3 { position: relative; }
+h2::after, h3::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -0.5rem;
+  width: 3.6rem;
+  height: 0.35rem;
+  border-radius: 6px;
+  background: linear-gradient(90deg, rgba(var(--holiday-gold-rgb), 0.95), rgba(var(--holiday-gold-rgb), 0.6));
+  box-shadow: 0 6px 18px rgba(var(--holiday-gold-rgb), 0.08);
+}
 
 /* Figures */
-figure { margin: var(--space-6) auto; text-align:center; background: var(--surface); border-radius: var(--radius); padding: var(--space-4); box-shadow: var(--shadow); border: 1px solid rgba(62,87,75,.12); }
-figure img { display:block; max-width:min(100%,1200px); height:auto; border-radius:12px; margin:0 auto; box-shadow:0 8px 24px rgba(47,58,52,0.12); }
+figure { margin: var(--space-6) auto; text-align:center; background: var(--surface); border-radius: var(--radius); padding: var(--space-4); box-shadow: var(--shadow); border: 1px solid rgba(var(--accent-deep-rgb), .12); }
+figure img { display:block; max-width:min(100%,1200px); height:auto; border-radius:12px; margin:0 auto; box-shadow:0 8px 24px rgba(var(--text-rgb), 0.12); }
 figcaption { margin-top:.75rem; font-size:.95rem; color:var(--accent-deep); }
 
 /* Footer (element) */
@@ -210,7 +275,7 @@ footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold
 .img-gold-border, img[data-gold], figure[data-gold] img {
   /* base gold border + soft shadow for light mode */
   border-color: var(--holiday-gold);
-  box-shadow: 0 4px 12px rgba(212,175,55,0.18);
+  box-shadow: 0 4px 12px rgba(var(--holiday-gold-rgb), 0.18);
 }
 
 /* no shimmer in light mode; shimmer is intentionally dark-mode only */
@@ -218,14 +283,14 @@ footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold
 /* Dark mode: stronger inset glow and slightly faster shimmer */
 .dark-theme .img-gold-border, .dark-theme img[data-gold], .dark-theme figure[data-gold] img {
   border-color: var(--holiday-gold);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.28), 0 0 18px rgba(205,181,105,0.06) inset;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.28), 0 0 18px rgba(var(--holiday-gold-rgb), 0.06) inset;
   animation: goldShimmerBorderDark 3.2s ease-in-out infinite;
 }
 
 @keyframes goldShimmerBorderDark {
-  0% { box-shadow: 0 10px 22px rgba(0,0,0,0.22), 0 0 8px rgba(205,181,105,0.04) inset; }
-  50% { box-shadow: 0 18px 36px rgba(0,0,0,0.32), 0 0 18px rgba(205,181,105,0.12) inset; }
-  100% { box-shadow: 0 10px 22px rgba(0,0,0,0.22), 0 0 8px rgba(205,181,105,0.04) inset; }
+  0% { box-shadow: 0 10px 22px rgba(0,0,0,0.22), 0 0 8px rgba(var(--holiday-gold-rgb), 0.04) inset; }
+  50% { box-shadow: 0 18px 36px rgba(0,0,0,0.32), 0 0 18px rgba(var(--holiday-gold-rgb), 0.12) inset; }
+  100% { box-shadow: 0 10px 22px rgba(0,0,0,0.22), 0 0 8px rgba(var(--holiday-gold-rgb), 0.04) inset; }
 }
 
 /* ensure dragon logo glow uses the token and slightly stronger on dark */
@@ -276,17 +341,17 @@ footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold
 [data-intro] { padding: var(--space-6) 0; }
 
 /* Decorative figure variant used in templates */
-.figure-holiday { background: var(--holiday-cream); border: 1px solid rgba(212,175,55,0.35); }
+.figure-holiday { background: var(--holiday-cream); border: 1px solid rgba(var(--holiday-gold-rgb), 0.35); }
 
 /* Attribute-based figure holiday */
-figure[data-holiday] { background: var(--holiday-cream); border: 1px solid rgba(212,175,55,0.35); }
+figure[data-holiday] { background: var(--holiday-cream); border: 1px solid rgba(var(--holiday-gold-rgb), 0.35); }
 
 /* Decorative image border used on intro images */
-.img-gold-border { border: 6px solid var(--holiday-gold); border-radius: 12px; background-color: var(--holiday-cream); box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3); padding: 0.5rem; }
+.img-gold-border { border: 6px solid var(--holiday-gold); border-radius: 12px; background-color: var(--holiday-cream); box-shadow: 0 4px 12px rgba(var(--holiday-gold-rgb), 0.3); padding: 0.5rem; }
 .intro-landscape { max-width: 100%; height: auto; display: block; }
 
 /* Attribute-based gold border for images (classless) */
-img[data-gold], figure[data-gold] img { border: 6px solid var(--holiday-gold); border-radius: 12px; background-color: var(--holiday-cream); box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3); padding: 0.5rem; }
+img[data-gold], figure[data-gold] img { border: 6px solid var(--holiday-gold); border-radius: 12px; background-color: var(--holiday-cream); box-shadow: 0 4px 12px rgba(var(--holiday-gold-rgb), 0.3); padding: 0.5rem; }
 
 /* Swatches: apply to both class-based and attribute-based markup */
 .swatches, [data-swatches] { display:flex; gap: .75rem 1rem; flex-wrap:wrap; align-items:center; padding:0; margin:0; list-style:none; }
@@ -395,7 +460,7 @@ img[data-gold], figure[data-gold] img { border: 6px solid var(--holiday-gold); b
 .field input:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(111, 143, 107, 0.25);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.25);
 }
 
 /* ---------- Responsive ---------- */
