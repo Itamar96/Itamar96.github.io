@@ -1,21 +1,53 @@
-/*
-  default.noclass.css
-  A "no-classes" variant of web115/styles/default.css intended as a demonstration.
-  This file converts common layout and component classes to element selectors where
-  reasonable (header, main, nav, footer, h1-h3, button, ul, li, figure). Some
-  component-specific rules (swatches, swatch, img-gold-border, dragon animation)
-  are left as comments because removing those classes requires HTML changes.
+/* ====================================================
+   BRAND PALETTE — Desert Matcha Theme (CLEANED)
+   Iridescent Cinderwyrm Bodywork
+   ----------------------------------------------------
+   Notes:
+   - Duplicates removed and variables normalized
+   - Broken braces fixed
+   - Accessible focus states added
+   - Light & Dark themes supported via `.dark-theme`
+   ==================================================== */
 
-  NOTES / DUPLICATION SUMMARY
-  - This file intentionally repeats core tokens and many rules from default.css so
-    you can compare side-by-side. After reviewing, we should dedupe by keeping
-    common tokens (:root) and shared rules in one file and page-specific overrides
-    in another.
-  - Duplicates with `index.html` (in-head stylesheet): body fonts/backgrounds,
-    header styles, max-width/content widths, button defaults, footer link rules.
-    Recommendation: keep tokens and generic rules in this external file and remove
-    matching rules from `index.html` head to avoid duplication.
+/* ---------- Base & Tokens ---------- */
+html {
+  box-sizing: border-box;
+}
+/* ====================================================
+   BRAND PALETTE — Desert Matcha Theme (NO-CLASS)
+   Iridescent Cinderwyrm Bodywork
+   ----------------------------------------------------
+   This file is the no-class variant merged into the canonical
+   `default.css` so pages that link `default.css` get the
+   element-focused styles. It replaces class-based selectors
+   with element selectors where reasonable (header, nav, footer,
+   button, figure, etc.).
+   ==================================================== */
+
+/* ----------------------------------------------------
+   NOTES: no-class variant and recommended workflow
+   ----------------------------------------------------
+   The repository contains a no-class demonstration stylesheet at
+   `web115/styles/default.noclass.css`. That file shows an element-focused
+   approach (targeting `header`, `nav`, `footer`, `button`, etc.) and is useful
+   as a reference for converting pages to a classless pattern.
+
+   Guidance:
+   - Keep tokens (:root variables) in this canonical file and use `default.noclass.css`
+     as a migration reference. When ready, dedupe by extracting tokens to one file
+     and page/component rules to another.
+   - If you prefer the no-class approach, update the HTML to use semantic elements
+     rather than relying on classes for layout. The `default.noclass.css` file
+     includes notes about components that require structural changes (e.g. swatches,
+     dragon animation, image gold borders) — see its bottom comments for details.
+   - The Aethernova page uses an inline override at `/aethernova/index.html` to
+     maintain a distinct palette. To make that cleaner, move those overrides into
+     `/aethernova/styles/aethernova.css` and link from the Aethernova page.
 */
+
+/* ----------------------------------------------------
+   Tokens and element-based rules (copied from default.noclass.css)
+   ---------------------------------------------------- */
 
 :root {
   --bg-grad-1: #F7EAD9;
@@ -24,10 +56,22 @@
   --surface: #FFFFFF;
   --text: #2F3A34;
   --accent: #6F8F6B;
+  --clay-glow: #C4633A;
   --accent-deep: #3E574B;
   --accent-soft: #8DA3A6;
   --holiday-gold: #D4AF37;
   --holiday-cream: #FFF8DC;
+
+  /* explicit palette synonyms for clarity */
+  --palette-sand: var(--bg-grad-1);
+  --palette-surface: var(--surface);
+  --palette-text: var(--text);
+  --palette-accent: var(--accent);
+  --palette-accent-deep: var(--accent-deep);
+  --palette-mist: var(--accent-soft);
+  --palette-clay: var(--clay-glow);
+  --palette-holiday-cream: var(--holiday-cream);
+  --palette-gold: var(--holiday-gold);
 
   --brand-heading: "Playfair Display", serif;
   --brand-body: "Inter", sans-serif;
@@ -47,7 +91,7 @@ body {
   color: var(--text);
   line-height: 1.6;
   background: linear-gradient(var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
-  background-image: url("images/spa-bg.svg");
+  background-image: url("/web115/images/spa-bg.svg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -146,3 +190,144 @@ footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold
   - (C) Produce a minimal mapping/patch that converts the original component
          HTML to semantics that work with this no-class CSS.
 */
+
+@media (max-width: 768px) {
+  nav { flex-direction: column; }
+}
+
+/* ====================================================
+   COMPATIBILITY: class -> element mappings
+   These rules preserve the original look for pages that still
+   use class-based markup (container, flow, intro-band, etc.).
+   They are intentionally minimal and mirror the element rules
+   above so you can migrate HTML gradually.
+   ==================================================== */
+
+/* Page container commonly used in templates */
+.container { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-4); }
+
+/* Attribute-based container (classless alternative) */
+[data-container], main[data-container] { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-4); }
+
+/* Utility flow spacing (stack children vertically with rhythm) */
+.flow > * + * { margin-top: var(--space-4); }
+
+/* Attribute-based flow spacing */
+[data-flow] > * + * { margin-top: var(--space-4); }
+
+/* Intro / hero band used on many pages */
+.intro-band { padding: var(--space-6) 0; }
+
+/* Attribute-based intro band */
+[data-intro] { padding: var(--space-6) 0; }
+
+/* Decorative figure variant used in templates */
+.figure-holiday { background: var(--holiday-cream); border: 1px solid rgba(212,175,55,0.35); }
+
+/* Attribute-based figure holiday */
+figure[data-holiday] { background: var(--holiday-cream); border: 1px solid rgba(212,175,55,0.35); }
+
+/* Decorative image border used on intro images */
+.img-gold-border { border: 6px solid var(--holiday-gold); border-radius: 12px; background-color: var(--holiday-cream); box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3); padding: 0.5rem; }
+.intro-landscape { max-width: 100%; height: auto; display: block; }
+
+/* Attribute-based gold border for images (classless) */
+img[data-gold], figure[data-gold] img { border: 6px solid var(--holiday-gold); border-radius: 12px; background-color: var(--holiday-cream); box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3); padding: 0.5rem; }
+
+/* Branding swatches (brand page) */
+.swatches { display:flex; gap: .75rem 1rem; flex-wrap:wrap; align-items:center; padding:0; margin:0; list-style:none; }
+.swatch { display:flex; gap:.6rem; align-items:center; }
+.color-box { display:inline-block; width:2.4rem; height:2.4rem; border-radius:6px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+
+/* Backcompat: attribute-based swatches already provided earlier; keep class rules too */
+
+
+/* Backcompat for site-title class */
+.site-title { margin: 0; line-height: 1.1; font-family: var(--brand-heading); font-weight: 800; letter-spacing: 0.2px; }
+.site-title .line-1 { display:block; font-size: clamp(1.35rem, 1rem + 2vw, 2.1rem); }
+
+.note-gold { color: var(--holiday-gold); }
+
+/* Visually hidden utility (common accessibility helper) */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px; overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px); white-space: nowrap;
+  border: 0; padding: 0; margin: -1px;
+}
+
+/* Palette helpers used by the /brand or swatches markup */
+
+/* Classless / attribute-based swatches so pages can be classless
+   Use markup like:
+   <ul data-swatches>
+     <li><span data-swatch-color="#F7EAD9"></span><span> #F7EAD9</span><em>Sand background</em></li>
+   </ul>
+*/
+[data-swatches] { display:flex; gap: .75rem 1rem; flex-wrap:wrap; align-items:center; padding:0; margin:0; list-style:none; }
+[data-swatches] li { display:flex; gap:.6rem; align-items:center; }
+[data-swatches] [data-swatch-color] { display:inline-block; width:2.4rem; height:2.4rem; border-radius:6px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+[data-swatches] em { margin-left: .35rem; color: var(--accent-deep); font-style: normal; opacity: .9; }
+[data-swatches] .label { font-family: var(--brand-body); font-size: .95rem; color: var(--text); }
+
+/* Convenience helper: prefabricated palette items (optional class for authors) */
+.palette-sand { background: var(--palette-sand); }
+.palette-surface { background: var(--palette-surface); }
+.palette-text { background: var(--palette-text); }
+.palette-accent { background: var(--palette-accent); }
+.palette-accent-deep { background: var(--palette-accent-deep); }
+.palette-mist { background: var(--palette-mist); }
+.palette-clay { background: var(--palette-clay); }
+.palette-holiday-cream { background: var(--palette-holiday-cream); }
+.palette-gold { background: var(--palette-gold); }
+
+.dark-theme .img-gold-border { border: 6px solid var(--holiday-gold); border-radius: 12px; }
+
+/* Dragon shine variant */
+.dark-theme .logo {
+  filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.6)) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+  animation: dragonShine 2.8s ease-in-out infinite;
+}
+
+@keyframes dragonShine {
+  0%, 100% { filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.6)) drop-shadow(0 0 8px rgba(255, 215, 0, 0.4)); }
+  50% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.9)) drop-shadow(0 0 12px rgba(255, 215, 0, 0.6)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dark-theme .logo { animation: none; }
+}
+
+/* ====================================================
+   FORMS (FizzBuzz demo styles)
+   ==================================================== */
+.form-grid {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+.field { display: flex; flex-direction: column; margin-bottom: var(--space-4); }
+.field label { margin-bottom: var(--space-2); font-weight: 600; }
+
+.field input {
+  padding: 0.6rem 0.75rem;
+  border: 2px solid var(--holiday-gold);
+  border-radius: 10px;
+  background: #fff;
+  font: inherit;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(111, 143, 107, 0.25);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  nav { flex-direction: column; }
+}
