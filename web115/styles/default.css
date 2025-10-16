@@ -16,9 +16,11 @@ html { box-sizing: border-box; }
    ---------------------------------------------------- */
 
 :root {
-  --bg-grad-1: #F7EAD9;
-  --bg-grad-2: #F7EAD9;
-  --bg-grad-3: #F7EAD9;
+  /* background base used for the 3-stop gradient; mapping keeps API flexible */
+  --bg-base: #F7EAD9;
+  --bg-grad-1: var(--bg-base);
+  --bg-grad-2: var(--bg-base);
+  --bg-grad-3: var(--bg-base);
   --surface: #FFFFFF;
   --text: #2F3A34;
   --accent: #6F8F6B;
@@ -111,8 +113,8 @@ ul { list-style: disc; padding-left: 1.25rem; }
 a { color: #3E574B; }
 /* All buttons are primary by default to keep markup classless */
 button, input[type="button"], input[type="submit"], a.button {
-  background: #6F8F6B; /* primary */
-  color: #ffffff;
+  background: var(--accent); /* primary */
+  color: var(--surface);
   border: none;
 }
 /* Secondary button helper for exceptions */
@@ -138,7 +140,7 @@ button {
   border-radius: 999px;
   font-weight: 600;
   background: var(--accent);
-  color: #fff;
+  color: var(--surface);
   border: none;
   cursor: pointer;
   box-shadow: var(--shadow);
@@ -146,7 +148,7 @@ button {
 button:hover, button:focus-visible { background: var(--accent-deep); }
 
 /* Figures */
-figure { margin: var(--space-6) auto; text-align:center; background:#fff; border-radius: var(--radius); padding: var(--space-4); box-shadow: var(--shadow); border: 1px solid rgba(62,87,75,.12); }
+figure { margin: var(--space-6) auto; text-align:center; background: var(--surface); border-radius: var(--radius); padding: var(--space-4); box-shadow: var(--shadow); border: 1px solid rgba(62,87,75,.12); }
 figure img { display:block; max-width:min(100%,1200px); height:auto; border-radius:12px; margin:0 auto; box-shadow:0 8px 24px rgba(47,58,52,0.12); }
 figcaption { margin-top:.75rem; font-size:.95rem; color:var(--accent-deep); }
 
@@ -161,8 +163,18 @@ footer ul { list-style:none; margin: .5rem 0; padding:0; display:inline-flex; ga
 footer ul li { display:flex; align-items:center; }
 footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold); padding:0 .5rem; font-size: .9rem; line-height:1; display:inline-block; }
 
-/* Dark theme (prefixed -- same approach as original) */
-.dark-theme { --bg-grad-1: #1E1E1E; --bg-grad-2:#1E1E1E; --bg-grad-3:#121212; --surface:#202020; --text:#EAEAEA; --accent:#88BFA2; --accent-deep:#64A083; --accent-soft:#A6C9B6; --holiday-gold:#E1C964; }
+/* Dark theme variables — only applied when `.dark-theme` is present on <html>. */
+.dark-theme {
+  /* dark theme sets a base and keeps a slightly darker bottom stop */
+  --bg-base: #1E1E1E;
+  --bg-grad-3: #121212;
+  --surface: #202020;
+  --text: #EAEAEA;
+  --accent: #88BFA2;
+  --accent-deep: #64A083;
+  --accent-soft: #A6C9B6;
+  --holiday-gold: #E1C964;
+}
 
 /* Notes: some legacy, class-based components are retained for compatibility
    (swatches, decorative image variants, animations). See
@@ -211,10 +223,10 @@ figure[data-holiday] { background: var(--holiday-cream); border: 1px solid rgba(
 /* Attribute-based gold border for images (classless) */
 img[data-gold], figure[data-gold] img { border: 6px solid var(--holiday-gold); border-radius: 12px; background-color: var(--holiday-cream); box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3); padding: 0.5rem; }
 
-/* Branding swatches (brand page) */
-.swatches { display:flex; gap: .75rem 1rem; flex-wrap:wrap; align-items:center; padding:0; margin:0; list-style:none; }
-.swatch { display:flex; gap:.6rem; align-items:center; }
-.color-box { display:inline-block; width:2.4rem; height:2.4rem; border-radius:6px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+/* Swatches: apply to both class-based and attribute-based markup */
+.swatches, [data-swatches] { display:flex; gap: .75rem 1rem; flex-wrap:wrap; align-items:center; padding:0; margin:0; list-style:none; }
+.swatch, [data-swatches] li { display:flex; gap:.6rem; align-items:center; }
+.color-box, [data-swatches] [data-swatch-color] { display:inline-block; width:2.4rem; height:2.4rem; border-radius:6px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
 
 /* Backcompat: attribute-based swatches already provided earlier; keep class rules too */
 
