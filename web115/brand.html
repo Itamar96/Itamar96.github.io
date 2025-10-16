@@ -3,134 +3,114 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Brand guide for Iridescent Cinderwyrm Bodywork: colors, typography, and usage rules." />
-  <title>Itamar Castillo’s Iridescent Cinderwyrm • Brand Guide</title>
+  <meta name="description" content="Itamar Castillo’s WEB115 workspace and brand demo: Iridescent Cinderwyrm Bodywork" />
+  <meta name="course" content="WEB115" />
+  <title>Itamar Castillo’s Iridescent Cinderwyrm • WEB115 • Home</title>
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+
+  <!-- Styles (shared default) -->
   <link rel="stylesheet" href="styles/default.css" />
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
-  <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous" defer></script>
+
+  <!-- Safe lint.page loader (only on http/https) -->
+  <script>
+  (function loadLintPageSafely(){
+    try {
+      var proto = location.protocol;
+      if (proto === 'http:' || proto === 'https:') {
+        var s = document.createElement('script');
+        s.src = 'https://lint.page/kit/67ff88.js';
+        s.defer = true;
+        s.crossOrigin = 'anonymous';
+        s.onerror = function(){ console.info('lint.page unavailable; continuing without it.'); };
+        document.head.appendChild(s);
+      } else {
+        console.info('Skipping lint.page (non-network environment).');
+      }
+    } catch (e) {
+      console.info('Skipping lint.page due to environment:', e);
+    }
+  })();
+  </script>
+
+  <!-- Persisted theme bootstrap (prevents flash) -->
+  <script>
+  (function() {
+    try {
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (stored === 'dark' || (!stored && prefersDark)) {
+        document.documentElement.classList.add('dark-theme');
+      }
+    } catch (_) {}
+  })();
+  </script>
+  <!-- Validator helper: loads the appropriate lint.page kit and populates the footer validate link -->
+  <script src="scripts/validator.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container">
-      <h1 class="site-title">
-        <span class="line-1">Itamar Castillo <span class="dot" aria-hidden="true">•</span> Iridescent Cinderwyrm</span>
-        <span class="line-2 dragon">WEB115 <span aria-hidden="true">🐉</span></span>
-      </h1>
+  <!-- 🐉 Include header -->
+  <div data-include="components/header.html"></div>
 
-      <nav aria-label="Primary">
-        <ul class="primary-nav">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="introduction.html">Introduction</a></li>
-          <li><a href="contract.html">Contract</a></li>
-          <li><a href="brand.html" aria-current="page">Brand Guide</a></li>
-          <li><a href="fizzbuzz0.html">Fizz Buzz 0</a></li>
-        </ul>
-      </nav>
 
-      <button id="theme-toggle" class="btn btn-brand" aria-label="Toggle color theme" aria-pressed="false">Toggle Theme</button>
-    </div>
-  </header>
-
-  <main id="main">
-    <div class="container">
-      <h2>Brand Guide</h2>
-      <p class="meta">Brand name: <strong>Iridescent Cinderwyrm Bodywork</strong> • Tagline: <em>Breathe. Unwind. Renew.</em></p>
-
-      <section aria-labelledby="brand-concept">
-        <h3 id="brand-concept">Concept and Mission</h3>
+  <main>
+    <section>
+  <div data-container>
+        <h2>Welcome</h2>
         <p>
-          Iridescent Cinderwyrm Bodywork offers massage and relaxation services that focus on calm, comfort, and intentional relief.
-          The Desert Matcha palette uses warm sand, herbal greens, and a hint of clay to feel natural and restorative.
-          The voice is simple, warm, and professional.
+          This site presents my coursework and highlights my evolving skills in accessible, standards-based web development. It also introduces my sample massage brand,
+          <strong>Iridescent Cinderwyrm Bodywork</strong>. Please use the menu above to explore my work.
         </p>
-      </section>
 
-      <section aria-labelledby="brand-colors">
-        <h3 id="brand-colors">Color Palette (Desert Matcha)</h3>
-        <ul class="swatches" role="list">
-          <li class="swatch"><span class="color-box" style="background:#F7EAD9"></span><span>#F7EAD9</span><em>Sand background</em></li>
-          <li class="swatch"><span class="color-box" style="background:#FFFFFF"></span><span>#FFFFFF</span><em>Surface and cards</em></li>
-          <li class="swatch"><span class="color-box" style="background:#2F3A34"></span><span>#2F3A34</span><em>Primary text</em></li>
-          <li class="swatch"><span class="color-box" style="background:#6F8F6B"></span><span>#6F8F6B</span><em>Accent buttons</em></li>
-          <li class="swatch"><span class="color-box" style="background:#3E574B"></span><span>#3E574B</span><em>Links and small text</em></li>
-          <li class="swatch"><span class="color-box" style="background:#8DA3A6"></span><span>#8DA3A6</span><em>Mist (subtle UI)</em></li>
-          <li class="swatch"><span class="color-box" style="background:#C4633A"></span><span>#C4633A</span><em>Clay glow</em></li>
-          <li class="swatch"><span class="color-box" style="background:#FFF8DC"></span><span>#FFF8DC</span><em>Holiday light background</em></li>
-          <li class="swatch"><span class="color-box" style="background:#D4AF37"></span><span>#D4AF37</span><em>Gold accent</em></li>
-        </ul>
-        <p class="meta">Contrast: #2F3A34 on #F7EAD9 passes for body copy. White text on #6F8F6B passes on buttons.</p>
-      </section>
+  <figure>
+          <picture>
+            <source type="image/webp"
+              srcset="images/hiking_portrait_600w.webp 600w, images/hiking_portrait_800w.webp 800w, images/hiking_portrait_1200w.webp 1200w"
+              sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
+            <source type="image/jpeg"
+              srcset="images/hiking_portrait_600w.jpg 600w, images/hiking_portrait_800w.jpg 800w, images/hiking_portrait_1200w.jpg 1200w"
+              sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
+            <img data-gold
+              src="images/hiking_portrait_800w.jpg"
+              width="800" height="1067"
+              alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle." />
+          </picture>
+          <figcaption>Exploring Colorado’s alpine trails, 2025.</figcaption>
+        </figure>
 
-      <section aria-labelledby="brand-type">
-        <h3 id="brand-type">Typography</h3>
-        <div class="type-card">
-          <p class="type-label">Headings — Playfair Display 700 and 800</p>
-          <p class="demo-h1">Iridescent Cinderwyrm Bodywork</p>
-          <p class="demo-h2">Therapeutic Massage and Relaxation</p>
-        </div>
-        <div class="type-card">
-          <p class="type-label">Body — Inter 400, 500, 600</p>
-          <p>
-            Sessions are guided by comfort and intention. Book a service to reduce stress and improve recovery.
-            Read policies and recommendations before your visit. Contact us with any questions.
-          </p>
-        </div>
-      </section>
-
-      <section aria-labelledby="brand-usage">
-        <h3 id="brand-usage">Usage Rules &amp; Quick Overview</h3>
-        <ul>
-          <li><strong>Background:</strong> sand base with a subtle matcha and clay wash.</li>
-          <li><strong>Headings:</strong> Playfair Display with clear hierarchy and calm punctuation.</li>
-          <li><strong>Links and Buttons:</strong> links use #3E574B, primary buttons use #6F8F6B with white text.</li>
-          <li><strong>Imagery:</strong> rounded corners, soft shadows, and natural light when possible.</li>
-          <li><strong>Tone:</strong> calm, clear, and reassuring.</li>
-          <li><strong>Structure:</strong> header, main, footer with a consistent menu.</li>
-          <li><strong>Accessibility:</strong> good contrast, focus outlines, reduced motion support.</li>
-          <li><strong>Branding:</strong> Desert Matcha palette with <span class="text-gold">gold accents</span>, Playfair Display headings, Inter body, soft glow.</li>
-        </ul>
-      </section>
-    </div>
+        <blockquote>
+          If I have seen further it is by standing on the shoulders of giants.
+          <cite>— Isaac Newton</cite>
+        </blockquote>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <nav aria-label="Social links">
-        <ul class="footer-links">
-          <li><a href="https://itamar96.github.io" target="_blank" rel="noopener noreferrer">Portfolio Site</a></li>
-          <li><a href="https://itamar96.github.io/web115/" target="_blank" rel="noopener noreferrer">WEB115 Course Site</a></li>
-          <li><a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-          <li><a href="https://www.codecademy.com/profiles/Itamar96" target="_blank" rel="noopener noreferrer">Codecademy</a></li>
-          <li><a href="https://jsfiddle.net/u/Itamar96/fiddles/" target="_blank" rel="noopener noreferrer">JSFiddle</a></li>
-          <li><a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-        </ul>
-      </nav>
-      <p class="meta">Page built by Iridescent Cinderwyrm Design</p>
-    </div>
-  </footer>
+  <!-- 🪶 Include footer -->
+  <div data-include="components/footer.html"></div>
+  <!-- HTML include script: injects components marked with data-include -->
+  <script src="scripts/HTMLInclude.js" defer></script>
 
   <script>
-    // Accessible theme toggle with persistence
-    const btn = document.getElementById('theme-toggle');
-    const root = document.documentElement;
-    const stored = localStorage.getItem('theme');
-    if (stored) {
-      root.setAttribute('data-theme', stored);
-      btn.setAttribute('aria-pressed', stored === 'dark' ? 'true' : 'false');
-    }
-    btn?.addEventListener('click', () => {
-      const isDark = root.getAttribute('data-theme') === 'dark';
-      const next = isDark ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      btn.setAttribute('aria-pressed', String(!isDark));
-      localStorage.setItem('theme', next);
-    });
+    // Theme toggle (guarded)
+    (function(){
+      var btn = document.getElementById('theme-toggle');
+      if(btn){
+        btn.addEventListener('click', function(){
+          var pressed = this.getAttribute('aria-pressed') === 'true';
+          this.setAttribute('aria-pressed', String(!pressed));
+          document.documentElement.classList.toggle('dark-theme');
+          try { localStorage.setItem('theme', document.documentElement.classList.contains('dark-theme') ? 'dark' : 'light'); } catch(_) {}
+        });
+      }
+    })();
   </script>
+
 </body>
 </html>
-
