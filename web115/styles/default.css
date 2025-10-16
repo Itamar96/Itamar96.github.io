@@ -103,14 +103,14 @@ h3{ font-weight:700; font-size:1.15rem }
 nav { display:flex; flex-wrap:wrap; justify-content:center; gap: .5rem 1rem; margin-top:.5rem }
 nav a { color: var(--accent-deep); text-decoration:none; padding:.4rem .75rem; border-radius:999px; transition: background-color 160ms ease, transform 120ms ease; }
 nav a:hover, nav a:focus-visible { text-decoration: underline; background: rgba(62,87,75,0.08); transform: translateY(-1px); }
-nav a[aria-current="page"] { background: var(--accent); color:#fff; font-weight:600; box-shadow: 0 0 0 2px rgba(62,87,75,0.08) inset, var(--shadow); }
+nav a[aria-current="page"] { background: var(--accent); color: var(--surface); font-weight:600; box-shadow: 0 0 0 2px rgba(62,87,75,0.08) inset, var(--shadow); }
 
 /* Text & lists */
 p, ul, ol, blockquote, figure { margin-block: var(--space-4); }
 ul { list-style: disc; padding-left: 1.25rem; }
 
 /* Brand enforcement per guide: links & primary buttons */
-a { color: #3E574B; }
+a { color: var(--accent-deep); }
 /* All buttons are primary by default to keep markup classless */
 button, input[type="button"], input[type="submit"], a.button {
   background: var(--accent); /* primary */
@@ -262,11 +262,7 @@ img[data-gold], figure[data-gold] img { border: 6px solid var(--holiday-gold); b
      <li><span data-swatch-color="#F7EAD9"></span><span> #F7EAD9</span><em>Sand background</em></li>
    </ul>
 */
-[data-swatches] { display:flex; gap: .75rem 1rem; flex-wrap:wrap; align-items:center; padding:0; margin:0; list-style:none; }
-[data-swatches] li { display:flex; gap:.6rem; align-items:center; }
-[data-swatches] [data-swatch-color] { display:inline-block; width:2.4rem; height:2.4rem; border-radius:6px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
-[data-swatches] em { margin-left: .35rem; color: var(--accent-deep); font-style: normal; opacity: .9; }
-[data-swatches] .label { font-family: var(--brand-body); font-size: .95rem; color: var(--text); }
+/* attribute-only swatches merged into unified .swatches rule above */
 
 /* Convenience helper: prefabricated palette items (optional class for authors) */
 .palette-sand { background: var(--palette-sand); }
@@ -313,7 +309,7 @@ img[data-gold], figure[data-gold] img { border: 6px solid var(--holiday-gold); b
   padding: 0.6rem 0.75rem;
   border: 2px solid var(--holiday-gold);
   border-radius: 10px;
-  background: #fff;
+  background: var(--surface);
   font: inherit;
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   transition: border-color .2s ease, box-shadow .2s ease;
