@@ -99,39 +99,8 @@
   <script src="scripts/HTMLInclude.js" defer></script>
   <script src="scripts/theme-toggle.js" defer></script>
 
-  <script>
-    // Theme toggle (deferred-friendly)
-    // Use event delegation so the handler works even when the button is injected
-    // by the HTML include script after this script runs.
-    (function(){
-      function toggleTheme(button){
-        var pressed = button.getAttribute('aria-pressed') === 'true';
-        button.setAttribute('aria-pressed', String(!pressed));
-        document.documentElement.classList.toggle('dark-theme');
-        try { localStorage.setItem('theme', document.documentElement.classList.contains('dark-theme') ? 'dark' : 'light'); } catch(_) {}
-      }
-
-      // Delegate click events to the document so the injected button is handled.
-      document.addEventListener('click', function (e) {
-        var btn = e.target.closest && e.target.closest('#theme-toggle');
-        if (btn) {
-          toggleTheme(btn);
-        }
-      });
-
-      // When a header/footer fragment is injected the include script will dispatch
-      // a `htmlinclude:loaded` event. Listen for that event and sync the toggle.
-      function syncToggleButton() {
-        var btn = document.getElementById('theme-toggle');
-        if (!btn) return;
-        var isDark = document.documentElement.classList.contains('dark-theme');
-        btn.setAttribute('aria-pressed', String(isDark));
-      }
-
-      document.addEventListener('DOMContentLoaded', syncToggleButton);
-      document.addEventListener('htmlinclude:loaded', function (e) { syncToggleButton(); });
-    })();
-  </script>
+  <!-- theme-toggle.js handles toggle behavior and sync (loaded above) -->
 
 </body>
 </html>
+
