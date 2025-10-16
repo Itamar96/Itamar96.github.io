@@ -43,8 +43,9 @@
   (function() {
     try {
       const stored = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (stored === 'dark' || (!stored && prefersDark)) {
+      // Only honor an explicit stored preference. Do not auto-apply OS-level
+      // prefers-color-scheme here so dark mode is strictly opt-in via the toggle.
+      if (stored === 'dark') {
         document.documentElement.classList.add('dark-theme');
       }
     } catch (_) {}
@@ -134,4 +135,3 @@
 
 </body>
 </html>
-
