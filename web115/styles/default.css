@@ -1,49 +1,15 @@
-/* ====================================================
-   BRAND PALETTE — Desert Matcha Theme (CLEANED)
-   Iridescent Cinderwyrm Bodywork
-   ----------------------------------------------------
-   Notes:
-   - Duplicates removed and variables normalized
-   - Broken braces fixed
-   - Accessible focus states added
-   - Light & Dark themes supported via `.dark-theme`
-   ==================================================== */
+/* web115/styles/default.css
+   Desert Matcha — design tokens & element-based defaults.
+
+   Purpose: canonical stylesheet containing design tokens (CSS custom properties),
+   element-focused defaults (header, nav, main, footer, figure, forms), and a
+   small compatibility section for legacy classed pages.
+
+   Notes: detailed migration guidance is kept in `web115/styles/default.noclass.css`.
+*/
 
 /* ---------- Base & Tokens ---------- */
-html {
-  box-sizing: border-box;
-}
-/* ====================================================
-   BRAND PALETTE — Desert Matcha Theme (NO-CLASS)
-   Iridescent Cinderwyrm Bodywork
-   ----------------------------------------------------
-   This file is the no-class variant merged into the canonical
-   `default.css` so pages that link `default.css` get the
-   element-focused styles. It replaces class-based selectors
-   with element selectors where reasonable (header, nav, footer,
-   button, figure, etc.).
-   ==================================================== */
-
-/* ----------------------------------------------------
-   NOTES: no-class variant and recommended workflow
-   ----------------------------------------------------
-   The repository contains a no-class demonstration stylesheet at
-   `web115/styles/default.noclass.css`. That file shows an element-focused
-   approach (targeting `header`, `nav`, `footer`, `button`, etc.) and is useful
-   as a reference for converting pages to a classless pattern.
-
-   Guidance:
-   - Keep tokens (:root variables) in this canonical file and use `default.noclass.css`
-     as a migration reference. When ready, dedupe by extracting tokens to one file
-     and page/component rules to another.
-   - If you prefer the no-class approach, update the HTML to use semantic elements
-     rather than relying on classes for layout. The `default.noclass.css` file
-     includes notes about components that require structural changes (e.g. swatches,
-     dragon animation, image gold borders) — see its bottom comments for details.
-   - The Aethernova page uses an inline override at `/aethernova/index.html` to
-     maintain a distinct palette. To make that cleaner, move those overrides into
-     `/aethernova/styles/aethernova.css` and link from the Aethernova page.
-*/
+html { box-sizing: border-box; }
 
 /* ----------------------------------------------------
    Tokens and element-based rules (copied from default.noclass.css)
@@ -255,6 +221,15 @@ img[data-gold], figure[data-gold] img { border: 6px solid var(--holiday-gold); b
   clip: rect(1px, 1px, 1px, 1px); white-space: nowrap;
   border: 0; padding: 0; margin: -1px;
 }
+
+/* small text helper for gold accents used in content */
+.text-gold { color: var(--holiday-gold); font-weight: 600; }
+
+/* Brand page small helpers (attribute-based equivalents for previous classes) */
+[data-meta] { font-size: .98rem; color: var(--accent-deep); }
+[data-swatch-label] { font-family: var(--brand-body); font-size: .95rem; color: var(--text); }
+[data-type-card] { margin-top: var(--space-4); padding: var(--space-4); border-radius: 10px; background: transparent; }
+[data-type-label] { font-weight: 600; margin-bottom: .35rem; display:block; }
 
 /* Palette helpers used by the /brand or swatches markup */
 
