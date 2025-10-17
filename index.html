@@ -88,9 +88,24 @@
     footer a { color: var(--link-color); text-decoration: none; font-weight: 600; transition: color 0.25s ease, text-shadow 0.25s ease, transform .12s ease; }
     footer a:hover { color: var(--link-hover); text-shadow: 0 0 6px rgba(255,255,200,0.6); transform: translateY(-2px); }
     footer a:focus-visible { outline: 3px solid transparent; box-shadow: 0 0 0 3px var(--focus-ring); border-radius: 6px; }
-    footer ul { list-style:none; margin:8px 0; padding:0; display:inline-flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    footer ul { list-style:none; margin:8px 0; padding:0; display:inline-flex; gap:0; flex-wrap:wrap; align-items:center; }
   footer ul li { list-style:none; margin:0; display:flex; align-items:center; }
-  footer ul li:not(:last-child)::after { content: '✶'; color: var(--footer-star-color); display:inline-block; width:1em; text-align:center; font-size: var(--footer-star-size); margin: 0 10px; line-height:1; opacity: 0.98; }
+  /* Use a pseudo-element between items so it visually centers and keeps consistent spacing
+     - make the star a fixed-width inline-block with centered text
+     - remove the gap on the <ul> and let the pseudo-element provide exact spacing
+     - tweak vertical alignment if needed with transform */
+  footer ul li:not(:last-child)::after {
+    content: '✶';
+    color: var(--footer-star-color);
+    display: inline-block;
+    width: 1.35rem;               /* slightly wider so the star doesn't touch the links */
+    text-align: center;
+    font-size: var(--footer-star-size);
+    margin: 0;                    /* spacing is in width */
+    line-height: 1;
+    opacity: 0.98;
+    transform: translateY(1px);   /* nudge vertically to optically center */
+  }
     /* target the last paragraph in footer for spacing (replaces the .copyright class) */
     footer p:last-of-type { margin-top: 10px; }
   </style>
