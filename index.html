@@ -4,112 +4,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GH homepage - Aethernova Bodywork</title>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- Shared stylesheet (deduped) -->
+  <link rel="stylesheet" href="web115/styles/default.css" />
+  <!-- Aethernova palette overrides (keeps layout from default.css but changes colors) -->
   <style>
-    /* Styles specific to the root index page */
-    :root {
-      --index-bg: #F2F7FA;
-      --index-text: #21343A;
-      --index-accent: #6A4F9B;
-      --index-cta-text: #0b1220;
-      --link-color: #FFE87C;  /* brighter gold-yellow for contrast on purple */
-      --link-hover: #FFD04D;  /* slightly deeper for hover */
-      --focus-ring: rgba(255, 232, 124, 0.65);
-      --footer-star-color: #FFE87C; /* default star color */
-      --footer-star-size: 0.95rem;   /* star size (can be changed easily) */
+    :root{
+      --color-bg:#0b0f14; /* deep charcoal */
+      --color-panel:#0f1720; /* slightly lighter */
+      --color-text:#e6eef6; /* soft off-white */
+      --color-accent:#7bd389; /* Aethernova green */
+      --color-accent-2:#6ad1ff; /* secondary cyan */
+      --max-width:58rem;
     }
-
-    body {
-      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      background-color: var(--index-bg);
-      color: var(--index-text);
-      margin: 0;
-      padding: 28px 18px 60px;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      background-image: radial-gradient(circle at 10% 10%, rgba(106,79,155,0.04) 0%, transparent 20%), linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.85));
-    }
-
-    header {
-      background: linear-gradient(135deg, var(--index-accent) 0%, #5a3f8a 100%);
-      color: #fff;
-      text-align: center;
-      padding: 36px 18px;
-      box-shadow: 0 10px 30px rgba(41, 11, 60, .18), inset 0 -2px 0 rgba(255,255,255,0.02);
-      border-radius: 12px;
-      margin: 0 auto 18px;
-      max-width: 980px;
-    }
-    header h1 { margin: 0; font-weight: 800; letter-spacing: -0.6px; font-size: 1.6rem; }
-    header h2 { margin: 6px 0 0; font-weight: 400; color: rgba(255,241,255,.92); font-style: italic; font-size: 1rem; }
-    header p { margin: 12px 0 0; }
-
-    /* CTA: use a real button inside the header for semantics and accessibility */
-    header p button {
-      color: var(--index-cta-text);
-      background: linear-gradient(90deg,#FFD579 0%,#FF9F6B 100%);
-      box-shadow: 0 10px 22px rgba(106,55,24,0.12), inset 0 -1px 0 rgba(255,255,255,.18);
-      padding: 10px 14px;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      font-weight:700;
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-    header p button:hover {
-      transform: translateY(-3px); box-shadow: 0 16px 30px rgba(106,55,24,0.14);
-    }
-    header p button:focus-visible {
-      outline: 3px solid transparent;
-      box-shadow: 0 0 0 3px var(--focus-ring);
-      border-radius: 8px;
-    }
-
-  main { padding: 32px 18px; max-width: 980px; margin: 0 auto; background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.92)); box-shadow: 0 8px 30px rgba(25,25,30,0.06); margin-top: 10px; }
-  section { margin-bottom: 26px; }
-  /* first h2 inside main acts as the page title */
-  main h2:first-of-type { margin: 0 0 14px; color: #2b4650; font-size:1.25rem; font-weight:700; }
-  section h3 { color: #3a6046; margin-top: 0; font-size:1.125rem; }
-  p { line-height:1.6; }
-
-    /* Footer styling */
-    footer {
-      background: linear-gradient(180deg, #543874, #4a2f66);
-      color: #FFF8DC;
-      text-align: center;
-      padding: 20px 18px;
-      margin-top: 34px;
-      
-      max-width: 980px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  footer p { margin: 0; }
-  footer p.copyright { margin-top: 10px; }
-    footer .footer-cta { margin: 10px 0 0; }
-
-    /* footer links styling without classes */
-    footer a { color: var(--link-color); text-decoration: none; font-weight: 600; transition: color 0.25s ease, text-shadow 0.25s ease, transform .12s ease; }
-    footer a:hover { color: var(--link-hover); text-shadow: 0 0 6px rgba(255,255,200,0.6); transform: translateY(-2px); }
-    footer a:focus-visible { outline: 3px solid transparent; box-shadow: 0 0 0 3px var(--focus-ring); border-radius: 6px; }
-    footer ul { list-style:none; margin:8px 0; padding:0; display:inline-flex; gap:10px; flex-wrap:wrap; align-items:center; }
-  footer ul li { list-style:none; margin:0; display:flex; align-items:center; }
-  footer ul li:not(:last-child)::after { content: '✶'; color: var(--footer-star-color); display:inline-block; width:1em; text-align:center; font-size: var(--footer-star-size); margin: 0 10px; line-height:1; opacity: 0.98; }
-    /* target the last paragraph in footer for spacing (replaces the .copyright class) */
-    footer p:last-of-type { margin-top: 10px; }
+    body{background:var(--color-bg);color:var(--color-text);}
+    header, main, footer{background:transparent;border-radius:0;padding:1.5rem;}
+  /* Use attribute-based selectors to style the site title and subtitle (avoid qualified headings) */
+  [data-site-title]{color:var(--color-accent);margin:0 0 .25rem 0}
+  [data-site-subtitle]{color:var(--color-accent-2);margin:0 0 .75rem 0;font-weight:500}
+    a{color:var(--color-accent-2)}
   </style>
-  <!-- Accumulus / lint.page validator (WEB115 kit) -->
-  <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous"></script>
-</head>
-<body>
+  </head>
+  <body>
+  
 
-  <header>
-    <h1>Aethernova Bodywork</h1>
-    <h2>by Aethernova</h2>
-    <p><button id="open-course">WEB115 course</button></p>
+  <header data-site-header>
+  <h2 data-site-title>Aethernova — Bodywork & Creative</h2>
+  <h2 data-site-subtitle>Itamar Castillo — portfolio</h2>
+    <p><button id="open-course">Open WEB115</button></p>
   </header>
 
-  <main>
-    <h2 class="page-title">Aethernova — portfolio and projects</h2>
+  <main data-container>
     <section>
       <h3>About Me</h3>
       <p>Hello! My name is <strong>Itamar Castillo</strong>, and I'm currently studying web development. I enjoy learning how websites work and how design and code come together to make something meaningful.</p>
@@ -126,23 +53,9 @@
     </section>
   </main>
 
-  <footer>
-    <nav aria-label="Footer links">
-      <ul>
-        <li><a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-      </ul>
-    </nav>
-    <p>&copy; 2025 Aethernova Bodywork</p>
+  <footer data-site-footer>
+    <p>&copy; 2025 Itamar Castillo</p>
   </footer>
-  <script>
-    // header CTA button: navigate to course page
-    (function(){
-      var btn = document.getElementById('open-course');
-    if (btn) {
-        btn.addEventListener('click', function(){ window.location.href = 'web115/index.html'; });
-      }
-    })();
-  </script>
+
 </body>
 </html>
