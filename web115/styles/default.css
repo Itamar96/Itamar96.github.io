@@ -16,6 +16,7 @@
 	--text: #2F3A34;
 	--accent: #5E7D62;
 	--clay-glow: #B85B39;
+	--footer-bg: #F6EDE6; /* light warm footer background for improved link contrast */
 	--accent-deep: #365746;
 	--accent-soft: #92ABA6;
 	--holiday-gold: #C9A84D;
@@ -83,35 +84,14 @@ header h1, header h2 { font-family: var(--brand-heading); margin: 0; }
 header h1 {
 	font-weight: 800;
 	font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
-	/* gradient title: darker on the left for improved legibility while keeping the gold shimmer */
-		/* stronger dark left stop and earlier midpoint so the left side remains readable */
-		background: linear-gradient(90deg, #42310f 0%, #5b4319 30%, var(--holiday-gold) 48%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent; /* ensures gradient shows in WebKit-based browsers */
-		background-clip: text;
-		/* fallback color for older UAs: use main text color for maximum legibility */
-		color: var(--text);
-		opacity: 1;
-		/* thin dark stroke for extra letter separation in busy backgrounds */
-		-webkit-text-stroke: 0.35px rgba(0,0,0,0.28);
-		/* refined shadow to separate from light backgrounds while avoiding heavy blur */
-		text-shadow: 0 1px 0 rgba(255,255,255,0.02), 0 2px 4px rgba(0,0,0,0.22);
+	/* single-color title: use the dragon/gold color to match the logo */
+	color: var(--holiday-gold-dark);
+	background: none;
+	-webkit-background-clip: initial;
+	background-clip: initial;
+	opacity: 1;
+	text-shadow: none;
 }
-
-	/* subtle blurred panel behind the heading to improve legibility on busy backgrounds */
-	header h1 { position: relative; display: inline-block; }
-	header h1::after {
-		content: '';
-		position: absolute;
-		left: -0.35em; right: -0.35em; top: -0.2em; bottom: -0.25em;
-		background: rgba(0,0,0,0.18);
-		filter: blur(6px);
-		border-radius: 6px;
-		z-index: -1;
-		pointer-events: none;
-		transform: translateZ(0);
-	}
-	html[data-theme="dark"] header h1::after { background: rgba(0,0,0,0.36); }
 header h2 { font-weight: 700; margin: .5rem 0 0; }
 
 /* logo should match the title color (dragon/gold) */
@@ -309,13 +289,13 @@ html[data-theme="dark"] [data-logo]:hover, html[data-theme="dark"] [data-logo]:f
 [data-field] input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.25); }
 
 /* Footer (element-focused) */
-footer { padding: 2rem 0; margin-top: 3rem; text-align: center; border-top: 4px solid var(--accent); background-color: var(--clay-glow); color: var(--surface); }
+footer { padding: 2rem 0; margin-top: 3rem; text-align: center; border-top: 4px solid var(--accent); background-color: var(--footer-bg); color: var(--text); }
 footer p { font-size: .95rem; line-height: 1.6; margin-bottom: 1rem; }
 footer ul { list-style: none; margin: .5rem 0; padding: 0; display: inline-flex; gap: .6rem .9rem; align-items: center; }
 footer ul li { display: flex; align-items: center; }
 footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold); padding: 0 .5rem; font-size: .9rem; line-height: 1; display: inline-block; }
 footer a { color: var(--accent-deep); text-decoration: none; margin: 0 .3rem; }
-footer a:hover, footer a:focus-visible { color: var(--accent); text-decoration: underline; }
+footer a:hover, footer a:focus-visible { color: var(--holiday-gold); text-decoration: underline; }
 
 /* Small helpers */
 [data-meta] { font-size: .98rem; color: var(--accent-deep); }
@@ -350,3 +330,4 @@ footer a:hover, footer a:focus-visible { color: var(--accent); text-decoration: 
 
 /* Responsive */
 @media (max-width: 768px) { nav { flex-direction: column; } }
+
