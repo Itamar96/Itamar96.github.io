@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- 🧠 Include reusable head section and send page title variable -->
-<div w3-include-html="components/head.html"
-     w3-include-html-var-pagetitle="Itamar Castillo’s Iridescent Cinderwyrm • Brand Guide"></div>
-
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Iridescent Cinderwyrm Bodywork — a calming, professional web project by Itamar Castillo." />
+  <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/default.css" />
+  <title>Itamar Castillo’s Iridescent Cinderwyrm • Brand Guide</title>
+</head>
 <body>
+
   <!-- 🐉 Include site header -->
   <div w3-include-html="components/header.html"></div>
 
   <!-- 🧭 Include navigation -->
   <div w3-include-html="components/nav.html"></div>
 
-  <!-- 🌿 Main page content -->
-  <main>
+  <!-- 🪴 Main page content -->
+  <main id="main-content">
     <section>
       <h2>Brand Guide</h2>
-      <p class="meta">
+      <p data-meta>
         Brand name: <strong>Iridescent Cinderwyrm Bodywork</strong> •
         Tagline: <em>Breathe. Unwind. Renew.</em>
       </p>
@@ -28,50 +34,54 @@
         and a hint of clay to feel natural and restorative. The voice is simple, warm, and professional.
       </p>
 
-      <h3 id="brand-colors">Color Palette (Desert Matcha)</h3>
-      <ul class="swatches">
-        <li class="swatch"><span class="color-box" style="background:#F7EAD9;"></span><span>#F7EAD9</span><em>Sand background</em></li>
-        <li class="swatch"><span class="color-box" style="background:#FFFFFF;"></span><span>#FFFFFF</span><em>Surface and cards</em></li>
-        <li class="swatch"><span class="color-box" style="background:#2F3A34;"></span><span>#2F3A34</span><em>Primary text</em></li>
-        <li class="swatch"><span class="color-box" style="background:#6F8F6B;"></span><span>#6F8F6B</span><em>Accent buttons</em></li>
-        <li class="swatch"><span class="color-box" style="background:#3E574B;"></span><span>#3E574B</span><em>Links and small text</em></li>
-        <li class="swatch"><span class="color-box" style="background:#8DA3A6;"></span><span>#8DA3A6</span><em>Mist (subtle UI)</em></li>
-        <li class="swatch"><span class="color-box" style="background:#C4633A;"></span><span>#C4633A</span><em>Clay glow</em></li>
-        <li class="swatch"><span class="color-box" style="background:#FFF8DC;"></span><span>#FFF8DC</span><em>Holiday light background</em></li>
-        <li class="swatch"><span class="color-box" style="background:#D4AF37;"></span><span>#D4AF37</span><em>Gold accent</em></li>
+      <ul>
+        <li><strong>Background:</strong> sand base with a subtle matcha and clay wash.</li>
+        <li><strong>Headings:</strong> Playfair Display with clear hierarchy and calm punctuation.</li>
+        <li><strong>Links and Buttons:</strong> links use #3E574B, primary buttons use #6F8F6B with white text.</li>
+        <li><strong>Imagery:</strong> rounded corners, soft shadows, and natural light when possible.</li>
+        <li><strong>Tone:</strong> calm, clear, and reassuring.</li>
+        <li><strong>Structure:</strong> header, main, footer with a consistent menu.</li>
+        <li><strong>Accessibility:</strong> good contrast, focus outlines, reduced motion support.</li>
+  <li><strong>Branding:</strong> Desert Matcha palette with <span data-text-gold>gold accents</span>, Playfair Display headings, Inter body, soft glow.</li>
       </ul>
-      <p class="meta">Contrast: #2F3A34 on #F7EAD9 passes for body copy. White text on #6F8F6B passes on buttons.</p>
+      <h4>Dark Theme Palette (opt-in)</h4>
+      <ul data-swatches>
+        <li><span data-swatch-color="#1E1E1E" aria-hidden="true" style="background:#1E1E1E"></span><span data-swatch-label>#1E1E1E</span><em>Deep background</em></li>
+        <li><span data-swatch-color="#202020" aria-hidden="true" style="background:#202020"></span><span data-swatch-label>#202020</span><em>Panels / surfaces</em></li>
+        <li><span data-swatch-color="#EAEAEA" aria-hidden="true" style="background:#EAEAEA"></span><span data-swatch-label>#EAEAEA</span><em>Text (on dark)</em></li>
+        <li><span data-swatch-color="#88BFA2" aria-hidden="true" style="background:#88BFA2"></span><span data-swatch-label>#88BFA2</span><em>Accent (dark)</em></li>
+        <li><span data-swatch-color="#64A083" aria-hidden="true" style="background:#64A083"></span><span data-swatch-label>#64A083</span><em>Accent deep (dark)</em></li>
+      </ul>
+
+      <h3 id="brand-colors">Color Palette (Desert Matcha)</h3>
+      <ul data-swatches>
+        <li><span data-swatch-color="#F7EAD9" aria-hidden="true" style="background:#F7EAD9"></span><span data-swatch-label>#F7EAD9</span><em>Sand background</em></li>
+        <li><span data-swatch-color="#FFFFFF" aria-hidden="true" style="background:#FFFFFF"></span><span data-swatch-label>#FFFFFF</span><em>Surface and cards</em></li>
+        <li><span data-swatch-color="#2F3A34" aria-hidden="true" style="background:#2F3A34"></span><span data-swatch-label>#2F3A34</span><em>Primary text</em></li>
+        <li><span data-swatch-color="#6F8F6B" aria-hidden="true" style="background:#6F8F6B"></span><span data-swatch-label>#6F8F6B</span><em>Accent buttons</em></li>
+        <li><span data-swatch-color="#3E574B" aria-hidden="true" style="background:#3E574B"></span><span data-swatch-label>#3E574B</span><em>Links and small text</em></li>
+        <li><span data-swatch-color="#8DA3A6" aria-hidden="true" style="background:#8DA3A6"></span><span data-swatch-label>#8DA3A6</span><em>Mist (subtle UI)</em></li>
+        <li><span data-swatch-color="#C4633A" aria-hidden="true" style="background:#C4633A"></span><span data-swatch-label>#C4633A</span><em>Clay glow</em></li>
+        <li><span data-swatch-color="#FFF8DC" aria-hidden="true" style="background:#FFF8DC"></span><span data-swatch-label>#FFF8DC</span><em>Holiday light background</em></li>
+        <li><span data-swatch-color="#D4AF37" aria-hidden="true" style="background:#D4AF37"></span><span data-swatch-label>#D4AF37</span><em>Gold accent</em></li>
+      </ul>
+      <p data-meta>Contrast: #2F3A34 on #F7EAD9 passes for body copy. White text on #6F8F6B passes on buttons.</p>
 
       <h3 id="brand-type">Typography</h3>
-      <div class="type-card">
-        <p class="type-label">Headings — Playfair Display 700 and 800</p>
-        <p class="demo-h1">Iridescent Cinderwyrm Bodywork</p>
-        <p class="demo-h2">Therapeutic Massage and Relaxation</p>
-        <p class="type-label">Body — Inter 400, 500, 600</p>
-        <p class="demo-body">
+      <section aria-labelledby="brand-type" data-type-card>
+        <p data-type-label>Headings — Playfair Display 700 and 800</p>
+        <h4>Iridescent Cinderwyrm Bodywork</h4>
+        <h5>Therapeutic Massage and Relaxation</h5>
+        <p data-type-label>Body — Inter 400, 500, 600</p>
+        <p>
           Iridescent Cinderwyrm Bodywork uses a soothing tone that feels trustworthy and natural.
         </p>
-      </div>
+      </section>
     </section>
   </main>
 
   <!-- 🪶 Include footer -->
   <div w3-include-html="components/footer.html"></div>
 
-  <!-- ⚙️ Include HTMLInclude script -->
-  <script src="https://cdn.jsdelivr.net/gh/Paul-Browne/HTMLInclude/include.min.js"></script>
-  <script>includeHTML();</script>
-
-  <!-- 🌗 Optional Dark Mode Script -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const toggleButton = document.getElementById("theme-toggle");
-      if (toggleButton) {
-        toggleButton.addEventListener("click", () => {
-          document.body.classList.toggle("dark-theme");
-        });
-      }
-    });
-  </script>
 </body>
 </html>
