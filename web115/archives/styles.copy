@@ -180,6 +180,61 @@ figure img, img { border-radius: 12px; box-shadow: 0 8px 24px rgba(var(--text-rg
   * { transition: none !important; animation: none !important; }
 }
 
+/* Theme toggle button (placed top-right of header, matches nav icon scale) */
+#theme-toggle {
+  position: absolute;
+  right: 1rem;
+  top: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border-radius: 999px; /* fully circular to match nav pill aesthetic */
+  background: transparent;
+  color: var(--accent-deep);
+  border: 1px solid rgba(var(--accent-deep-rgb), 0.14);
+  opacity: 0.86; /* slightly muted */
+  cursor: pointer;
+  transition: border-color 160ms ease, opacity 160ms ease;
+  font-size: 1.05rem;
+}
+
+#theme-toggle .theme-icon { line-height: 1; display: inline-block; width: 20px; height: 20px; }
+
+/* Subtle hover: slightly increase contrast but avoid movement */
+#theme-toggle:hover { opacity: 1; border-color: rgba(var(--accent-deep-rgb), 0.2); }
+
+/* Strong visible focus for accessibility */
+#theme-toggle:focus-visible { outline: 3px solid rgba(var(--accent-rgb), 0.18); outline-offset: 3px; }
+
+/* Ensure the header is positioned to allow absolute placement */
+header { position: relative; }
+
+/* Keep size consistent with nav item roundness on small screens */
+@media (max-width: 768px) {
+  #theme-toggle { right: .6rem; top: .6rem; width: 34px; height: 34px; }
+}
+
+/* Icon sizing and default visibility */
+.theme-icon { width: 20px; height: 20px; display: inline-block; }
+.icon-sun { display: none; }
+
+/* When dark theme active, show sun and hide moon */
+.dark-theme #theme-toggle .icon-sun { display: inline-block; }
+.dark-theme #theme-toggle .icon-moon { display: none; }
+
+/* Smooth transition support only when theme-transition class is present */
+:root.theme-transition, .theme-transition, .theme-transition * {
+  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+/* Reduce motion respect: remove transition if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root.theme-transition, .theme-transition, .theme-transition * { transition: none !important; }
+}
+
 /* Buttons (element) */
 button {
   padding: 0.55rem 0.95rem;
@@ -302,6 +357,8 @@ footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold
   --surface: var(--dark-surface);
   /* bump contrast slightly for long-form reading */
   --text: #f6f4ef; /* slightly brighter than --dark-text */
+  /* rgb helper for color computations in dark mode */
+  --text-rgb: 246, 244, 239;
   --accent: var(--dark-accent);
   --accent-deep: var(--dark-accent-deep);
   --accent-soft: var(--dark-accent-soft);
@@ -442,6 +499,11 @@ img[data-gold], figure[data-gold] img { border: 6px solid var(--holiday-gold); b
 .palette-gold { background: var(--palette-gold); }
 
 .dark-theme .img-gold-border { border: 6px solid var(--holiday-gold); border-radius: 12px; }
+
+/* Ensure blockquote cites remain legible in dark mode */
+.dark-theme blockquote cite {
+  color: rgba(var(--text-rgb), 0.85); /* boost visibility for small citation text */
+}
 
 /* ---------- Responsive ---------- */
 /* Keep a single media query; also disable fixed background on small screens for perf */
