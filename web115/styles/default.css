@@ -72,6 +72,59 @@ body::after {
 
 main { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-4); }
 
+/* Align main content for better reading rhythm:
+   - Keep header/site title and nav centered for branding
+   - Left-align article content inside the centered column on larger screens
+   - Keep images/figures centered on small screens for balance
+*/
+@media (min-width: 720px) {
+  main, [data-container] { text-align: left; }
+  main h1, main h2, main h3, main h4, main h5, main h6,
+  main p, main ul, main ol, main blockquote, main figure, main section {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Keep the site title and nav visually centered (they are in header) */
+  header { text-align: center; }
+
+  /* Figures: align to start (left) within the content column on larger screens */
+  main figure, [data-container] figure { margin-left: 0; margin-right: 0; }
+}
+
+@media (max-width: 719px) {
+  /* On small screens keep centered flow for ease of scanning */
+  main, [data-container] { text-align: center; }
+  main figure, [data-container] figure { margin-left: auto; margin-right: auto; }
+}
+
+/* Normalize spacing + padding for consistent rhythm across pages */
+/* Headings should not add unexpected top gaps — spacing controlled by flow */
+main h1, main h2, main h3, main h4, main h5, main h6 {
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+  line-height: 1.15;
+}
+
+/* Body copy and lists share the same bottom rhythm */
+main p, main ul, main ol {
+  margin: 0 0 var(--space-4);
+  padding: 0;
+}
+
+/* Blockquotes keep their visual treatment but follow the same vertical rhythm */
+main blockquote { margin: 0 0 var(--space-4); padding: 1rem 1.25rem; }
+
+/* Keep figure cards visually consistent: padding and caption alignment
+   On wide screens captions align left with the text column; on small screens stay centered */
+figure { padding: var(--space-4); }
+@media (min-width: 720px) { figure { text-align: left; } figcaption { text-align: left; } }
+
+/* Ensure lists have consistent left padding in the content column on wide screens */
+@media (min-width: 720px) {
+  main ul, main ol { padding-left: 1.25rem; }
+}
+
 header {
   padding: calc(var(--space-4) + 0.5rem) 0;
   text-align: center;
@@ -365,4 +418,5 @@ figure[data-holiday] { background: var(--holiday-cream); border: 1px solid rgba(
 body[data-home] [data-page-title][data-space-after-nav] {
   margin-top: clamp(0.6rem, 1.2vw + 0.6rem, 2.2rem);
 }
+
 
