@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Itamar Castillo’s WEB115 workspace and brand demo: Iridescent Cinderwyrm Bodywork" />
+  <meta name="description" content="Iridescent Cinderwyrm Bodywork — a calming, professional web project by Itamar Castillo." />
   <meta name="course" content="WEB115" />
-  <title>Itamar Castillo’s Iridescent Cinderwyrm • WEB115 • Home</title>
+  <title>Itamar Castillo’s Iridescent Cinderwyrm • Brand Guide</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -43,14 +43,14 @@
   (function() {
     try {
       const stored = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (stored === 'dark' || (!stored && prefersDark)) {
-        document.documentElement.classList.add('dark-theme');
+      if (stored === 'dark') {
+        try { document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) { /* ignore */ }
       }
-    } catch (_) {}
+  } catch (_) { /* ignore localStorage errors in restrictive environments */ }
   })();
   </script>
-  <!-- Validator helper: loads the appropriate lint.page kit and populates the footer validate link -->
+
+  <!-- Validator helper -->
   <script src="scripts/validator.js" defer></script>
 </head>
 <body>
@@ -58,59 +58,74 @@
   <!-- 🐉 Include header -->
   <div data-include="components/header.html"></div>
 
-
   <main>
-    <section>
-  <div data-container>
-        <h2>Welcome</h2>
+    <article aria-labelledby="page-title-brand">
+      <h2 data-page-title id="page-title-brand">Brand Guide</h2>
+      <p data-meta>
+        Brand name: <strong>Iridescent Cinderwyrm Bodywork</strong> •
+        Tagline: <em>Breathe. Unwind. Renew.</em>
+      </p>
+
+  <h3 id="brand-concept" data-section-title>Concept and Mission</h3>
+      <p>
+        Iridescent Cinderwyrm Bodywork offers massage and relaxation services that focus on calm,
+        comfort, and intentional relief. The Desert Matcha palette uses warm sand, herbal greens,
+        and a hint of clay to feel natural and restorative. The voice is simple, warm, and professional.
+      </p>
+
+      <ul>
+        <li><strong>Background:</strong> sand base with a subtle matcha and clay wash.</li>
+        <li><strong>Headings:</strong> Playfair Display with clear hierarchy and calm punctuation.</li>
+        <li><strong>Links and Buttons:</strong> links use #3E574B, primary buttons use #6F8F6B with white text.</li>
+        <li><strong>Imagery:</strong> rounded corners, soft shadows, and natural light when possible.</li>
+        <li><strong>Tone:</strong> calm, clear, and reassuring.</li>
+        <li><strong>Structure:</strong> header, main, footer with a consistent menu.</li>
+        <li><strong>Accessibility:</strong> good contrast, focus outlines, reduced motion support.</li>
+  <li><strong>Branding:</strong> Desert Matcha palette with <span data-text-gold>gold accents</span>, Playfair Display headings, Inter body, soft glow.</li>
+      </ul>
+      <h4>Dark Theme Palette (opt-in)</h4>
+      <ul data-swatches>
+        <li><span data-swatch-color="#1E1E1E" aria-hidden="true" style="background:#1E1E1E"></span><span data-swatch-label>#1E1E1E</span><em>Deep background</em></li>
+        <li><span data-swatch-color="#202020" aria-hidden="true" style="background:#202020"></span><span data-swatch-label>#202020</span><em>Panels / surfaces</em></li>
+        <li><span data-swatch-color="#EAEAEA" aria-hidden="true" style="background:#EAEAEA"></span><span data-swatch-label>#EAEAEA</span><em>Text (on dark)</em></li>
+        <li><span data-swatch-color="#88BFA2" aria-hidden="true" style="background:#88BFA2"></span><span data-swatch-label>#88BFA2</span><em>Accent (dark)</em></li>
+        <li><span data-swatch-color="#64A083" aria-hidden="true" style="background:#64A083"></span><span data-swatch-label>#64A083</span><em>Accent deep (dark)</em></li>
+      </ul>
+
+  <h3 id="brand-colors" data-section-title>Color Palette (Desert Matcha)</h3>
+      <ul data-swatches>
+        <li><span data-swatch-color="#F7EAD9" aria-hidden="true" style="background:#F7EAD9"></span><span data-swatch-label>#F7EAD9</span><em>Sand background</em></li>
+        <li><span data-swatch-color="#FFFFFF" aria-hidden="true" style="background:#FFFFFF"></span><span data-swatch-label>#FFFFFF</span><em>Surface and cards</em></li>
+        <li><span data-swatch-color="#2F3A34" aria-hidden="true" style="background:#2F3A34"></span><span data-swatch-label>#2F3A34</span><em>Primary text</em></li>
+        <li><span data-swatch-color="#6F8F6B" aria-hidden="true" style="background:#6F8F6B"></span><span data-swatch-label>#6F8F6B</span><em>Accent buttons</em></li>
+        <li><span data-swatch-color="#3E574B" aria-hidden="true" style="background:#3E574B"></span><span data-swatch-label>#3E574B</span><em>Links and small text</em></li>
+        <li><span data-swatch-color="#8DA3A6" aria-hidden="true" style="background:#8DA3A6"></span><span data-swatch-label>#8DA3A6</span><em>Mist (subtle UI)</em></li>
+        <li><span data-swatch-color="#C4633A" aria-hidden="true" style="background:#C4633A"></span><span data-swatch-label>#C4633A</span><em>Clay glow</em></li>
+        <li><span data-swatch-color="#FFF8DC" aria-hidden="true" style="background:#FFF8DC"></span><span data-swatch-label>#FFF8DC</span><em>Holiday light background</em></li>
+        <li><span data-swatch-color="#D4AF37" aria-hidden="true" style="background:#D4AF37"></span><span data-swatch-label>#D4AF37</span><em>Gold accent</em></li>
+      </ul>
+      <p data-meta>Contrast: #2F3A34 on #F7EAD9 passes for body copy. White text on #6F8F6B passes on buttons.</p>
+
+  <h3 id="brand-type" data-section-title>Typography</h3>
+      <section aria-labelledby="brand-type" data-type-card>
+        <p data-type-label>Headings — Playfair Display 700 and 800</p>
+        <h4>Iridescent Cinderwyrm Bodywork</h4>
+        <h5>Therapeutic Massage and Relaxation</h5>
+        <p data-type-label>Body — Inter 400, 500, 600</p>
         <p>
-          This site presents my coursework and highlights my evolving skills in accessible, standards-based web development. It also introduces my sample massage brand,
-          <strong>Iridescent Cinderwyrm Bodywork</strong>. Please use the menu above to explore my work.
+          Iridescent Cinderwyrm Bodywork uses a soothing tone that feels trustworthy and natural.
         </p>
-
-  <figure>
-          <picture>
-            <source type="image/webp"
-              srcset="images/hiking_portrait_600w.webp 600w, images/hiking_portrait_800w.webp 800w, images/hiking_portrait_1200w.webp 1200w"
-              sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-            <source type="image/jpeg"
-              srcset="images/hiking_portrait_600w.jpg 600w, images/hiking_portrait_800w.jpg 800w, images/hiking_portrait_1200w.jpg 1200w"
-              sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-            <img data-gold
-              src="images/hiking_portrait_800w.jpg"
-              width="800" height="1067"
-              alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle." />
-          </picture>
-          <figcaption>Exploring Colorado’s alpine trails, 2025.</figcaption>
-        </figure>
-
-        <blockquote>
-          If I have seen further it is by standing on the shoulders of giants.
-          <cite>— Isaac Newton</cite>
-        </blockquote>
-      </div>
+      </section>
     </section>
   </main>
 
   <!-- 🪶 Include footer -->
   <div data-include="components/footer.html"></div>
+
   <!-- HTML include script: injects components marked with data-include -->
   <script src="scripts/HTMLInclude.js" defer></script>
-
-  <script>
-    // Theme toggle (guarded)
-    (function(){
-      var btn = document.getElementById('theme-toggle');
-      if(btn){
-        btn.addEventListener('click', function(){
-          var pressed = this.getAttribute('aria-pressed') === 'true';
-          this.setAttribute('aria-pressed', String(!pressed));
-          document.documentElement.classList.toggle('dark-theme');
-          try { localStorage.setItem('theme', document.documentElement.classList.contains('dark-theme') ? 'dark' : 'light'); } catch(_) {}
-        });
-      }
-    })();
-  </script>
+  <script src="scripts/theme-toggle.js" defer></script>
 
 </body>
 </html>
+
