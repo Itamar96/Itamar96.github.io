@@ -339,9 +339,8 @@ img[data-gold], figure[data-gold] img { border: 6px solid var(--holiday-gold); b
 
 @media (max-width: 768px) { nav { flex-direction: column; } body { background-attachment: scroll; } }
 
-/* Page-scoped spacing: add extra space between nav/header and specific page title */
-[data-page-title][data-space-after-nav] { margin-top: 3.5rem; }
-
-@media (max-width: 768px) {
-  [data-page-title][data-space-after-nav] { margin-top: 1.25rem; }
+/* Page-scoped spacing: balanced, responsive gap between nav/header and specific page title */
+[data-page-title][data-space-after-nav] {
+  /* responsive gap: min 1.25rem on very small screens, scales with viewport up to 5rem */
+  margin-top: clamp(1.25rem, 2.5vw + 1rem, 5rem);
 }
