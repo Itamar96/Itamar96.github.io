@@ -1,12 +1,4 @@
-/* web115/styles/default.classless.css
-
-   Classless/attribute-first copy of default.noclass.css
-   Use data-* attributes and elements only. Maintain parity with the in-place stylesheet.
-*/
-
-/* ---------- Base & Tokens ---------- */
 html { box-sizing: border-box; }
-/* Apply inherit box-sizing to all elements and pseudo elements */
 *, *::before, *::after { box-sizing: inherit; }
 
 :root {
@@ -168,12 +160,12 @@ header { position: relative; }
 .dark-theme #theme-toggle [data-icon-sun], [data-theme="dark"] #theme-toggle [data-icon-sun] { display: inline-block; }
 .dark-theme #theme-toggle [data-icon-moon], [data-theme="dark"] #theme-toggle [data-icon-moon] { display: none; }
 
-:root.theme-transition, .theme-transition, .theme-transition :where(html, body, main, header, footer, section, article, nav, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img, blockquote, pre, code, a, button, input, textarea, select, label) {
+:root[data-theme-transition], [data-theme-transition], [data-theme-transition] :where(html, body, main, header, footer, section, article, nav, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img, blockquote, pre, code, a, button, input, textarea, select, label) {
   transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :root.theme-transition, .theme-transition, .theme-transition * { transition: none !important; }
+  :root[data-theme-transition], [data-theme-transition], [data-theme-transition] * { transition: none !important; }
 }
 
 button {
@@ -264,7 +256,7 @@ footer ul { list-style: none; margin: .5rem 0; padding: 0; display: inline-flex;
 footer ul li { display: flex; align-items: center; }
 footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold); padding: 0 .5rem; font-size: .9rem; line-height: 1; display: inline-block; }
 
-.dark-theme {
+[data-theme="dark"] {
   --dark-bg: #0f211b;
   --dark-surface: #1b2621;
   --dark-text: #efece6;
@@ -346,3 +338,6 @@ img[data-gold], figure[data-gold] img { border: 6px solid var(--holiday-gold); b
 .dark-theme blockquote cite { color: rgba(var(--text-rgb), 0.85); }
 
 @media (max-width: 768px) { nav { flex-direction: column; } body { background-attachment: scroll; } }
+
+/* Page-scoped spacing: add extra space between nav/header and specific page title */
+[data-page-title][data-space-after-nav] { margin-top: 2.5rem; }
