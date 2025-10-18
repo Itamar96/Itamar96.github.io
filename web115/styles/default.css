@@ -332,7 +332,8 @@ footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold
   --dark-gold: #cdb569;
   /* Dark-mode gold adjusted per user request for stronger contrast */
   --dark-gold: #B8933F;
-  --holiday-gold-rgb: 205, 181, 105;
+  /* Match the dark gold hex (#B8933F) with its RGB for consistent glows/shadows */
+  --holiday-gold-rgb: 184, 147, 63;
   --bg-base: var(--dark-bg);
   --bg-grad-1: #162824;
   --bg-grad-2: #101e1a;
