@@ -47,8 +47,9 @@
       max-width: 980px;
     }
 
-    #aethernova header h1 { margin: 0; font-weight: 800; letter-spacing: -0.6px; font-size: 1.6rem; }
-    #aethernova header h2 { margin: 6px 0 0; font-weight: 400; color: rgba(255,241,255,.92); font-style: italic; font-size: 1rem; }
+  /* Use attribute selectors rather than qualifying heading elements to satisfy linter rules */
+  #aethernova header [data-site-title] { margin: 0; font-weight: 800; letter-spacing: -0.6px; font-size: 1.6rem; }
+  #aethernova header [data-site-subtitle] { margin: 6px 0 0; font-weight: 400; color: rgba(255,241,255,.92); font-style: italic; font-size: 1rem; }
     #aethernova header p { margin: 12px 0 0; }
 
     /* CTA: semantic button with subtle motion */
@@ -86,9 +87,9 @@
 
     #aethernova section { margin-bottom: 26px; }
 
-    /* first h2 inside main acts as the page title */
-    #aethernova main h2:first-of-type { margin: 0 0 14px; color: #2b4650; font-size:1.25rem; font-weight:700; }
-    #aethernova section h3 { color: #3a6046; margin-top: 0; font-size:1.125rem; }
+  /* first h2 inside main acts as the page title (use attribute selector instead of qualifying the h2) */
+  #aethernova main [data-page-title]:first-of-type { margin: 0 0 14px; color: #2b4650; font-size:1.25rem; font-weight:700; }
+  #aethernova section [data-section-title] { color: #3a6046; margin-top: 0; font-size:1.125rem; }
     #aethernova p { line-height:1.6; }
 
     /* Footer styling */
@@ -141,22 +142,22 @@
   </head>
   <body id="aethernova">
     <header>
-      <h1>GH homepage</h1>
-      <h2>by Aethernova</h2>
+      <h1 data-site-title>GH homepage</h1>
+      <h2 data-site-subtitle>by Aethernova</h2>
       <p><button id="open-course">WEB115 course</button></p>
     </header>
     <main>
-      <h2>Aethernova - portfolio</h2>
+      <h2 data-page-title>Aethernova - portfolio</h2>
       <section>
-        <h3>About Me</h3>
+        <h3 data-section-title>About Me</h3>
         <p>Hello! My name is <strong>Itamar Castillo</strong>, and I'm currently studying web development. I enjoy learning how websites work and how design and code come together to make something meaningful.</p>
       </section>
       <section>
-        <h3>What I Enjoy</h3>
+        <h3 data-section-title>What I Enjoy</h3>
         <p>I am an active person who loves <strong>hiking</strong>, playing sports, and staying healthy through <strong>self-care</strong>—both inside and out. I also value <strong>mental health and awareness</strong>, taking time to reset and recharge when life gets busy.</p>
       </section>
       <section>
-        <h3>Fun Fact</h3>
+        <h3 data-section-title>Fun Fact</h3>
         <p>A fun fact about me is that I can spend hours exploring nature trails, completely offline, and come back full of creative ideas for coding and business projects!</p>
       </section>
     </main>
