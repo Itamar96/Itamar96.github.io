@@ -48,7 +48,7 @@
       if (stored === 'dark') {
         document.documentElement.classList.add('dark-theme');
       }
-    } catch (_) {}
+  } catch (_) { /* ignore localStorage errors in restrictive environments */ }
   })();
   </script>
 
@@ -62,9 +62,9 @@
 
   <main>
     <article aria-labelledby="page-title-welcome">
+      <h2 data-page-title id="page-title-welcome">Welcome</h2>
       <section>
         <div data-container data-intro>
-          <h2 data-page-title id="page-title-welcome">Welcome</h2>
           <p>
             This site presents my coursework and highlights my evolving skills in accessible,
             standards-based web development. It also introduces my sample massage brand,
@@ -89,7 +89,7 @@
                        1200px" />
               <img data-gold loading="lazy"
                 src="images/hiking_portrait_800w.jpg"
-                width="800" height="1067"
+                width="1200" height="1600"
                 alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle." />
             </picture>
             <figcaption>Exploring Colorado’s alpine trails, 2025.</figcaption>
