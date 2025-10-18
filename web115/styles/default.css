@@ -137,12 +137,23 @@ header {
   font-weight: 800;
   font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
   margin: 0;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--holiday-cream) 15%, rgba(var(--holiday-gold-rgb), 0.92) 55%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  /* Use the theme variable for a solid gold site title color. */
+  /* Ensure no gradient or background-clip is applied and force a single color */
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  color: var(--holiday-gold) !important;
   opacity: 1;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.35);
+  text-shadow: none !important;
+}
+
+/* Also ensure any inline or nested spans cannot apply the old text-clip gradient */
+[data-site-title] * {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  color: inherit !important;
+  text-shadow: none !important;
 }
 
 [data-site-title], [data-page-title], [data-section-title] { font-family: var(--brand-heading); line-height: 1.2; margin: 0 0 var(--space-4); }
@@ -319,6 +330,8 @@ footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold
   --dark-accent-deep: #5f8f6f;
   --dark-accent-soft: #90b59a;
   --dark-gold: #cdb569;
+  /* Dark-mode gold adjusted per user request for stronger contrast */
+  --dark-gold: #B8933F;
   --holiday-gold-rgb: 205, 181, 105;
   --bg-base: var(--dark-bg);
   --bg-grad-1: #162824;
@@ -418,6 +431,5 @@ figure[data-holiday] { background: var(--holiday-cream); border: 1px solid rgba(
 body[data-home] [data-page-title][data-space-after-nav] {
   margin-top: clamp(0.6rem, 1.2vw + 0.6rem, 2.2rem);
 }
-
 
 
