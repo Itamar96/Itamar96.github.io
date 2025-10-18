@@ -4,43 +4,64 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Contract acknowledgment for Itamar Castillo — WEB115" />
+  <meta name="course" content="WEB115" />
   <title>Itamar Castillo’s Iridescent Cinderwyrm • Contract</title>
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+
+  <!-- Styles (shared default) -->
   <link rel="stylesheet" href="styles/default.css" />
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
-  <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous" defer></script>
+
+  <!-- Safe lint.page loader (only on http/https) -->
+  <script>
+  (function loadLintPageSafely(){
+    try {
+      var proto = location.protocol;
+      if (proto === 'http:' || proto === 'https:') {
+        var s = document.createElement('script');
+        s.src = 'https://lint.page/kit/67ff88.js';
+        s.defer = true;
+        s.crossOrigin = 'anonymous';
+        s.onerror = function(){ console.info('lint.page unavailable; continuing without it.'); };
+        document.head.appendChild(s);
+      } else {
+        console.info('Skipping lint.page (non-network environment).');
+      }
+    } catch (e) {
+      console.info('Skipping lint.page due to environment:', e);
+    }
+  })();
+  </script>
+
+  <!-- Persisted theme bootstrap (prevents flash) -->
+  <script>
+  (function() {
+    try {
+      const stored = localStorage.getItem('theme');
+      if (stored === 'dark') {
+        try { document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) { /* ignore */ }
+      }
+  } catch (_) { /* ignore localStorage errors in restrictive environments */ }
+  })();
+  </script>
+
+  <!-- Validator helper -->
+  <script src="scripts/validator.js" defer></script>
 </head>
-
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container">
-      <h1 class="site-title">
-        <span class="line-1">Itamar Castillo <span class="dot" aria-hidden="true">•</span> Iridescent Cinderwyrm</span>
-        <span class="line-2 dragon">WEB115 <span aria-hidden="true">🐉</span></span>
-      </h1>
+  <!-- 🐉 Include header -->
+  <div data-include="components/header.html"></div>
 
-      <nav aria-label="Primary">
-        <ul class="primary-nav">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="introduction.html">Introduction</a></li>
-          <li><a href="contract.html" aria-current="page">Contract</a></li>
-          <li><a href="brand.html">Brand Guide</a></li>
-          <li><a href="fizzbuzz0.html">Fizz Buzz 0</a></li>
-        </ul>
-      </nav>
-
-      <button id="theme-toggle" class="btn btn-brand" aria-label="Toggle color theme" aria-pressed="false">Toggle Theme</button>
-    </div>
-  </header>
-
-  <main id="main">
-    <div class="container">
-      <section aria-labelledby="contract-heading">
-        <h2 id="contract-heading">Contract</h2>
+  <main>
+    <article aria-labelledby="page-title-contract">
+      <h2 data-page-title data-space-after-nav id="page-title-contract">Contract</h2>
+      <section data-container>
         <p>
           I, <strong>Itamar Castillo</strong>, agree to abide by the terms in my <strong>Fall 2025 WEB115</strong> course with my instructor, <strong>D.I. von Briesen</strong>.
         </p>
@@ -50,47 +71,39 @@
         <p>
           I also understand that it is my work that counts for attendance, not logins or showing up for class. Failure to turn in assignments may show as absences.
         </p>
-        <p>
-          <strong>Signed:</strong> Itamar Castillo — <time datetime="2025-08-31">31 August 2025</time>
-        </p>
+        <p><strong>Signed:</strong> Itamar Castillo — <time datetime="2025-08-31">31 August 2025</time></p>
       </section>
-    </div>
+    </article>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <nav aria-label="Social links">
-        <ul class="footer-links">
-          <li><a href="https://itamar96.github.io" target="_blank" rel="noopener noreferrer">Portfolio Site</a></li>
-          <li><a href="https://itamar96.github.io/web115/" target="_blank" rel="noopener noreferrer">WEB115 Course Site</a></li>
-          <li><a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-          <li><a href="https://www.codecademy.com/profiles/Itamar96" target="_blank" rel="noopener noreferrer">Codecademy</a></li>
-          <li><a href="https://jsfiddle.net/u/Itamar96/fiddles/" target="_blank" rel="noopener noreferrer">JSFiddle</a></li>
-          <li><a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-        </ul>
-      </nav>
-      <p class="meta"><em>Page built by Iridescent Cinderwyrm Design</em></p>
-    </div>
-  </footer>
+  <!-- 🪶 Include footer -->
+  <div data-include="components/footer.html"></div>
 
+  <!-- HTML include script: injects components marked with data-include -->
+  <script src="scripts/HTMLInclude.js" defer></script>
+  <script src="scripts/theme-toggle.js" defer></script>
+
+  <!-- Small runtime fallback for local file viewing -->
   <script>
-    // Accessible theme toggle with persistence
-    const btn = document.getElementById('theme-toggle');
-    const root = document.documentElement;
-    const stored = localStorage.getItem('theme');
-    if (stored) {
-      root.setAttribute('data-theme', stored);
-      btn.setAttribute('aria-pressed', stored === 'dark' ? 'true' : 'false');
-    }
-    btn?.addEventListener('click', () => {
-      const isDark = root.getAttribute('data-theme') === 'dark';
-      const next = isDark ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      btn.setAttribute('aria-pressed', String(!isDark));
-      localStorage.setItem('theme', next);
+  (function(){
+    document.addEventListener('DOMContentLoaded', function(){
+      var pending = document.querySelectorAll('[data-include]');
+      if (pending.length) {
+        var hdr = document.createElement('header');
+        hdr.innerHTML = '<nav aria-label="Primary">'
+          + '<a href="index.html">Home</a> '
+          + '<a href="introduction.html">Introduction</a> '
+          + '<a href="contract.html" aria-current="page">Contract</a> '
+          + '<a href="brand.html">Brand Guide</a> '
+          + '<a href="fizzbuzz0.html">Fizz Buzz 0</a>'
+          + '</nav>';
+        var first = document.querySelector('main') || document.body.firstElementChild;
+        document.body.insertBefore(hdr, first);
+      }
     });
+  })();
   </script>
+
 </body>
 </html>
-
 
