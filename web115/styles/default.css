@@ -340,4 +340,8 @@ img[data-gold], figure[data-gold] img { border: 6px solid var(--holiday-gold); b
 @media (max-width: 768px) { nav { flex-direction: column; } body { background-attachment: scroll; } }
 
 /* Page-scoped spacing: add extra space between nav/header and specific page title */
-[data-page-title][data-space-after-nav] { margin-top: 2.5rem; }
+[data-page-title][data-space-after-nav] { margin-top: 3.5rem; }
+
+@media (max-width: 768px) {
+  [data-page-title][data-space-after-nav] { margin-top: 1.25rem; }
+}
