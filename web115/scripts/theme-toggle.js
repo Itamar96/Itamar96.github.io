@@ -9,22 +9,21 @@
       try {
         document.documentElement.setAttribute('data-theme', 'dark');
       } catch (e) { /* ignore storage/access errors */ }
-      document.documentElement.classList.add('dark-theme');
     } else {
       try {
         document.documentElement.removeAttribute('data-theme');
       } catch (e) { /* ignore storage/access errors */ }
-      document.documentElement.classList.remove('dark-theme');
     }
     try {
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
     } catch (e) { /* ignore storage/access errors */ }
     // briefly enable CSS transitions tied to a theme-switch class
     try {
-      document.documentElement.classList.add('theme-transition');
+      // Use a data attribute to enable transitions instead of a transient class.
+      document.documentElement.setAttribute('data-theme-transition', 'true');
       window.clearTimeout(window.__themeTransitionTimeout);
       window.__themeTransitionTimeout = window.setTimeout(function () {
-        document.documentElement.classList.remove('theme-transition');
+        try { document.documentElement.removeAttribute('data-theme-transition'); } catch (e) { /* ignore */ }
       }, 260);
     } catch (e) { /* ignore transition errors */ }
   }
@@ -32,8 +31,8 @@
   function syncButton() {
     var btn = document.getElementById('theme-toggle');
     if (!btn) return;
-    // Check data-theme first, fallback to legacy class
-    var isDark = (document.documentElement.getAttribute('data-theme') === 'dark') || document.documentElement.classList.contains('dark-theme');
+  // Check data-theme attribute for current theme
+  var isDark = (document.documentElement.getAttribute('data-theme') === 'dark');
     btn.setAttribute('aria-pressed', String(isDark));
   // show/hide inline SVG icons (attribute-based)
   var moon = btn.querySelector('[data-icon-moon]');
@@ -47,7 +46,7 @@
   document.addEventListener('click', function (e) {
     var btn = e.target.closest && e.target.closest('#theme-toggle');
     if (!btn) return;
-    var willBeDark = !(document.documentElement.classList.contains('dark-theme'));
+  var willBeDark = !(document.documentElement.getAttribute('data-theme') === 'dark');
     setTheme(willBeDark);
     syncButton();
   });
@@ -65,3 +64,4 @@
     syncButton();
   });
 })();
+
