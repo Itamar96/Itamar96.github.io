@@ -35,10 +35,10 @@
     // Check data-theme first, fallback to legacy class
     var isDark = (document.documentElement.getAttribute('data-theme') === 'dark') || document.documentElement.classList.contains('dark-theme');
     btn.setAttribute('aria-pressed', String(isDark));
-    // show/hide inline SVG icons
-    var moon = btn.querySelector('.icon-moon');
-    var sun = btn.querySelector('.icon-sun');
-    var hiddenLabel = btn.querySelector('.visually-hidden');
+  // show/hide inline SVG icons (attribute-based)
+  var moon = btn.querySelector('[data-icon-moon]');
+  var sun = btn.querySelector('[data-icon-sun]');
+  var hiddenLabel = btn.querySelector('[data-visually-hidden]');
     if (moon) moon.style.display = isDark ? 'none' : 'inline-block';
     if (sun) sun.style.display = isDark ? 'inline-block' : 'none';
     if (hiddenLabel) hiddenLabel.textContent = isDark ? 'Switch to light mode' : 'Switch to dark mode';
@@ -65,4 +65,3 @@
     syncButton();
   });
 })();
-
