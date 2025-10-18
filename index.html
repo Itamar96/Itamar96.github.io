@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GH homepage - Aethernova Bodywork</title>
+  <title>GH homepage - Aethernova</title>
   <style>
-    /* Styles for the root index page (small, self-contained, DRY) */
-    :root {
-      --index-bg: #F2F7FA;
-      --index-text: #21343A;
-      --index-accent: #6A4F9B;
-      --index-cta-text: #0b1220;
-      --link-color: #FFE87C;      /* brighter gold-yellow for contrast on purple */
-      --link-hover: #FFD04D;      /* slightly deeper for hover */
-      --focus-ring: rgba(255, 232, 124, 0.65);
-      --footer-star-color: #FFE87C; /* default star color */
-      --footer-star-size: 0.95rem;   /* star size (can be changed easily) */
+    /* Styles for the root index page (scoped to #aethernova so this page is autonomous) */
+    #aethernova {
+      --aethernova-bg: #F2F7FA;
+      --aethernova-text: #21343A;
+      --aethernova-accent: #6A4F9B;
+      --aethernova-cta-text: #0b1220;
+      --aethernova-link-color: #FFE87C;      /* brighter gold-yellow for contrast on purple */
+      --aethernova-link-hover: #FFD04D;      /* slightly deeper for hover */
+      --aethernova-focus-ring: rgba(255, 232, 124, 0.65);
+      --aethernova-footer-star-color: #FFE87C; /* default star color */
+      --aethernova-footer-star-size: 0.95rem;   /* star size (can be changed easily) */
     }
 
-    body {
+    #aethernova {
       font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto,
                    'Helvetica Neue', Arial, sans-serif;
-      background-color: var(--index-bg);
-      color: var(--index-text);
+      background-color: var(--aethernova-bg);
+      color: var(--aethernova-text);
       margin: 0;
       padding: 28px 18px 60px;
       -webkit-font-smoothing: antialiased;
@@ -35,8 +35,8 @@
                         linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.85));
     }
 
-    header {
-      background: linear-gradient(135deg, var(--index-accent) 0%, #5a3f8a 100%);
+    #aethernova header {
+      background: linear-gradient(135deg, var(--aethernova-accent) 0%, #5a3f8a 100%);
       color: #fff;
       text-align: center;
       padding: 36px 18px;
@@ -47,13 +47,13 @@
       max-width: 980px;
     }
 
-    header h1 { margin: 0; font-weight: 800; letter-spacing: -0.6px; font-size: 1.6rem; }
-    header h2 { margin: 6px 0 0; font-weight: 400; color: rgba(255,241,255,.92); font-style: italic; font-size: 1rem; }
-    header p { margin: 12px 0 0; }
+    #aethernova header h1 { margin: 0; font-weight: 800; letter-spacing: -0.6px; font-size: 1.6rem; }
+    #aethernova header h2 { margin: 6px 0 0; font-weight: 400; color: rgba(255,241,255,.92); font-style: italic; font-size: 1rem; }
+    #aethernova header p { margin: 12px 0 0; }
 
     /* CTA: semantic button with subtle motion */
-    header p button {
-      color: var(--index-cta-text);
+    #aethernova header p button {
+      color: var(--aethernova-cta-text);
       background: linear-gradient(90deg,#FFD579 0%,#FF9F6B 100%);
       box-shadow: 0 10px 22px rgba(106,55,24,0.12), inset 0 -1px 0 rgba(255,255,255,.18);
       padding: 10px 14px;
@@ -64,18 +64,18 @@
       transition: transform .18s ease, box-shadow .18s ease;
     }
 
-    header p button:hover {
+    #aethernova header p button:hover {
       transform: translateY(-3px);
       box-shadow: 0 16px 30px rgba(106,55,24,0.14);
     }
 
-    header p button:focus-visible {
+    #aethernova header p button:focus-visible {
       outline: 3px solid transparent;
-      box-shadow: 0 0 0 3px var(--focus-ring);
+      box-shadow: 0 0 0 3px var(--aethernova-focus-ring);
       border-radius: 8px;
     }
 
-    main {
+    #aethernova main {
       padding: 32px 18px;
       max-width: 980px;
       margin: 0 auto;
@@ -84,15 +84,15 @@
       margin-top: 10px;
     }
 
-    section { margin-bottom: 26px; }
+    #aethernova section { margin-bottom: 26px; }
 
     /* first h2 inside main acts as the page title */
-    main h2:first-of-type { margin: 0 0 14px; color: #2b4650; font-size:1.25rem; font-weight:700; }
-    section h3 { color: #3a6046; margin-top: 0; font-size:1.125rem; }
-    p { line-height:1.6; }
+    #aethernova main h2:first-of-type { margin: 0 0 14px; color: #2b4650; font-size:1.25rem; font-weight:700; }
+    #aethernova section h3 { color: #3a6046; margin-top: 0; font-size:1.125rem; }
+    #aethernova p { line-height:1.6; }
 
     /* Footer styling */
-    footer {
+    #aethernova footer {
       background: linear-gradient(180deg, #543874, #4a2f66);
       color: #FFF8DC;
       text-align: center;
@@ -103,30 +103,30 @@
       margin-right: auto;
     }
 
-    footer p { margin: 0; }
+    #aethernova footer p { margin: 0; }
 
     /* footer links styling without classes */
-    footer a {
-      color: var(--link-color);
+    #aethernova footer a {
+      color: var(--aethernova-link-color);
       text-decoration: none;
       font-weight: 600;
       transition: color 0.25s ease, text-shadow 0.25s ease, transform .12s ease;
     }
 
-    footer a:hover { color: var(--link-hover); text-shadow: 0 0 6px rgba(255,255,200,0.6); transform: translateY(-2px); }
-    footer a:focus-visible { outline: 3px solid transparent; box-shadow: 0 0 0 3px var(--focus-ring); border-radius: 6px; }
+    #aethernova footer a:hover { color: var(--aethernova-link-hover); text-shadow: 0 0 6px rgba(255,255,200,0.6); transform: translateY(-2px); }
+    #aethernova footer a:focus-visible { outline: 3px solid transparent; box-shadow: 0 0 0 3px var(--aethernova-focus-ring); border-radius: 6px; }
 
-    footer ul { list-style: none; margin: 8px 0; padding: 0; display: inline-flex; gap: 0; flex-wrap: wrap; align-items: center; }
-    footer ul li { list-style: none; margin: 0; display: flex; align-items: center; }
+    #aethernova footer ul { list-style: none; margin: 8px 0; padding: 0; display: inline-flex; gap: 0; flex-wrap: wrap; align-items: center; }
+    #aethernova footer ul li { list-style: none; margin: 0; display: flex; align-items: center; }
 
     /* Use a pseudo-element between items so it visually centers and keeps consistent spacing */
-    footer ul li:not(:last-child)::after {
+    #aethernova footer ul li:not(:last-child)::after {
       content: '✶';
-      color: var(--footer-star-color);
+      color: var(--aethernova-footer-star-color);
       display: inline-block;
       width: 1.35rem;               /* slightly wider so the star doesn't touch the links */
       text-align: center;
-      font-size: var(--footer-star-size);
+      font-size: var(--aethernova-footer-star-size);
       margin: 0;                    /* spacing is in width */
       line-height: 1;
       opacity: 0.98;
@@ -134,12 +134,12 @@
     }
 
     /* target the last paragraph in footer for spacing (replaces the .copyright class) */
-    footer p:last-of-type { margin-top: 10px; }
+  #aethernova footer p:last-of-type { margin-top: 10px; }
   </style>
   <!-- Accumulus / lint.page validator (WEB115 kit) -->
   <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous"></script>
   </head>
-  <body>
+  <body id="aethernova">
     <header>
       <h1>GH homepage</h1>
       <h2>by Aethernova</h2>
@@ -171,9 +171,13 @@
     </footer>
     <script>
       // header CTA button: navigate to course page
-      (function(){
+      (function () {
         var btn = document.getElementById('open-course');
-        if(btn){ btn.addEventListener('click', function(){ window.location.href = 'web115/index.html'; }); }
+        if (btn) {
+          btn.addEventListener('click', function () {
+            window.location.href = 'web115/index.html';
+          });
+        }
       })();
     </script>
   </body>
