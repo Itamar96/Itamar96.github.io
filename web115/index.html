@@ -46,7 +46,7 @@
       // Only honor an explicit stored preference. Do not auto-apply OS-level
       // prefers-color-scheme here so dark mode is strictly opt-in via the toggle.
       if (stored === 'dark') {
-        document.documentElement.classList.add('dark-theme');
+        try { document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) { /* ignore */ }
       }
   } catch (_) { /* ignore localStorage errors in restrictive environments */ }
   })();
@@ -62,7 +62,7 @@
 
   <main>
     <article aria-labelledby="page-title-welcome">
-      <h2 data-page-title id="page-title-welcome">Welcome</h2>
+  <h2 data-page-title data-space-after-nav id="page-title-welcome">Welcome</h2>
       <section>
         <div data-container data-intro>
           <p>
