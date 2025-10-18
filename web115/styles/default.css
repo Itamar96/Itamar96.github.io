@@ -368,10 +368,38 @@ footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold
 
 @keyframes goldShimmerBorderDark { 0% { box-shadow: 0 10px 22px rgba(0,0,0,0.22), 0 0 8px rgba(var(--holiday-gold-rgb), 0.04) inset; } 50% { box-shadow: 0 18px 36px rgba(0,0,0,0.32), 0 0 18px rgba(var(--holiday-gold-rgb), 0.12) inset; } 100% { box-shadow: 0 10px 22px rgba(0,0,0,0.22), 0 0 8px rgba(var(--holiday-gold-rgb), 0.04) inset; } }
 
-.dark-theme [data-logo], [data-theme="dark"] [data-logo] { filter: drop-shadow(0 0 3px rgba(var(--holiday-gold-rgb), 0.6)) drop-shadow(0 0 8px rgba(var(--holiday-gold-rgb), 0.4)); animation: dragonShine 3.2s ease-in-out infinite; }
-@keyframes dragonShine { 0%,100% { filter: drop-shadow(0 0 3px rgba(var(--holiday-gold-rgb), 0.6)) drop-shadow(0 0 8px rgba(var(--holiday-gold-rgb), 0.4)); } 50% { filter: drop-shadow(0 0 5px rgba(var(--holiday-gold-rgb), 0.9)) drop-shadow(0 0 12px rgba(var(--holiday-gold-rgb), 0.6)); } }
+/* Logo / dragon glow: support inline SVGs and img fallbacks in dark theme
+   - For inline SVGs, prefer colorizing via CSS fill/stroke where possible
+   - For raster <img> fallbacks, apply a gold drop-shadow to simulate glow
+*/
+.dark-theme [data-logo], [data-theme="dark"] [data-logo] {
+  /* base glow */
+  filter: drop-shadow(0 0 4px rgba(var(--holiday-gold-rgb), 0.65)) drop-shadow(0 0 10px rgba(var(--holiday-gold-rgb), 0.45));
+  animation: dragonShine 3.2s ease-in-out infinite;
+}
 
-.dark-theme [data-logo]:hover, .dark-theme [data-logo]:focus, [data-theme="dark"] [data-logo]:hover, [data-theme="dark"] [data-logo]:focus { filter: drop-shadow(0 0 8px rgba(var(--holiday-gold-rgb), 0.95)) drop-shadow(0 0 20px rgba(var(--holiday-gold-rgb), 0.6)); transition: filter 220ms ease; }
+/* If the logo is an inline SVG, color its shapes to the holiday gold for clarity */
+.dark-theme [data-logo] svg, [data-theme="dark"] [data-logo] svg {
+  fill: var(--holiday-gold) !important;
+  stroke: var(--holiday-gold) !important;
+  /* allow the drop-shadow to show through */
+  mix-blend-mode: screen;
+}
+
+/* For raster <img> logos, keep the drop-shadow but also add a stronger glow */
+.dark-theme [data-logo] img, [data-theme="dark"] [data-logo] img {
+  filter: drop-shadow(0 0 6px rgba(var(--holiday-gold-rgb), 0.8));
+}
+
+@keyframes dragonShine {
+  0%,100% { filter: drop-shadow(0 0 4px rgba(var(--holiday-gold-rgb), 0.65)) drop-shadow(0 0 10px rgba(var(--holiday-gold-rgb), 0.45)); }
+  50% { filter: drop-shadow(0 0 8px rgba(var(--holiday-gold-rgb), 0.95)) drop-shadow(0 0 20px rgba(var(--holiday-gold-rgb), 0.6)); }
+}
+
+.dark-theme [data-logo]:hover, .dark-theme [data-logo]:focus, [data-theme="dark"] [data-logo]:hover, [data-theme="dark"] [data-logo]:focus {
+  filter: drop-shadow(0 0 10px rgba(var(--holiday-gold-rgb), 0.95)) drop-shadow(0 0 24px rgba(var(--holiday-gold-rgb), 0.6));
+  transition: filter 220ms ease;
+}
 
 @media (prefers-reduced-motion: reduce) { .dark-theme [data-logo], [data-theme="dark"] [data-logo] { animation: none; } }
 
