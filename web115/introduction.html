@@ -63,34 +63,42 @@
       <h2 data-page-title data-space-after-nav id="page-title-intro">Introduction</h2>
       <p data-meta><strong>IC</strong> — <time datetime="2025-08-31">31 August 2025</time></p>
 
-      <figure data-type-card>
-        <picture>
-          <!-- WebP -->
-          <source
-            type="image/webp"
-            srcset="images/hiking_mountain_lake_600w.webp 600w, images/hiking_mountain_lake_800w.webp 800w, images/hiking_mountain_lake_1200w.webp 1200w"
-            sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-          <!-- JPEG -->
-          <source
-            type="image/jpeg"
-            srcset="images/hiking_mountain_lake_600w.jpg 600w, images/hiking_mountain_lake_800w.jpg 800w, images/hiking_mountain_lake_1200w.jpg 1200w"
-            sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-          <!-- Fallback -->
-          <img
-            class="img-gold-border intro-landscape"
-            src="images/hiking_mountain_lake_800w.jpg"
-            width="800" height="1063"
-            alt="Hiker above a serene mountain lake with pines and ridgelines in the distance." />
-        </picture>
-        <figcaption class="note-gold">Grounded in nature, inspired to heal. Colorado 2025.</figcaption>
-      </figure>
+      <section>
+        <div data-container data-intro>
+          <p>
+            I’m Itamar Castillo. I’m studying web technologies and building an accessible, consistent portfolio using semantic HTML, responsive images, and a calm brand voice drawn from my massage concept,
+            <strong>Iridescent Cinderwyrm Bodywork</strong>. I value clarity, comfort, and craft—online and on the table.
+          </p>
 
-      <p>
-        I’m Itamar Castillo. I’m studying web technologies and building an accessible, consistent portfolio using semantic HTML, responsive images, and a calm brand voice drawn from my massage concept,
-        <strong>Iridescent Cinderwyrm Bodywork</strong>. I value clarity, comfort, and craft—online and on the table.
-      </p>
+          <figure>
+            <picture>
+              <!-- WebP -->
+              <source
+                type="image/webp"
+                srcset="images/hiking_mountain_lake_600w.webp 600w, images/hiking_mountain_lake_800w.webp 800w, images/hiking_mountain_lake_1200w.webp 1200w"
+                sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
+              <!-- JPEG -->
+              <source
+                type="image/jpeg"
+                srcset="images/hiking_mountain_lake_600w.jpg 600w, images/hiking_mountain_lake_800w.jpg 800w, images/hiking_mountain_lake_1200w.jpg 1200w"
+                sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
+              <!-- Fallback -->
+              <img data-gold loading="lazy"
+                src="images/hiking_mountain_lake_800w.jpg"
+                width="800" height="1063"
+                alt="Hiker above a serene mountain lake with pines and ridgelines in the distance." />
+            </picture>
+            <figcaption class="note-gold">Grounded in nature, inspired to heal. Colorado 2025.</figcaption>
+          </figure>
 
-      <h3 data-section-title>About Me</h3>
+          <blockquote>
+            <p>“Strength does not come from physical capacity. It comes from an indomitable will.”</p>
+            <footer>— <cite>Mahatma Gandhi</cite></footer>
+          </blockquote>
+        </div>
+      </section>
+
+      <h3 data-section-title>About Me</h3
       <ul>
         <li>Focus: accessible, standards-based web development (HTML first, progressive enhancement).</li>
         <li>Design: Desert Matcha palette—sand, greens, a touch of clay, and soft gold accents.</li>
@@ -112,6 +120,27 @@
   <script src="scripts/HTMLInclude.js" defer></script>
   <script src="scripts/theme-toggle.js" defer></script>
 
+  <!-- Small runtime fallback: if HTMLInclude didn't inject components (e.g. opened via file://), insert a simple header so content is reachable -->
+  <script>
+  (function(){
+    document.addEventListener('DOMContentLoaded', function(){
+      var pending = document.querySelectorAll('[data-include]');
+      if (pending.length) {
+        var hdr = document.createElement('header');
+        hdr.innerHTML = '<nav aria-label="Primary">'
+          + '<a href="index.html">Home</a> '
+          + '<a href="introduction.html" aria-current="page">Introduction</a> '
+          + '<a href="contract.html">Contract</a> '
+          + '<a href="brand.html">Brand Guide</a> '
+          + '<a href="fizzbuzz0.html">Fizz Buzz 0</a>'
+          + '</nav>';
+        var first = document.querySelector('main') || document.body.firstElementChild;
+        document.body.insertBefore(hdr, first);
+        console.info('HTMLInclude did not load; inserted a simple header. For full includes please serve the site over http/https (e.g. `python -m http.server`).');
+      }
+    });
+  })();
+  </script>
+
 </body>
 </html>
-
