@@ -100,7 +100,8 @@ header {
 nav { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 1rem; margin-top: .5rem; }
 nav a { color: var(--accent-deep); text-decoration: none; padding: .4rem .75rem; border-radius: 999px; transition: background-color 160ms ease, transform 120ms ease; }
 nav a:hover, nav a:focus-visible { text-decoration: underline; background: rgba(var(--accent-deep-rgb), 0.08); transform: translateY(-1px); }
-nav a[aria-current="page"] { background: var(--accent); color: var(--surface); font-weight: 600; box-shadow: 0 0 0 2px rgba(var(--accent-deep-rgb), 0.08) inset, var(--shadow); }
+/* Remove strong filled pill for current page; keep font-weight for identification and let hover styles remain */
+nav a[aria-current="page"] { background: transparent; color: var(--accent-deep); font-weight: 600; box-shadow: none; }
 
 p, ul, ol, blockquote, figure { margin-block: var(--space-4); }
 ul { list-style: disc; padding-left: 1.25rem; }
@@ -360,4 +361,8 @@ figure[data-holiday] { background: var(--holiday-cream); border: 1px solid rgba(
   margin-top: clamp(1.25rem, 2.5vw + 1rem, 5rem);
 }
 
+/* Tighter spacing for the homepage title so the main heading sits closer to the nav */
+body[data-home] [data-page-title][data-space-after-nav] {
+  margin-top: clamp(0.6rem, 1.2vw + 0.6rem, 2.2rem);
+}
 
