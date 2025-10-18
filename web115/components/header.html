@@ -1,5 +1,18 @@
 <header>
-  <a href="/" data-site-title data-logo aria-label="Iridescent Cinderwyrm home">Itamar Castillo’s Iridescent Cinderwyrm 🐉</a>
+  <span data-site-title data-logo>
+    Itamar Castillo’s Iridescent Cinderwyrm
+    <!-- inline SVG dragon replaces emoji so the title and icon share the same gradient color -->
+    <svg aria-hidden="true" focusable="false" width="1.2em" height="1.2em" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" class="site-title-dragon">
+      <defs>
+        <linearGradient id="siteTitleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="var(--accent)" />
+          <stop offset="50%" stop-color="var(--holiday-cream)" />
+          <stop offset="100%" stop-color="rgb(var(--holiday-gold-rgb))" />
+        </linearGradient>
+      </defs>
+      <path fill="url(#siteTitleGrad)" d="M2 12c1-4 5-8 10-8 3 0 5 1 7 3 1 1 1 3 0 4-1 1-3 1-4 0-1-1-2-2-4-2-3 0-5 3-4 6 1 3 6 4 9 2 1-1 2-1 3 0 0 0-2 3-7 4-6 1-10-2-11-6-1-3 0-4 1-5z" />
+    </svg>
+  </span>
   <h2 data-visually-hidden>Course navigation</h2>
   <nav aria-label="Primary">
     <a href="/web115/index.html" aria-current="page">Home</a>
