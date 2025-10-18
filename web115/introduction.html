@@ -3,46 +3,115 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Introduction page for Itamar Castillo — WEB115 Project" />
+  <meta name="description" content="Introduction page for Itamar Castillo — Iridescent Cinderwyrm Bodywork" />
+  <meta name="course" content="WEB115" />
   <title>Itamar Castillo’s Iridescent Cinderwyrm • Introduction</title>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+
+  <!-- Styles (shared default) -->
   <link rel="stylesheet" href="styles/default.css" />
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
+
+  <!-- Safe lint.page loader (only on http/https) -->
+  <script>
+  (function loadLintPageSafely(){
+    try {
+      var proto = location.protocol;
+      if (proto === 'http:' || proto === 'https:') {
+        var s = document.createElement('script');
+        s.src = 'https://lint.page/kit/67ff88.js';
+        s.defer = true;
+        s.crossOrigin = 'anonymous';
+        s.onerror = function(){ console.info('lint.page unavailable; continuing without it.'); };
+        document.head.appendChild(s);
+      } else {
+        console.info('Skipping lint.page (non-network environment).');
+      }
+    } catch (e) {
+      console.info('Skipping lint.page due to environment:', e);
+    }
+  })();
+  </script>
+
+  <!-- Persisted theme bootstrap (prevents flash) -->
+  <script>
+  (function() {
+    try {
+      const stored = localStorage.getItem('theme');
+      if (stored === 'dark') {
+        try { document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) { /* ignore */ }
+      }
+  } catch (_) { /* ignore localStorage errors in restrictive environments */ }
+  })();
+  </script>
+
+  <!-- Validator helper -->
+  <script src="scripts/validator.js" defer></script>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1 class="site-title">Itamar Castillo • Iridescent Cinderwyrm <span class="dragon">🐉</span></h1>
-      <nav aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="introduction.html" aria-current="page">Introduction</a>
-        <a href="contract.html">Contract</a>
-        <a href="brand.html">Brand Guide</a>
-        <a href="fizzbuzz0.html">Fizz Buzz 0</a>
-      </nav>
-      <button id="theme-toggle" aria-label="Toggle dark mode">Toggle Theme</button>
-    </div>
-  </header>
+
+  <!-- 🐉 Include header -->
+  <div data-include="components/header.html"></div>
 
   <main>
-    <div class="container">
-      <h2>About the Creator</h2>
-      <p>Hello! I’m <strong>Itamar Castillo</strong>, a WEB115 student and creator of the <I>Iridescent Cinderwyrm Bodywork</I> brand concept. I blend design and development to build projects with balance and clarity.</p>
-      <blockquote>“The calm mind brings inner strength and self-confidence.”<cite> — Dalai Lama</cite></blockquote>
-    </div>
+    <article aria-labelledby="page-title-intro">
+      <h2 data-page-title data-space-after-nav id="page-title-intro">Introduction</h2>
+      <p data-meta><strong>IC</strong> — <time datetime="2025-08-31">31 August 2025</time></p>
+
+      <figure data-type-card>
+        <picture>
+          <!-- WebP -->
+          <source
+            type="image/webp"
+            srcset="images/hiking_mountain_lake_600w.webp 600w, images/hiking_mountain_lake_800w.webp 800w, images/hiking_mountain_lake_1200w.webp 1200w"
+            sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
+          <!-- JPEG -->
+          <source
+            type="image/jpeg"
+            srcset="images/hiking_mountain_lake_600w.jpg 600w, images/hiking_mountain_lake_800w.jpg 800w, images/hiking_mountain_lake_1200w.jpg 1200w"
+            sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
+          <!-- Fallback -->
+          <img
+            class="img-gold-border intro-landscape"
+            src="images/hiking_mountain_lake_800w.jpg"
+            width="800" height="1063"
+            alt="Hiker above a serene mountain lake with pines and ridgelines in the distance." />
+        </picture>
+        <figcaption class="note-gold">Grounded in nature, inspired to heal. Colorado 2025.</figcaption>
+      </figure>
+
+      <p>
+        I’m Itamar Castillo. I’m studying web technologies and building an accessible, consistent portfolio using semantic HTML, responsive images, and a calm brand voice drawn from my massage concept,
+        <strong>Iridescent Cinderwyrm Bodywork</strong>. I value clarity, comfort, and craft—online and on the table.
+      </p>
+
+      <h3 data-section-title>About Me</h3>
+      <ul>
+        <li>Focus: accessible, standards-based web development (HTML first, progressive enhancement).</li>
+        <li>Design: Desert Matcha palette—sand, greens, a touch of clay, and soft gold accents.</li>
+        <li>Writing: warm, clear, and professional; minimal jargon, helpful tone.</li>
+        <li>Goals: improve component structure, layout systems, and performance; keep pages readable and fast.</li>
+      </ul>
+
+      <blockquote>
+        <p>“Strength does not come from physical capacity. It comes from an indomitable will.”</p>
+        <footer>— <cite>Mahatma Gandhi</cite></footer>
+      </blockquote>
+    </article>
   </main>
 
-  <footer>
-    <div class="container">
-      <p>
-        <a href="https://itamar96.github.io" target="_blank">Portfolio Site</a> ✶
-        <a href="https://github.com/Itamar96" target="_blank">GitHub</a>
-      </p>
-      <p><em>Page built by Iridescent Cinderwyrm Design</em></p>
-    </div>
-  </footer>
+  <!-- 🪶 Include footer -->
+  <div data-include="components/footer.html"></div>
 
+  <!-- HTML include script: injects components marked with data-include -->
+  <script src="scripts/HTMLInclude.js" defer></script>
   <script src="scripts/theme-toggle.js" defer></script>
+
 </body>
 </html>
+
