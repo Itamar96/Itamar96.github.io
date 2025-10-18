@@ -187,13 +187,15 @@ button:hover, button:focus-visible { background: var(--accent-deep); transform: 
   max-width: min(980px, 92%);
   margin: 2.25rem auto 1.25rem;
   padding: 2.25rem 1.25rem;
-  background: linear-gradient(180deg, rgba(var(--bg-overlay-rgb), 0.045), transparent);
+  /* make the intro container transparent so the paragraph isn't sitting on a beige panel */
+  background: transparent;
   border-radius: calc(var(--radius) + 10px);
-  border: 1px solid rgba(var(--accent-deep-rgb), 0.04);
-  box-shadow: 0 20px 48px rgba(var(--text-rgb), 0.08), inset 0 1px 0 rgba(var(--accent-rgb), 0.02);
+  border: none;
+  box-shadow: none;
 }
 
 [data-page-title], [data-section-title] { position: relative; }
+/* remove the decorative gold bars under titles for a cleaner reading flow */
 [data-page-title]::after, [data-section-title]::after {
   content: '';
   position: absolute;
@@ -201,10 +203,9 @@ button:hover, button:focus-visible { background: var(--accent-deep); transform: 
   transform: translateX(-50%);
   bottom: -0.5rem;
   width: 3.6rem;
-  height: 0.35rem;
-  border-radius: 6px;
-  background: linear-gradient(90deg, rgba(var(--holiday-gold-rgb), 0.95), rgba(var(--holiday-gold-rgb), 0.6));
-  box-shadow: 0 6px 18px rgba(var(--holiday-gold-rgb), 0.08);
+  height: 0.06rem;
+  border-radius: 2px;
+  background: rgba(0,0,0,0.06);
 }
 
 blockquote {
@@ -281,9 +282,21 @@ footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold
 
 .dark-theme :focus { outline: 3px solid rgba(159,189,167, 0.22); outline-offset: 3px; }
 
-.img-gold-border, img[data-gold], figure[data-gold] img { border-color: var(--holiday-gold); box-shadow: 0 4px 12px rgba(var(--holiday-gold-rgb), 0.18); }
+/* unify gold-border styling so all data-gold images share the same border, padding, and size */
+.img-gold-border, img[data-gold], figure[data-gold] img {
+  /* slightly thinner gold border and softer shadow for a cleaner look */
+  border: 4px solid var(--holiday-gold);
+  border-radius: 12px;
+  background-color: var(--holiday-cream);
+  box-shadow: 0 6px 18px rgba(var(--holiday-gold-rgb), 0.12);
+  padding: 0.5rem;
+}
 
-.dark-theme .img-gold-border, .dark-theme img[data-gold], .dark-theme figure[data-gold] img { border-color: var(--holiday-gold); box-shadow: 0 12px 30px rgba(0,0,0,0.28), 0 0 18px rgba(var(--holiday-gold-rgb), 0.06) inset; animation: goldShimmerBorderDark 3.2s ease-in-out infinite; }
+.dark-theme .img-gold-border, .dark-theme img[data-gold], .dark-theme figure[data-gold] img {
+  border-color: var(--holiday-gold);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.26), 0 0 14px rgba(var(--holiday-gold-rgb), 0.05) inset;
+  animation: goldShimmerBorderDark 3.2s ease-in-out infinite;
+}
 
 @keyframes goldShimmerBorderDark { 0% { box-shadow: 0 10px 22px rgba(0,0,0,0.22), 0 0 8px rgba(var(--holiday-gold-rgb), 0.04) inset; } 50% { box-shadow: 0 18px 36px rgba(0,0,0,0.32), 0 0 18px rgba(var(--holiday-gold-rgb), 0.12) inset; } 100% { box-shadow: 0 10px 22px rgba(0,0,0,0.22), 0 0 8px rgba(var(--holiday-gold-rgb), 0.04) inset; } }
 
@@ -301,7 +314,7 @@ footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold
 [data-intro] { padding: var(--space-6) 0; }
 figure[data-holiday] { background: var(--holiday-cream); border: 1px solid rgba(var(--holiday-gold-rgb), 0.35); }
 
-img[data-gold], figure[data-gold] img { border: 6px solid var(--holiday-gold); border-radius: 12px; background-color: var(--holiday-cream); box-shadow: 0 4px 12px rgba(var(--holiday-gold-rgb), 0.3); padding: 0.5rem; }
+/* (duplicate img[data-gold] rule consolidated above) */
 
 [data-intro-landscape] { max-width: 100%; height: auto; display: block; }
 
