@@ -309,9 +309,8 @@ figure img, img[data-gold] {
   display: block;
   width: 100%;
   max-width: 1200px;
-  /* slightly reduced heights for a tighter rhythm while keeping responsive scaling */
-  height: clamp(180px, 25vh, 360px);
-  object-fit: cover;
+  /* Restore natural image sizing to preserve composition and avoid cropping */
+  height: auto;
   border-radius: 12px;
   margin: 0 auto;
   box-shadow: 0 8px 24px rgba(var(--text-rgb), 0.12);
@@ -481,10 +480,15 @@ body[data-home] [data-page-title][data-space-after-nav] {
 /* Preserve the original home image sizing and make introduction images match it.
    The home page uses `body[data-home]`; the introduction content uses `[data-intro]`.
    These rules ensure those images share the same visual length and object-fit. */
+/* Keep home and intro images visually consistent by matching their max-width
+   while letting the browser preserve aspect ratio (height:auto). This avoids
+   forced cropping while keeping their displayed size similar. */
 body[data-home] figure img,
 [data-intro] figure img,
 [data-intro] img {
-  height: clamp(220px, 30vh, 420px);
-  object-fit: cover;
+  max-width: 1200px;
+  width: 100%;
+  height: auto;
 }
+
 
