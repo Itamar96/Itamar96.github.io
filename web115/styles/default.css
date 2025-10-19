@@ -139,6 +139,17 @@ header {
   border-bottom: 1px solid var(--site-divider);
 }
 
+/* Make the site title (header H1) visually prominent while keeping it semantic */
+header [data-site-title] {
+  display: block;
+  font-size: clamp(1.6rem, 1.2rem + 2.6vw, 2.6rem);
+  font-weight: 800;
+  color: var(--header-gold);
+  margin: 0;
+  line-height: 1.05;
+  letter-spacing: 0.2px;
+}
+
 [data-site-title] { font-family: var(--brand-heading); }
 [data-site-title] {
   font-weight: 800;
@@ -465,9 +476,8 @@ figure[data-holiday] { background: var(--holiday-cream); border: 1px solid rgba(
   The include fragment contains both elements with classes `.site-title--home`
   and `.site-title--not-home`. Keeping this logic in CSS avoids inline styles
   in the include and ensures consistent behavior across pages. */
-.site-title--not-home { display: none; }
-body:not([data-home]) .site-title--not-home { display: block; }
-body:not([data-home]) .site-title--home { display: none; }
+/* site title heading-level toggle removed; header now always provides an H1.
+  Page-level titles are H2 elements using [data-page-title]. */
 
 [data-meta] { font-size: .98rem; color: var(--accent-deep); }
 [data-swatch-label] { font-family: var(--brand-body); font-size: .95rem; color: var(--text); }
