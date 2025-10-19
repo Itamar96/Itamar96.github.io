@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Itamar Castillo’s WEB115 workspace and brand demo: Iridescent Cinderwyrm Bodywork" />
   <meta name="course" content="WEB115" />
-  <title>Itamar Castillo’s Iridescent Cinderwyrm — Home</title>
+  <title>Iridescent Cinderwyrm Bodywork — Home</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -55,14 +55,14 @@
   <!-- Validator helper: loads lint.page kit and populates footer validate link -->
   <script src="scripts/validator.js" defer></script>
 </head>
-<body>
+<body data-home>
 
   <!-- 🐉 Include header -->
   <div data-include="components/header.html"></div>
 
   <main>
     <article aria-labelledby="page-title-welcome">
-  <h2 data-page-title data-space-after-nav id="page-title-welcome">Welcome</h2>
+  <h1 data-page-title data-space-after-nav id="page-title-welcome">Welcome</h1>
       <section>
         <div data-container data-intro>
           <p>
@@ -117,6 +117,8 @@
       Please enable JavaScript to view this page correctly.
     </p>
   </noscript>
+
+  <!-- Fallback scripts removed; serve the site over HTTP to load shared components. -->
 
 </body>
 </html>
