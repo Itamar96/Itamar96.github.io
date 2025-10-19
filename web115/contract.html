@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Contract acknowledgment for Itamar Castillo — WEB115" />
   <meta name="course" content="WEB115" />
-  <title>Itamar Castillo’s Iridescent Cinderwyrm • Contract</title>
+  <title>Iridescent Cinderwyrm Bodywork • Contract</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -83,27 +83,7 @@
   <script src="scripts/HTMLInclude.js" defer></script>
   <script src="scripts/theme-toggle.js" defer></script>
 
-  <!-- Small runtime fallback for local file viewing -->
-  <script>
-  (function(){
-    document.addEventListener('DOMContentLoaded', function(){
-      var pending = document.querySelectorAll('[data-include]');
-      if (pending.length) {
-        var hdr = document.createElement('header');
-        hdr.innerHTML = '<nav aria-label="Primary">'
-          + '<a href="index.html">Home</a> '
-          + '<a href="introduction.html">Introduction</a> '
-          + '<a href="contract.html" aria-current="page">Contract</a> '
-          + '<a href="brand.html">Brand Guide</a> '
-          + '<a href="fizzbuzz0.html">Fizz Buzz 0</a>'
-          + '</nav>';
-        var first = document.querySelector('main') || document.body.firstElementChild;
-        document.body.insertBefore(hdr, first);
-      }
-    });
-  })();
-  </script>
+  <!-- Fallback removed; serve over HTTP to use full includes -->
 
 </body>
 </html>
-
