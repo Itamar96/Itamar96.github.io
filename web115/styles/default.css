@@ -17,6 +17,8 @@ html { box-sizing: border-box; }
   --header-gold: #DDB955;
   --holiday-cream: #FFF7E2;
   --holiday-gold-rgb: 201, 168, 77;
+  /* outer ring color to softly separate figure from background */
+  --holiday-gold-outer: rgba(255, 250, 240, 0.85);
 
   --palette-sand: var(--bg-grad-1);
   --palette-surface: var(--surface);
@@ -139,39 +141,33 @@ header {
   border-bottom: 1px solid var(--site-divider);
 }
 
-/* Make the site title (header H1) visually prominent while keeping it semantic */
-header [data-site-title] {
-  display: block;
-  font-size: clamp(1.6rem, 1.2rem + 2.6vw, 2.6rem);
-  font-weight: 800;
-  color: var(--header-gold);
-  margin: 0;
-  line-height: 1.05;
-  letter-spacing: 0.2px;
-}
-
-[data-site-title] { font-family: var(--brand-heading); }
 [data-site-title] {
+  /* Canonical site title styles consolidated in one place */
+  display: block;
+  font-family: var(--brand-heading);
   font-weight: 800;
   font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
   margin: 0;
-  /* Use the theme variable for a solid gold site title color. */
-  /* Ensure no gradient or background-clip is applied and force a single color */
-  background: none !important;
-  -webkit-background-clip: initial !important;
-  background-clip: initial !important;
-  color: var(--holiday-gold) !important;
+  line-height: 1.05;
+  letter-spacing: 0.2px;
+  /* Ensure no gradient/background-clip or shadows remain from older styles */
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  color: var(--holiday-gold);
   opacity: 1;
-  text-shadow: none !important;
+  text-shadow: none;
 }
 
-/* Also ensure any inline or nested spans cannot apply the old text-clip gradient */
+[data-site-title] .line-1 { display: block; font-size: clamp(1.35rem, 1rem + 2vw, 2.1rem); }
+
+/* Ensure nested elements can't reintroduce gradient/clip/shadow hacks */
 [data-site-title] * {
-  background: none !important;
-  -webkit-background-clip: initial !important;
-  background-clip: initial !important;
-  color: inherit !important;
-  text-shadow: none !important;
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  color: inherit;
+  text-shadow: none;
 }
 
 [data-site-title], [data-page-title], [data-section-title] { font-family: var(--brand-heading); line-height: 1.2; margin: 0 0 var(--space-4); }
@@ -181,11 +177,14 @@ header [data-site-title] {
 
 nav { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 1rem; margin-top: .5rem; }
 nav a { color: var(--accent-deep); text-decoration: none; padding: .4rem .75rem; border-radius: 999px; transition: background-color 160ms ease, transform 120ms ease; font-weight: 400; }
-nav a:hover, nav a:focus-visible { text-decoration: underline; background: rgba(var(--accent-deep-rgb), 0.08); transform: translateY(-1px); }
-/* Subtle green hue on hover to give a warm accent */
-nav a:hover, nav a:focus-visible { background: linear-gradient(180deg, rgba(144,181,154,0.06), rgba(144,181,154,0.03)); }
+/* Subtle green hue on hover to give a warm accent; combine hover/ focus styles */
+nav a:hover, nav a:focus-visible {
+  text-decoration: underline;
+  transform: translateY(-1px);
+  background: linear-gradient(180deg, rgba(144,181,154,0.06), rgba(144,181,154,0.03));
+}
 /* Keep nav items visually uniform (do not bold the current page link). Force stronger specificity to counter inline or template-level bolding */
-nav a[aria-current="page"], nav a[aria-current="page"] * { background: transparent !important; color: var(--accent-deep) !important; box-shadow: none !important; font-weight: 400 !important; }
+nav a[aria-current="page"], nav a[aria-current="page"] * { background: transparent; color: var(--accent-deep); box-shadow: none; font-weight: 400; }
 
 p, ul, ol, blockquote, figure { margin-block: var(--space-4); }
 ul { list-style: disc; padding-left: 1.25rem; }
@@ -250,7 +249,7 @@ header { position: relative; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :root[data-theme-transition], [data-theme-transition], [data-theme-transition] * { transition: none !important; }
+  :root[data-theme-transition], [data-theme-transition], [data-theme-transition] * { transition: none; }
 }
 
 button {
@@ -390,18 +389,36 @@ footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold
    double-border effect and preserve the image's visible area. */
 .img-gold-border, figure[data-gold] {
   box-sizing: border-box;
-  border: 6px solid var(--holiday-gold);
+  position: relative;
   border-radius: 12px;
-  background-color: var(--holiday-cream);
-  box-shadow: 0 8px 18px rgba(var(--holiday-gold-rgb), 0.12);
-  padding: 0.5rem;
+  padding: 0.5rem; /* inner padding between image and gold band */
+  background-color: var(--holiday-cream); /* inner surface */
+  /* middle gold band via inset box-shadow, outer ring via pseudo-element */
+  box-shadow:
+    inset 0 0 0 6px var(--holiday-gold),
+    0 8px 18px rgba(var(--holiday-gold-rgb), 0.12);
 }
 
 .dark-theme .img-gold-border, .dark-theme figure[data-gold] {
-  border-color: var(--holiday-gold);
-  border-width: 6px;
-  box-shadow: 0 10px 22px rgba(0,0,0,0.24), 0 0 12px rgba(var(--holiday-gold-rgb), 0.06) inset;
+  box-shadow:
+    inset 0 0 0 6px var(--holiday-gold),
+    0 10px 22px rgba(0,0,0,0.24), 0 0 12px rgba(var(--holiday-gold-rgb), 0.06) inset;
   animation: goldShimmerBorderDark 3.2s ease-in-out infinite;
+}
+
+/* Outer ring for figure[data-gold] — created with a pseudo-element so it doesn't affect layout */
+figure[data-gold]::before {
+  content: '';
+  position: absolute;
+  inset: -6px; /* size of the outer ring gap */
+  border-radius: calc(12px + 6px);
+  background: var(--holiday-gold-outer);
+  z-index: -1;
+}
+
+/* Dark-theme tweak: make the outer ring slightly darker so it reads on dark backgrounds */
+.dark-theme figure[data-gold]::before {
+  background: rgba(26, 33, 28, 0.45);
 }
 
 @keyframes goldShimmerBorderDark { 0% { box-shadow: 0 10px 22px rgba(0,0,0,0.22), 0 0 8px rgba(var(--holiday-gold-rgb), 0.04) inset; } 50% { box-shadow: 0 18px 36px rgba(0,0,0,0.32), 0 0 18px rgba(var(--holiday-gold-rgb), 0.12) inset; } 100% { box-shadow: 0 10px 22px rgba(0,0,0,0.22), 0 0 8px rgba(var(--holiday-gold-rgb), 0.04) inset; } }
@@ -417,9 +434,9 @@ footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold
 }
 
 /* If the logo is an inline SVG, color its shapes to the holiday gold for clarity */
-.dark-theme [data-logo] svg, [data-theme="dark"] [data-logo] svg {
-  fill: var(--holiday-gold) !important;
-  stroke: var(--holiday-gold) !important;
+.dark-theme [data-logo] svg *, [data-theme="dark"] [data-logo] svg * {
+  fill: var(--holiday-gold);
+  stroke: var(--holiday-gold);
   /* allow the drop-shadow to show through */
   mix-blend-mode: screen;
 }
@@ -455,10 +472,7 @@ figure[data-holiday] { background: var(--holiday-cream); border: 1px solid rgba(
 [data-swatches] { display: flex; gap: .75rem 1rem; flex-wrap: wrap; align-items: center; padding: 0; margin: 0; list-style: none; }
 [data-swatches] li { display: flex; gap: .6rem; align-items: center; }
 [data-color-box], [data-swatches] [data-swatch-color] { display: inline-block; width: 2.4rem; height: 2.4rem; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
-
-[data-site-title] { margin: 0; line-height: 1.1; font-family: var(--brand-heading); font-weight: 800; letter-spacing: 0.2px; }
 [data-site-title] .line-1 { display: block; font-size: clamp(1.35rem, 1rem + 2vw, 2.1rem); }
-
 [data-note-gold] { color: var(--holiday-gold); }
 
 /* (site title uses text gradient; no separate dragon SVG rules needed) */
@@ -468,7 +482,7 @@ figure[data-holiday] { background: var(--holiday-cream); border: 1px solid rgba(
 [data-text-gold] { color: var(--holiday-gold); font-weight: 600; }
 
 /* Header site title: use a slightly lighter gold for visual emphasis while keeping one solid color */
-[data-site-title][data-text-gold] { color: var(--header-gold) !important; }
+[data-site-title][data-text-gold] { color: var(--header-gold); }
 
 /* Site title heading-level toggle:
   - Show the H1 version only on the homepage (body[data-home])
