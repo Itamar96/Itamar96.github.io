@@ -28,27 +28,52 @@
      This runs after DOMContentLoaded to be safe if the include loader moves scripts to <head>. -->
 <script>
   (function(){
-    function run() {
+    // Robust runtime guard: remove standalone elements whose text exactly
+    // matches the site title. Runs once on DOMContentLoaded and watches the
+    // body for late-inserted nodes for a short window (3s) to catch
+    // include-injected content.
+
+    function normalizeText(s) { return (s || '').replace(/\s+/g, ' ').trim(); }
+
+    function removeDuplicates() {
       var site = document.querySelector('[data-site-title]');
-      if (!site) return;
-      var title = (site.textContent || '').replace(/\s+/g, ' ').trim();
-      if (!title) return;
+      if (!site) return 0;
+      var title = normalizeText(site.textContent);
+      if (!title) return 0;
 
-      var candidates = Array.from(document.querySelectorAll('body *'))
-        .filter(function (el) {
-          if (el === site) return false;
-          if (el.closest('header')) return false; // don't touch other header bits
-          var tag = el.tagName;
-          if (!tag || ['SCRIPT','STYLE','NOSCRIPT','HEAD'].indexOf(tag) !== -1) return false;
-          var txt = (el.textContent || '').replace(/\s+/g, ' ').trim();
-          return txt === title;
-        });
+      var removed = 0;
+      Array.from(document.querySelectorAll('body *')).forEach(function (el) {
+        if (el === site) return;
+        if (el.closest('header')) return; // keep header-local content
+        var tag = el.tagName;
+        if (!tag || ['SCRIPT','STYLE','NOSCRIPT','HEAD','LINK','META'].indexOf(tag) !== -1) return;
+        if (normalizeText(el.textContent) === title) {
+          el.remove(); removed++;
+        }
+      });
+      return removed;
+    }
 
-      candidates.forEach(function (el) { el.remove(); });
+    function startObserver(durationMs) {
+      var observer = new MutationObserver(function () {
+        // run on every mutation batch; cheap check
+        removeDuplicates();
+      });
+      observer.observe(document.documentElement || document.body, { childList: true, subtree: true });
+      // stop observing after a short grace period
+      setTimeout(function () { try { observer.disconnect(); } catch (e) {} }, durationMs);
+    }
+
+    function init() {
+      try { removeDuplicates(); } catch (e) { /* ignore */ }
+      // watch for late injections (e.g. include loader) for 3s
+      startObserver(3000);
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', run);
-    } else run();
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
   })();
 </script>
