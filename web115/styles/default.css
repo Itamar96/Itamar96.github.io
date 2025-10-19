@@ -18,7 +18,7 @@ html { box-sizing: border-box; }
   --holiday-cream: #FFF7E2;
   --holiday-gold-rgb: 201, 168, 77;
   /* outer ring color to softly separate figure from background */
-  --holiday-gold-outer: rgba(255, 250, 240, 0.85);
+  --holiday-gold-outer: rgba(255, 243, 200, 0.95); /* warmer, more visible outer ring */
 
   --palette-sand: var(--bg-grad-1);
   --palette-surface: var(--surface);
@@ -391,9 +391,9 @@ figure[data-gold] {
   box-sizing: border-box;
   position: relative;
   border-radius: 12px;
-  padding: 0.5rem; /* inner padding between image and gold band */
+  padding: 0.75rem; /* slightly increased so more cream band shows */
   background-color: var(--holiday-cream); /* inner surface */
-  box-shadow: inset 0 0 0 6px var(--holiday-gold), 0 10px 20px rgba(var(--holiday-gold-rgb), 0.08);
+  box-shadow: inset 0 0 0 6px var(--holiday-gold), 0 10px 22px rgba(var(--holiday-gold-rgb), 0.10);
   overflow: visible; /* allow pseudo-element outer ring to show */
 }
 
@@ -404,13 +404,14 @@ figure[data-gold] {
 figure[data-gold]::before {
   content: '';
   position: absolute;
-  inset: -6px; /* outer ring thickness + gap */
-  border-radius: calc(12px + 6px);
+  inset: -10px; /* larger outer ring to show more of the outer color */
+  border-radius: calc(12px + 10px);
   background: var(--holiday-gold-outer);
   z-index: -1;
+  box-shadow: 0 12px 36px rgba(var(--holiday-gold-rgb), 0.12);
 }
 
-.dark-theme figure[data-gold]::before { background: rgba(26, 33, 28, 0.45); }
+.dark-theme figure[data-gold]::before { background: rgba(26, 33, 28, 0.55); box-shadow: 0 16px 44px rgba(0,0,0,0.36); }
 
 /* removed unused goldShimmerBorderDark keyframes (visual shimmer not used) */
 
