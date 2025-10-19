@@ -108,6 +108,11 @@ main h1, main h2, main h3, main h4, main h5, main h6 {
   line-height: 1.15;
 }
 
+/* Explicit, consistent heading scale inside the main column */
+main h1 { font-size: clamp(2rem, 2.5vw + 0.75rem, 3rem); font-weight: 800; }
+main h2 { font-size: clamp(1.35rem, 1.6vw + 0.6rem, 1.8rem); font-weight: 700; }
+main h3 { font-size: clamp(1.05rem, 1.1vw + 0.4rem, 1.25rem); font-weight: 600; }
+
 /* Body copy and lists share the same bottom rhythm */
 main p, main ul, main ol {
   margin: 0 0 var(--space-4);
@@ -164,10 +169,12 @@ header {
 [data-section-title] { font-weight: 700; font-size: 1.15rem; }
 
 nav { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 1rem; margin-top: .5rem; }
-nav a { color: var(--accent-deep); text-decoration: none; padding: .4rem .75rem; border-radius: 999px; transition: background-color 160ms ease, transform 120ms ease; }
+nav a { color: var(--accent-deep); text-decoration: none; padding: .4rem .75rem; border-radius: 999px; transition: background-color 160ms ease, transform 120ms ease; font-weight: 400; }
 nav a:hover, nav a:focus-visible { text-decoration: underline; background: rgba(var(--accent-deep-rgb), 0.08); transform: translateY(-1px); }
-/* Remove strong filled pill for current page; keep font-weight for identification and let hover styles remain */
-nav a[aria-current="page"] { background: transparent; color: var(--accent-deep); font-weight: 600; box-shadow: none; }
+/* Subtle green hue on hover to give a warm accent */
+nav a:hover, nav a:focus-visible { background: linear-gradient(180deg, rgba(144,181,154,0.06), rgba(144,181,154,0.03)); }
+/* Keep nav items visually uniform (do not bold the current page link). Force stronger specificity to counter inline or template-level bolding */
+nav a[aria-current="page"], nav a[aria-current="page"] * { background: transparent !important; color: var(--accent-deep) !important; box-shadow: none !important; font-weight: 400 !important; }
 
 p, ul, ol, blockquote, figure { margin-block: var(--space-4); }
 ul { list-style: disc; padding-left: 1.25rem; }
@@ -287,7 +294,7 @@ blockquote {
   font-size: 1.125rem;
   font-style: italic;
 }
-blockquote cite { display: block; margin-top: .6rem; color: rgba(var(--text-rgb), 0.7); font-style: normal; }
+blockquote cite { display: block; margin-top: .6rem; color: rgba(var(--text-rgb), 0.7); font-style: normal; text-align: center; }
 
 figure {
   margin: var(--space-6) auto;
@@ -298,15 +305,18 @@ figure {
   box-shadow: var(--shadow);
   border: 1px solid rgba(var(--accent-deep-rgb), .12);
 }
-figure img {
+figure img, img[data-gold] {
   display: block;
-  max-width: min(100%, 1200px);
-  height: auto;
+  width: 100%;
+  max-width: 1200px;
+  /* slightly reduced heights for a tighter rhythm while keeping responsive scaling */
+  height: clamp(180px, 25vh, 360px);
+  object-fit: cover;
   border-radius: 12px;
   margin: 0 auto;
   box-shadow: 0 8px 24px rgba(var(--text-rgb), 0.12);
 }
-figcaption { margin-top: .75rem; font-size: .95rem; color: var(--accent-deep); }
+figcaption { margin-top: .75rem; font-size: .95rem; color: var(--accent-deep); text-align: center; }
 
 footer {
   padding: 2rem 0;
@@ -356,8 +366,8 @@ footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold
 
 /* unify gold-border styling so all data-gold images share the same border, padding, and size */
 .img-gold-border, img[data-gold], figure[data-gold] img {
-  /* slightly thinner gold border and softer shadow for a cleaner look */
-  border: 4px solid var(--holiday-gold);
+  /* slightly thicker gold border for greater presence and consistency */
+  border: 6px solid var(--holiday-gold);
   border-radius: 12px;
   background-color: var(--holiday-cream);
   box-shadow: 0 6px 18px rgba(var(--holiday-gold-rgb), 0.12);
