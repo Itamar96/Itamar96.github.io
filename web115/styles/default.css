@@ -296,6 +296,9 @@ blockquote {
 }
 blockquote cite { display: block; margin-top: .6rem; color: rgba(var(--text-rgb), 0.7); font-style: normal; text-align: center; }
 
+/* Figures act as cards and are constrained to the main content width so framed
+   images look balanced on large screens. The image inside the figure remains
+   fluid and preserves its aspect ratio. */
 figure {
   margin: var(--space-6) auto;
   text-align: center;
@@ -304,16 +307,24 @@ figure {
   padding: var(--space-4);
   box-shadow: var(--shadow);
   border: 1px solid rgba(var(--accent-deep-rgb), .12);
+  /* Constrain the framed card to the content width to avoid oversized visuals */
+  max-width: var(--content-width);
+  width: 100%;
 }
+
+/* Responsive images inside figures: never overflow, keep proportions, and center */
 figure img, img[data-gold] {
   display: block;
   width: 100%;
-  max-width: 1200px;
-  /* Restore natural image sizing to preserve composition and avoid cropping */
+  max-width: 100%;
   height: auto;
   border-radius: 12px;
   margin: 0 auto;
   box-shadow: 0 8px 24px rgba(var(--text-rgb), 0.12);
+  /* Ensure the image itself does not carry an extra border or padding to
+     avoid a double-border appearance when inside a framed figure. */
+  border: none;
+  padding: 0;
 }
 figcaption { margin-top: .75rem; font-size: .95rem; color: var(--accent-deep); text-align: center; }
 
@@ -363,22 +374,22 @@ footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold
 
 .dark-theme :focus { outline: 3px solid rgba(159,189,167, 0.22); outline-offset: 3px; }
 
-/* unify gold-border styling so all data-gold images share the same border, padding, and size */
-.img-gold-border, figure[data-gold], figure[data-gold] img {
-  /* Apply the gold frame to the figure so the image itself remains full-size.
-     The figure acts as the framed card while the img stays width:100% and height:auto. */
+/* unify gold-border styling so all data-gold figures share the same border
+   and padding. Apply the frame on the figure element only to avoid a
+   double-border effect and preserve the image's visible area. */
+.img-gold-border, figure[data-gold] {
   box-sizing: border-box;
-  border: 10px solid var(--holiday-gold);
+  border: 6px solid var(--holiday-gold);
   border-radius: 12px;
   background-color: var(--holiday-cream);
-  box-shadow: 0 8px 22px rgba(var(--holiday-gold-rgb), 0.14);
-  padding: 0.75rem;
+  box-shadow: 0 8px 18px rgba(var(--holiday-gold-rgb), 0.12);
+  padding: 0.5rem;
 }
 
-.dark-theme .img-gold-border, .dark-theme img[data-gold], .dark-theme figure[data-gold] img {
+.dark-theme .img-gold-border, .dark-theme figure[data-gold] {
   border-color: var(--holiday-gold);
-  border-width: 10px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.30), 0 0 18px rgba(var(--holiday-gold-rgb), 0.06) inset;
+  border-width: 6px;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.24), 0 0 12px rgba(var(--holiday-gold-rgb), 0.06) inset;
   animation: goldShimmerBorderDark 3.2s ease-in-out infinite;
 }
 
@@ -493,5 +504,4 @@ body[data-home] figure img,
   width: 100%;
   height: auto;
 }
-
 
