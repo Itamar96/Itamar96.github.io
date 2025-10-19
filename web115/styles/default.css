@@ -508,7 +508,9 @@ figure[data-holiday] { background: var(--holiday-cream); border: 1px solid rgba(
 
 /* Tighter spacing for the homepage title so the main heading sits closer to the nav */
 body[data-home] [data-page-title][data-space-after-nav] {
-  margin-top: clamp(0.6rem, 1.2vw + 0.6rem, 2.2rem);
+  /* Give the homepage title a bit more breathing room below the nav/header
+     to improve the welcome spacing and visual balance. */
+  margin-top: clamp(1.2rem, 2.2vw + 0.8rem, 3.2rem);
 }
 
 /* Preserve the original home image sizing and make introduction images match it.
@@ -525,3 +527,6 @@ body[data-home] figure img,
   height: auto;
 }
 
+/* If the page doesn't start with a page-title, ensure the first paragraph
+   has a little top gap so the welcome text isn't jammed against the header. */
+main > p:first-child { margin-top: var(--space-4); }
