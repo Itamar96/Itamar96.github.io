@@ -88,7 +88,6 @@ main { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-4
     margin-left: 0;
     margin-right: 0;
   }
-
   /* Keep the site title and nav visually centered (they are in header) */
   header { text-align: center; }
 
@@ -384,44 +383,36 @@ footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold
 
 .dark-theme :focus { outline: 3px solid rgba(159,189,167, 0.22); outline-offset: 3px; }
 
-/* unify gold-border styling so all data-gold figures share the same border
-   and padding. Apply the frame on the figure element only to avoid a
-   double-border effect and preserve the image's visible area. */
-.img-gold-border, figure[data-gold] {
+/* Authoritative gold-frame for figures: applied only to figure[data-gold].
+   Keeps an inner cream surface, a 6px gold inset band, and an outer ring
+   drawn with ::before so layout is unaffected. Images inside the figure
+   stay borderless and slightly inset so the cream band is visible. */
+figure[data-gold] {
   box-sizing: border-box;
   position: relative;
   border-radius: 12px;
   padding: 0.5rem; /* inner padding between image and gold band */
   background-color: var(--holiday-cream); /* inner surface */
-  /* middle gold band via inset box-shadow, outer ring via pseudo-element */
-  box-shadow:
-    inset 0 0 0 6px var(--holiday-gold),
-    0 8px 18px rgba(var(--holiday-gold-rgb), 0.12);
+  box-shadow: inset 0 0 0 6px var(--holiday-gold), 0 10px 20px rgba(var(--holiday-gold-rgb), 0.08);
+  overflow: visible; /* allow pseudo-element outer ring to show */
 }
 
-.dark-theme .img-gold-border, .dark-theme figure[data-gold] {
-  box-shadow:
-    inset 0 0 0 6px var(--holiday-gold),
-    0 10px 22px rgba(0,0,0,0.24), 0 0 12px rgba(var(--holiday-gold-rgb), 0.06) inset;
-  animation: goldShimmerBorderDark 3.2s ease-in-out infinite;
+.dark-theme figure[data-gold] {
+  box-shadow: inset 0 0 0 6px var(--holiday-gold), 0 12px 26px rgba(0,0,0,0.28);
 }
 
-/* Outer ring for figure[data-gold] — created with a pseudo-element so it doesn't affect layout */
 figure[data-gold]::before {
   content: '';
   position: absolute;
-  inset: -6px; /* size of the outer ring gap */
+  inset: -6px; /* outer ring thickness + gap */
   border-radius: calc(12px + 6px);
   background: var(--holiday-gold-outer);
   z-index: -1;
 }
 
-/* Dark-theme tweak: make the outer ring slightly darker so it reads on dark backgrounds */
-.dark-theme figure[data-gold]::before {
-  background: rgba(26, 33, 28, 0.45);
-}
+.dark-theme figure[data-gold]::before { background: rgba(26, 33, 28, 0.45); }
 
-@keyframes goldShimmerBorderDark { 0% { box-shadow: 0 10px 22px rgba(0,0,0,0.22), 0 0 8px rgba(var(--holiday-gold-rgb), 0.04) inset; } 50% { box-shadow: 0 18px 36px rgba(0,0,0,0.32), 0 0 18px rgba(var(--holiday-gold-rgb), 0.12) inset; } 100% { box-shadow: 0 10px 22px rgba(0,0,0,0.22), 0 0 8px rgba(var(--holiday-gold-rgb), 0.04) inset; } }
+/* removed unused goldShimmerBorderDark keyframes (visual shimmer not used) */
 
 /* Logo / dragon glow: support inline SVGs and img fallbacks in dark theme
    - For inline SVGs, prefer colorizing via CSS fill/stroke where possible
@@ -508,7 +499,7 @@ figure[data-holiday] { background: var(--holiday-cream); border: 1px solid rgba(
 [data-palette-holiday-cream] { background: var(--palette-holiday-cream); }
 [data-palette-gold] { background: var(--palette-gold); }
 
-.dark-theme .img-gold-border { border: 6px solid var(--holiday-gold); border-radius: 12px; }
+.dark-theme .img-gold-border { border: none; }
 
 .dark-theme blockquote cite { color: rgba(var(--text-rgb), 0.85); }
 
@@ -544,3 +535,4 @@ body[data-home] figure img,
 /* If the page doesn't start with a page-title, ensure the first paragraph
    has a little top gap so the welcome text isn't jammed against the header. */
 main > p:first-child { margin-top: var(--space-4); }
+
