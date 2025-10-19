@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Introduction page for Itamar Castillo — Iridescent Cinderwyrm Bodywork" />
   <meta name="course" content="WEB115" />
-  <title>Itamar Castillo’s Iridescent Cinderwyrm • Introduction</title>
+  <title>Iridescent Cinderwyrm Bodywork • Introduction</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -120,27 +120,7 @@
   <script src="scripts/HTMLInclude.js" defer></script>
   <script src="scripts/theme-toggle.js" defer></script>
 
-  <!-- Small runtime fallback: if HTMLInclude didn't inject components (e.g. opened via file://), insert a simple header so content is reachable -->
-  <script>
-  (function(){
-    document.addEventListener('DOMContentLoaded', function(){
-      var pending = document.querySelectorAll('[data-include]');
-      if (pending.length) {
-        var hdr = document.createElement('header');
-        hdr.innerHTML = '<nav aria-label="Primary">'
-          + '<a href="index.html">Home</a> '
-          + '<a href="introduction.html" aria-current="page">Introduction</a> '
-          + '<a href="contract.html">Contract</a> '
-          + '<a href="brand.html">Brand Guide</a> '
-          + '<a href="fizzbuzz0.html">Fizz Buzz 0</a>'
-          + '</nav>';
-        var first = document.querySelector('main') || document.body.firstElementChild;
-        document.body.insertBefore(hdr, first);
-        console.info('HTMLInclude did not load; inserted a simple header. For full includes please serve the site over http/https (e.g. `python -m http.server`).');
-      }
-    });
-  })();
-  </script>
+  <!-- Fallback script removed; serve the site over HTTP to load shared components. -->
 
 </body>
 </html>
