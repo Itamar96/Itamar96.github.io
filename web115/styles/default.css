@@ -478,4 +478,13 @@ body[data-home] [data-page-title][data-space-after-nav] {
   margin-top: clamp(0.6rem, 1.2vw + 0.6rem, 2.2rem);
 }
 
+/* Preserve the original home image sizing and make introduction images match it.
+   The home page uses `body[data-home]`; the introduction content uses `[data-intro]`.
+   These rules ensure those images share the same visual length and object-fit. */
+body[data-home] figure img,
+[data-intro] figure img,
+[data-intro] img {
+  height: clamp(220px, 30vh, 420px);
+  object-fit: cover;
+}
 
