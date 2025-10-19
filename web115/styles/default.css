@@ -364,18 +364,21 @@ footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold
 .dark-theme :focus { outline: 3px solid rgba(159,189,167, 0.22); outline-offset: 3px; }
 
 /* unify gold-border styling so all data-gold images share the same border, padding, and size */
-.img-gold-border, img[data-gold], figure[data-gold] img {
-  /* slightly thicker gold border for greater presence and consistency */
-  border: 6px solid var(--holiday-gold);
+.img-gold-border, figure[data-gold], figure[data-gold] img {
+  /* Apply the gold frame to the figure so the image itself remains full-size.
+     The figure acts as the framed card while the img stays width:100% and height:auto. */
+  box-sizing: border-box;
+  border: 10px solid var(--holiday-gold);
   border-radius: 12px;
   background-color: var(--holiday-cream);
-  box-shadow: 0 6px 18px rgba(var(--holiday-gold-rgb), 0.12);
-  padding: 0.5rem;
+  box-shadow: 0 8px 22px rgba(var(--holiday-gold-rgb), 0.14);
+  padding: 0.75rem;
 }
 
 .dark-theme .img-gold-border, .dark-theme img[data-gold], .dark-theme figure[data-gold] img {
   border-color: var(--holiday-gold);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.26), 0 0 14px rgba(var(--holiday-gold-rgb), 0.05) inset;
+  border-width: 10px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.30), 0 0 18px rgba(var(--holiday-gold-rgb), 0.06) inset;
   animation: goldShimmerBorderDark 3.2s ease-in-out infinite;
 }
 
