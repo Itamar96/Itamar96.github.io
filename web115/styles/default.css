@@ -459,6 +459,16 @@ figure[data-holiday] { background: var(--holiday-cream); border: 1px solid rgba(
 /* Header site title: use a slightly lighter gold for visual emphasis while keeping one solid color */
 [data-site-title][data-text-gold] { color: var(--header-gold) !important; }
 
+/* Site title heading-level toggle:
+  - Show the H1 version only on the homepage (body[data-home])
+  - Show the H2 version on all other pages
+  The include fragment contains both elements with classes `.site-title--home`
+  and `.site-title--not-home`. Keeping this logic in CSS avoids inline styles
+  in the include and ensures consistent behavior across pages. */
+.site-title--not-home { display: none; }
+body:not([data-home]) .site-title--not-home { display: block; }
+body:not([data-home]) .site-title--home { display: none; }
+
 [data-meta] { font-size: .98rem; color: var(--accent-deep); }
 [data-swatch-label] { font-family: var(--brand-body); font-size: .95rem; color: var(--text); }
 [data-type-card] { margin-top: var(--space-4); padding: var(--space-4); border-radius: 10px; background: transparent; }
@@ -504,4 +514,5 @@ body[data-home] figure img,
   width: 100%;
   height: auto;
 }
+
 
