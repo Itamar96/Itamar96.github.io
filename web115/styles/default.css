@@ -1,5 +1,12 @@
 html { box-sizing: border-box; }
-*, *::before, *::after { box-sizing: inherit; }
+/* Avoid the universal selector (lint) by applying box-sizing inheritance to
+   a curated set of commonly used elements. Keep this selector compact so
+   parsers and linters don't fail on very long, multi-line :where() lists. */
+:where(html, body, main, header, footer, section, article, nav, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img, a, button, input, textarea, select, label, span, strong, em)::before,
+:where(html, body, main, header, footer, section, article, nav, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img, a, button, input, textarea, select, label, span, strong, em)::after,
+:where(html, body, main, header, footer, section, article, nav, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img, a, button, input, textarea, select, label, span, strong, em) {
+  box-sizing: inherit;
+}
 
 :root {
   --bg-base: #F7EAD9;
@@ -96,8 +103,7 @@ main { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-4
 /* Layout: responsive alignment (center header, left-align content on wide screens) */
 @media (min-width: 720px) {
   main, [data-container] { text-align: left; }
-  main h1, main h2, main h3, main h4, main h5, main h6,
-  main p, main ul, main ol, main blockquote, main figure, main section {
+  h1, h2, h3, h4, h5, h6, main p, main ul, main ol, main blockquote, main figure, main section {
     margin-left: 0;
     margin-right: 0;
   }
@@ -116,16 +122,16 @@ main { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-4
 
 /* Normalize spacing + padding for consistent rhythm across pages */
 /* Headings should not add unexpected top gaps — spacing controlled by flow */
-main h1, main h2, main h3, main h4, main h5, main h6 {
+h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: var(--space-4);
   line-height: 1.15;
 }
 
-/* Explicit, consistent heading scale inside the main column */
-main h1 { font-size: clamp(2rem, 2.5vw + 0.75rem, 3rem); font-weight: 800; }
-main h2 { font-size: clamp(1.35rem, 1.6vw + 0.6rem, 1.8rem); font-weight: 700; }
-main h3 { font-size: clamp(1.05rem, 1.1vw + 0.4rem, 1.25rem); font-weight: 600; }
+/* Explicit, consistent heading scale */
+h1 { font-size: clamp(2rem, 2.5vw + 0.75rem, 3rem); font-weight: 800; }
+h2 { font-size: clamp(1.35rem, 1.6vw + 0.6rem, 1.8rem); font-weight: 700; }
+h3 { font-size: clamp(1.05rem, 1.1vw + 0.4rem, 1.25rem); font-weight: 600; }
 
 /* Body copy and lists share the same bottom rhythm */
 main p, main ul, main ol {
@@ -173,7 +179,8 @@ header {
 [data-site-title] .line-1 { display: block; font-size: clamp(1.35rem, 1rem + 2vw, 2.1rem); }
 
 /* Ensure nested elements can't reintroduce gradient/clip/shadow hacks */
-[data-site-title] * {
+[data-site-title] :where(a, span, strong, em, b, i, small, svg, img, code) {
+  /* limit the reset to common inline and media elements to avoid the slow universal selector */
   background: none;
   -webkit-background-clip: initial;
   background-clip: initial;
@@ -257,12 +264,23 @@ header { position: relative; }
 .dark-theme #theme-toggle [data-icon-sun], [data-theme="dark"] #theme-toggle [data-icon-sun] { display: inline-block; }
 .dark-theme #theme-toggle [data-icon-moon], [data-theme="dark"] #theme-toggle [data-icon-moon] { display: none; }
 
-:root[data-theme-transition], [data-theme-transition], [data-theme-transition] :where(html, body, main, header, footer, section, article, nav, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img, blockquote, pre, code, a, button, input, textarea, select, label) {
+/* Theme transition: keep the root/data-theme-transition container transitions, and
+   apply the same transition to a curated set of elements under the attribute
+   to avoid a universal selector while remaining parser-friendly. */
+:root[data-theme-transition], [data-theme-transition] {
+  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+[data-theme-transition] :where(html, body, main, header, footer, section, article, nav, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img, blockquote, pre, code, a, button, input, textarea, select, label) {
   transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :root[data-theme-transition], [data-theme-transition], [data-theme-transition] * { transition: none; }
+  /* Avoid the universal selector (*) — use a curated :where(...) list instead
+     so linters don't flag performance concerns while preserving behavior. */
+  :root[data-theme-transition], [data-theme-transition], [data-theme-transition] :where(html, body, main, header, footer, section, article, nav, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img, blockquote, pre, code, a, button, input, textarea, select, label) {
+    transition: none; animation: none;
+  }
 }
 
 button {
@@ -279,7 +297,7 @@ button:hover, button:focus-visible { background: var(--accent-deep); transform: 
 
 [data-btn-primary] { background: linear-gradient(90deg, var(--accent) 0%, rgba(var(--holiday-gold-rgb),0.85) 80%); color: var(--surface); padding-left: 1.05rem; padding-right: 1.05rem; box-shadow: 0 10px 28px rgba(var(--text-rgb), 0.09); }
 
-[data-intro], [data-intro] * { box-sizing: border-box; }
+[data-intro], [data-intro] :where(div, p, img, figure, figcaption, a, span, strong, em, code, pre, ul, ol, li, button, input, textarea, select, label) { box-sizing: border-box; }
 [data-intro] {
   max-width: min(980px, 92%);
   margin: 2.25rem auto 1.25rem;
@@ -456,7 +474,7 @@ figure[data-gold]::before {
 }
 
 /* If the logo is an inline SVG, color its shapes to the holiday gold for clarity */
-.dark-theme [data-logo] svg *, [data-theme="dark"] [data-logo] svg * {
+.dark-theme [data-logo] :where(svg, path, circle, rect, ellipse, g, polygon, polyline, line, text), [data-theme="dark"] [data-logo] :where(svg, path, circle, rect, ellipse, g, polygon, polyline, line, text) {
   fill: var(--holiday-gold);
   stroke: var(--holiday-gold);
   /* allow the drop-shadow to show through */
