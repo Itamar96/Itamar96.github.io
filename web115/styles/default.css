@@ -12,13 +12,12 @@ html { box-sizing: border-box; }
   --clay-glow: #B85B39;
   --accent-deep: #365746;
   --accent-soft: #92ABA6;
-  --holiday-gold: #C9A84D;
+  --holiday-gold: #C9A84D; /* inset gold — the 6px inset ring around framed figures */
   /* slightly lighter header gold for the site title (subtle, not too bright) */
   --header-gold: #DDB955;
-  --holiday-cream: #FFF7E2;
-  --holiday-gold-rgb: 201, 168, 77;
-  /* outer ring color to softly separate figure from background */
-  --holiday-gold-outer: rgba(255, 243, 200, 0.95); /* warmer, more visible outer ring */
+  --holiday-cream: #FFF7E2; /* outer halo / ring behind the framed figure */
+  --holiday-gold-rgb: 201, 168, 77; /* RGB form of --holiday-gold for shadows/glows */
+  --holiday-gold-outer: rgba(255, 243, 200, 0.95); /* inner cream surface shown inside the framed figure */
 
   --palette-sand: var(--bg-grad-1);
   --palette-surface: var(--surface);
@@ -381,7 +380,8 @@ figure[data-gold] {
   position: relative;
   border-radius: 12px;
   padding: 1rem; /* slightly increased so more cream band shows */
-  background-color: var(--holiday-cream); /* inner surface */
+  /* inner surface (now uses --holiday-gold-outer token per mapping) */
+  background-color: var(--holiday-gold-outer);
   box-shadow: inset 0 0 0 6px var(--holiday-gold), 0 10px 22px rgba(var(--holiday-gold-rgb), 0.10);
   overflow: visible; /* allow pseudo-element outer ring to show */
 }
@@ -392,7 +392,8 @@ figure[data-gold]::before {
   position: absolute;
   inset: -10px;
   border-radius: calc(var(--radius) + 10px);
-  background: var(--holiday-gold-outer);
+  /* outer halo now uses --holiday-cream token per mapping */
+  background: var(--holiday-cream);
   z-index: -1;
   box-shadow: 0 12px 36px rgba(var(--holiday-gold-rgb), 0.12);
 }
@@ -420,7 +421,7 @@ figure[data-gold]::before {
   position: absolute;
   inset: -10px; /* larger outer ring to show more of the outer color */
   border-radius: calc(12px + 10px);
-  background: var(--holiday-gold-outer);
+  background: var(--holiday-cream);
   z-index: -1;
   box-shadow: 0 12px 36px rgba(var(--holiday-gold-rgb), 0.12);
 }
@@ -472,7 +473,8 @@ figure[data-holiday] {
   position: relative;
   border-radius: 12px;
   padding: 1rem;
-  background-color: var(--holiday-cream);
+  /* inner surface uses --holiday-gold-outer per mapping */
+  background-color: var(--holiday-gold-outer);
   box-shadow: inset 0 0 0 6px var(--holiday-gold), 0 10px 20px rgba(var(--holiday-gold-rgb), 0.08);
   overflow: visible;
   max-width: var(--content-width);
@@ -484,7 +486,7 @@ figure[data-holiday]::before {
   position: absolute;
   inset: -10px;
   border-radius: calc(12px + 10px);
-  background: var(--holiday-gold-outer);
+  background: var(--holiday-cream);
   z-index: -1;
   box-shadow: 0 12px 36px rgba(var(--holiday-gold-rgb), 0.12);
 }
@@ -583,9 +585,9 @@ main > p:first-child { margin-top: var(--space-4); }
    - Keeps the frame authoritative and uses the holiday tokens above */
 .photo-frame {
   display: inline-block;
-  background-color: var(--holiday-cream);
+  background-color: var(--holiday-gold-outer);
   border: 6px solid var(--holiday-gold); /* outer gold border */
-  outline: 4px solid var(--holiday-gold-outer); /* outer ring color token */
+  outline: 4px solid var(--holiday-cream); /* outer ring color token (now --holiday-cream) */
   outline-offset: -10px; /* pull the ring closer so it reads as a single unit */
   border-radius: 14px;
   padding: 10px;
