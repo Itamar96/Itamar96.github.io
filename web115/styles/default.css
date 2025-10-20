@@ -525,14 +525,8 @@ figure[data-holiday] img {
 /* Header site title: use a slightly lighter gold for visual emphasis while keeping one solid color */
 [data-site-title][data-text-gold] { color: var(--header-gold); }
 
-/* Site title heading-level toggle:
-  - Show the H1 version only on the homepage (body[data-home])
-  - Show the H2 version on all other pages
-  The include fragment contains both elements with classes `.site-title--home`
-  and `.site-title--not-home`. Keeping this logic in CSS avoids inline styles
-  in the include and ensures consistent behavior across pages. */
-/* site title heading-level toggle removed; header now always provides an H1.
-  Page-level titles are H2 elements using [data-page-title]. */
+/* Header provides the site title element; pages should supply the document H1
+   (homepage uses an H1 via [data-page-title]). */
 
 [data-meta] { font-size: .98rem; color: var(--accent-deep); }
 [data-swatch-label] { font-family: var(--brand-body); font-size: .95rem; color: var(--text); }
@@ -583,3 +577,24 @@ body[data-home] figure img,
 /* If the page doesn't start with a page-title, ensure the first paragraph
    has a little top gap so the welcome text isn't jammed against the header. */
 main > p:first-child { margin-top: var(--space-4); }
+
+/* Author-facing photo frame utility (alternate to figure[data-gold])
+   - Use by wrapping an <img> in a .photo-frame for a simple gold frame
+   - Keeps the frame authoritative and uses the holiday tokens above */
+.photo-frame {
+  display: inline-block;
+  background-color: var(--holiday-cream);
+  border: 6px solid var(--holiday-gold); /* outer gold border */
+  outline: 4px solid var(--holiday-gold-outer); /* outer ring color token */
+  outline-offset: -10px; /* pull the ring closer so it reads as a single unit */
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.photo-frame img {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+}
+
