@@ -4,7 +4,7 @@
 html { box-sizing: border-box; }
 /* Apply inherit box-sizing to all elements and pseudo elements */
 *, *::before, *::after { box-sizing: inherit; }
-
+/* Subtle vignette overlay to add depth */
 /* Tokens and element-based rules */
 
 :root {
@@ -17,7 +17,7 @@ html { box-sizing: border-box; }
   --text: #2F3A34;
   /* Slightly deeper, muted green for a more upscale feel */
   --accent: #5E7D62; /* was #6F8F6B */
-  /* warmer clay tone used sparingly for accents */
+/* Main content container */
   --clay-glow: #B85B39; /* subtle warmth */
   --accent-deep: #365746; /* slightly deeper/muted */
   --accent-soft: #92ABA6; /* keep soft variant similar */
@@ -25,7 +25,7 @@ html { box-sizing: border-box; }
   --holiday-gold: #C9A84D; /* tuned warmer and slightly desaturated */
   --holiday-cream: #FFF7E2; /* softer cream */
   /* RGB helper for gold so we can use it in rgba() dynamically */
-  --holiday-gold-rgb: 201, 168, 77; /* matches #C9A84D */
+/* Header */
 
   /* explicit palette synonyms for clarity */
   --palette-sand: var(--bg-grad-1);
@@ -34,21 +34,19 @@ html { box-sizing: border-box; }
   --palette-accent: var(--accent);
   --palette-accent-deep: var(--accent-deep);
   --palette-mist: var(--accent-soft);
-  --palette-clay: var(--clay-glow);
+/* Strong accessible focus outline */
   --palette-holiday-cream: var(--holiday-cream);
   --palette-gold: var(--holiday-gold);
 
-  --brand-heading: "Playfair Display", serif;
+/* Header positioned for absolute children (theme toggle) */
   --brand-body: "Inter", sans-serif;
 
   --content-width: 960px;
-  --space-2: 0.5rem;   /* added missing token */
   --space-4: 1rem;
-  --space-6: 1.5rem;
-  --radius: 14px;
+/* Theme transition controlled via data attributes (see classless) */
   /* Softer, slightly warmer shadow to feel more inviting*/
   --shadow: 0 10px 36px rgba(33, 36, 32, 0.10);
-  /* header/footer divider colors (default) */
+/* Blockquote: refined contrast */
   --site-divider: rgba(var(--accent-deep-rgb), 0.08);
   /* RGB helpers for frequently used palette colors */
   --accent-rgb: 94, 125, 98; /* #5E7D62 */
@@ -64,7 +62,7 @@ html { box-sizing: border-box; }
 /* Global layout & typography (element-based) */
 html, body { height: 100%; }
 body {
-  margin: 0;
+/* Figures (cards) */
   font-family: var(--brand-body);
   color: var(--text);
   line-height: 1.6;
@@ -76,8 +74,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: center;
-}
+/* Footer with warmer clay tone */
 
 /* Subtle vignette overlay to add depth (luxury feel) */
 body::after {
@@ -88,9 +85,7 @@ body::after {
   /* subtle, low-contrast vignette for depth — intentionally gentle */
   background: radial-gradient(1200px 600px at 50% 15%, rgba(0,0,0,0.03), transparent 40%), linear-gradient(transparent, rgba(0,0,0,0.01));
   mix-blend-mode: multiply;
-  opacity: 0.32;
-}
-
+/* Dark theme variables (applied via [data-theme="dark"]) */
 /* Container -> main (single content area) */
 main {
   max-width: var(--content-width);
@@ -123,9 +118,9 @@ nav a[aria-current="page"] { background: var(--accent); color: var(--surface); f
 p, ul, ol, blockquote, figure { margin-block: var(--space-4); }
 ul { list-style: disc; padding-left: 1.25rem; }
 
-/* Brand enforcement per guide: links & primary buttons */
+/* Brand enforcement: links */
 a { color: var(--accent-deep); }
-/* All buttons are primary by default; authors may use data attributes for variants */
+/* All buttons are primary by default; authors may opt into variants via attributes */
 button, input[type="button"], input[type="submit"], [data-button] {
   background: var(--accent); /* primary */
   color: var(--surface);
@@ -136,10 +131,10 @@ button, input[type="button"], input[type="submit"], [data-button] {
   background: transparent; color: var(--accent-deep); border: 2px solid var(--accent-soft); padding: 0.45rem 0.8rem; border-radius: 10px;
 }
 
-/* Enhance focus outlines for accessibility */
+/* Migration: remove image-level gold borders; use figure[data-holiday]/[data-gold] */
 :focus { outline: 3px solid rgba(var(--accent-rgb), 0.18); outline-offset: 3px; }
 
-/* Imagery: rounded corners & soft shadows (brand look) */
+/* Improve blockquote cite legibility in dark mode */
 figure img, img { border-radius: 12px; box-shadow: 0 8px 24px rgba(var(--text-rgb), 0.08); }
 
 /* Respect user reduced motion preference */
