@@ -2,11 +2,7 @@ html { box-sizing: border-box; }
 /* Avoid the universal selector (lint) by applying box-sizing inheritance to
    a curated set of commonly used elements. Keep this selector compact so
    parsers and linters don't fail on very long, multi-line :where() lists. */
-:where(html, body, main, header, footer, section, article, nav, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img, a, button, input, textarea, select, label, span, strong, em)::before,
-:where(html, body, main, header, footer, section, article, nav, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img, a, button, input, textarea, select, label, span, strong, em)::after,
-:where(html, body, main, header, footer, section, article, nav, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img, a, button, input, textarea, select, label, span, strong, em) {
-  box-sizing: inherit;
-}
+:where(html, body, main, header, footer, section, article, nav, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img, a, button, input, textarea, select, label, span, strong, em), :where(html, body, main, header, footer, section, article, nav, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img, a, button, input, textarea, select, label, span, strong, em)::before, :where(html, body, main, header, footer, section, article, nav, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img, a, button, input, textarea, select, label, span, strong, em)::after { box-sizing: inherit; }
 
 :root {
   --bg-base: #F7EAD9;
@@ -201,8 +197,8 @@ nav a:hover, nav a:focus-visible {
   transform: translateY(-1px);
   background: linear-gradient(180deg, rgba(144,181,154,0.06), rgba(144,181,154,0.03));
 }
-/* Keep nav items visually uniform (do not bold the current page link). Force stronger specificity to counter inline or template-level bolding */
-nav a[aria-current="page"], nav a[aria-current="page"] * { background: transparent; color: var(--accent-deep); box-shadow: none; font-weight: 400; }
+  /* Keep nav items visually uniform (do not bold the current page link). Target common inline/media children to avoid the universal selector. */
+  nav a[aria-current="page"], nav a[aria-current="page"] :where(a, span, strong, em, b, i, small, svg, img, code) { background: transparent; color: var(--accent-deep); box-shadow: none; font-weight: 400; }
 
 p, ul, ol, blockquote, figure { margin-block: var(--space-4); }
 ul { list-style: disc; padding-left: 1.25rem; }
@@ -500,7 +496,9 @@ figure[data-gold]::before {
 
 [data-container], main[data-container] { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-4); }
 
-[data-flow] > * + * { margin-top: var(--space-4); }
+[data-flow] > :where(h1,h2,h3,h4,h5,h6,p,figure,section,div,ul,ol,blockquote,pre) + :where(h1,h2,h3,h4,h5,h6,p,figure,section,div,ul,ol,blockquote,pre) {
+  margin-top: var(--space-4);
+}
 
 [data-intro] { padding: var(--space-6) 0; }
 /* Ensure holiday-variant figures use the same authoritative gold-frame measurements */
@@ -635,5 +633,3 @@ main > p:first-child { margin-top: var(--space-4); }
   width: 100%;
   border-radius: 10px;
 }
-
-
