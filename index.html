@@ -1,122 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Itamar Castillo’s WEB115 workspace and brand demo: Iridescent Cinderwyrm Bodywork" />
-  <meta name="course" content="WEB115" />
-  <title>Itamar Castillo’s Iridescent Cinderwyrm — Home</title>
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
-
-  <!-- Styles (shared default) -->
-  <link rel="stylesheet" href="styles/default.css" />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
-
-  <!-- Safe lint.page loader (only on http/https) -->
-  <script>
-  (function loadLintPageSafely(){
-    try {
-      var proto = location.protocol;
-      if (proto === 'http:' || proto === 'https:') {
-        var s = document.createElement('script');
-        s.src = 'https://lint.page/kit/67ff88.js';
-        s.defer = true;
-        s.crossOrigin = 'anonymous';
-        s.onerror = function(){ console.info('lint.page unavailable; continuing without it.'); };
-        document.head.appendChild(s);
-      } else {
-        console.info('Skipping lint.page (non-network environment).');
-      }
-    } catch (e) {
-      console.info('Skipping lint.page due to environment:', e);
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GH homepage - Aethernova</title>
+  <style>
+    /* Styles for the root index page (scoped to #aethernova so this page is autonomous) */
+  #aethernova {
+      --aethernova-bg: #F2F7FA;
+      --aethernova-text: #21343A;
+      --aethernova-accent: #6A4F9B;
+      --aethernova-cta-text: #0b1220;
+      --aethernova-link-color: #FFE87C;      /* brighter gold-yellow for contrast on purple */
+      --aethernova-link-hover: #FFD04D;      /* slightly deeper for hover */
+      --aethernova-focus-ring: rgba(255, 232, 124, 0.65);
+      --aethernova-footer-star-color: #FFE87C; /* default star color */
+      --aethernova-footer-star-size: 0.95rem;   /* star size (can be changed easily) */
     }
-  })();
-  </script>
 
-  <!-- Persisted theme bootstrap (prevents flash) -->
-  <script>
-  (function() {
-    try {
-      const stored = localStorage.getItem('theme');
-      // Only honor an explicit stored preference. Do not auto-apply OS-level
-      // prefers-color-scheme here so dark mode is strictly opt-in via the toggle.
-      if (stored === 'dark') {
-        document.documentElement.classList.add('dark-theme');
-      }
-  } catch (_) { /* ignore localStorage errors in restrictive environments */ }
-  })();
-  </script>
+    #aethernova {
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto,
+                   'Helvetica Neue', Arial, sans-serif;
+      background-color: var(--aethernova-bg);
+      color: var(--aethernova-text);
+  margin: 0;
+  padding: 28px 0 60px; /* remove horizontal padding so inner boxes align */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-image: radial-gradient(
+                          circle at 10% 10%,
+                          rgba(106,79,155,0.04) 0%,
+                          transparent 20%
+                        ),
+                        linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.85));
+    }
 
-  <!-- Validator helper: loads lint.page kit and populates footer validate link -->
-  <script src="scripts/validator.js" defer></script>
-</head>
-<body>
+    #aethernova header {
+      background: linear-gradient(135deg, var(--aethernova-accent) 0%, #5a3f8a 100%);
+      color: #fff;
+      text-align: center;
+      padding: 36px 18px;
+      box-shadow: 0 10px 30px rgba(41, 11, 60, .18),
+                  inset 0 -2px 0 rgba(255,255,255,0.02);
+      border-radius: 12px;
+      margin: 0 auto 18px;
+      max-width: 980px;
+    }
 
-  <!-- 🐉 Include header -->
-  <div data-include="components/header.html"></div>
+  /* Use attribute selectors rather than qualifying heading elements to satisfy linter rules */
+  #aethernova header [data-site-title] { margin: 0; font-weight: 800; letter-spacing: -0.6px; font-size: 1.6rem; }
+  #aethernova header [data-site-subtitle] { margin: 6px 0 0; font-weight: 400; color: rgba(255,241,255,.92); font-style: italic; font-size: 1rem; }
+    #aethernova header p { margin: 12px 0 0; }
 
-  <main>
-    <article aria-labelledby="page-title-welcome">
-      <h2 data-page-title id="page-title-welcome">Welcome</h2>
+    /* CTA: semantic button with subtle motion */
+    #aethernova header p button {
+      color: var(--aethernova-cta-text);
+      background: linear-gradient(90deg,#FFD579 0%,#FF9F6B 100%);
+      box-shadow: 0 10px 22px rgba(106,55,24,0.12), inset 0 -1px 0 rgba(255,255,255,.18);
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    #aethernova header p button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 30px rgba(106,55,24,0.14);
+    }
+
+    #aethernova header p button:focus-visible {
+      outline: 3px solid transparent;
+      box-shadow: 0 0 0 3px var(--aethernova-focus-ring);
+      border-radius: 8px;
+    }
+
+    #aethernova main {
+      padding: 32px 18px;
+      max-width: 980px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.92));
+      box-shadow: 0 8px 30px rgba(25,25,30,0.06);
+      margin-top: 10px;
+      border-radius: 12px; /* match header radius for crisp vertical alignment */
+    }
+
+    #aethernova section { margin-bottom: 26px; }
+
+  /* first h2 inside main acts as the page title (use attribute selector instead of qualifying the h2) */
+  #aethernova main [data-page-title]:first-of-type { margin: 0 0 14px; color: #2b4650; font-size:1.25rem; font-weight:700; }
+  #aethernova section [data-section-title] { color: #3a6046; margin-top: 0; font-size:1.125rem; }
+    #aethernova p { line-height:1.6; }
+
+    /* Footer styling */
+    #aethernova footer {
+      background: linear-gradient(180deg, #543874, #4a2f66);
+      color: #FFF8DC;
+      text-align: center;
+      padding: 20px 18px;
+      margin-top: 34px;
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 12px; /* match header/main radius */
+    }
+
+    #aethernova footer p { margin: 0; }
+
+    /* footer links styling without classes */
+    #aethernova footer a {
+      color: var(--aethernova-link-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.25s ease, text-shadow 0.25s ease, transform .12s ease;
+    }
+
+    #aethernova footer a:hover { color: var(--aethernova-link-hover); text-shadow: 0 0 6px rgba(255,255,200,0.6); transform: translateY(-2px); }
+    #aethernova footer a:focus-visible { outline: 3px solid transparent; box-shadow: 0 0 0 3px var(--aethernova-focus-ring); border-radius: 6px; }
+
+    #aethernova footer ul { list-style: none; margin: 8px 0; padding: 0; display: inline-flex; gap: .9rem; flex-wrap: wrap; align-items: center; }
+    #aethernova footer ul li { list-style: none; margin: 0; display: flex; align-items: center; }
+
+    /* Evenly spaced star separator using small margins (responsive) */
+    #aethernova footer ul li:not(:last-child)::after {
+      content: '✶';
+      color: var(--aethernova-footer-star-color);
+      font-size: var(--aethernova-footer-star-size);
+      margin: 0 0 0 0.2rem; /* small left margin to separate from link */
+      opacity: 0.98;
+      transform: translateY(1px);
+    }
+
+    /* target the last paragraph in footer for spacing (replaces the .copyright class) */
+  #aethernova footer p:last-of-type { margin-top: 10px; }
+  </style>
+  <!-- Accumulus / lint.page validator (WEB115 kit) -->
+  <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous"></script>
+  </head>
+  <body id="aethernova">
+    <header>
+      <h1 data-site-title>GH homepage</h1>
+      <h2 data-site-subtitle>by Aethernova</h2>
+      <p><button id="open-course">WEB115 course</button></p>
+    </header>
+    <main>
+      <h2 data-page-title>Aethernova - portfolio</h2>
       <section>
-        <div data-container data-intro>
-          <p>
-            This site presents my coursework and highlights my evolving skills in accessible,
-            standards-based web development. It also introduces my sample massage brand,
-            <strong>Iridescent Cinderwyrm Bodywork</strong>. Please use the menu above to explore my work.
-          </p>
-
-          <figure>
-            <picture>
-              <source type="image/webp"
-                srcset="images/hiking_portrait_600w.webp 600w,
-                        images/hiking_portrait_800w.webp 800w,
-                        images/hiking_portrait_1200w.webp 1200w"
-                sizes="(max-width: 640px) 600px,
-                       (max-width: 960px) 800px,
-                       1200px" />
-              <source type="image/jpeg"
-                srcset="images/hiking_portrait_600w.jpg 600w,
-                        images/hiking_portrait_800w.jpg 800w,
-                        images/hiking_portrait_1200w.jpg 1200w"
-                sizes="(max-width: 640px) 600px,
-                       (max-width: 960px) 800px,
-                       1200px" />
-              <img data-gold loading="lazy"
-                src="images/hiking_portrait_800w.jpg"
-                width="1200" height="1600"
-                alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle." />
-            </picture>
-            <figcaption>Exploring Colorado’s alpine trails, 2025.</figcaption>
-          </figure>
-
-          <blockquote>
-            If I have seen further it is by standing on the shoulders of giants.
-            <cite>— Isaac Newton</cite>
-          </blockquote>
-        </div>
+        <h3 data-section-title>About Me</h3>
+        <p>Hello! My name is <strong>Itamar Castillo</strong>, and I'm currently studying web development. I enjoy learning how websites work and how design and code come together to make something meaningful.</p>
       </section>
-    </article>
-  </main>
-
-  <!-- 🪶 Include footer -->
-  <div data-include="components/footer.html"></div>
-
-  <!-- HTML include script: injects components marked with data-include -->
-  <script src="scripts/HTMLInclude.js" defer></script>
-  <script src="scripts/theme-toggle.js" defer></script>
-
-  <!-- No-script fallback -->
-  <noscript>
-    <p style="text-align:center; color:#a00; font-weight:600;">
-      Please enable JavaScript to view this page correctly.
-    </p>
-  </noscript>
-
-</body>
+      <section>
+        <h3 data-section-title>What I Enjoy</h3>
+        <p>I am an active person who loves <strong>hiking</strong>, playing sports, and staying healthy through <strong>self-care</strong>—both inside and out. I also value <strong>mental health and awareness</strong>, taking time to reset and recharge when life gets busy.</p>
+      </section>
+      <section>
+        <h3 data-section-title>Fun Fact</h3>
+        <p>A fun fact about me is that I can spend hours exploring nature trails, completely offline, and come back full of creative ideas for coding and business projects!</p>
+      </section>
+    </main>
+    <footer>
+      <nav aria-label="Footer links">
+        <ul>
+          <li><a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </nav>
+      <p>&copy; 2025 Aethernova Bodywork</p>
+    </footer>
+    <script>
+      // header CTA button: navigate to course page
+      (function () {
+        var btn = document.getElementById('open-course');
+        if (btn) {
+          btn.addEventListener('click', function () {
+            window.location.href = 'web115/index.html';
+          });
+        }
+      })();
+    </script>
+  </body>
 </html>
