@@ -1,8 +1,20 @@
 html { box-sizing: border-box; }
-/* Avoid the universal selector (lint) by applying box-sizing inheritance to
-   a curated set of commonly used elements. Keep this selector compact so
-   parsers and linters don't fail on very long, multi-line :where() lists. */
-:where(html, body, main, header, footer, section, article, nav, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img, a, button, input, textarea, select, label, span, strong, em), :where(html, body, main, header, footer, section, article, nav, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img, a, button, input, textarea, select, label, span, strong, em)::before, :where(html, body, main, header, footer, section, article, nav, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img, a, button, input, textarea, select, label, span, strong, em)::after { box-sizing: inherit; }
+/* Avoid the universal selector and :where() — use explicit element lists for inheritance */
+html, body, main, header, footer, section, article, nav, div, p,
+h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img,
+a, button, input, textarea, select, label, span, strong, em,
+html::before, body::before, main::before, header::before, footer::before,
+section::before, article::before, nav::before, div::before, p::before,
+h1::before, h2::before, h3::before, h4::before, h5::before, h6::before,
+ul::before, ol::before, li::before, figure::before, figcaption::before, picture::before, img::before,
+a::before, button::before, input::before, textarea::before, select::before, label::before, span::before, strong::before, em::before,
+html::after, body::after, main::after, header::after, footer::after,
+section::after, article::after, nav::after, div::after, p::after,
+h1::after, h2::after, h3::after, h4::after, h5::after, h6::after,
+ul::after, ol::after, li::after, figure::after, figcaption::after, picture::after, img::after,
+a::after, button::after, input::after, textarea::after, select::after, label::after, span::after, strong::after, em::after {
+  box-sizing: inherit;
+}
 
 :root {
   --bg-base: #F7EAD9;
@@ -116,18 +128,14 @@ main { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-4
   main figure, [data-container] figure { margin-left: auto; margin-right: auto; }
 }
 
-/* Normalize spacing + padding for consistent rhythm across pages */
-/* Headings should not add unexpected top gaps — spacing controlled by flow */
-h1, h2, h3, h4, h5, h6 {
-  margin-top: 0;
-  margin-bottom: var(--space-4);
-  line-height: 1.15;
-}
-
-/* Explicit, consistent heading scale */
-h1 { font-size: clamp(2rem, 2.5vw + 0.75rem, 3rem); font-weight: 800; }
-h2 { font-size: clamp(1.35rem, 1.6vw + 0.6rem, 1.8rem); font-weight: 700; }
-h3 { font-size: clamp(1.05rem, 1.1vw + 0.4rem, 1.25rem); font-weight: 600; }
+/* Headings: define each once to avoid linter warnings */
+h1 { margin-top: 0; margin-bottom: var(--space-4); line-height: 1.15;
+     font-size: clamp(2rem, 2.5vw + 0.75rem, 3rem); font-weight: 800; }
+h2 { margin-top: 0; margin-bottom: var(--space-4); line-height: 1.15;
+     font-size: clamp(1.35rem, 1.6vw + 0.6rem, 1.8rem); font-weight: 700; }
+h3 { margin-top: 0; margin-bottom: var(--space-4); line-height: 1.15;
+     font-size: clamp(1.05rem, 1.1vw + 0.4rem, 1.25rem); font-weight: 600; }
+h4, h5, h6 { margin-top: 0; margin-bottom: var(--space-4); line-height: 1.15; }
 
 /* Body copy and lists share the same bottom rhythm */
 main p, main ul, main ol {
@@ -174,9 +182,17 @@ header {
 
 [data-site-title] .line-1 { display: block; font-size: clamp(1.35rem, 1rem + 2vw, 2.1rem); }
 
-/* Ensure nested elements can't reintroduce gradient/clip/shadow hacks */
-[data-site-title] :where(a, span, strong, em, b, i, small, svg, img, code) {
-  /* limit the reset to common inline and media elements to avoid the slow universal selector */
+/* Ensure nested elements can't reintroduce gradient/clip/shadow hacks (no :where) */
+[data-site-title] a,
+[data-site-title] span,
+[data-site-title] strong,
+[data-site-title] em,
+[data-site-title] b,
+[data-site-title] i,
+[data-site-title] small,
+[data-site-title] svg,
+[data-site-title] img,
+[data-site-title] code {
   background: none;
   -webkit-background-clip: initial;
   background-clip: initial;
@@ -197,8 +213,20 @@ nav a:hover, nav a:focus-visible {
   transform: translateY(-1px);
   background: linear-gradient(180deg, rgba(144,181,154,0.06), rgba(144,181,154,0.03));
 }
-  /* Keep nav items visually uniform (do not bold the current page link). Target common inline/media children to avoid the universal selector. */
-  nav a[aria-current="page"], nav a[aria-current="page"] :where(a, span, strong, em, b, i, small, svg, img, code) { background: transparent; color: var(--accent-deep); box-shadow: none; font-weight: 400; }
+/* Keep nav items visually uniform (do not bold the current page link). Avoid :where */
+nav a[aria-current="page"],
+nav a[aria-current="page"] a,
+nav a[aria-current="page"] span,
+nav a[aria-current="page"] strong,
+nav a[aria-current="page"] em,
+nav a[aria-current="page"] b,
+nav a[aria-current="page"] i,
+nav a[aria-current="page"] small,
+nav a[aria-current="page"] svg,
+nav a[aria-current="page"] img,
+nav a[aria-current="page"] code {
+  background: transparent; color: var(--accent-deep); box-shadow: none; font-weight: 400;
+}
 
 p, ul, ol, blockquote, figure { margin-block: var(--space-4); }
 ul { list-style: disc; padding-left: 1.25rem; }
@@ -220,8 +248,21 @@ figure img, img { border-radius: 12px; box-shadow: 0 8px 24px rgba(var(--text-rg
 
 /* Removed legacy image-level selectors; frame is authoritative on <figure>. */
 
+/* Reduced motion: explicit lists (no :where, no *) */
 @media (prefers-reduced-motion: reduce) {
-  :where(html, body, main, header, footer, section, article, nav, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img, blockquote, pre, code, a, button, input, textarea, select, label) {
+  html, body, main, header, footer, section, article, nav, div, p,
+  h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img,
+  blockquote, pre, code, a, button, input, textarea, select, label,
+  html::before, body::before, main::before, header::before, footer::before,
+  section::before, article::before, nav::before, div::before, p::before,
+  h1::before, h2::before, h3::before, h4::before, h5::before, h6::before,
+  ul::before, ol::before, li::before, figure::before, figcaption::before, picture::before, img::before,
+  blockquote::before, pre::before, code::before, a::before, button::before, input::before, textarea::before, select::before, label::before,
+  html::after, body::after, main::after, header::after, footer::after,
+  section::after, article::after, nav::after, div::after, p::after,
+  h1::after, h2::after, h3::after, h4::after, h5::after, h6::after,
+  ul::after, ol::after, li::after, figure::after, figcaption::after, picture::after, img::after,
+  blockquote::after, pre::after, code::after, a::after, button::after, input::after, textarea::after, select::after, label::after {
     transition: none; animation: none;
   }
 }
@@ -260,21 +301,111 @@ header { position: relative; }
 .dark-theme #theme-toggle [data-icon-sun], [data-theme="dark"] #theme-toggle [data-icon-sun] { display: inline-block; }
 .dark-theme #theme-toggle [data-icon-moon], [data-theme="dark"] #theme-toggle [data-icon-moon] { display: none; }
 
-/* Theme transition: keep the root/data-theme-transition container transitions, and
-   apply the same transition to a curated set of elements under the attribute
-   to avoid a universal selector while remaining parser-friendly. */
+/* Theme transition containers + curated descendants (no :where) */
 :root[data-theme-transition], [data-theme-transition] {
   transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
 }
 
-[data-theme-transition] :where(html, body, main, header, footer, section, article, nav, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img, blockquote, pre, code, a, button, input, textarea, select, label) {
+[data-theme-transition] html,
+[data-theme-transition] body,
+[data-theme-transition] main,
+[data-theme-transition] header,
+[data-theme-transition] footer,
+[data-theme-transition] section,
+[data-theme-transition] article,
+[data-theme-transition] nav,
+[data-theme-transition] div,
+[data-theme-transition] p,
+[data-theme-transition] h1,
+[data-theme-transition] h2,
+[data-theme-transition] h3,
+[data-theme-transition] h4,
+[data-theme-transition] h5,
+[data-theme-transition] h6,
+[data-theme-transition] ul,
+[data-theme-transition] ol,
+[data-theme-transition] li,
+[data-theme-transition] figure,
+[data-theme-transition] figcaption,
+[data-theme-transition] picture,
+[data-theme-transition] img,
+[data-theme-transition] blockquote,
+[data-theme-transition] pre,
+[data-theme-transition] code,
+[data-theme-transition] a,
+[data-theme-transition] button,
+[data-theme-transition] input,
+[data-theme-transition] textarea,
+[data-theme-transition] select,
+[data-theme-transition] label {
   transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  /* Avoid the universal selector (*) — use a curated :where(...) list instead
-     so linters don't flag performance concerns while preserving behavior. */
-  :root[data-theme-transition], [data-theme-transition], [data-theme-transition] :where(html, body, main, header, footer, section, article, nav, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, figure, figcaption, picture, img, blockquote, pre, code, a, button, input, textarea, select, label) {
+  :root[data-theme-transition] html,
+  :root[data-theme-transition] body,
+  :root[data-theme-transition] main,
+  :root[data-theme-transition] header,
+  :root[data-theme-transition] footer,
+  :root[data-theme-transition] section,
+  :root[data-theme-transition] article,
+  :root[data-theme-transition] nav,
+  :root[data-theme-transition] div,
+  :root[data-theme-transition] p,
+  :root[data-theme-transition] h1,
+  :root[data-theme-transition] h2,
+  :root[data-theme-transition] h3,
+  :root[data-theme-transition] h4,
+  :root[data-theme-transition] h5,
+  :root[data-theme-transition] h6,
+  :root[data-theme-transition] ul,
+  :root[data-theme-transition] ol,
+  :root[data-theme-transition] li,
+  :root[data-theme-transition] figure,
+  :root[data-theme-transition] figcaption,
+  :root[data-theme-transition] picture,
+  :root[data-theme-transition] img,
+  :root[data-theme-transition] blockquote,
+  :root[data-theme-transition] pre,
+  :root[data-theme-transition] code,
+  :root[data-theme-transition] a,
+  :root[data-theme-transition] button,
+  :root[data-theme-transition] input,
+  :root[data-theme-transition] textarea,
+  :root[data-theme-transition] select,
+  :root[data-theme-transition] label,
+  [data-theme-transition] html,
+  [data-theme-transition] body,
+  [data-theme-transition] main,
+  [data-theme-transition] header,
+  [data-theme-transition] footer,
+  [data-theme-transition] section,
+  [data-theme-transition] article,
+  [data-theme-transition] nav,
+  [data-theme-transition] div,
+  [data-theme-transition] p,
+  [data-theme-transition] h1,
+  [data-theme-transition] h2,
+  [data-theme-transition] h3,
+  [data-theme-transition] h4,
+  [data-theme-transition] h5,
+  [data-theme-transition] h6,
+  [data-theme-transition] ul,
+  [data-theme-transition] ol,
+  [data-theme-transition] li,
+  [data-theme-transition] figure,
+  [data-theme-transition] figcaption,
+  [data-theme-transition] picture,
+  [data-theme-transition] img,
+  [data-theme-transition] blockquote,
+  [data-theme-transition] pre,
+  [data-theme-transition] code,
+  [data-theme-transition] a,
+  [data-theme-transition] button,
+  [data-theme-transition] input,
+  [data-theme-transition] textarea,
+  [data-theme-transition] select,
+  [data-theme-transition] label {
     transition: none; animation: none;
   }
 }
@@ -293,7 +424,28 @@ button:hover, button:focus-visible { background: var(--accent-deep); transform: 
 
 [data-btn-primary] { background: linear-gradient(90deg, var(--accent) 0%, rgba(var(--holiday-gold-rgb),0.85) 80%); color: var(--surface); padding-left: 1.05rem; padding-right: 1.05rem; box-shadow: 0 10px 28px rgba(var(--text-rgb), 0.09); }
 
-[data-intro], [data-intro] :where(div, p, img, figure, figcaption, a, span, strong, em, code, pre, ul, ol, li, button, input, textarea, select, label) { box-sizing: border-box; }
+/* Intro container + descendants: no :where, no * */
+[data-intro],
+[data-intro] div,
+[data-intro] p,
+[data-intro] img,
+[data-intro] figure,
+[data-intro] figcaption,
+[data-intro] a,
+[data-intro] span,
+[data-intro] strong,
+[data-intro] em,
+[data-intro] code,
+[data-intro] pre,
+[data-intro] ul,
+[data-intro] ol,
+[data-intro] li,
+[data-intro] button,
+[data-intro] input,
+[data-intro] textarea,
+[data-intro] select,
+[data-intro] label { box-sizing: border-box; }
+
 [data-intro] {
   max-width: min(980px, 92%);
   margin: 2.25rem auto 1.25rem;
@@ -333,9 +485,7 @@ blockquote {
 }
 blockquote cite { display: block; margin-top: .6rem; color: rgba(var(--text-rgb), 0.7); font-style: normal; text-align: center; }
 
-/* Figures act as cards and are constrained to the main content width so framed
-   images look balanced on large screens. The image inside the figure remains
-   fluid and preserves its aspect ratio. */
+/* Figures act as cards and are constrained to the main content width */
 figure {
   margin: var(--space-6) auto;
   text-align: center;
@@ -344,12 +494,11 @@ figure {
   padding: var(--space-4);
   box-shadow: var(--shadow);
   border: 1px solid rgba(var(--accent-deep-rgb), .12);
-  /* Constrain the framed card to the content width to avoid oversized visuals */
   max-width: var(--content-width);
   width: 100%;
 }
 
-/* Responsive images inside figures: never overflow, keep proportions, and center */
+/* Responsive images inside figures */
 figure img {
   display: block;
   width: 100%;
@@ -393,10 +542,8 @@ footer ul li:not(:last-child)::after { content: '✶'; color: var(--holiday-gold
   /* Dark-mode gold adjusted per user request for stronger contrast */
   --dark-gold: #B8933F;
   /* authoritative gold tone used in dark theme for frames and logo glow */
-  /* Match the dark gold hex (#B8933F) with its RGB for consistent glows/shadows */
   --holiday-gold-rgb: 184, 147, 63;
   /* RGB helper used for dark theme gold glows/shadows */
-  /* header gold in dark theme: slightly lighter than the dark gold but still warm */
   --header-gold: #CAA145;
   /* header title gold variant for dark theme */
   --bg-base: var(--dark-bg);
@@ -422,21 +569,17 @@ figure[data-gold] {
   position: relative;
   border-radius: 12px;
   padding: 1rem; /* slightly increased so more cream band shows */
-  /* inner surface (now uses --holiday-gold-outer token per mapping) */
   background-color: var(--holiday-gold-outer);
   box-shadow: inset 0 0 0 6px var(--holiday-gold), 0 10px 22px rgba(var(--holiday-gold-rgb), 0.10);
   overflow: visible; /* allow pseudo-element outer ring to show */
 }
 
-/* outer ring for the authoritative gold frame (kept single, see later definition) */
-
-/* Images inside gold-framed figures: neutral (no shadow/border) */
+/* Images inside gold-framed figures */
 figure[data-gold] img {
   display: block;
   width: 100%;
   max-width: 100%;
   height: auto;
-  /* make the image slightly less rounded than the frame so the inner cream band shows */
   border-radius: calc(var(--radius) - 6px);
   margin: 0 auto;
   box-shadow: none;
@@ -460,20 +603,39 @@ figure[data-gold]::before {
 
 .dark-theme figure[data-gold]::before { background: rgba(26, 33, 28, 0.55); box-shadow: 0 16px 44px rgba(0,0,0,0.36); }
 
-/* gold shimmer keyframes removed */
-
 /* Logo glow: support SVG and raster fallbacks in dark theme */
-.dark-theme [data-logo], [data-theme="dark"] [data-logo] {
-  /* base glow */
+.dark-theme [data-logo] {
+  filter: drop-shadow(0 0 4px rgba(var(--holiday-gold-rgb), 0.65)) drop-shadow(0 0 10px rgba(var(--holiday-gold-rgb), 0.45));
+  animation: dragonShine 3.2s ease-in-out infinite;
+}
+[data-theme="dark"] [data-logo] {
   filter: drop-shadow(0 0 4px rgba(var(--holiday-gold-rgb), 0.65)) drop-shadow(0 0 10px rgba(var(--holiday-gold-rgb), 0.45));
   animation: dragonShine 3.2s ease-in-out infinite;
 }
 
-/* If the logo is an inline SVG, color its shapes to the holiday gold for clarity */
-.dark-theme [data-logo] :where(svg, path, circle, rect, ellipse, g, polygon, polyline, line, text), [data-theme="dark"] [data-logo] :where(svg, path, circle, rect, ellipse, g, polygon, polyline, line, text) {
+/* Color inline SVG shapes explicitly (no :where) */
+.dark-theme [data-logo] svg,
+.dark-theme [data-logo] path,
+.dark-theme [data-logo] circle,
+.dark-theme [data-logo] rect,
+.dark-theme [data-logo] ellipse,
+.dark-theme [data-logo] g,
+.dark-theme [data-logo] polygon,
+.dark-theme [data-logo] polyline,
+.dark-theme [data-logo] line,
+.dark-theme [data-logo] text,
+[data-theme="dark"] [data-logo] svg,
+[data-theme="dark"] [data-logo] path,
+[data-theme="dark"] [data-logo] circle,
+[data-theme="dark"] [data-logo] rect,
+[data-theme="dark"] [data-logo] ellipse,
+[data-theme="dark"] [data-logo] g,
+[data-theme="dark"] [data-logo] polygon,
+[data-theme="dark"] [data-logo] polyline,
+[data-theme="dark"] [data-logo] line,
+[data-theme="dark"] [data-logo] text {
   fill: var(--holiday-gold);
   stroke: var(--holiday-gold);
-  /* allow the drop-shadow to show through */
   mix-blend-mode: screen;
 }
 
@@ -496,7 +658,21 @@ figure[data-gold]::before {
 
 [data-container], main[data-container] { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-4); }
 
-[data-flow] > :where(h1,h2,h3,h4,h5,h6,p,figure,section,div,ul,ol,blockquote,pre) + :where(h1,h2,h3,h4,h5,h6,p,figure,section,div,ul,ol,blockquote,pre) {
+/* Flow spacing: next element after another gets a top margin (no :where) */
+[data-flow] > h1:not(:first-child),
+[data-flow] > h2:not(:first-child),
+[data-flow] > h3:not(:first-child),
+[data-flow] > h4:not(:first-child),
+[data-flow] > h5:not(:first-child),
+[data-flow] > h6:not(:first-child),
+[data-flow] > p:not(:first-child),
+[data-flow] > figure:not(:first-child),
+[data-flow] > section:not(:first-child),
+[data-flow] > div:not(:first-child),
+[data-flow] > ul:not(:first-child),
+[data-flow] > ol:not(:first-child),
+[data-flow] > blockquote:not(:first-child),
+[data-flow] > pre:not(:first-child) {
   margin-top: var(--space-4);
 }
 
@@ -507,7 +683,6 @@ figure[data-holiday] {
   position: relative;
   border-radius: 12px;
   padding: 1rem;
-  /* inner surface uses --holiday-gold-outer per mapping */
   background-color: var(--holiday-gold-outer);
   box-shadow: inset 0 0 0 6px var(--holiday-gold), 0 10px 20px rgba(var(--holiday-gold-rgb), 0.08);
   overflow: visible;
@@ -526,8 +701,6 @@ figure[data-holiday]::before {
 }
 
 .dark-theme figure[data-holiday]::before { background: rgba(26, 33, 28, 0.55); box-shadow: 0 16px 44px rgba(0,0,0,0.36); }
-
-/* (duplicate img[data-gold] rule consolidated above) */
 
 /* Images inside framed figures: inset so the cream band and inset gold are visible */
 figure[data-gold] img,
@@ -549,26 +722,24 @@ figure[data-holiday] img {
 [data-swatches] { display: flex; gap: .75rem 1rem; flex-wrap: wrap; align-items: center; padding: 0; margin: 0; list-style: none; }
 [data-swatches] li { display: flex; gap: .6rem; align-items: center; }
 [data-color-box], [data-swatches] [data-swatch-color] { display: inline-block; width: 2.4rem; height: 2.4rem; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
-/* site-title line-1: defined once above; duplicate removed */
+/* site-title line-1 defined above */
 [data-note-gold] { color: var(--holiday-gold); }
 
-/* (site title uses text gradient; no separate dragon SVG rules needed) */
-
+/* Utility */
 [data-visually-hidden] { position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; border: 0; padding: 0; margin: -1px; }
 
 [data-text-gold] { color: var(--holiday-gold); font-weight: 600; }
 
-/* Header site title: use a slightly lighter gold for visual emphasis while keeping one solid color */
+/* Header site title variant */
 [data-site-title][data-text-gold] { color: var(--header-gold); }
 
-/* Header provides the site title element; pages should supply the document H1
-   (homepage uses an H1 via [data-page-title]). */
-
+/* Meta + swatch labels */
 [data-meta] { font-size: .98rem; color: var(--accent-deep); }
 [data-swatch-label] { font-family: var(--brand-body); font-size: .95rem; color: var(--text); }
 [data-type-card] { margin-top: var(--space-4); padding: var(--space-4); border-radius: 10px; background: transparent; }
 [data-type-label] { font-weight: 600; margin-bottom: .35rem; display: block; }
 
+/* Palette helpers */
 [data-palette-sand] { background: var(--palette-sand); }
 [data-palette-surface] { background: var(--palette-surface); }
 [data-palette-text] { background: var(--palette-text); }
@@ -576,32 +747,23 @@ figure[data-holiday] img {
 [data-palette-accent-deep] { background: var(--palette-accent-deep); }
 [data-palette-mist] { background: var(--palette-mist); }
 [data-palette-clay] { background: var(--palette-clay); }
-  [data-palette-holiday-cream] { background: var(--palette-holiday-cream); }
-  [data-palette-gold] { background: var(--palette-gold); }
+[data-palette-holiday-cream] { background: var(--palette-holiday-cream); }
+[data-palette-gold] { background: var(--palette-gold); }
 
-/* Legacy dark-theme image rules removed as frame responsibility moved to figure[data-gold]. */
-
+/* Dark-theme tweaks */
 .dark-theme blockquote cite { color: rgba(var(--text-rgb), 0.85); }
 
 @media (max-width: 768px) { nav { flex-direction: column; } body { background-attachment: scroll; } }
 
-/* Page-scoped spacing: balanced, responsive gap between nav/header and specific page title */
+/* Page-scoped spacing */
 [data-page-title][data-space-after-nav] {
-  /* responsive gap: min 1.25rem on very small screens, scales with viewport up to 5rem */
   margin-top: clamp(1.25rem, 2.5vw + 1rem, 5rem);
 }
-
-/* Tighter spacing for the homepage title so the main heading sits closer to the nav */
 body[data-home] [data-page-title][data-space-after-nav] {
-  /* Give the homepage title a bit more breathing room below the nav/header
-     to improve the welcome spacing and visual balance. */
   margin-top: clamp(1.2rem, 2.2vw + 0.8rem, 3.2rem);
 }
 
-/* Ensure home/intro images share max-width and preserve aspect ratio */
-/* Keep home and intro images visually consistent by matching their max-width
-   while letting the browser preserve aspect ratio (height:auto). This avoids
-   forced cropping while keeping their displayed size similar. */
+/* Home/intro images share max-width */
 body[data-home] figure img,
 [data-intro] figure img,
 [data-intro] img {
@@ -610,19 +772,16 @@ body[data-home] figure img,
   height: auto;
 }
 
-/* If the page doesn't start with a page-title, ensure the first paragraph
-   has a little top gap so the welcome text isn't jammed against the header. */
+/* If the page doesn't start with a page-title, give first paragraph a top gap */
 main > p:first-child { margin-top: var(--space-4); }
 
-/* Author-facing photo frame utility (attribute-based, classless)
-   - Use by adding `data-photo-frame` to a wrapping element (e.g. <div data-photo-frame>)
-   - Compatible with the canonical figure framing but useful when authors prefer a simple wrapper */
+/* Author-facing photo frame utility */
 [data-photo-frame] {
   display: inline-block;
   background-color: var(--holiday-gold-outer);
-  border: 6px solid var(--holiday-gold); /* inset gold visual */
-  outline: 4px solid var(--holiday-cream); /* outer halo ring */
-  outline-offset: -10px; /* pull the ring closer so it reads as a single unit */
+  border: 6px solid var(--holiday-gold);
+  outline: 4px solid var(--holiday-cream);
+  outline-offset: -10px;
   border-radius: 14px;
   padding: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.25);
@@ -633,3 +792,4 @@ main > p:first-child { margin-top: var(--space-4); }
   width: 100%;
   border-radius: 10px;
 }
+
