@@ -5,19 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Introduction page for Itamar Castillo — Iridescent Cinderwyrm Bodywork" />
   <meta name="course" content="WEB115" />
-  <title>Iridescent Cinderwyrm Bodywork • Introduction</title>
+  <title>Iridescent Cinderwyrm Bodywork — Introduction</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
 
-  <!-- Styles (shared default) -->
+  <!-- Styles -->
   <link rel="stylesheet" href="styles/default.css" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
 
-  <!-- Persisted theme bootstrap (prevents flash) -->
+  <!-- Safe lint.page loader (Accumulus Validator) -->
+  <script>
+  (function loadLintPageSafely(){
+    try {
+      var proto = location.protocol;
+      if (proto === 'http:' || proto === 'https:') {
+        var s = document.createElement('script');
+        s.src = 'https://lint.page/kit/67ff88.js';
+        s.defer = true;
+        s.crossOrigin = 'anonymous';
+        s.onerror = function(){ console.info('Accumulus unavailable; continuing without it.'); };
+        document.head.appendChild(s);
+      } else {
+        console.info('Skipping Accumulus (non-network environment).');
+      }
+    } catch(e) {
+      console.info('Skipping Accumulus due to environment:', e);
+    }
+  })();
+  </script>
+
+  <!-- Theme bootstrap -->
   <script>
   (function() {
     try {
@@ -25,18 +46,22 @@
       if (stored === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
       }
-    } catch (_) { /* ignore localStorage errors */ }
+    } catch (_) { /* ignore */ }
   })();
   </script>
-</head>
-<body>
 
-  <!-- 🐉 Include header (use the inner-page header variant with H2 site title) -->
+  <!-- Validator link helper -->
+  <script src="scripts/validator.js" defer></script>
+</head>
+
+<body>
+  <!-- 🐉 Include header -->
   <div data-include="components/header.html"></div>
 
   <main>
     <article aria-labelledby="page-title-intro">
       <h1 data-page-title id="page-title-intro">Introduction</h1>
+
       <p data-meta><strong>IC</strong> — <time datetime="2025-08-31">31 August 2025</time></p>
 
       <section>
@@ -48,17 +73,12 @@
 
           <figure data-gold>
             <picture>
-              <!-- WebP -->
-              <source
-                type="image/webp"
+              <source type="image/webp"
                 srcset="images/hiking_mountain_lake_600w.webp 600w, images/hiking_mountain_lake_800w.webp 800w, images/hiking_mountain_lake_1200w.webp 1200w"
                 sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-              <!-- JPEG -->
-              <source
-                type="image/jpeg"
+              <source type="image/jpeg"
                 srcset="images/hiking_mountain_lake_600w.jpg 600w, images/hiking_mountain_lake_800w.jpg 800w, images/hiking_mountain_lake_1200w.jpg 1200w"
                 sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-              <!-- Fallback -->
               <img loading="lazy"
                 src="images/hiking_mountain_lake_1200w.jpg"
                 width="1200" height="1595"
@@ -66,31 +86,33 @@
             </picture>
             <figcaption>Grounded in nature, inspired to heal. Colorado 2025.</figcaption>
           </figure>
-
-          <blockquote>
-            “Strength does not come from physical capacity. It comes from an indomitable will.”
-            <cite>— Mahatma Gandhi</cite>
-          </blockquote>
         </div>
       </section>
 
-      <h3 data-section-title>About Me</h3>
-      <p>Hello, my name is <strong>Itamar Castillo</strong>. I am in my final year of study as a Software Developer. I enjoy music, hiking, and fitness. I am using this site to practice web skills and to present a sample massage brand for the class.</p>
+      <section aria-labelledby="section-about">
+        <h2 id="section-about">About Me</h2>
+        <p>Hello, my name is <strong>Itamar Castillo</strong>. I am in my final year of study as a Software Developer. I enjoy music, hiking, and fitness. I am using this site to practice web skills and to present a sample massage brand for the class.</p>
 
-      <ul>
-        <li><strong>Personal background</strong><br>I balance interests in communication and health with a focus on technology and problem solving.</li>
-        <li><strong>Academic background</strong><br>I continue to build programming, systems, and project skills.</li>
-        <li><strong>Courses I am taking</strong>
-          <ol>
-            <li><strong>CSC 249: Data Structures and Algorithms</strong>: improve problem solving.</li>
-            <li><strong>CTS 118: IS Professional Communication</strong>: teamwork and documentation.</li>
-            <li><strong>CTS 240: Project Management</strong>: leadership and organization.</li>
-            <li><strong>WEB 115: Web Markup and Scripting</strong>: web development skills.</li>
-          </ol>
-        </li>
-        <li><strong>Interesting fact</strong><br>I like to explore new hiking trails.</li>
-        <li><strong>Something I would like to share</strong><br>Technology feels easier when you stay curious and keep practicing.</li>
-      </ul>
+        <ul>
+          <li><strong>Personal background:</strong> I balance interests in communication and health with a focus on technology and problem solving.</li>
+          <li><strong>Academic background:</strong> I continue to build programming, systems, and project skills.</li>
+          <li><strong>Courses I am taking:</strong>
+            <ol>
+              <li>CSC 249: Data Structures and Algorithms</li>
+              <li>CTS 118: IS Professional Communication</li>
+              <li>CTS 240: Project Management</li>
+              <li>WEB 115: Web Markup and Scripting</li>
+            </ol>
+          </li>
+          <li><strong>Interesting fact:</strong> I like to explore new hiking trails.</li>
+          <li><strong>Something I would like to share:</strong> Technology feels easier when you stay curious and keep practicing.</li>
+        </ul>
+      </section>
+
+      <blockquote>
+        Strength does not come from physical capacity. It comes from an indomitable will.
+        <cite>— Mahatma Gandhi</cite>
+      </blockquote>
     </article>
   </main>
 
@@ -102,3 +124,4 @@
   <script src="scripts/theme-toggle.js" defer></script>
 </body>
 </html>
+
