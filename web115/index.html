@@ -11,60 +11,36 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
 
-  <!-- Styles (shared default) -->
+  <!-- Styles -->
   <link rel="stylesheet" href="styles/default.css" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
-
-  <!-- Safe lint.page loader (only on http/https) -->
-  <script>
-  (function loadLintPageSafely(){
-    try {
-      var proto = location.protocol;
-      if (proto === 'http:' || proto === 'https:') {
-        var s = document.createElement('script');
-        s.src = 'https://lint.page/kit/67ff88.js';
-        s.defer = true;
-        s.crossOrigin = 'anonymous';
-        s.onerror = function(){ console.info('lint.page unavailable; continuing without it.'); };
-        document.head.appendChild(s);
-      } else {
-        console.info('Skipping lint.page (non-network environment).');
-      }
-    } catch (e) {
-      console.info('Skipping lint.page due to environment:', e);
-    }
-  })();
-  </script>
 
   <!-- Persisted theme bootstrap (prevents flash) -->
   <script>
   (function() {
     try {
       const stored = localStorage.getItem('theme');
-      // Only honor an explicit stored preference. Do not auto-apply OS-level
-      // prefers-color-scheme here so dark mode is strictly opt-in via the toggle.
       if (stored === 'dark') {
-        try { document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) { /* ignore */ }
+        document.documentElement.setAttribute('data-theme', 'dark');
       }
-  } catch (_) { /* ignore localStorage errors in restrictive environments */ }
+    } catch (_) { /* ignore localStorage errors */ }
   })();
   </script>
-
-  <!-- Validator helper: loads lint.page kit and populates footer validate link -->
-  <script src="scripts/validator.js" defer></script>
 </head>
-<body data-home>
 
-  <!-- 🐉 Include header -->
+<body>
+  <!-- 🐉 Header include -->
   <div data-include="components/header.html"></div>
 
   <main>
-  <article aria-labelledby="page-title-welcome">
-  <h1 data-page-title data-space-after-nav id="page-title-welcome">Welcome</h1>
-  <section aria-labelledby="section-title-welcome">
-    <h3 id="section-title-welcome" data-visually-hidden>Welcome section</h3>
+    <article aria-labelledby="page-title-welcome">
+      <h1 data-page-title id="page-title-welcome">Welcome</h1>
+
+      <section aria-labelledby="section-title-welcome">
+        <h3 id="section-title-welcome" data-visually-hidden>Welcome section</h3>
+
         <div data-container data-intro>
           <p>
             This site presents my coursework and highlights my evolving skills in accessible,
@@ -105,10 +81,10 @@
     </article>
   </main>
 
-  <!-- 🪶 Include footer -->
+  <!-- 🪶 Footer include -->
   <div data-include="components/footer.html"></div>
 
-  <!-- HTML include script: injects components marked with data-include -->
+  <!-- Include loader & theme toggle -->
   <script src="scripts/HTMLInclude.js" defer></script>
   <script src="scripts/theme-toggle.js" defer></script>
 
@@ -118,8 +94,7 @@
       Please enable JavaScript to view this page correctly.
     </p>
   </noscript>
-
-  <!-- Fallback scripts removed; serve the site over HTTP to load shared components. -->
-
 </body>
 </html>
+
+
