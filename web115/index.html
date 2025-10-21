@@ -17,7 +17,28 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
 
-  <!-- Persisted theme bootstrap (prevents flash) -->
+  <!-- Safe lint.page loader (Accumulus Validator) -->
+  <script>
+  (function loadLintPageSafely(){
+    try {
+      var proto = location.protocol;
+      if (proto === 'http:' || proto === 'https:') {
+        var s = document.createElement('script');
+        s.src = 'https://lint.page/kit/67ff88.js';
+        s.defer = true;
+        s.crossOrigin = 'anonymous';
+        s.onerror = function(){ console.info('Accumulus unavailable; continuing without it.'); };
+        document.head.appendChild(s);
+      } else {
+        console.info('Skipping Accumulus (non-network environment).');
+      }
+    } catch(e) {
+      console.info('Skipping Accumulus due to environment:', e);
+    }
+  })();
+  </script>
+
+  <!-- Theme bootstrap -->
   <script>
   (function() {
     try {
@@ -25,13 +46,16 @@
       if (stored === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
       }
-    } catch (_) { /* ignore localStorage errors */ }
+    } catch (_) { /* ignore */ }
   })();
   </script>
+
+  <!-- Validator link helper -->
+  <script src="scripts/validator.js" defer></script>
 </head>
 
-<body>
-  <!-- 🐉 Header include -->
+<body data-home>
+  <!-- 🐉 Include header -->
   <div data-include="components/header.html"></div>
 
   <main>
@@ -40,7 +64,6 @@
 
       <section aria-labelledby="section-title-welcome">
         <h3 id="section-title-welcome" data-visually-hidden>Welcome section</h3>
-
         <div data-container data-intro>
           <p>
             This site presents my coursework and highlights my evolving skills in accessible,
@@ -81,7 +104,7 @@
     </article>
   </main>
 
-  <!-- 🪶 Footer include -->
+  <!-- 🪶 Include footer -->
   <div data-include="components/footer.html"></div>
 
   <!-- Include loader & theme toggle -->
@@ -96,5 +119,3 @@
   </noscript>
 </body>
 </html>
-
-
