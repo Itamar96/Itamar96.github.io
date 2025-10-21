@@ -17,50 +17,26 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
 
-  <!-- Safe lint.page loader (only on http/https) -->
-  <script>
-  (function loadLintPageSafely(){
-    try {
-      var proto = location.protocol;
-      if (proto === 'http:' || proto === 'https:') {
-        var s = document.createElement('script');
-        s.src = 'https://lint.page/kit/67ff88.js';
-        s.defer = true;
-        s.crossOrigin = 'anonymous';
-        s.onerror = function(){ console.info('lint.page unavailable; continuing without it.'); };
-        document.head.appendChild(s);
-      } else {
-        console.info('Skipping lint.page (non-network environment).');
-      }
-    } catch (e) {
-      console.info('Skipping lint.page due to environment:', e);
-    }
-  })();
-  </script>
-
   <!-- Persisted theme bootstrap (prevents flash) -->
   <script>
   (function() {
     try {
       const stored = localStorage.getItem('theme');
       if (stored === 'dark') {
-        try { document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) { /* ignore */ }
+        document.documentElement.setAttribute('data-theme', 'dark');
       }
-  } catch (_) { /* ignore localStorage errors in restrictive environments */ }
+    } catch (_) { /* ignore localStorage errors */ }
   })();
   </script>
-
-  <!-- Validator helper -->
-  <script src="scripts/validator.js" defer></script>
 </head>
 <body>
 
-  <!-- 🐉 Include header -->
+  <!-- 🐉 Include header (use the inner-page header variant with H2 site title) -->
   <div data-include="components/header.html"></div>
 
   <main>
     <article aria-labelledby="page-title-intro">
-  <h2 data-page-title data-space-after-nav id="page-title-intro">Introduction</h2>
+      <h1 data-page-title id="page-title-intro">Introduction</h1>
       <p data-meta><strong>IC</strong> — <time datetime="2025-08-31">31 August 2025</time></p>
 
       <section>
@@ -88,49 +64,41 @@
                 width="1200" height="1595"
                 alt="Hiker above a serene mountain lake with pines and ridgelines in the distance." />
             </picture>
-            <figcaption class="note-gold">Grounded in nature, inspired to heal. Colorado 2025.</figcaption>
+            <figcaption>Grounded in nature, inspired to heal. Colorado 2025.</figcaption>
           </figure>
 
           <blockquote>
-            <p>“Strength does not come from physical capacity. It comes from an indomitable will.”</p>
-            <footer>— <cite>Mahatma Gandhi</cite></footer>
+            “Strength does not come from physical capacity. It comes from an indomitable will.”
+            <cite>— Mahatma Gandhi</cite>
           </blockquote>
         </div>
       </section>
 
-      <h3 data-section-title>About Me</h3
+      <h3 data-section-title>About Me</h3>
       <p>Hello, my name is <strong>Itamar Castillo</strong>. I am in my final year of study as a Software Developer. I enjoy music, hiking, and fitness. I am using this site to practice web skills and to present a sample massage brand for the class.</p>
 
-    <ul>
-      <li><strong>Personal background</strong><br>I balance interests in communication and health with a focus on technology and problem solving.</li>
-      <li><strong>Academic background</strong><br>I continue to build programming, systems, and project skills.</li>
-      <li><strong>Courses I am taking</strong>
-        <ol>
-          <li><strong>CSC 249: Data Structures and Algorithms</strong>: improve problem solving.</li>
-          <li><strong>CTS 118: IS Professional Communication</strong>: teamwork and documentation.</li>
-          <li><strong>CTS 240: Project Management</strong>: leadership and organization.</li>
-          <li><strong>WEB 115: Web Markup and Scripting</strong>: web development skills.</li>
-        </ol>
-      </li>
-      <li><strong>Interesting fact</strong><br>I like to explore new hiking trails.</li>
-      <li><strong>Something I would like to share</strong><br>Technology feels easier when you stay curious and keep practicing.</li>
-    </ul>
-
-      <blockquote>
-        <p>“Strength does not come from physical capacity. It comes from an indomitable will.”</p>
-        <footer>— <cite>Mahatma Gandhi</cite></footer>
-      </blockquote>
+      <ul>
+        <li><strong>Personal background</strong><br>I balance interests in communication and health with a focus on technology and problem solving.</li>
+        <li><strong>Academic background</strong><br>I continue to build programming, systems, and project skills.</li>
+        <li><strong>Courses I am taking</strong>
+          <ol>
+            <li><strong>CSC 249: Data Structures and Algorithms</strong>: improve problem solving.</li>
+            <li><strong>CTS 118: IS Professional Communication</strong>: teamwork and documentation.</li>
+            <li><strong>CTS 240: Project Management</strong>: leadership and organization.</li>
+            <li><strong>WEB 115: Web Markup and Scripting</strong>: web development skills.</li>
+          </ol>
+        </li>
+        <li><strong>Interesting fact</strong><br>I like to explore new hiking trails.</li>
+        <li><strong>Something I would like to share</strong><br>Technology feels easier when you stay curious and keep practicing.</li>
+      </ul>
     </article>
   </main>
 
   <!-- 🪶 Include footer -->
   <div data-include="components/footer.html"></div>
 
-  <!-- HTML include script: injects components marked with data-include -->
+  <!-- Include loader & theme toggle -->
   <script src="scripts/HTMLInclude.js" defer></script>
   <script src="scripts/theme-toggle.js" defer></script>
-
-  <!-- Fallback script removed; serve the site over HTTP to load shared components. -->
-
 </body>
 </html>
