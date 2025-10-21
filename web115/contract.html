@@ -17,7 +17,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
 
-  <!-- Safe lint.page loader (only on http/https) -->
+  <!-- Safe lint.page loader (Accumulus Validator) -->
   <script>
   (function loadLintPageSafely(){
     try {
@@ -44,9 +44,9 @@
     try {
       const stored = localStorage.getItem('theme');
       if (stored === 'dark') {
-        try { document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) { /* ignore */ }
+        document.documentElement.setAttribute('data-theme', 'dark');
       }
-  } catch (_) { /* ignore localStorage errors in restrictive environments */ }
+    } catch (_) { /* ignore localStorage errors */ }
   })();
   </script>
 
@@ -55,12 +55,13 @@
 </head>
 <body>
 
-  <!-- 🐉 Include header -->
+  <!-- 🐉 Include header (use INNER-PAGE variant: site title as <h2>) -->
   <div data-include="components/header.html"></div>
 
   <main>
     <article aria-labelledby="page-title-contract">
-  <h2 data-page-title data-space-after-nav id="page-title-contract">Contract</h2>
+      <h1 data-page-title id="page-title-contract">Contract</h1>
+
       <section data-container>
         <p>
           I, <strong>Itamar Castillo</strong>, agree to abide by the terms in my <strong>Fall 2025 WEB115</strong> course with my instructor, <strong>D.I. von Briesen</strong>.
@@ -79,11 +80,9 @@
   <!-- 🪶 Include footer -->
   <div data-include="components/footer.html"></div>
 
-  <!-- HTML include script: injects components marked with data-include -->
+  <!-- Includes -->
   <script src="scripts/HTMLInclude.js" defer></script>
   <script src="scripts/theme-toggle.js" defer></script>
-
-  <!-- Fallback removed; serve over HTTP to use full includes -->
-
 </body>
 </html>
+
