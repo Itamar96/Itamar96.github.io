@@ -44,9 +44,9 @@
     try {
       const stored = localStorage.getItem('theme');
       if (stored === 'dark') {
-        try { document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) { /* ignore */ }
+        try { document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}
       }
-  } catch (_) { /* ignore localStorage errors in restrictive environments */ }
+    } catch (_) {}
   })();
   </script>
 
@@ -54,13 +54,17 @@
   <script src="scripts/validator.js" defer></script>
 </head>
 <body>
+  <!-- Skip link (matches index) -->
+  <a href="#main" data-visually-hidden>Skip to main content</a>
 
   <!-- 🐉 Include header -->
   <div data-include="components/header.html"></div>
 
-  <main>
+  <main id="main" tabindex="-1">
     <article aria-labelledby="page-title-brand">
-  <h2 data-page-title data-space-after-nav id="page-title-brand">Brand Guide</h2>
+      <!-- Page title should be H1 (matches index) -->
+      <h1 data-page-title id="page-title-brand">Brand Guide</h1>
+
       <p data-meta>
         Brand name: <strong>Iridescent Cinderwyrm Bodywork</strong> •
         Tagline: <em>Breathe. Unwind. Renew.</em>
@@ -134,5 +138,28 @@
   <script src="scripts/HTMLInclude.js" defer></script>
   <script src="scripts/theme-toggle.js" defer></script>
 
+  <!-- After includes: set aria-current on the active nav link (matches index pattern) -->
+  <script defer>
+    window.addEventListener('DOMContentLoaded', function () {
+      Promise.resolve().then(function(){
+        var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+        document.querySelectorAll('nav[aria-label="Primary"] a').forEach(function(a){
+          if ((a.getAttribute('href') || '').toLowerCase() === here) {
+            a.setAttribute('aria-current', 'page');
+          } else {
+            a.removeAttribute('aria-current');
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- No-script fallback (matches index) -->
+  <noscript>
+    <p style="text-align:center; color:#a00; font-weight:600;">
+      Please enable JavaScript to view this page correctly.
+    </p>
+  </noscript>
 </body>
 </html>
+
