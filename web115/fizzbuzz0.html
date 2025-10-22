@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Fizz Buzz 0 interactive form and output for WEB115." />
+  <meta name="description" content="FizzBuzz 0 interactive form and output for WEB115." />
   <meta name="course" content="WEB115" />
-  <title>Iridescent Cinderwyrm Bodywork • Fizz Buzz 0</title>
+  <title>Iridescent Cinderwyrm Bodywork • FizzBuzz 0</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -46,7 +46,9 @@
       if (stored === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
       }
-    } catch (_) {}
+    } catch (e) {
+      console.error('Theme load error:', e);
+    }
   })();
   </script>
 
@@ -62,7 +64,7 @@
 
   <main id="main" tabindex="-1">
     <article aria-labelledby="page-title-fizz">
-      <h1 data-page-title id="page-title-fizz">Fizz Buzz 0</h1>
+      <h1 data-page-title id="page-title-fizz">FizzBuzz 0</h1>
 
       <section data-container>
         <p>
@@ -95,7 +97,7 @@
         </p>
 
         <h3 data-section-title>FizzBuzz Output (1–125)</h3>
-        <ol id="datas" aria-live="polite"></ol>
+        <ol id="data" aria-live="polite"></ol>
       </section>
     </article>
   </main>
@@ -105,8 +107,8 @@
 
   <!-- Scripts -->
   <script src="scripts/HTMLInclude.js" defer></script>
-  <script src="scripts/fizzbuzz.js" defer></script>
   <script src="scripts/theme-toggle.js" defer></script>
+  <script src="scripts/fizzbuzz.js" defer></script>
 
   <!-- Highlight current page -->
   <script>
@@ -120,6 +122,41 @@
           a.removeAttribute('aria-current');
         }
       });
+    });
+  });
+  </script>
+
+  <!-- FizzBuzz logic -->
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("name-form");
+    const outputList = document.getElementById("data");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const first = document.getElementById("first_name").value.trim();
+      const middle = document.getElementById("middle_initial").value.trim();
+      const last = document.getElementById("last_name").value.trim();
+
+      let fullName = first;
+      if (middle) fullName += " " + middle + ".";
+      fullName += " " + last;
+
+      alert(`Welcome ${fullName}! Enjoy your FizzBuzz results!`);
+
+      outputList.innerHTML = "";
+
+      for (let i = 1; i <= 125; i++) {
+        let text = "";
+        if (i % 3 === 0) text += "Fizz";
+        if (i % 5 === 0) text += "Buzz";
+        if (!text) text = i;
+
+        const li = document.createElement("li");
+        li.textContent = text;
+        outputList.appendChild(li);
+      }
     });
   });
   </script>
