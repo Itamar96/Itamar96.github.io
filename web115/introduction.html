@@ -17,7 +17,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
 
-  <!-- ✅ Safe lint.page loader (fixed spacing after catch) -->
+  <!-- ✅ Safe lint.page loader -->
   <script>
     (function loadLintPageSafely() {
       try {
@@ -40,27 +40,33 @@
     })();
   </script>
 
-  <!-- Theme bootstrap -->
+  <!-- ✅ Persisted theme bootstrap -->
   <script>
     (function () {
       try {
         var stored = localStorage.getItem('theme');
         if (stored === 'dark') {
-          try { document.documentElement.setAttribute('data-theme', 'dark'); }
-          catch (e) { /* ignore */ }
+          try {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          } catch (e) {
+            /* ignore */
+          }
         }
-      } catch (e) { /* ignore localStorage errors */ }
+      } catch (e) {
+        /* ignore localStorage errors */
+      }
     })();
   </script>
 
-  <!-- Validator link helper -->
+  <!-- Validator helper -->
   <script src="scripts/validator.js" defer></script>
 </head>
+
 <body>
   <!-- Skip link -->
   <a href="#main" data-visually-hidden>Skip to main content</a>
 
-  <!-- Include header -->
+  <!-- 🐉 Include header -->
   <div data-include="components/header.html"></div>
 
   <main id="main" tabindex="-1">
@@ -69,7 +75,7 @@
 
       <p><strong>IC</strong> — <time datetime="2025-08-31">31 August 2025</time></p>
 
-      <!-- ✅ Give the section an accessible name (hidden heading + aria-labelledby) -->
+      <!-- ✅ Section with accessible name -->
       <section aria-labelledby="section-title-intro">
         <h3 id="section-title-intro" data-visually-hidden>Introduction section</h3>
 
@@ -109,19 +115,19 @@
     </article>
   </main>
 
-  <!-- Include footer -->
+  <!-- 🪶 Include footer -->
   <div data-include="components/footer.html"></div>
 
   <!-- Includes & scripts -->
   <script src="scripts/HTMLInclude.js" defer></script>
   <script src="scripts/theme-toggle.js" defer></script>
 
-  <!-- After includes: set aria-current on the active nav link -->
-  <script defer>
+  <!-- ✅ Fixed inline script (no defer here) -->
+  <script>
     window.addEventListener('DOMContentLoaded', function () {
-      Promise.resolve().then(function(){
+      Promise.resolve().then(function () {
         var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-        document.querySelectorAll('nav[aria-label="Primary"] a').forEach(function(a){
+        document.querySelectorAll('nav[aria-label="Primary"] a').forEach(function (a) {
           if ((a.getAttribute('href') || '').toLowerCase() === here) {
             a.setAttribute('aria-current', 'page');
           } else {
@@ -140,3 +146,4 @@
   </noscript>
 </body>
 </html>
+
