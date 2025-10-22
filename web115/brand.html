@@ -32,13 +32,13 @@
       } else {
         console.info('Skipping lint.page (non-network environment).');
       }
-    } catch (e) {
-      console.info('Skipping lint.page due to environment:', e);
+    } catch (error) {
+      console.info('Skipping lint.page due to environment:', error);
     }
   })();
   </script>
 
-  <!-- Theme persistence -->
+  <!-- Theme persistence (fixed version) -->
   <script>
   (function() {
     try {
@@ -46,7 +46,9 @@
       if (stored === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
       }
-    } catch (_) {}
+    } catch (error) {
+      // Ignore localStorage errors safely
+    }
   })();
   </script>
 
@@ -73,24 +75,24 @@
         <h3 id="brand-dark" data-section-title>Dark Theme Palette (opt-in)</h3>
         <ul data-swatches>
           <li>
-            <span data-swatch-color="#1E1E1E" aria-hidden="true" style="background:#1E1E1E; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span data-swatch-label>#1E1E1E</span> <em>Deep background</em>
+            <span style="background:#1E1E1E; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#1E1E1E</span> <em>Deep background</em>
           </li>
           <li>
-            <span data-swatch-color="#202020" aria-hidden="true" style="background:#202020; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span data-swatch-label>#202020</span> <em>Panels / surfaces</em>
+            <span style="background:#202020; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#202020</span> <em>Panels / surfaces</em>
           </li>
           <li>
-            <span data-swatch-color="#EAEAEA" aria-hidden="true" style="background:#EAEAEA; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; border:1px solid #ccc; margin-right:0.5em; vertical-align:middle;"></span>
-            <span data-swatch-label>#EAEAEA</span> <em>Text (on dark)</em>
+            <span style="background:#EAEAEA; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; border:1px solid #ccc; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#EAEAEA</span> <em>Text (on dark)</em>
           </li>
           <li>
-            <span data-swatch-color="#88BFA2" aria-hidden="true" style="background:#88BFA2; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span data-swatch-label>#88BFA2</span> <em>Accent (dark)</em>
+            <span style="background:#88BFA2; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#88BFA2</span> <em>Accent (dark)</em>
           </li>
           <li>
-            <span data-swatch-color="#64A083" aria-hidden="true" style="background:#64A083; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span data-swatch-label>#64A083</span> <em>Accent deep (dark)</em>
+            <span style="background:#64A083; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#64A083</span> <em>Accent deep (dark)</em>
           </li>
         </ul>
       </section>
@@ -100,47 +102,46 @@
         <h3 id="brand-colors" data-section-title>Color Palette (Desert Matcha)</h3>
         <ul data-swatches>
           <li>
-            <span data-swatch-color="#F7EAD9" aria-hidden="true" style="background:#F7EAD9; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span data-swatch-label>#F7EAD9</span> <em>Sand background</em>
+            <span style="background:#F7EAD9; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#F7EAD9</span> <em>Sand background</em>
           </li>
           <li>
-            <span data-swatch-color="#FFFFFF" aria-hidden="true" style="background:#FFFFFF; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; border:1px solid #ccc; margin-right:0.5em; vertical-align:middle;"></span>
-            <span data-swatch-label>#FFFFFF</span> <em>Surface and cards</em>
+            <span style="background:#FFFFFF; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; border:1px solid #ccc; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#FFFFFF</span> <em>Surface and cards</em>
           </li>
           <li>
-            <span data-swatch-color="#2F3A34" aria-hidden="true" style="background:#2F3A34; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span data-swatch-label>#2F3A34</span> <em>Primary text</em>
+            <span style="background:#2F3A34; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#2F3A34</span> <em>Primary text</em>
           </li>
           <li>
-            <span data-swatch-color="#6F8F6B" aria-hidden="true" style="background:#6F8F6B; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span data-swatch-label>#6F8F6B</span> <em>Accent buttons</em>
+            <span style="background:#6F8F6B; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#6F8F6B</span> <em>Accent buttons</em>
           </li>
           <li>
-            <span data-swatch-color="#3E574B" aria-hidden="true" style="background:#3E574B; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span data-swatch-label>#3E574B</span> <em>Links and small text</em>
+            <span style="background:#3E574B; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#3E574B</span> <em>Links and small text</em>
           </li>
           <li>
-            <span data-swatch-color="#8DA3A6" aria-hidden="true" style="background:#8DA3A6; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span data-swatch-label>#8DA3A6</span> <em>Mist (subtle UI)</em>
+            <span style="background:#8DA3A6; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#8DA3A6</span> <em>Mist (subtle UI)</em>
           </li>
           <li>
-            <span data-swatch-color="#C4633A" aria-hidden="true" style="background:#C4633A; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span data-swatch-label>#C4633A</span> <em>Clay glow</em>
+            <span style="background:#C4633A; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#C4633A</span> <em>Clay glow</em>
           </li>
           <li>
-            <span data-swatch-color="#FFF8DC" aria-hidden="true" style="background:#FFF8DC; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span data-swatch-label>#FFF8DC</span> <em>Holiday light background</em>
+            <span style="background:#FFF8DC; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#FFF8DC</span> <em>Holiday light background</em>
           </li>
           <li>
-            <span data-swatch-color="#D4AF37" aria-hidden="true" style="background:#D4AF37; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span data-swatch-label>#D4AF37</span> <em>Gold accent</em>
+            <span style="background:#D4AF37; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#D4AF37</span> <em>Gold accent</em>
           </li>
         </ul>
         <p data-meta>
           Contrast: #2F3A34 on #F7EAD9 passes for body copy. White text on #6F8F6B passes on buttons.
         </p>
       </section>
-
     </article>
   </main>
 
