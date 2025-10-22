@@ -1,22 +1,41 @@
 "use strict";
 
-// Populates footer with a live Accumulus/W3C validation link
-(function() {
-  document.addEventListener("DOMContentLoaded", function() {
-    try {
-      var placeholder = document.getElementById("validate-link-placeholder");
-      if (!placeholder) {
-        console.info("No #validate-link-placeholder found; skipping validator link.");
-        return;
-      }
-      var a = document.createElement("a");
-      a.href = "https://validator.w3.org/nu/?doc=" + encodeURIComponent(location.href);
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
-      a.textContent = "Validate HTML";
-      placeholder.append(" ✶ ", a);
-    } catch (e) {
-      console.error("Validator script error:", e);
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("name-form");
+  const outputList = document.getElementById("data");
+  const greeting = document.getElementById("greeting");
+
+  if (!form || !outputList) {
+    console.error("FizzBuzz initialization error: required elements missing.");
+    return;
+  }
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const first = document.getElementById("first_name").value.trim();
+    const middle = document.getElementById("middle_initial").value.trim();
+    const last = document.getElementById("last_name").value.trim();
+
+    let fullName = first;
+    if (middle) fullName += " " + middle + ".";
+    fullName += " " + last;
+
+    if (greeting) {
+      greeting.textContent = `Welcome ${fullName}! Enjoy your FizzBuzz results!`;
+    }
+
+    outputList.innerHTML = "";
+
+    for (let i = 1; i <= 125; i++) {
+      let text = "";
+      if (i % 3 === 0) text += "Fizz";
+      if (i % 5 === 0) text += "Buzz";
+      if (!text) text = i;
+
+      const li = document.createElement("li");
+      li.textContent = text;
+      outputList.appendChild(li);
     }
   });
-})();
+});
