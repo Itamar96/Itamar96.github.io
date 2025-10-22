@@ -17,7 +17,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
 
-  <!-- ✅ Safe lint.page loader (Accumulus Validator) -->
+  <!-- ✅ Safe lint.page loader -->
   <script>
     (function loadLintPageSafely() {
       try {
@@ -63,6 +63,9 @@
 </head>
 
 <body data-home>
+  <!-- Skip link -->
+  <a href="#main" data-visually-hidden>Skip to main content</a>
+
   <!-- 🐉 Include header -->
   <div data-include="components/header.html"></div>
 
@@ -76,7 +79,7 @@
           <p>
             This site presents my coursework and highlights my evolving skills in accessible,
             standards-based web development. It also introduces my sample massage brand,
-            <strong>Iridescent Cinderwyrm Bodywork.</strong>
+            <strong>Iridescent Cinderwyrm Bodywork</strong>. Please use the menu above to explore my work.
           </p>
 
           <figure data-gold>
@@ -96,9 +99,9 @@
                        (max-width: 960px) 800px,
                        1200px" />
               <img loading="lazy"
-                src="images/hiking_portrait_800w.jpg"
-                width="1200" height="1600"
-                alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle." />
+                   src="images/hiking_portrait_800w.jpg"
+                   width="1200" height="1600"
+                   alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle." />
             </picture>
             <figcaption>Exploring Colorado’s alpine trails, 2025.</figcaption>
           </figure>
@@ -115,9 +118,25 @@
   <!-- 🪶 Include footer -->
   <div data-include="components/footer.html"></div>
 
-  <!-- Includes and scripts -->
+  <!-- Includes & scripts -->
   <script src="scripts/HTMLInclude.js" defer></script>
   <script src="scripts/theme-toggle.js" defer></script>
+
+  <!-- After includes: set aria-current on the active nav link (inline script must NOT use defer) -->
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      Promise.resolve().then(function () {
+        var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+        document.querySelectorAll('nav[aria-label="Primary"] a').forEach(function (a) {
+          if ((a.getAttribute('href') || '').toLowerCase() === here) {
+            a.setAttribute('aria-current', 'page');
+          } else {
+            a.removeAttribute('aria-current');
+          }
+        });
+      });
+    });
+  </script>
 
   <!-- No-script fallback -->
   <noscript>
