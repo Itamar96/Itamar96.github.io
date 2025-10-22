@@ -1,3 +1,9 @@
+// fizzbuzz.js
+// Handles name form submission and FizzBuzz generation
+// Author: Itamar B. Castillo
+// Course: WEB115
+// Assignment: FizzBuzz 0
+
 document.addEventListener("DOMContentLoaded", function() {
   const form = document.getElementById("name-form");
   const outputList = document.getElementById("data");
