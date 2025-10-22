@@ -19,42 +19,45 @@
 
   <!-- Safe lint.page loader (only on http/https) -->
   <script>
-  (function loadLintPageSafely(){
-    try {
-      var proto = location.protocol;
-      if (proto === 'http:' || proto === 'https:') {
-        var s = document.createElement('script');
-        s.src = 'https://lint.page/kit/67ff88.js';
-        s.defer = true;
-        s.crossOrigin = 'anonymous';
-        s.onerror = function(){ console.info('lint.page unavailable; continuing without it.'); };
-        document.head.appendChild(s);
-      } else {
-        console.info('Skipping lint.page (non-network environment).');
+    (function loadLintPageSafely(){
+      try {
+        var proto = location.protocol;
+        if (proto === 'http:' || proto === 'https:') {
+          var s = document.createElement('script');
+          s.src = 'https://lint.page/kit/67ff88.js';
+          s.defer = true;
+          s.crossOrigin = 'anonymous';
+          s.onerror = function(){ console.info('lint.page unavailable; continuing without it.'); };
+          document.head.appendChild(s);
+        } else {
+          console.info('Skipping lint.page (non-network environment).');
+        }
+      } catch (e) {
+        console.info('Skipping lint.page due to environment:', e);
       }
-    } catch (e) {
-      console.info('Skipping lint.page due to environment:', e);
-    }
-  })();
+    })();
   </script>
 
   <!-- Persisted theme bootstrap (prevents flash) -->
   <script>
-  (function() {
-    try {
-      const stored = localStorage.getItem('theme');
-      if (stored === 'dark') {
-        try { document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) { /* ignore */ }
+    (function() {
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'dark') {
+          try { document.documentElement.setAttribute('data-theme', 'dark'); }
+          catch (e) { /* ignore */ }
+        }
+      } catch (error) {
+        /* ignore localStorage errors in restrictive environments */
       }
-    } catch (_) { /* ignore localStorage errors in restrictive environments */ }
-  })();
+    })();
   </script>
 
   <!-- Validator helper -->
   <script src="scripts/validator.js" defer></script>
 </head>
 <body>
-  <!-- Skip link (matches index) -->
+  <!-- Skip link -->
   <a href="#main" data-visually-hidden>Skip to main content</a>
 
   <!-- 🐉 Include header -->
@@ -64,34 +67,37 @@
     <article aria-labelledby="page-title-fizz">
       <h1 data-page-title id="page-title-fizz">Fizz Buzz 0</h1>
 
-      <section data-container>
+      <section data-container aria-labelledby="fizz-form-title">
+        <h2 id="fizz-form-title" data-visually-hidden>Greeting form and FizzBuzz output</h2>
+
         <p>
           Welcome to <strong>Iridescent Cinderwyrm Bodywork</strong>.
           Enter your name below and receive a personalized greeting along with a FizzBuzz output from 1 to 125.
         </p>
 
-        <form id="name-form" aria-describedby="form-hint" class="form-grid">
-          <div class="field">
+        <!-- Elements + attributes only (no classes) -->
+        <form id="name-form" aria-describedby="form-hint" data-form-grid>
+          <div data-field>
             <label for="first_name">First Name</label>
             <input id="first_name" name="first_name" type="text" placeholder="Enter your first name" required autocomplete="given-name" maxlength="20" />
           </div>
 
-          <div class="field">
-            <label for="middle_initial">Middle Initial <span class="muted">(optional)</span></label>
+          <div data-field>
+            <label for="middle_initial">Middle Initial <span data-muted>(optional)</span></label>
             <input id="middle_initial" name="middle_initial" type="text" placeholder="M" maxlength="1" pattern="[A-Za-z]" title="One letter only" autocomplete="additional-name" />
           </div>
 
-          <div class="field">
+          <div data-field>
             <label for="last_name">Last Name</label>
             <input id="last_name" name="last_name" type="text" placeholder="Enter your last name" required autocomplete="family-name" maxlength="20" />
           </div>
 
-          <div class="field">
+          <div data-field>
             <button type="submit" data-btn-primary>Greet Me</button>
           </div>
         </form>
 
-        <p id="form-hint" class="muted">
+        <p id="form-hint" data-muted>
           Middle initial is optional. First and last name are required (max 20 characters each).
         </p>
 
@@ -104,13 +110,13 @@
   <!-- 🪶 Include footer -->
   <div data-include="components/footer.html"></div>
 
-  <!-- HTML include script: injects components marked with data-include -->
+  <!-- Includes & page scripts -->
   <script src="scripts/HTMLInclude.js" defer></script>
   <script src="scripts/fizzbuzz.js" defer></script>
   <script src="scripts/theme-toggle.js" defer></script>
 
-  <!-- After includes: set aria-current on the active nav link (matches index pattern) -->
-  <script defer>
+  <!-- After includes: set aria-current on the active nav link (inline script — no defer) -->
+  <script>
     window.addEventListener('DOMContentLoaded', function () {
       Promise.resolve().then(function(){
         var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
@@ -125,7 +131,7 @@
     });
   </script>
 
-  <!-- No-script fallback (matches index) -->
+  <!-- No-script fallback -->
   <noscript>
     <p style="text-align:center; color:#a00; font-weight:600;">
       Please enable JavaScript to view this page correctly.
@@ -133,3 +139,4 @@
   </noscript>
 </body>
 </html>
+
