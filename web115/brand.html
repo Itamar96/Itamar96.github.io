@@ -3,58 +3,67 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Iridescent Cinderwyrm Bodywork — a calming, professional web project by Itamar Castillo." />
+  <meta name="description" content="Brand guide for Iridescent Cinderwyrm Bodywork, created for WEB115 coursework." />
   <meta name="course" content="WEB115" />
-  <title>Iridescent Cinderwyrm Bodywork • Brand Guide</title>
+  <title>Iridescent Cinderwyrm Bodywork — Brand Guide</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
 
-  <!-- Styles (shared default) -->
+  <!-- Styles -->
   <link rel="stylesheet" href="styles/default.css" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
 
-  <!-- Safe lint.page loader (only on http/https) -->
+  <!-- ✅ Safe lint.page loader -->
   <script>
-  (function loadLintPageSafely(){
-    try {
-      var proto = location.protocol;
-      if (proto === 'http:' || proto === 'https:') {
-        var s = document.createElement('script');
-        s.src = 'https://lint.page/kit/67ff88.js';
-        s.defer = true;
-        s.crossOrigin = 'anonymous';
-        s.onerror = function(){ console.info('lint.page unavailable; continuing without it.'); };
-        document.head.appendChild(s);
-      } else {
-        console.info('Skipping lint.page (non-network environment).');
+    (function loadLintPageSafely() {
+      try {
+        var proto = location.protocol;
+        if (proto === 'http:' || proto === 'https:') {
+          var s = document.createElement('script');
+          s.src = 'https://lint.page/kit/67ff88.js';
+          s.defer = true;
+          s.crossOrigin = 'anonymous';
+          s.onerror = function () {
+            console.info('Accumulus unavailable; continuing without it.');
+          };
+          document.head.appendChild(s);
+        } else {
+          console.info('Skipping Accumulus (non-network environment).');
+        }
+      } catch (e) {
+        console.info('Skipping Accumulus due to environment:', e);
       }
-    } catch (e) {
-      console.info('Skipping lint.page due to environment:', e);
-    }
-  })();
+    })();
   </script>
 
-  <!-- Persisted theme bootstrap (prevents flash) -->
+  <!-- ✅ Persisted theme bootstrap -->
   <script>
-  (function() {
-    try {
-      const stored = localStorage.getItem('theme');
-      if (stored === 'dark') {
-        try { document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}
+    (function () {
+      try {
+        const stored = localStorage.getItem('theme');
+        if (stored === 'dark') {
+          try {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          } catch (e) {
+            /* ignore */
+          }
+        }
+      } catch (e) {
+        /* ignore */
       }
-    } catch (_) {}
-  })();
+    })();
   </script>
 
   <!-- Validator helper -->
   <script src="scripts/validator.js" defer></script>
 </head>
+
 <body>
-  <!-- Skip link (matches index) -->
+  <!-- Skip link -->
   <a href="#main" data-visually-hidden>Skip to main content</a>
 
   <!-- 🐉 Include header -->
@@ -62,88 +71,54 @@
 
   <main id="main" tabindex="-1">
     <article aria-labelledby="page-title-brand">
-      <!-- Page title should be H1 (matches index) -->
-      <h1 data-page-title id="page-title-brand">Brand Guide</h1>
+      <h1 id="page-title-brand" data-page-title>Brand Guide</h1>
 
-      <p data-meta>
-        Brand name: <strong>Iridescent Cinderwyrm Bodywork</strong> •
-        Tagline: <em>Breathe. Unwind. Renew.</em>
-      </p>
+      <p><strong>IC</strong> — <time datetime="2025-09-10">10 September 2025</time></p>
 
-      <section aria-labelledby="brand-concept" data-section>
-        <h3 id="brand-concept" data-section-title>Concept and Mission</h3>
-        <p>
-          Iridescent Cinderwyrm Bodywork offers massage and relaxation services that focus on calm,
-          comfort, and intentional relief. The Desert Matcha palette uses warm sand, herbal greens,
-          and a hint of clay to feel natural and restorative. The voice is simple, warm, and professional.
-        </p>
+      <section aria-labelledby="section-title-brand">
+        <h3 id="section-title-brand" data-visually-hidden>Brand section</h3>
 
-        <ul>
-          <li><strong>Background:</strong> sand base with a subtle matcha and clay wash.</li>
-          <li><strong>Headings:</strong> Playfair Display with clear hierarchy and calm punctuation.</li>
-          <li><strong>Links and Buttons:</strong> links use #3E574B, primary buttons use #6F8F6B with white text.</li>
-          <li><strong>Imagery:</strong> rounded corners, soft shadows, and natural light when possible.</li>
-          <li><strong>Tone:</strong> calm, clear, and reassuring.</li>
-          <li><strong>Structure:</strong> header, main, footer with a consistent menu.</li>
-          <li><strong>Accessibility:</strong> good contrast, focus outlines, reduced motion support.</li>
-          <li><strong>Branding:</strong> Desert Matcha palette with <span data-text-gold>gold accents</span>, Playfair Display headings, Inter body, soft glow.</li>
-        </ul>
+        <div data-container data-brand>
+          <p>
+            The <strong>Iridescent Cinderwyrm Bodywork</strong> brand represents a balance between energy and serenity.  
+            Its goal is to express strength, renewal, and grounded transformation through color, typography, and tone.
+          </p>
+
+          <h2>Color Palette — “Dessert Matcha”</h2>
+          <ul>
+            <li>Soft beige (#F5EBD0) — foundation and calm</li>
+            <li>Deep matcha green (#3A5A40) — balance and growth</li>
+            <li>Copper amber (#C47E3D) — warmth and energy</li>
+            <li>Charcoal slate (#2F2F2F) — stability and focus</li>
+          </ul>
+
+          <h2>Typography</h2>
+          <p>
+            The brand combines <em>Playfair Display</em> for elegance in headings and <em>Inter</em> for clarity in body text.
+          </p>
+
+          <h2>Voice</h2>
+          <p>
+            The brand voice is calm, trustworthy, and natural — encouraging restoration and confidence without exaggeration.
+          </p>
+        </div>
       </section>
-
-      <section aria-labelledby="brand-dark" data-section>
-        <h3 id="brand-dark" data-section-title>Dark Theme Palette (opt-in)</h3>
-        <ul data-swatches>
-          <li><span data-swatch-color="#1E1E1E" aria-hidden="true" style="background:#1E1E1E"></span><span data-swatch-label>#1E1E1E</span><em>Deep background</em></li>
-          <li><span data-swatch-color="#202020" aria-hidden="true" style="background:#202020"></span><span data-swatch-label>#202020</span><em>Panels / surfaces</em></li>
-          <li><span data-swatch-color="#EAEAEA" aria-hidden="true" style="background:#EAEAEA"></span><span data-swatch-label>#EAEAEA</span><em>Text (on dark)</em></li>
-          <li><span data-swatch-color="#88BFA2" aria-hidden="true" style="background:#88BFA2"></span><span data-swatch-label>#88BFA2</span><em>Accent (dark)</em></li>
-          <li><span data-swatch-color="#64A083" aria-hidden="true" style="background:#64A083"></span><span data-swatch-label>#64A083</span><em>Accent deep (dark)</em></li>
-        </ul>
-      </section>
-
-      <section aria-labelledby="brand-colors" data-section>
-        <h3 id="brand-colors" data-section-title>Color Palette (Desert Matcha)</h3>
-        <ul data-swatches>
-          <li><span data-swatch-color="#F7EAD9" aria-hidden="true" style="background:#F7EAD9"></span><span data-swatch-label>#F7EAD9</span><em>Sand background</em></li>
-          <li><span data-swatch-color="#FFFFFF" aria-hidden="true" style="background:#FFFFFF"></span><span data-swatch-label>#FFFFFF</span><em>Surface and cards</em></li>
-          <li><span data-swatch-color="#2F3A34" aria-hidden="true" style="background:#2F3A34"></span><span data-swatch-label>#2F3A34</span><em>Primary text</em></li>
-          <li><span data-swatch-color="#6F8F6B" aria-hidden="true" style="background:#6F8F6B"></span><span data-swatch-label>#6F8F6B</span><em>Accent buttons</em></li>
-          <li><span data-swatch-color="#3E574B" aria-hidden="true" style="background:#3E574B"></span><span data-swatch-label>#3E574B</span><em>Links and small text</em></li>
-          <li><span data-swatch-color="#8DA3A6" aria-hidden="true" style="background:#8DA3A6"></span><span data-swatch-label>#8DA3A6</span><em>Mist (subtle UI)</em></li>
-          <li><span data-swatch-color="#C4633A" aria-hidden="true" style="background:#C4633A"></span><span data-swatch-label>#C4633A</span><em>Clay glow</em></li>
-          <li><span data-swatch-color="#FFF8DC" aria-hidden="true" style="background:#FFF8DC"></span><span data-swatch-label>#FFF8DC</span><em>Holiday light background</em></li>
-          <li><span data-swatch-color="#D4AF37" aria-hidden="true" style="background:#D4AF37"></span><span data-swatch-label>#D4AF37</span><em>Gold accent</em></li>
-        </ul>
-        <p data-meta>Contrast: #2F3A34 on #F7EAD9 passes for body copy. White text on #6F8F6B passes on buttons.</p>
-      </section>
-
-      <section aria-labelledby="brand-type" data-type-card>
-        <h3 id="brand-type" data-section-title>Typography</h3>
-        <p data-type-label>Headings — Playfair Display 700 and 800</p>
-        <h4>Iridescent Cinderwyrm Bodywork</h4>
-        <h5>Therapeutic Massage and Relaxation</h5>
-        <p data-type-label>Body — Inter 400, 500, 600</p>
-        <p>
-          Iridescent Cinderwyrm Bodywork uses a soothing tone that feels trustworthy and natural.
-        </p>
-      </section>
-
     </article>
   </main>
 
   <!-- 🪶 Include footer -->
   <div data-include="components/footer.html"></div>
 
-  <!-- HTML include script: injects components marked with data-include -->
+  <!-- Includes & scripts -->
   <script src="scripts/HTMLInclude.js" defer></script>
   <script src="scripts/theme-toggle.js" defer></script>
 
-  <!-- After includes: set aria-current on the active nav link (matches index pattern) -->
-  <script defer>
+  <!-- ✅ Fixed inline script (no defer) -->
+  <script>
     window.addEventListener('DOMContentLoaded', function () {
-      Promise.resolve().then(function(){
+      Promise.resolve().then(function () {
         var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-        document.querySelectorAll('nav[aria-label="Primary"] a').forEach(function(a){
+        document.querySelectorAll('nav[aria-label="Primary"] a').forEach(function (a) {
           if ((a.getAttribute('href') || '').toLowerCase() === here) {
             a.setAttribute('aria-current', 'page');
           } else {
@@ -154,7 +129,7 @@
     });
   </script>
 
-  <!-- No-script fallback (matches index) -->
+  <!-- No-script fallback -->
   <noscript>
     <p style="text-align:center; color:#a00; font-weight:600;">
       Please enable JavaScript to view this page correctly.
@@ -162,4 +137,3 @@
   </noscript>
 </body>
 </html>
-
