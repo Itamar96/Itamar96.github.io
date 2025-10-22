@@ -1,46 +1,34 @@
-// 🐉 FizzBuzz Interactive Script for WEB115
-window.addEventListener('DOMContentLoaded', function () {
-  var form = document.getElementById('name-form');
-  var outputList = document.getElementById('datas');
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById("name-form");
+  const outputList = document.getElementById("datas");
 
-  if (!form || !outputList) return;
-
-  form.addEventListener('submit', function (event) {
+  form.addEventListener("submit", function(event) {
     event.preventDefault();
 
-    // Collect form values
-    var first = document.getElementById('first_name').value.trim();
-    var middle = document.getElementById('middle_initial').value.trim();
-    var last = document.getElementById('last_name').value.trim();
+    const first = document.getElementById("first_name").value.trim();
+    const middle = document.getElementById("middle_initial").value.trim();
+    const last = document.getElementById("last_name").value.trim();
 
-    // Build greeting
-    var fullName = first;
-    if (middle) fullName += ' ' + middle + '.';
-    fullName += ' ' + last;
+    let fullName = first;
+    if (middle) fullName += " " + middle + ".";
+    fullName += " " + last;
 
-    // Clear old results
-    outputList.innerHTML = '';
+    // Personalized greeting
+    alert(`Welcome ${fullName}! Enjoy your FizzBuzz results!`);
 
-    // Add greeting
-    var greeting = document.createElement('p');
-    greeting.textContent = 'Hello, ' + fullName + '! Here is your FizzBuzz sequence:';
-    outputList.appendChild(greeting);
+    // Clear previous results
+    outputList.innerHTML = "";
 
-    // Generate FizzBuzz 1–125
-    for (var i = 1; i <= 125; i++) {
-      var item = document.createElement('li');
+    // Generate FizzBuzz from 1 to 125
+    for (let i = 1; i <= 125; i++) {
+      let text = "";
+      if (i % 3 === 0) text += "Fizz";
+      if (i % 5 === 0) text += "Buzz";
+      if (!text) text = i;
 
-      if (i % 15 === 0) {
-        item.textContent = 'FizzBuzz';
-      } else if (i % 3 === 0) {
-        item.textContent = 'Fizz';
-      } else if (i % 5 === 0) {
-        item.textContent = 'Buzz';
-      } else {
-        item.textContent = i;
-      }
-
-      outputList.appendChild(item);
+      const li = document.createElement("li");
+      li.textContent = text;
+      outputList.appendChild(li);
     }
   });
 });
