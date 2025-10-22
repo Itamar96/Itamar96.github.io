@@ -1,17 +1,24 @@
 // fizzbuzz.js
-// Handles name form submission and FizzBuzz generation
+// Handles name form submission and FizzBuzz generation safely
 // Author: Itamar B. Castillo
 // Course: WEB115
 // Assignment: FizzBuzz 0
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("name-form");
   const outputList = document.getElementById("data");
+  const greeting = document.getElementById("greeting");
 
-  form.addEventListener("submit", function(event) {
+  // Guard clause: ensure form and output list exist
+  if (!form || !outputList) {
+    console.error("FizzBuzz initialization error: required elements missing.");
+    return;
+  }
+
+  form.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    // Get user input
+    // Get and sanitize user input
     const first = document.getElementById("first_name").value.trim();
     const middle = document.getElementById("middle_initial").value.trim();
     const last = document.getElementById("last_name").value.trim();
@@ -23,13 +30,15 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     fullName += " " + last;
 
-    // Greeting message
-    alert(`Welcome ${fullName}! Enjoy your FizzBuzz results!`);
+    // Display greeting (non-blocking, accessible)
+    if (greeting) {
+      greeting.textContent = `Welcome ${fullName}! Enjoy your FizzBuzz results!`;
+    }
 
-    // Clear previous output
+    // Clear previous results
     outputList.innerHTML = "";
 
-    // Generate FizzBuzz results 1–125
+    // Generate FizzBuzz sequence (1–125)
     for (let i = 1; i <= 125; i++) {
       let text = "";
 
@@ -49,3 +58,4 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
+
