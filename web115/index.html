@@ -17,40 +17,48 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
 
-  <!-- Safe lint.page loader (Accumulus Validator) -->
+  <!-- ✅ Safe lint.page loader (Accumulus Validator) -->
   <script>
-  (function loadLintPageSafely(){
-    try {
-      var proto = location.protocol;
-      if (proto === 'http:' || proto === 'https:') {
-        var s = document.createElement('script');
-        s.src = 'https://lint.page/kit/67ff88.js';
-        s.defer = true;
-        s.crossOrigin = 'anonymous';
-        s.onerror = function(){ console.info('Accumulus unavailable; continuing without it.'); };
-        document.head.appendChild(s);
-      } else {
-        console.info('Skipping Accumulus (non-network environment).');
+    (function loadLintPageSafely() {
+      try {
+        var proto = location.protocol;
+        if (proto === 'http:' || proto === 'https:') {
+          var s = document.createElement('script');
+          s.src = 'https://lint.page/kit/67ff88.js';
+          s.defer = true;
+          s.crossOrigin = 'anonymous';
+          s.onerror = function () {
+            console.info('lint.page unavailable; continuing without it.');
+          };
+          document.head.appendChild(s);
+        } else {
+          console.info('Skipping lint.page (non-network environment).');
+        }
+      } catch (e) {
+        console.info('Skipping lint.page due to environment:', e);
       }
-    } catch(e) {
-      console.info('Skipping Accumulus due to environment:', e);
-    }
-  })();
+    })();
   </script>
 
-  <!-- Theme bootstrap -->
+  <!-- ✅ Persisted theme bootstrap -->
   <script>
-  (function() {
-    try {
-      const stored = localStorage.getItem('theme');
-      if (stored === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'dark') {
+          try {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          } catch (e) {
+            /* ignore */
+          }
+        }
+      } catch (e) {
+        /* ignore localStorage errors in restrictive environments */
       }
-    } catch (_) { /* ignore */ }
-  })();
+    })();
   </script>
 
-  <!-- Validator link helper -->
+  <!-- Validator helper -->
   <script src="scripts/validator.js" defer></script>
 </head>
 
@@ -58,7 +66,7 @@
   <!-- 🐉 Include header -->
   <div data-include="components/header.html"></div>
 
-  <main>
+  <main id="main" tabindex="-1">
     <article aria-labelledby="page-title-welcome">
       <h1 data-page-title id="page-title-welcome">Welcome</h1>
 
@@ -68,7 +76,7 @@
           <p>
             This site presents my coursework and highlights my evolving skills in accessible,
             standards-based web development. It also introduces my sample massage brand,
-            <strong>Iridescent Cinderwyrm Bodywork</strong>. Please use the menu above to explore my work.
+            <strong>Iridescent Cinderwyrm Bodywork.</strong>
           </p>
 
           <figure data-gold>
@@ -107,7 +115,7 @@
   <!-- 🪶 Include footer -->
   <div data-include="components/footer.html"></div>
 
-  <!-- Include loader & theme toggle -->
+  <!-- Includes and scripts -->
   <script src="scripts/HTMLInclude.js" defer></script>
   <script src="scripts/theme-toggle.js" defer></script>
 
