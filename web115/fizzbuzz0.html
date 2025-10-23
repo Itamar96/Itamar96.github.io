@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,56 +7,88 @@
   <meta name="course" content="WEB115" />
   <title>Iridescent Cinderwyrm Bodywork • Fizz Buzz 0</title>
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+
+  <!-- Styles (shared default) -->
   <link rel="stylesheet" href="styles/default.css" />
 
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
 
-  <!-- Persist stored theme early -->
+  <!-- Safe lint.page loader (only on http/https) -->
   <script>
-    (function(){ try { if (localStorage.getItem('theme')==='dark') document.documentElement.setAttribute('data-theme','dark'); } catch{} })();
+  (function loadLintPageSafely(){
+    try {
+      var proto = location.protocol;
+      if (proto === 'http:' || proto === 'https:') {
+        var s = document.createElement('script');
+        s.src = 'https://lint.page/kit/67ff88.js';
+        s.defer = true;
+        s.crossOrigin = 'anonymous';
+        s.onerror = function(){ console.info('lint.page unavailable; continuing without it.'); };
+        document.head.appendChild(s);
+      } else {
+        console.info('Skipping lint.page (non-network environment).');
+      }
+    } catch (e) {
+      console.info('Skipping lint.page due to environment:', e);
+    }
+  })();
   </script>
 
+  <!-- Persisted theme bootstrap (prevents flash) -->
+  <script>
+  (function() {
+    try {
+      const stored = localStorage.getItem('theme');
+      if (stored === 'dark') {
+        try { document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) { /* ignore */ }
+      }
+  } catch (_) { /* ignore localStorage errors in restrictive environments */ }
+  })();
+  </script>
+
+  <!-- Validator helper -->
   <script src="scripts/validator.js" defer></script>
 </head>
-<body>
-  <a href="#main" data-visually-hidden>Skip to main content</a>
+  <body>
 
-  <header data-include="components/header.html"></header>
+  <!-- 🐉 Include header -->
+  <div data-include="components/header.html"></div>
 
-  <main id="main" tabindex="-1" data-container data-flow>
+  <main data-container data-flow>
     <article aria-labelledby="page-title-fizz">
-      <h1 data-page-title id="page-title-fizz">Fizz Buzz 0</h1>
-
-      <section>
+  <h1 data-page-title data-space-after-nav id="page-title-fizz">Fizz Buzz 0</h1>
+      <section data-container>
         <p>
-          Enter your name to get a personalized greeting and a FizzBuzz output from 1 to 125.
+          Welcome to <strong>Iridescent Cinderwyrm Bodywork</strong>.
+          Enter your name below and receive a personalized greeting along with a FizzBuzz output from 1 to 125.
         </p>
 
-        <form id="name-form" aria-describedby="form-hint">
-          <p>
-            <label for="first_name">First Name
-              <input id="first_name" name="first_name" type="text" placeholder="Enter your first name" required autocomplete="given-name" maxlength="20" />
-            </label>
-          </p>
+        <form id="name-form" aria-describedby="form-hint" data-form-grid>
+          <div data-field>
+            <label for="first_name">First Name</label>
+            <input id="first_name" name="first_name" type="text" placeholder="Enter your first name" required autocomplete="given-name" maxlength="20" />
+          </div>
 
-          <p>
-            <label for="middle_initial">Middle Initial <span class="muted" data-visually-hidden>(optional)</span>
-              <input id="middle_initial" name="middle_initial" type="text" placeholder="M" maxlength="1" pattern="[A-Za-z]" title="One letter only" autocomplete="additional-name" />
-            </label>
-          </p>
+          <div data-field>
+            <label for="middle_initial">Middle Initial <span data-muted>(optional)</span></label>
+            <input id="middle_initial" name="middle_initial" type="text" placeholder="M" maxlength="1" pattern="[A-Za-z]" title="One letter only" autocomplete="additional-name" />
+          </div>
 
-          <p>
-            <label for="last_name">Last Name
-              <input id="last_name" name="last_name" type="text" placeholder="Enter your last name" required autocomplete="family-name" maxlength="20" />
-            </label>
-          </p>
+          <div data-field>
+            <label for="last_name">Last Name</label>
+            <input id="last_name" name="last_name" type="text" placeholder="Enter your last name" required autocomplete="family-name" maxlength="20" />
+          </div>
 
-          <button type="submit" data-btn-primary>Greet Me</button>
+          <div data-field>
+            <button type="submit" data-btn-primary>Greet Me</button>
+          </div>
         </form>
 
-        <p id="form-hint" class="muted">
+        <p id="form-hint" data-muted>
           Middle initial is optional. First and last name are required (max 20 characters each).
         </p>
 
@@ -66,33 +98,15 @@
     </article>
   </main>
 
-  <footer data-include="components/footer.html"></footer>
+  <!-- 🪶 Include footer -->
+  <div data-include="components/footer.html"></div>
 
+  <!-- HTML include script: injects components marked with data-include -->
   <script src="scripts/HTMLInclude.js" defer></script>
   <script src="scripts/fizzbuzz.js" defer></script>
   <script src="scripts/theme-toggle.js" defer></script>
 
-  <script>
-    (function(){
-      function setActiveNav(){
-        var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-        document.querySelectorAll('nav[aria-label="Primary"] a').forEach(function(a){
-          var href=(a.getAttribute('href')||'').toLowerCase();
-          if (href === here) a.setAttribute('aria-current','page');
-          else a.removeAttribute('aria-current');
-        });
-      }
-      document.addEventListener('includes:loaded', setActiveNav);
-      document.addEventListener('htmlinclude:loaded', setActiveNav);
-      document.addEventListener('DOMContentLoaded', function(){ setTimeout(setActiveNav,0); });
-    })();
-  </script>
+  <!-- Fallback removed; serve over HTTP to use full includes -->
 
-  <noscript>
-    <p style="text-align:center; color:#a00; font-weight:600;">
-      Please enable JavaScript to view this page correctly.
-    </p>
-  </noscript>
 </body>
 </html>
-
