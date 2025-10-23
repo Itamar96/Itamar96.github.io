@@ -1,10 +1,16 @@
 "use strict";
 
+// FizzBuzz 0 Script
+// Author: Itamar B. Castillo
+// Course: WEB115
+// Description: Handles name input and generates FizzBuzz output from 1–125
+
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("name-form");
   const outputList = document.getElementById("data");
   const greeting = document.getElementById("greeting");
 
+  // Safety check
   if (!form || !outputList) {
     console.error("FizzBuzz initialization error: required elements missing.");
     return;
@@ -21,12 +27,15 @@ document.addEventListener("DOMContentLoaded", function () {
     if (middle) fullName += " " + middle + ".";
     fullName += " " + last;
 
+    // Show greeting
     if (greeting) {
       greeting.textContent = `Welcome ${fullName}! Enjoy your FizzBuzz results!`;
     }
 
+    // Clear previous results
     outputList.innerHTML = "";
 
+    // Generate FizzBuzz 1–125
     for (let i = 1; i <= 125; i++) {
       let text = "";
       if (i % 3 === 0) text += "Fizz";
