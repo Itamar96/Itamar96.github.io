@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,56 +9,33 @@
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles/default.css" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
-
-  <!-- ✅ Safe lint.page loader -->
-  <script>
-    (function loadLintPageSafely() {
-      try {
-        var proto = location.protocol;
-        if (proto === 'http:' || proto === 'https:') {
-          var s = document.createElement('script');
-          s.src = 'https://lint.page/kit/67ff88.js';
-          s.defer = true;
-          s.crossOrigin = 'anonymous';
-          s.onerror = function () {
-            console.info('lint.page unavailable; continuing without it.');
-          };
-          document.head.appendChild(s);
-        } else {
-          console.info('Skipping lint.page (non-network environment).');
-        }
-      } catch (e) {
-        console.info('Skipping lint.page due to environment:', e);
-      }
-    })();
-  </script>
-
-  <!-- ✅ Persisted theme bootstrap -->
+  <!-- Persist stored theme early (prevents flash) -->
   <script>
     (function () {
-      try {
-        var stored = localStorage.getItem('theme');
-        if (stored === 'dark') {
-          try {
-            document.documentElement.setAttribute('data-theme', 'dark');
-          } catch (e) {
-            /* ignore */
-          }
-        }
-      } catch (e) {
-        /* ignore localStorage errors in restrictive environments */
-      }
+      try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme','dark'); } catch {}
     })();
   </script>
 
-  <!-- Validator helper -->
+  <!-- Optional: lint.page (safe in http/https only) -->
+  <script>
+    (function(){
+      try{
+        if (location.protocol === 'http:' || location.protocol === 'https:'){
+          var s=document.createElement('script');
+          s.src='https://lint.page/kit/67ff88.js'; s.defer=true; s.crossOrigin='anonymous';
+          s.onerror=function(){ console.info('lint.page unavailable; continuing.'); };
+          document.head.appendChild(s);
+        }
+      }catch{}
+    })();
+  </script>
+
+  <!-- Validator helper (safe on pages without the placeholder) -->
   <script src="scripts/validator.js" defer></script>
 </head>
 
@@ -66,16 +43,17 @@
   <!-- Skip link -->
   <a href="#main" data-visually-hidden>Skip to main content</a>
 
-  <!-- 🐉 Include header -->
-  <div data-include="components/header.html"></div>
+  <!-- Includes -->
+  <header data-include="components/header.html"></header>
 
-  <main id="main" tabindex="-1">
+  <main id="main" tabindex="-1" data-container data-flow>
     <article aria-labelledby="page-title-welcome">
       <h1 data-page-title id="page-title-welcome">Welcome</h1>
 
       <section aria-labelledby="section-title-welcome">
         <h3 id="section-title-welcome" data-visually-hidden>Welcome section</h3>
-        <div data-container data-intro>
+
+        <div data-intro>
           <p>
             This site presents my coursework and highlights my evolving skills in accessible,
             standards-based web development. It also introduces my sample massage brand,
@@ -115,30 +93,29 @@
     </article>
   </main>
 
-  <!-- 🪶 Include footer -->
-  <div data-include="components/footer.html"></div>
+  <footer data-include="components/footer.html"></footer>
 
-  <!-- Includes & scripts -->
+  <!-- Includes and behavior -->
   <script src="scripts/HTMLInclude.js" defer></script>
   <script src="scripts/theme-toggle.js" defer></script>
 
-  <!-- After includes: set aria-current on the active nav link (inline script must NOT use defer) -->
+  <!-- Active nav: run after includes complete -->
   <script>
-    window.addEventListener('DOMContentLoaded', function () {
-      Promise.resolve().then(function () {
+    (function(){
+      function setActiveNav(){
         var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-        document.querySelectorAll('nav[aria-label="Primary"] a').forEach(function (a) {
-          if ((a.getAttribute('href') || '').toLowerCase() === here) {
-            a.setAttribute('aria-current', 'page');
-          } else {
-            a.removeAttribute('aria-current');
-          }
+        document.querySelectorAll('nav[aria-label="Primary"] a').forEach(function(a){
+          var href=(a.getAttribute('href')||'').toLowerCase();
+          if (href === here) a.setAttribute('aria-current','page');
+          else a.removeAttribute('aria-current');
         });
-      });
-    });
+      }
+      document.addEventListener('includes:loaded', setActiveNav);
+      document.addEventListener('htmlinclude:loaded', setActiveNav);
+      document.addEventListener('DOMContentLoaded', function(){ setTimeout(setActiveNav,0); });
+    })();
   </script>
 
-  <!-- No-script fallback -->
   <noscript>
     <p style="text-align:center; color:#a00; font-weight:600;">
       Please enable JavaScript to view this page correctly.
