@@ -178,8 +178,11 @@ figure[data-gold] img,figure[data-holiday] img{
 
 /* Intro block */
 [data-intro]{
-  max-width:min(980px,92%);margin:2.25rem auto 1.25rem;padding:2.25rem 1.25rem;
-  background:transparent;border-radius:calc(var(--radius) + 10px);border:none;box-shadow:none;
+  /* Match the main content container so intro text aligns with the rest of the site */
+  max-width:var(--content-width);
+  margin:var(--space-6) auto var(--space-4);
+  padding:0; /* remove inner padding for consistent horizontal alignment */
+  background:transparent;border-radius:0;border:none;box-shadow:none;
 }
 
 /* Quotes */
