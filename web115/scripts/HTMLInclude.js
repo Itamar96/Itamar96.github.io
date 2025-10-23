@@ -1,96 +1,114 @@
-/*! HTMLInclude v1.1.1 | MIT License | github.com/paul-browne/HTMLInclude */ 
-!function(w, d) {
-    if (!w.HTMLInclude) {
-        w.HTMLInclude = function() {
-            function isInViewport(element, offset) {
-                return element.getBoundingClientRect().top <= (+offset + w.innerHeight);
+/*! HTMLInclude (minimal: attributes & elements only) | MIT */
+(function (w, d) {
+  "use strict";
+
+  if (w.HTMLInclude) return;
+
+  function isInViewport(el, offset) {
+    var off = Number(offset) || 0;
+    var rect = el.getBoundingClientRect();
+    return rect.top <= (off + w.innerHeight);
+  }
+
+  function ajax(url, targets) {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          for (var i = 0; i < targets.length; i++) {
+            var host = targets[i];
+
+            // Parse fetched fragment into a document so we can extract only elements.
+            var html = xhr.responseText;
+            var parsed;
+            try {
+              parsed = new DOMParser().parseFromString(html, "text/html");
+            } catch (e) {
+              parsed = null;
             }
-            function ajax(url, elements) {
-                var xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                            elements.forEach(function(element) {
-                                var dataReplace = element.getAttribute("data-replace");
-                                var z = xhr.responseText;
 
-                                // Allow simple token replacements in the fetched fragment
-                                if (dataReplace) {
-                                    dataReplace.split(",").forEach(function(el) {
-                                        var o = el.trim().split(":");
-                                        z = z.replace(new RegExp(o[0], "g"), o[1]);
-                                    });
-                                }
-
-                                // Parse the fetched HTML so we can safely modify it before
-                                // inserting into the document. If the current document
-                                // already contains a site title, remove any duplicate
-                                // [data-site-title] elements from the fetched fragment to
-                                // avoid rendering the header twice.
-                                var parsed = new DOMParser().parseFromString(z, 'text/html');
-                                try {
-                                    if (d.querySelector('[data-site-title]')) {
-                                        var dup = parsed.querySelectorAll('[data-site-title]');
-                                        dup.forEach(function(n){ n.parentNode && n.parentNode.removeChild(n); });
-                                    }
-                                } catch (e) { /* silent */ }
-
-                                // Use the parsed fragment's body HTML for insertion
-                                var htmlToInsert = parsed.body ? parsed.body.innerHTML : z;
-                                element.outerHTML = htmlToInsert;
-
-                                try {
-                                    // Dispatch a custom event so pages can react to injected fragments.
-                                    var evt = new CustomEvent('htmlinclude:loaded', { detail: { path: url }, bubbles: true });
-                                    // Use a short timeout so listeners run after the DOM has settled.
-                                    setTimeout(function(){
-                                        (d.documentElement || d.body).dispatchEvent(evt);
-                                    }, 0);
-                                } catch (e) {
-                                    // ignore if CustomEvent not supported (very old browsers)
-                                }
-
-                                // Re-attach any scripts found in the parsed fragment
-                                var scripts = parsed.querySelectorAll("script");
-                                var i = 0;
-                                var j = scripts.length;
-                                while (i < j) {
-                                    var newScript = d.createElement("script");
-                                    if (scripts[i].src) newScript.src = scripts[i].src; else newScript.innerHTML = scripts[i].innerHTML;
-                                    d.head.appendChild(newScript);
-                                    i++;
-                                }
-                            });
-                        }
-                };
-                xhr.open("GET", url, true);
-                xhr.send();
-            }
-            function lazyLoad(element, offset) {
-                w.addEventListener("scroll", function scrollFunc() {
-                    if (isInViewport(element, offset)) {
-                        w.removeEventListener("scroll", scrollFunc);
-                        ajax(element.getAttribute("data-include"), [element]);
-                    }
-                })
-            }
-            var store = {};
-            var dis = d.querySelectorAll('[data-include]:not([data-in])');
-            var i = dis.length;
-            while (i--) {
-                var di = dis[i].getAttribute('data-include');
-                var laziness = dis[i].getAttribute('data-lazy');
-                dis[i].setAttribute("data-in", "");
-                if (!laziness || (laziness && isInViewport(dis[i], laziness))) {
-                    store[di] = store[di] || [];
-                    store[di].push(dis[i]);
-                } else {
-                    lazyLoad(dis[i], laziness);
+            // Replace the placeholder element with fetched markup.
+            if (parsed && parsed.body) {
+              host.outerHTML = parsed.body.innerHTML;
+              // Re-attach any <script> elements found in the fetched fragment (elements only).
+              try {
+                var scripts = parsed.querySelectorAll("script");
+                for (var j = 0; j < scripts.length; j++) {
+                  var src = scripts[j].getAttribute("src");
+                  var s = d.createElement("script");
+                  if (src) {
+                    s.src = src;
+                  } else {
+                    s.textContent = scripts[j].textContent || "";
+                  }
+                  var type = scripts[j].getAttribute("type");
+                  if (type) s.type = type;
+                  if (scripts[j].hasAttribute("defer")) s.defer = true;
+                  if (scripts[j].hasAttribute("async")) s.async = true;
+                  var co = scripts[j].getAttribute("crossorigin");
+                  if (co) s.crossOrigin = co;
+                  var rp = scripts[j].getAttribute("referrerpolicy");
+                  if (rp) s.referrerPolicy = rp;
+                  var nonce = scripts[j].getAttribute("nonce");
+                  if (nonce) s.nonce = nonce;
+                  d.head.appendChild(s);
                 }
+              } catch (e) {
+                // No-op: if scripts can't be reattached, the HTML still loads
+              }
+            } else {
+              // Fallback: insert as-is
+              host.outerHTML = html;
             }
-            for (var key in store) {
-                ajax(key, store[key]);
-            }
+          }
+        } else {
+          // If a resource can't be retrieved, leave the placeholder in place
+          // (Accumulus will surface a clear "could not be retrieved" message).
+          try {
+            console.error("HTMLInclude: GET " + url + " failed (" + xhr.status + ").");
+          } catch (_) {}
         }
+      }
+    };
+    xhr.open("GET", url, true);
+    xhr.send();
+  }
+
+  function lazyLoad(el, offset) {
+    function onScroll() {
+      if (isInViewport(el, offset)) {
+        w.removeEventListener("scroll", onScroll);
+        ajax(el.getAttribute("data-include"), [el]);
+      }
     }
-    w.HTMLInclude();
-}(window, document)
+    w.addEventListener("scroll", onScroll);
+  }
+
+  w.HTMLInclude = function () {
+    var placeholders = d.querySelectorAll("[data-include]:not([data-in])");
+    var buckets = Object.create(null);
+
+    for (var i = 0; i < placeholders.length; i++) {
+      var el = placeholders[i];
+      var path = el.getAttribute("data-include");
+      var laziness = el.getAttribute("data-lazy");
+      el.setAttribute("data-in", "");
+
+      if (!laziness || isInViewport(el, laziness)) {
+        (buckets[path] || (buckets[path] = [])).push(el);
+      } else {
+        lazyLoad(el, laziness);
+      }
+    }
+
+    for (var key in buckets) {
+      if (Object.prototype.hasOwnProperty.call(buckets, key)) {
+        ajax(key, buckets[key]);
+      }
+    }
+  };
+
+  // kick off once
+  w.HTMLInclude();
+})(window, document);
+
