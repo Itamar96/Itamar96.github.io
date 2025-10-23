@@ -11,13 +11,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
 
-  <!-- Styles -->
+  <!-- Styles (shared default) -->
   <link rel="stylesheet" href="styles/default.css" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
 
-  <!-- Safe lint.page loader -->
+  <!-- Safe lint.page loader (only on http/https) -->
   <script>
   (function loadLintPageSafely(){
     try {
@@ -38,26 +38,26 @@
   })();
   </script>
 
-  <!-- Persisted theme bootstrap -->
+  <!-- Persisted theme bootstrap (prevents flash) -->
   <script>
   (function() {
     try {
       const stored = localStorage.getItem('theme');
       if (stored === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
+        try { document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) { /* ignore */ }
       }
-    } catch (_) {}
+    } catch (_) { /* ignore localStorage errors in restrictive environments */ }
   })();
   </script>
 
-  <!-- Validator -->
+  <!-- Validator helper -->
   <script src="scripts/validator.js" defer></script>
 </head>
 <body>
-  <!-- Skip link -->
+  <!-- Skip link (matches index) -->
   <a href="#main" data-visually-hidden>Skip to main content</a>
 
-  <!-- Include header -->
+  <!-- 🐉 Include header -->
   <div data-include="components/header.html"></div>
 
   <main id="main" tabindex="-1">
@@ -66,7 +66,8 @@
 
       <section data-container>
         <p>
-          Welcome to <strong>Iridescent Cinderwyrm Bodywork</strong>. Enter your name below and receive a personalized greeting along with a FizzBuzz output from 1 to 125.
+          Welcome to <strong>Iridescent Cinderwyrm Bodywork</strong>.
+          Enter your name below and receive a personalized greeting along with a FizzBuzz output from 1 to 125.
         </p>
 
         <form id="name-form" aria-describedby="form-hint" class="form-grid">
@@ -100,30 +101,31 @@
     </article>
   </main>
 
-  <!-- Include footer -->
+  <!-- 🪶 Include footer -->
   <div data-include="components/footer.html"></div>
 
-  <!-- Scripts -->
+  <!-- HTML include script: injects components marked with data-include -->
   <script src="scripts/HTMLInclude.js" defer></script>
   <script src="scripts/fizzbuzz.js" defer></script>
   <script src="scripts/theme-toggle.js" defer></script>
 
-  <!-- Highlight current page -->
-  <script>
-  window.addEventListener('DOMContentLoaded', function () {
-    Promise.resolve().then(function(){
-      var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-      document.querySelectorAll('nav[aria-label="Primary"] a').forEach(function(a){
-        if ((a.getAttribute('href') || '').toLowerCase() === here) {
-          a.setAttribute('aria-current', 'page');
-        } else {
-          a.removeAttribute('aria-current');
-        }
+  <!-- After includes: set aria-current on the active nav link (matches index pattern) -->
+  <script defer>
+    window.addEventListener('DOMContentLoaded', function () {
+      Promise.resolve().then(function(){
+        var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+        document.querySelectorAll('nav[aria-label="Primary"] a').forEach(function(a){
+          if ((a.getAttribute('href') || '').toLowerCase() === here) {
+            a.setAttribute('aria-current', 'page');
+          } else {
+            a.removeAttribute('aria-current');
+          }
+        });
       });
     });
-  });
   </script>
 
+  <!-- No-script fallback (matches index) -->
   <noscript>
     <p style="text-align:center; color:#a00; font-weight:600;">
       Please enable JavaScript to view this page correctly.
@@ -131,3 +133,4 @@
   </noscript>
 </body>
 </html>
+
