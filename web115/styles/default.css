@@ -203,8 +203,21 @@ footer p{font-size:.95rem;line-height:1.6;margin-bottom:1rem;}
 footer a{color:var(--accent-deep);margin:0 .3rem;}
 footer a:hover,footer a:focus-visible{color:var(--accent);text-decoration:underline;}
 footer ul{list-style:none;margin:.5rem 0;padding:0;display:inline-flex;gap:.6rem .9rem;align-items:center;}
-footer ul li{display:flex;align-items:center;}
-footer ul li:not(:last-child)::after{content:"✶";color:var(--holiday-gold);padding:0 .5rem;font-size:.9rem;line-height:1;}
+footer ul li{display:flex;align-items:center;position:relative;padding-right:1.1rem;}
+
+/* Place the decorative separator (star) at the right edge of each list item,
+   vertically centered. Use pointer-events:none so it doesn't interfere with links. */
+footer ul li:not(:last-child)::after{
+  content:"✶";
+  color:var(--holiday-gold);
+  position:absolute;
+  right:0.2rem;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:.95rem;
+  line-height:1;
+  pointer-events:none;
+}
 
 /* Theme toggle */
 #theme-toggle{
@@ -256,3 +269,16 @@ footer ul li:not(:last-child)::after{content:"✶";color:var(--holiday-gold);pad
 [data-photo-frame] img{display:block;width:100%;border-radius:10px;}
 /* note-gold utility (attribute-based) */
 [data-note-gold],.note-gold{color:var(--holiday-gold);font-weight:600;}
+
+/* Ensure direct content blocks inside the main container align to the same width
+   and do not introduce extra horizontal padding or narrower max-widths. This
+   keeps paragraphs, figures and lists aligned across pages. */
+main[data-container] > article,
+main[data-container] > section,
+main[data-container] > div[data-intro] {
+  max-width: var(--content-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0;
+  padding-right: 0;
+}
