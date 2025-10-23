@@ -82,6 +82,6 @@
     // ensure the icon/label reflect the starting state
     syncButton();
   });
+  // Expose small debug hooks so the page or console can trigger sync or setTheme
+  try { window.__themeToggleSync = syncButton; window.__setTheme = setTheme; } catch (e) { /* ignore */ }
 })();
-
-
