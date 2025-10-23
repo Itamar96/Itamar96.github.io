@@ -1,26 +1,79 @@
 <header>
-  <div class="site-brand" data-logo data-text-gold>
-    <a href="index.html">Iridescent Cinderwyrm Bodywork</a>
-  </div>
-
-  <h2 data-visually-hidden>Primary navigation</h2>
+  <!-- Site title is rendered here for visual branding but is not an H1 so
+    included fragments don't introduce duplicate document-level headings.
+    The actual top-level index keeps the H1 to satisfy document semantics. -->
+  <div data-site-title data-logo data-text-gold>Iridescent Cinderwyrm Bodywork</div>
+  <h2 data-visually-hidden>Course navigation</h2>
   <nav aria-label="Primary">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="introduction.html">Introduction</a></li>
-      <li><a href="contract.html">Contract</a></li>
-      <li><a href="brand.html">Brand Guide</a></li>
-      <li><a href="fizzbuzz0.html">Fizz Buzz 0</a></li>
-    </ul>
+    <a href="index.html" aria-current="page">Home</a>
+    <a href="introduction.html">Introduction</a>
+    <a href="contract.html">Contract</a>
+    <a href="brand.html">Brand Guide</a>
+    <a href="fizzbuzz0.html">Fizz Buzz 0</a>
   </nav>
-
   <button id="theme-toggle" data-btn aria-label="Toggle dark mode" aria-pressed="false">
-    <svg data-theme-icon data-icon-moon aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <!-- Moon icon (shown when light mode) -->
+    <svg data-theme-icon data-icon-moon aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor"/>
     </svg>
-    <svg data-theme-icon data-icon-sun aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <!-- Sun icon (shown when dark mode) -->
+    <svg data-theme-icon data-icon-sun aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M12 4V2m0 20v-2M4 12H2m20 0h-2M5.6 5.6 4.2 4.2m15.6 15.6-1.4-1.4M18.4 5.6l1.4-1.4M4.2 19.8l1.4-1.4M12 8a4 4 0 100 8 4 4 0 000-8z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
     <span data-visually-hidden>Toggle dark mode</span>
   </button>
+  <!-- No JS required here — heading level is toggled via CSS above. -->
 </header>
+<!-- Runtime guard: remove other standalone elements whose text equals the site title so it only appears once.
+     This runs after DOMContentLoaded to be safe if the include loader moves scripts to <head>. -->
+<script>
+  (function(){
+    // Robust runtime guard: remove standalone elements whose text exactly
+    // matches the site title. Runs once on DOMContentLoaded and watches the
+    // body for late-inserted nodes for a short window (3s) to catch
+    // include-injected content.
+
+    function normalizeText(s) { return (s || '').replace(/\s+/g, ' ').trim(); }
+
+    function removeDuplicates() {
+      var site = document.querySelector('[data-site-title]');
+      if (!site) return 0;
+      var title = normalizeText(site.textContent);
+      if (!title) return 0;
+
+      var removed = 0;
+      Array.from(document.querySelectorAll('body *')).forEach(function (el) {
+        if (el === site) return;
+        if (el.closest('header')) return; // keep header-local content
+        var tag = el.tagName;
+        if (!tag || ['SCRIPT','STYLE','NOSCRIPT','HEAD','LINK','META'].indexOf(tag) !== -1) return;
+        if (normalizeText(el.textContent) === title) {
+          el.remove(); removed++;
+        }
+      });
+      return removed;
+    }
+
+    function startObserver(durationMs) {
+      var observer = new MutationObserver(function () {
+        // run on every mutation batch; cheap check
+        removeDuplicates();
+      });
+      observer.observe(document.documentElement || document.body, { childList: true, subtree: true });
+      // stop observing after a short grace period
+      setTimeout(function () { try { observer.disconnect(); } catch (e) {} }, durationMs);
+    }
+
+    function init() {
+      try { removeDuplicates(); } catch (e) { /* ignore */ }
+      // watch for late injections (e.g. include loader) for 3s
+      startObserver(3000);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
