@@ -88,4 +88,53 @@
           </div>
 
           <div class="field">
-            <button type="submit" data-btn-primary>Greet Me
+            <button type="submit" data-btn-primary>Greet Me</button>
+          </div>
+        </form>
+
+        <p id="form-hint" class="muted">
+          Middle initial is optional. First and last name are required (max 20 characters each).
+        </p>
+
+        <!-- Greeting and results -->
+        <p id="greeting" aria-live="polite" class="muted"></p>
+
+        <h3 data-section-title>FizzBuzz Output (1–125)</h3>
+        <ol id="data" aria-live="polite"></ol>
+      </section>
+    </article>
+  </main>
+
+  <!-- Include footer -->
+  <div data-include="components/footer.html"></div>
+
+  <!-- Scripts -->
+  <script src="scripts/HTMLInclude.js" defer></script>
+  <script src="scripts/theme-toggle.js" defer></script>
+
+  <!-- Correct link to your JS -->
+  <script src="./fizzbuzz0.js" defer></script>
+
+  <!-- Highlight current page -->
+  <script>
+  window.addEventListener('DOMContentLoaded', function () {
+    Promise.resolve().then(function(){
+      var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+      document.querySelectorAll('nav[aria-label="Primary"] a').forEach(function(a){
+        if ((a.getAttribute('href') || '').toLowerCase() === here) {
+          a.setAttribute('aria-current', 'page');
+        } else {
+          a.removeAttribute('aria-current');
+        }
+      });
+    });
+  });
+  </script>
+
+  <noscript>
+    <p style="text-align:center; color:#a00; font-weight:600;">
+      Please enable JavaScript to view this page correctly.
+    </p>
+  </noscript>
+</body>
+</html>
