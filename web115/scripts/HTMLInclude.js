@@ -1,111 +1,109 @@
-/*! HTMLInclude (minimal; elements/attributes only) | MIT */
-(function (w, d) {
-  "use strict";
-  if (w.HTMLInclude) return;
+/*! HTMLInclude v1.1.1 | MIT License | github.com/paul-browne/HTMLInclude */ 
+!function(w, d) {
+    if (!w.HTMLInclude) {
+        w.HTMLInclude = function() {
+            function isInViewport(element, offset) {
+                return element.getBoundingClientRect().top <= (+offset + w.innerHeight);
+            }
+            function ajax(url, elements) {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4) {
+                            // Accept 200 (normal) and status 0 when loading from file: protocol
+                            if (xhr.status == 200 || (xhr.status === 0 && xhr.responseText)) {
+                            elements.forEach(function(element) {
+                                var dataReplace = element.getAttribute("data-replace");
+                                var z = xhr.responseText;
 
-  function isInViewport(el, offset) {
-    var off = Number(offset) || 0;
-    var rect = el.getBoundingClientRect();
-    return rect.top <= (off + w.innerHeight);
-  }
+                                // Allow simple token replacements in the fetched fragment
+                                if (dataReplace) {
+                                    dataReplace.split(",").forEach(function(el) {
+                                        var o = el.trim().split(":");
+                                        z = z.replace(new RegExp(o[0], "g"), o[1]);
+                                    });
+                                }
 
-  function ajax(url, targets, done) {
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState !== 4) return;
-      if (xhr.status === 200) {
-        for (var i = 0; i < targets.length; i++) {
-          var host = targets[i];
-          var html = xhr.responseText;
-          var parsed;
-          try { parsed = new DOMParser().parseFromString(html, "text/html"); } catch (e) { parsed = null; }
+                                // Parse the fetched HTML so we can safely modify it before
+                                // inserting into the document. If the current document
+                                // already contains a site title, remove any duplicate
+                                // [data-site-title] elements from the fetched fragment to
+                                // avoid rendering the header twice.
+                                var parsed = new DOMParser().parseFromString(z, 'text/html');
+                                try {
+                                    if (d.querySelector('[data-site-title]')) {
+                                        var dup = parsed.querySelectorAll('[data-site-title]');
+                                        dup.forEach(function(n){ n.parentNode && n.parentNode.removeChild(n); });
+                                    }
+                                } catch (e) { /* silent */ }
 
-          if (parsed && parsed.body) {
-            host.outerHTML = parsed.body.innerHTML;
+                                // Use the parsed fragment's body HTML for insertion
+                                var htmlToInsert = parsed.body ? parsed.body.innerHTML : z;
+                                element.outerHTML = htmlToInsert;
 
-            // re-attach scripts from fragment
-            try {
-              var scripts = parsed.querySelectorAll("script");
-              for (var j = 0; j < scripts.length; j++) {
-                var sEl = scripts[j];
-                var s = d.createElement("script");
-                var src = sEl.getAttribute("src");
-                if (src) s.src = src; else s.textContent = sEl.textContent || "";
-                var type = sEl.getAttribute("type"); if (type) s.type = type;
-                if (sEl.hasAttribute("defer")) s.defer = true;
-                if (sEl.hasAttribute("async")) s.async = true;
-                var co = sEl.getAttribute("crossorigin"); if (co) s.crossOrigin = co;
-                var rp = sEl.getAttribute("referrerpolicy"); if (rp) s.referrerPolicy = rp;
-                var nonce = sEl.getAttribute("nonce"); if (nonce) s.nonce = nonce;
-                d.head.appendChild(s);
-              }
-            } catch {}
-          } else {
-            host.outerHTML = html;
-          }
+                                try {
+                                    // Dispatch a custom event so pages can react to injected fragments.
+                                    var evt = new CustomEvent('htmlinclude:loaded', { detail: { path: url }, bubbles: true });
+                                    // Use a short timeout so listeners run after the DOM has settled.
+                                    setTimeout(function(){
+                                        (d.documentElement || d.body).dispatchEvent(evt);
+                                    }, 0);
+                                } catch (e) {
+                                    // ignore if CustomEvent not supported (very old browsers)
+                                }
+
+                                // Re-attach any scripts found in the parsed fragment. Preserve execution order
+                                var scripts = parsed.querySelectorAll("script");
+                                for (var si = 0; si < scripts.length; si++) {
+                                    var old = scripts[si];
+                                    var newScript = d.createElement('script');
+                                    if (old.src) {
+                                        newScript.src = old.src;
+                                        // ensure external scripts execute immediately
+                                        newScript.async = false;
+                                    } else {
+                                        // copy inline script text
+                                        try { newScript.text = old.textContent; } catch (e) { newScript.innerHTML = old.innerHTML; }
+                                    }
+                                    d.head.appendChild(newScript);
+                                }
+                            });
+                        } else {
+                            try { console.info('HTMLInclude: failed to load ' + url + ' (status: ' + xhr.status + ')'); } catch (e) {}
+                        }
+                        }
+                };
+                xhr.onerror = function() { try { console.info('HTMLInclude: network error while loading ' + url); } catch (e) {} };
+                xhr.open("GET", url, true);
+                xhr.send();
+            }
+            function lazyLoad(element, offset) {
+                w.addEventListener("scroll", function scrollFunc() {
+                    if (isInViewport(element, offset)) {
+                        w.removeEventListener("scroll", scrollFunc);
+                        ajax(element.getAttribute("data-include"), [element]);
+                    }
+                })
+            }
+            var store = {};
+            var dis = d.querySelectorAll('[data-include]:not([data-in])');
+            var i = dis.length;
+            while (i--) {
+                var di = dis[i].getAttribute('data-include');
+                var laziness = dis[i].getAttribute('data-lazy');
+                dis[i].setAttribute("data-in", "");
+                if (!laziness || (laziness && isInViewport(dis[i], laziness))) {
+                    store[di] = store[di] || [];
+                    store[di].push(dis[i]);
+                } else {
+                    lazyLoad(dis[i], laziness);
+                }
+            }
+            for (var key in store) {
+                ajax(key, store[key]);
+            }
         }
-      } else {
-        try { console.error("HTMLInclude: GET " + url + " failed (" + xhr.status + ")."); } catch {}
-      }
-      if (typeof done === 'function') done();
-    };
-    xhr.open("GET", url, true);
-    xhr.send();
-  }
-
-  function lazyLoad(el, offset) {
-    function onScroll() {
-      if (isInViewport(el, offset)) {
-        w.removeEventListener("scroll", onScroll);
-        ajax(el.getAttribute("data-include"), [el], function(){
-          // fire per-element event for lazies
-          d.dispatchEvent(new Event('includes:loaded'));
-          d.dispatchEvent(new Event('htmlinclude:loaded'));
-        });
-      }
     }
-    w.addEventListener("scroll", onScroll);
-  }
+    w.HTMLInclude();
+}(window, document)
 
-  w.HTMLInclude = function () {
-    var placeholders = d.querySelectorAll("[data-include]:not([data-in])");
-    var buckets = Object.create(null);
-    var lazyCount = 0;
-
-    for (var i = 0; i < placeholders.length; i++) {
-      var el = placeholders[i];
-      var path = el.getAttribute("data-include");
-      var laziness = el.getAttribute("data-lazy");
-      el.setAttribute("data-in", "");
-
-      if (!laziness || isInViewport(el, laziness)) {
-        (buckets[path] || (buckets[path] = [])).push(el);
-      } else {
-        lazyCount++;
-        lazyLoad(el, laziness);
-      }
-    }
-
-    var keys = Object.keys(buckets);
-    if (!keys.length && !lazyCount) {
-      d.dispatchEvent(new Event('includes:loaded'));
-      d.dispatchEvent(new Event('htmlinclude:loaded'));
-      return;
-    }
-
-    var pending = keys.length;
-    keys.forEach(function (key) {
-      ajax(key, buckets[key], function () {
-        pending--;
-        if (pending === 0) {
-          d.dispatchEvent(new Event('includes:loaded'));
-          d.dispatchEvent(new Event('htmlinclude:loaded'));
-        }
-      });
-    });
-  };
-
-  // kick off once
-  w.HTMLInclude();
-})(window, document);
 
