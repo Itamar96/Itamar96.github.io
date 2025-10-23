@@ -1,50 +1,46 @@
-"use strict";
+// 🐉 FizzBuzz Interactive Script for WEB115
+window.addEventListener('DOMContentLoaded', function () {
+  var form = document.getElementById('name-form');
+  var outputList = document.getElementById('datas');
 
-// FizzBuzz 0 Script
-// Author: Itamar B. Castillo
-// Course: WEB115
-// Description: Handles name input and generates FizzBuzz output from 1–125
+  if (!form || !outputList) return;
 
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("name-form");
-  const outputList = document.getElementById("data");
-  const greeting = document.getElementById("greeting");
-
-  // Safety check
-  if (!form || !outputList) {
-    console.error("FizzBuzz initialization error: required elements missing.");
-    return;
-  }
-
-  form.addEventListener("submit", function (event) {
+  form.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    const first = document.getElementById("first_name").value.trim();
-    const middle = document.getElementById("middle_initial").value.trim();
-    const last = document.getElementById("last_name").value.trim();
+    // Collect form values
+    var first = document.getElementById('first_name').value.trim();
+    var middle = document.getElementById('middle_initial').value.trim();
+    var last = document.getElementById('last_name').value.trim();
 
-    let fullName = first;
-    if (middle) fullName += " " + middle + ".";
-    fullName += " " + last;
+    // Build greeting
+    var fullName = first;
+    if (middle) fullName += ' ' + middle + '.';
+    fullName += ' ' + last;
 
-    // Show greeting
-    if (greeting) {
-      greeting.textContent = `Welcome ${fullName}! Enjoy your FizzBuzz results!`;
-    }
+    // Clear old results
+    outputList.innerHTML = '';
 
-    // Clear previous results
-    outputList.innerHTML = "";
+    // Add greeting
+    var greeting = document.createElement('p');
+    greeting.textContent = 'Hello, ' + fullName + '! Here is your FizzBuzz sequence:';
+    outputList.appendChild(greeting);
 
     // Generate FizzBuzz 1–125
-    for (let i = 1; i <= 125; i++) {
-      let text = "";
-      if (i % 3 === 0) text += "Fizz";
-      if (i % 5 === 0) text += "Buzz";
-      if (!text) text = i;
+    for (var i = 1; i <= 125; i++) {
+      var item = document.createElement('li');
 
-      const li = document.createElement("li");
-      li.textContent = text;
-      outputList.appendChild(li);
+      if (i % 15 === 0) {
+        item.textContent = 'FizzBuzz';
+      } else if (i % 3 === 0) {
+        item.textContent = 'Fizz';
+      } else if (i % 5 === 0) {
+        item.textContent = 'Buzz';
+      } else {
+        item.textContent = i;
+      }
+
+      outputList.appendChild(item);
     }
   });
 });
