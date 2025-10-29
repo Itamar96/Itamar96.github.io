@@ -6,7 +6,7 @@
   <title>Aethernova</title>
   <style>
     /* Styles for the root index page (scoped to #aethernova so this page is autonomous) */
-  #aethernova {
+  #body {
       --aethernova-bg: #F2F7FA;
       --aethernova-text: #21343A;
       --aethernova-accent: #6A4F9B;
@@ -16,9 +16,7 @@
       --aethernova-focus-ring: rgba(255, 232, 124, 0.65);
       --aethernova-footer-star-color: #FFE87C; /* default star color */
       --aethernova-footer-star-size: 0.95rem;   /* star size (can be changed easily) */
-    }
-
-    #aethernova {
+    
       font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto,
                    'Helvetica Neue', Arial, sans-serif;
       background-color: var(--aethernova-bg);
@@ -35,7 +33,7 @@
                         linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.85));
     }
 
-    #aethernova header {
+    #header {
       background: linear-gradient(135deg, var(--aethernova-accent) 0%, #5a3f8a 100%);
       color: #fff;
       text-align: center;
@@ -53,7 +51,7 @@
     #aethernova header p { margin: 12px 0 0; }
 
     /* CTA: semantic button with subtle motion */
-    #aethernova header p button {
+    #header p button {
       color: var(--aethernova-cta-text);
       background: linear-gradient(90deg,#FFD579 0%,#FF9F6B 100%);
       box-shadow: 0 10px 22px rgba(106,55,24,0.12), inset 0 -1px 0 rgba(255,255,255,.18);
@@ -65,18 +63,18 @@
       transition: transform .18s ease, box-shadow .18s ease;
     }
 
-    #aethernova header p button:hover {
+    #header p button:hover {
       transform: translateY(-3px);
       box-shadow: 0 16px 30px rgba(106,55,24,0.14);
     }
 
-    #aethernova header p button:focus-visible {
+    #header p button:focus-visible {
       outline: 3px solid transparent;
       box-shadow: 0 0 0 3px var(--aethernova-focus-ring);
       border-radius: 8px;
     }
 
-    #aethernova main {
+    #main {
       padding: 32px 18px;
       max-width: 980px;
       margin: 0 auto;
@@ -86,7 +84,7 @@
       border-radius: 12px; /* match header radius for crisp vertical alignment */
     }
 
-    #aethernova section { margin-bottom: 26px; }
+    #section { margin-bottom: 26px; }
 
   /* first h2 inside main acts as the page title (use attribute selector instead of qualifying the h2) */
   #aethernova main [data-page-title]:first-of-type { margin: 0 0 14px; color: #2b4650; font-size:1.25rem; font-weight:700; }
@@ -94,7 +92,7 @@
     #aethernova p { line-height:1.6; }
 
     /* Footer styling */
-    #aethernova footer {
+    #footer {
       background: linear-gradient(180deg, #543874, #4a2f66);
       color: #FFF8DC;
       text-align: center;
@@ -106,24 +104,24 @@
       border-radius: 12px; /* match header/main radius */
     }
 
-    #aethernova footer p { margin: 0; }
+    #footer p { margin: 0; }
 
     /* footer links styling without classes */
-    #aethernova footer a {
+    #footer a {
       color: var(--aethernova-link-color);
       text-decoration: none;
       font-weight: 600;
       transition: color 0.25s ease, text-shadow 0.25s ease, transform .12s ease;
     }
 
-    #aethernova footer a:hover { color: var(--aethernova-link-hover); text-shadow: 0 0 6px rgba(255,255,200,0.6); transform: translateY(-2px); }
-    #aethernova footer a:focus-visible { outline: 3px solid transparent; box-shadow: 0 0 0 3px var(--aethernova-focus-ring); border-radius: 6px; }
+    #footer a:hover { color: var(--aethernova-link-hover); text-shadow: 0 0 6px rgba(255,255,200,0.6); transform: translateY(-2px); }
+    #footer a:focus-visible { outline: 3px solid transparent; box-shadow: 0 0 0 3px var(--aethernova-focus-ring); border-radius: 6px; }
 
-    #aethernova footer ul { list-style: none; margin: 8px 0; padding: 0; display: inline-flex; gap: .9rem; flex-wrap: wrap; align-items: center; }
-    #aethernova footer ul li { list-style: none; margin: 0; display: flex; align-items: center; }
+    #footer ul { list-style: none; margin: 8px 0; padding: 0; display: inline-flex; gap: .9rem; flex-wrap: wrap; align-items: center; }
+    #footer ul li { list-style: none; margin: 0; display: flex; align-items: center; }
 
     /* Evenly spaced star separator using small margins (responsive) */
-    #aethernova footer ul li:not(:last-child)::after {
+    #footer ul li:not(:last-child)::after {
       content: '✶';
       color: var(--aethernova-footer-star-color);
       font-size: var(--aethernova-footer-star-size);
@@ -133,12 +131,12 @@
     }
 
     /* target the last paragraph in footer for spacing (replaces the .copyright class) */
-  #aethernova footer p:last-of-type { margin-top: 10px; }
+  #footer p:last-of-type { margin-top: 10px; }
   </style>
   <!-- Accumulus / lint.page validator (WEB115 kit) -->
   <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous"></script>
   </head>
-  <body id="aethernova">
+  <body>
     <header>
       <h1 data-site-title>Aethernova</h1>
       <h2 data-site-subtitle>by Itamar Castillo</h2>
