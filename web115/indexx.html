@@ -17,18 +17,34 @@
   <!-- Persist stored theme early (prevents flash) -->
   <script>
     (function () {
-      try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme','dark'); } catch (e) { console.error(e); }
+      try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme','dark'); } catch {}
     })();
   </script>
 
-  <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous"></script>
+  <!-- Optional: lint.page (safe in http/https only) -->
+  <script>
+    (function(){
+      try{
+        if (location.protocol === 'http:' || location.protocol === 'https:'){
+          var s=document.createElement('script');
+          s.src='https://lint.page/kit/67ff88.js'; s.defer=true; s.crossOrigin='anonymous';
+          s.onerror=function(){ console.info('lint.page unavailable; continuing.'); };
+          document.head.appendChild(s);
+        }
+      }catch{}
+    })();
+  </script>
+
+  <!-- Validator helper (safe on pages without the placeholder) -->
+  <script src="scripts/validator.js" defer></script>
 </head>
 
 <body>
-
+  <!-- Includes -->
   <div data-include="components/header.html"></div>
 
   <main id="main">
+    <article aria-labelledby="page-title-welcome">
       
 
       <section aria-labelledby="section-title-welcome">
@@ -71,14 +87,36 @@
           </blockquote>
         </div>
       </section>
+    </article>
   </main>
 
   <footer data-include="components/footer.html"></footer>
 
+  <!-- Includes and behavior -->
+  <script src="scripts/HTMLInclude.js" defer></script>
+  <script src="scripts/theme-toggle.js" defer></script>
 
   <!-- Active nav: run after includes complete -->
-  
- <script src="scripts/HTMLInclude.js" ></script>
- <script src="scripts/theme-toggle.js"></script>
+  <script>
+    (function(){
+      function setActiveNav(){
+        var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+        document.querySelectorAll('nav[aria-label="Primary"] a').forEach(function(a){
+          var href=(a.getAttribute('href')||'').toLowerCase();
+          if (href === here) a.setAttribute('aria-current','page');
+          else a.removeAttribute('aria-current');
+        });
+      }
+      document.addEventListener('includes:loaded', setActiveNav);
+      document.addEventListener('htmlinclude:loaded', setActiveNav);
+      document.addEventListener('DOMContentLoaded', function(){ setTimeout(setActiveNav,0); });
+    })();
+  </script>
+
+  <noscript>
+    <p style="text-align:center; color:#a00; font-weight:600;">
+      Please enable JavaScript to view this page correctly.
+    </p>
+  </noscript>
 </body>
 </html>

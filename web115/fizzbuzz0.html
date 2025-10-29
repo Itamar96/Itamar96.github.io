@@ -5,53 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Fizz Buzz 0 interactive form and output for WEB115." />
   <meta name="course" content="WEB115" />
-  <title>Iridescent Cinderwyrm Bodywork • Fizz Buzz 0</title>
+  <title>Itamar Castillo's Iridescent Cinderwyrm - WEB115 - fizzbuzz0</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
 
-  <!-- Styles (shared default) -->
+  <!-- Styles -->
   <link rel="stylesheet" href="styles/default.css" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
-
-  <!-- Safe lint.page loader (only on http/https) -->
+  <!-- Persist stored theme early (prevents flash) -->
   <script>
-  (function loadLintPageSafely(){
-    try {
-      var proto = location.protocol;
-      if (proto === 'http:' || proto === 'https:') {
-        var s = document.createElement('script');
-        s.src = 'https://lint.page/kit/67ff88.js';
-        s.defer = true;
-        s.crossOrigin = 'anonymous';
-        s.onerror = function(){ console.info('lint.page unavailable; continuing without it.'); };
-        document.head.appendChild(s);
-      } else {
-        console.info('Skipping lint.page (non-network environment).');
-      }
-    } catch (e) {
-      console.info('Skipping lint.page due to environment:', e);
-    }
-  })();
+    (function () {
+      try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme','dark'); } catch (e) { console.error(e); }
+    })();
   </script>
 
-  <!-- Persisted theme bootstrap (prevents flash) -->
-  <script>
-  (function() {
-    try {
-      const stored = localStorage.getItem('theme');
-      if (stored === 'dark') {
-        try { document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) { /* ignore */ }
-      }
-  } catch (_) { /* ignore localStorage errors in restrictive environments */ }
-  })();
-  </script>
-
-  <!-- Validator helper -->
-  <script src="scripts/validator.js" defer></script>
+  <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous"></script>
 </head>
   <body>
 

@@ -143,12 +143,7 @@ figure img{
   box-shadow:0 8px 24px rgba(var(--text-rgb),.12);
 }
 figcaption{margin-top:.75rem;font-size:.95rem;color:var(--accent-deep);text-align:center;}
-.form-grid { /* keep for backwards compatibility if any archived pages still use it */
-  display:grid;gap:var(--space-4);max-width:640px;margin-inline:auto;
-}
-[data-form-grid] {
-  display:grid;gap:var(--space-4);max-width:640px;margin-inline:auto;
-}
+
 [data-field],.field{
   display:flex;flex-direction:column;margin-bottom:var(--space-4);
 }
