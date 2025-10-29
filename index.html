@@ -13,9 +13,7 @@
       --aethernova-cta-text: #0b1220;
       --aethernova-link-color: #FFE87C;      /* brighter gold-yellow for contrast on purple */
       --aethernova-link-hover: #FFD04D;      /* slightly deeper for hover */
-      --aethernova-focus-ring: rgba(255, 232, 124, 0.65);
-      --aethernova-footer-star-color: #FFE87C; /* default star color */
-      --aethernova-footer-star-size: 0.95rem;   /* star size (can be changed easily) */
+      --aethernova-focus-ring: rgba(255, 232, 124, 0.65)
     
       font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto,
                    'Helvetica Neue', Arial, sans-serif;
@@ -46,12 +44,12 @@
     }
 
   /* Use attribute selectors rather than qualifying heading elements to satisfy linter rules */
-  header [data-site-title] { margin: 0; font-weight: 800; letter-spacing: -0.6px; font-size: 1.6rem; }
-  header [data-site-subtitle] { margin: 6px 0 0; font-weight: 400; color: rgba(255,241,255,.92); font-style: italic; font-size: 1rem; }
+  h1{ margin: 0; font-weight: 800; letter-spacing: -0.6px; font-size: 1.6rem; }
+  h6{ margin: 6px 0 0; font-weight: 400; color: rgba(255,241,255,.92); font-style: italic; font-size: 1rem; }
   header p { margin: 12px 0 0; }
 
     /* CTA: semantic button with subtle motion */
-    header p button {
+    button {
       color: var(--aethernova-cta-text);
       background: linear-gradient(90deg,#FFD579 0%,#FF9F6B 100%);
       box-shadow: 0 10px 22px rgba(106,55,24,0.12), inset 0 -1px 0 rgba(255,255,255,.18);
@@ -63,12 +61,12 @@
       transition: transform .18s ease, box-shadow .18s ease;
     }
 
-    header p button:hover {
+    button:hover {
       transform: translateY(-3px);
       box-shadow: 0 16px 30px rgba(106,55,24,0.14);
     }
 
-    header p button:focus-visible {
+    button:focus-visible {
       outline: 3px solid transparent;
       box-shadow: 0 0 0 3px var(--aethernova-focus-ring);
       border-radius: 8px;
@@ -120,14 +118,6 @@
     footer ul { list-style: none; margin: 8px 0; padding: 0; display: inline-flex; gap: .9rem; flex-wrap: wrap; align-items: center; }
     footer ul li { list-style: none; margin: 0; display: flex; align-items: center; }
 
-    /* Evenly spaced star separator using small margins (responsive) */
-    footer ul li:not(:last-child)::after {
-      content: '✶';
-      color: var(--aethernova-footer-star-color);
-      font-size: var(--aethernova-footer-star-size);
-      margin: 0 0 0 0.2rem; /* small left margin to separate from link */
-      opacity: 0.98;
-      transform: translateY(1px);
     }
 
     /* target the last paragraph in footer for spacing (replaces the .copyright class) */
@@ -138,18 +128,18 @@
   </head>
   <body>
     <header>
-      <h1 data-site-title>Aethernova</h1>
-      <h2 data-site-subtitle>by Itamar Castillo</h2>
+      <h1>Aethernova</h1>
+      <h6>by Itamar Castillo</h6>
       <p><button id="open-course">WEB115 course</button></p>
     </header>
     <main>
-      <h2 data-page-title>Aethernova - portfolio</h2>
+      <h2>Aethernova - portfolio</h2>
       <section>
-        <h3 data-section-title>About Me</h3>
+        <h3>About Me</h3>
         <p>Hello! My name is <strong>Itamar Castillo</strong>, and I'm currently studying web development. I enjoy learning how websites work and how design and code come together to make something meaningful.</p>
       </section>
       <section>
-        <h3 data-section-title>What I Enjoy</h3>
+        <h3>What I Enjoy</h3>
         <p>I am an active person who loves <strong>hiking</strong>, playing sports, and staying healthy through <strong>self-care</strong>—both inside and out. I also value <strong>mental health and awareness</strong>, taking time to reset and recharge when life gets busy.</p>
       </section>
       <section>
