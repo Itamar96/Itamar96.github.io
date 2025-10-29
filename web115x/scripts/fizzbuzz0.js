@@ -82,7 +82,9 @@ function renderFizzBuzz(name) {
   if (!datas) return;
   datas.innerHTML = '';
   const frag = document.createDocumentFragment();
-  for (let i = 1; i <= 125; i++) {
+  // limit to a reasonable maximum in case of unintended changes
+  const MAX = 125;
+  for (let i = 1; i <= MAX; i++) {
     const li = document.createElement('li');
     let text = '';
     if (i % 15 === 0) text = 'FizzBuzz';
@@ -94,8 +96,11 @@ function renderFizzBuzz(name) {
     frag.appendChild(li);
   }
   datas.appendChild(frag);
-  datas.setAttribute('tabindex', '-1');
-  datas.focus();
+  // Make container focusable for screen reader announcement, but only if focus is supported
+  try {
+    datas.setAttribute('tabindex', '-1');
+    if (typeof datas.focus === 'function') datas.focus();
+  } catch (e) { /* ignore focus errors */ }
 }
 
 function useForm(event) {

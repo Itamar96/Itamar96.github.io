@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Fizz Buzz 0 interactive form and output for WEB115." />
-  <title>Itamar Castillo’s Iridescent Cinderwyrm • Fizz Buzz 0</title>
+  <title>Iridescent Cinderwyrm Bodywork • Fizz Buzz 0</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles/default.css" />
@@ -13,31 +13,14 @@
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <h1>
-        <span class="line-1">Itamar Castillo’s Iridescent Cinderwyrm</span>
-        <span class="dragon" aria-hidden="true">🐉</span>
-      </h1>
-
-      <nav aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="introduction.html">Introduction</a>
-        <a href="contract.html">Contract</a>
-        <a href="brand.html">Brand Guide</a>
-        <a href="fizzbuzz0.html" aria-current="page">Fizz Buzz 0</a>
-      </nav>
-
-      
-    </div>
-  </header>
+  <!-- Shared header include: injects single canonical site title and nav -->
+  <div data-include="components/header.html"></div>
 
   <!-- Main Content -->
   <main>
     <section class="intro-band">
       <div class="container flow">
-        <h2>Fizz Buzz 0</h2>
+  <h2 data-page-title>Fizz Buzz 0</h2>
         <p>
           Welcome to <strong>Iridescent Cinderwyrm Bodywork</strong>.
           Enter your name below and receive a personalized greeting along with a FizzBuzz output from 1 to 125.
@@ -68,7 +51,7 @@
           Middle initial is optional. First and last name are required (max 20 characters each).
         </p>
 
-        <h3>FizzBuzz Output (1–125)</h3>
+  <h3 data-section-title>FizzBuzz Output (1–125)</h3>
         <ol id="datas" aria-live="polite"></ol>
       </div>
     </section>

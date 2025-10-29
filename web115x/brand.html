@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Brand Guide for Itamar Castillo — WEB115" />
+  <meta name="course" content="WEB115" />
+  <title>Iridescent Cinderwyrm Bodywork • Brand Guide</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/default.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
+
+  <!-- Safe lint.page loader -->
+  <script>
+  (function loadLintPageSafely(){
+    try {
+      var proto = location.protocol;
+      if (proto === 'http:' || proto === 'https:') {
+        var s = document.createElement('script');
+        s.src = 'https://lint.page/kit/67ff88.js';
+        s.defer = true;
+        s.crossOrigin = 'anonymous';
+        s.onerror = function(){ console.info('lint.page unavailable; continuing without it.'); };
+        document.head.appendChild(s);
+      } else {
+        console.info('Skipping lint.page (non-network environment).');
+      }
+    } catch (error) {
+      console.info('Skipping lint.page due to environment:', error);
+    }
+  })();
+  </script>
+
+  <!-- Theme persistence (fixed version) -->
+  <script>
+  (function() {
+    try {
+      const stored = localStorage.getItem('theme');
+      if (stored === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch (error) {
+      // Ignore localStorage errors safely
+    }
+  })();
+  </script>
+
+  <!-- Validator helper -->
+  <script src="scripts/validator.js" defer></script>
+</head>
+  <body>
+  <!-- Header -->
+  <div data-include="components/header.html"></div>
+
+  <main id="main" tabindex="-1" data-container data-flow>
+    <article aria-labelledby="page-title-brand">
+      <h1 data-page-title id="page-title-brand">Brand Guide</h1>
+
+      <!-- Typography -->
+      <section aria-labelledby="brand-type" data-section>
+        <h3 id="brand-type" data-section-title>Typography</h3>
+        <p><strong>Headings:</strong> Playfair Display — elegant, high-contrast serif for titles.</p>
+        <p><strong>Body:</strong> Inter — modern, clean sans-serif for readability.</p>
+      </section>
+
+      <!-- Dark Theme Palette -->
+      <section aria-labelledby="brand-dark" data-section>
+        <h3 id="brand-dark" data-section-title>Dark Theme Palette (opt-in)</h3>
+        <ul data-swatches>
+          <li>
+            <span style="background:#1E1E1E; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#1E1E1E</span> <em>Deep background</em>
+          </li>
+          <li>
+            <span style="background:#202020; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#202020</span> <em>Panels / surfaces</em>
+          </li>
+          <li>
+            <span style="background:#EAEAEA; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; border:1px solid #ccc; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#EAEAEA</span> <em>Text (on dark)</em>
+          </li>
+          <li>
+            <span style="background:#88BFA2; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#88BFA2</span> <em>Accent (dark)</em>
+          </li>
+          <li>
+            <span style="background:#64A083; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#64A083</span> <em>Accent deep (dark)</em>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Color Palette (Desert Matcha) -->
+      <section aria-labelledby="brand-colors" data-section>
+        <h3 id="brand-colors" data-section-title>Color Palette (Desert Matcha)</h3>
+        <ul data-swatches>
+          <li>
+            <span style="background:#F7EAD9; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#F7EAD9</span> <em>Sand background</em>
+          </li>
+          <li>
+            <span style="background:#FFFFFF; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; border:1px solid #ccc; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#FFFFFF</span> <em>Surface and cards</em>
+          </li>
+          <li>
+            <span style="background:#2F3A34; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#2F3A34</span> <em>Primary text</em>
+          </li>
+          <li>
+            <span style="background:#6F8F6B; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#6F8F6B</span> <em>Accent buttons</em>
+          </li>
+          <li>
+            <span style="background:#3E574B; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#3E574B</span> <em>Links and small text</em>
+          </li>
+          <li>
+            <span style="background:#8DA3A6; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#8DA3A6</span> <em>Mist (subtle UI)</em>
+          </li>
+          <li>
+            <span style="background:#C4633A; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#C4633A</span> <em>Clay glow</em>
+          </li>
+          <li>
+            <span style="background:#FFF8DC; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#FFF8DC</span> <em>Holiday light background</em>
+          </li>
+          <li>
+            <span style="background:#D4AF37; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+            <span>#D4AF37</span> <em>Gold accent</em>
+          </li>
+        </ul>
+        <p data-meta>
+          Contrast: #2F3A34 on #F7EAD9 passes for body copy. White text on #6F8F6B passes on buttons.
+        </p>
+      </section>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <div data-include="components/footer.html"></div>
+
+  <!-- Scripts -->
+  <script src="scripts/HTMLInclude.js" defer></script>
+  <script src="scripts/theme-toggle.js" defer></script>
+</body>
+</html>

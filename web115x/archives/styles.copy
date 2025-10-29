@@ -48,7 +48,7 @@ body {
 
 /* readable line length */
 .container p, .container ul, .container ol, .container blockquote, .container figure, 
-.container h2, .container h3 { max-width: 70ch; margin-inline: auto; }
+.container [data-section-title], .container [data-subsection-title] { max-width: 70ch; margin-inline: auto; }
 
 /* ---------- Header ---------- */
 header {
@@ -56,8 +56,8 @@ header {
   text-align: center;
   background: var(--surface);
 }
-/* Apply all styling directly to h1 */
-h1 {
+/* Attribute-based heading styles (no element qualification) */
+[data-site-title] {
   font-family: var(--brand-heading);
   font-weight: 800;
   font-size: clamp(1.8rem, 1.1rem + 2.2vw, 2.4rem);
@@ -65,13 +65,13 @@ h1 {
   color: var(--text);
 }
 /* Section titles */
-h2 {
+[data-page-title] {
   font-weight: 700;
   font-size: clamp(1.3rem, 1.05rem + 1.2vw, 1.9rem);
 }
 
 /* Subsection titles */
-h3 {
+[data-section-title] {
   font-weight: 700;
   font-size: 1.15rem;
 }
@@ -164,26 +164,17 @@ figcaption {
   font-size: 0.95rem;
   color: var(--accent-deep);
 }
-.figure-holiday {
+.figure-holiday, .figure[data-holiday] {
   background: var(--holiday-cream); /* Used on index.html */
-  border: 1px solid rgba(212, 175, 55, 0.35);
+  border: 1px solid rgba(212, 175, 55, 0.18);
 }
-.img-gold-border {
-  border: 6px solid var(--holiday-gold);
-  border-radius: 12px;
-}
-.intro-landscape .img-gold-border {
-  max-width: 100%;
-  height: auto;
-}
+
+/* Legacy .img-gold-border rules removed during migration. Use <figure data-holiday> for framed images. */
+
 blockquote {
   padding: var(--space-4);
   border-left: 4px solid var(--accent);
   background: rgba(141, 163, 166, 0.10);
-  border-radius: 0 var(--radius) var(--radius) 0;
-}
-cite {
-  display: block;
   margin-top: 0.5rem;
   font-weight: 500;
   color: var(--accent);

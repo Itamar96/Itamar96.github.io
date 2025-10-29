@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Contract acknowledgment for Itamar Castillo — WEB115" />
-  <title>Itamar Castillo’s Iridescent Cinderwyrm • Contract</title>
+  <title>Iridescent Cinderwyrm Bodywork • Contract</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles/default.css" />
@@ -13,31 +13,14 @@
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <h1>
-        <span class="line-1">Itamar Castillo’s Iridescent Cinderwyrm</span>
-        <span class="dragon" aria-hidden="true">🐉</span>
-      </h1>
-
-      <nav aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="introduction.html">Introduction</a>
-        <a href="contract.html" aria-current="page">Contract</a>
-        <a href="brand.html">Brand Guide</a>
-        <a href="fizzbuzz0.html">Fizz Buzz 0</a>
-      </nav>
-
-      
-    </div>
-  </header>
+  <!-- Shared header include: injects single canonical site title and nav -->
+  <div data-include="components/header.html"></div>
 
   <!-- Main Content -->
   <main>
     <section class="intro-band">
       <div class="container flow">
-        <h2>Contract</h2>
+  <h2 data-page-title>Contract</h2>
         <p>
           I, <strong>Itamar Castillo</strong>, agree to abide by the terms in my <strong>Fall 2025 WEB115</strong> course with my instructor, <strong>D.I. von Briesen</strong>.
         </p>

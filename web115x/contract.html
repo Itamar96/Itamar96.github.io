@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Contract acknowledgment for Itamar Castillo — WEB115" />
+  <meta name="course" content="WEB115" />
+  <title>Iridescent Cinderwyrm Bodywork • Contract</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+
+  <!-- Styles (shared default) -->
+  <link rel="stylesheet" href="styles/default.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/dragon-favicon.png" />
+
+  <!-- ✅ Safe lint.page loader -->
+  <script>
+    (function loadLintPageSafely() {
+      try {
+        var proto = location.protocol;
+        if (proto === 'http:' || proto === 'https:') {
+          var s = document.createElement('script');
+          s.src = 'https://lint.page/kit/67ff88.js';
+          s.defer = true;
+          s.crossOrigin = 'anonymous';
+          s.onerror = function () {
+            console.info('lint.page unavailable; continuing without it.');
+          };
+          document.head.appendChild(s);
+        } else {
+          console.info('Skipping lint.page (non-network environment).');
+        }
+      } catch (e) {
+        console.info('Skipping lint.page due to environment:', e);
+      }
+    })();
+  </script>
+
+  <!-- ✅ Persisted theme bootstrap -->
+  <script>
+    (function () {
+      try {
+        const stored = localStorage.getItem('theme');
+        if (stored === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (_) {
+        /* ignore localStorage errors */
+      }
+    })();
+  </script>
+
+  <!-- Validator helper -->
+  <script src="scripts/validator.js" defer></script>
+</head>
+
+  <body>
+  <!-- 🐉 Include header -->
+  <div data-include="components/header.html"></div>
+
+  <main id="main" tabindex="-1" data-container data-flow>
+    <article aria-labelledby="page-title-contract">
+      <h1 data-page-title id="page-title-contract">Contract</h1>
+
+      <!-- ✅ Added proper heading for accessibility -->
+  <section aria-labelledby="section-contract-intro">
+  <h2 id="section-contract-intro" data-visually-hidden>Course Contract Agreement</h2>
+
+        <p>
+          I, <strong>Itamar Castillo</strong>, agree to abide by the terms in my
+          <strong>Fall 2025 WEB115</strong> course with my instructor,
+          <strong>D.I. von Briesen</strong>.
+        </p>
+
+        <p>
+          I understand that all work I do on my school and personal websites will be publicly
+          available to the world. I will not put information there that is inappropriate for
+          schoolwork or that I want to keep private.
+        </p>
+
+        <p>
+          I also understand that it is my work that counts for attendance, not logins or showing
+          up for class. Failure to turn in assignments may show as absences.
+        </p>
+
+        <p>
+          <strong>Signed:</strong> Itamar Castillo —
+          <time datetime="2025-08-31">31 August 2025</time>
+        </p>
+      </section>
+    </article>
+  </main>
+
+  <!-- 🪶 Include footer -->
+  <div data-include="components/footer.html"></div>
+
+  <!-- Includes -->
+  <script src="scripts/HTMLInclude.js" defer></script>
+  <script src="scripts/theme-toggle.js" defer></script>
+</body>
+</html>

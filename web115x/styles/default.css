@@ -1,0 +1,5 @@
+/* Wrapper stylesheet for backward compatibility
+   Loads the classless stylesheet used across the site.
+   Keeps existing page links to styles/default.css working without duplicating CSS.
+*/
+@import url('default.classless.css');

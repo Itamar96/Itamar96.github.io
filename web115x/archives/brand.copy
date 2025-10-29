@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Brand guide for Iridescent Cinderwyrm Bodywork: colors, typography, and usage rules." />
-  <title>Itamar Castillo’s Iridescent Cinderwyrm • Brand Guide</title>
+  <title>Iridescent Cinderwyrm Bodywork • Brand Guide</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles/default.css" />
@@ -13,43 +13,26 @@
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <h1>
-        <span class="line-1">Itamar Castillo’s Iridescent Cinderwyrm</span>
-        <span class="dragon" aria-hidden="true">🐉</span>
-      </h1>
-
-      <nav aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="introduction.html">Introduction</a>
-        <a href="contract.html">Contract</a>
-        <a href="brand.html" aria-current="page">Brand Guide</a>
-        <a href="fizzbuzz0.html">Fizz Buzz 0</a>
-      </nav>
-
-      
-    </div>
-  </header>
+  <!-- Shared header include: injects single canonical site title and nav -->
+  <div data-include="components/header.html"></div>
 
   <!-- Main Content -->
   <main>
     <section class="intro-band">
       <div class="container flow">
-        <h2>Brand Guide</h2>
+  <h2 data-page-title>Brand Guide</h2>
         <p class="meta">
           Brand name: <strong>Iridescent Cinderwyrm Bodywork</strong> • Tagline: <em>Breathe. Unwind. Renew.</em>
         </p>
 
-        <h3 id="brand-concept">Concept and Mission</h3>
+  <h3 id="brand-concept" data-section-title>Concept and Mission</h3>
         <p>
           Iridescent Cinderwyrm Bodywork offers massage and relaxation services that focus on calm, comfort, and intentional relief.
           The Desert Matcha palette uses warm sand, herbal greens, and a hint of clay to feel natural and restorative.
           The voice is simple, warm, and professional.
         </p>
 
-        <h3 id="brand-colors">Color Palette (Desert Matcha)</h3>
+  <h3 id="brand-colors" data-section-title>Color Palette (Desert Matcha)</h3>
         <ul class="swatches">
           <li class="swatch"><span class="color-box" style="background:#F7EAD9;"></span><span>#F7EAD9</span><em>Sand background</em></li>
           <li class="swatch"><span class="color-box" style="background:#FFFFFF;"></span><span>#FFFFFF</span><em>Surface and cards</em></li>
@@ -65,7 +48,7 @@
           Contrast: #2F3A34 on #F7EAD9 passes for body copy. White text on #6F8F6B passes on buttons.
         </p>
 
-        <h3 id="brand-type">Typography</h3>
+  <h3 id="brand-type" data-section-title>Typography</h3>
         <div class="type-card">
           <p class="type-label">Headings — Playfair Display 700 and 800</p>
           <p class="demo-h1">Iridescent Cinderwyrm Bodywork</p>
@@ -76,7 +59,7 @@
           </p>
         </div>
 
-        <h3 id="brand-usage">Usage and Tone</h3>
+  <h3 id="brand-usage" data-section-title>Usage and Tone</h3>
         <p>
           Use the brand palette consistently across all materials. Accent colors should enhance but never overpower the content.
           Maintain calm, neutral backgrounds with readable contrast. Write in a friendly, grounded, and knowledgeable tone.

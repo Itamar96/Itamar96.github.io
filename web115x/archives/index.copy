@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Itamar Castillo’s WEB115 workspace and brand demo: Iridescent Cinderwyrm Bodywork" />
-  <title>Itamar Castillo’s Iridescent Cinderwyrm • Home</title>
+  <title>Iridescent Cinderwyrm Bodywork • Home</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles/default.css" />
@@ -13,37 +13,20 @@
 </head>
 <body>
 
-  <!-- Header band spans full width, content centered by .container -->
-  <header>
-    <div class="container">
-      <h1>
-        <span class="line-1">Itamar Castillo’s Iridescent Cinderwyrm</span>
-        <span class="dragon" aria-hidden="true">🐉</span>
-      </h1>
-
-      <nav aria-label="Primary">
-        <a href="index.html" aria-current="page">Home</a>
-        <a href="introduction.html">Introduction</a>
-        <a href="contract.html">Contract</a>
-        <a href="brand.html">Brand Guide</a>
-        <a href="fizzbuzz0.html">Fizz Buzz 0</a>
-      </nav>
-
-      
-    </div>
-  </header>
+  <!-- Shared header include: injects single canonical site title and nav -->
+  <div data-include="components/header.html"></div>
 
   <main>
     <!-- Full-width band + centered content column -->
     <section class="intro-band">
       <div class="container flow">
-        <h2>Welcome</h2>
+  <h2 data-page-title>Welcome</h2>
         <p>
           This site presents my coursework and highlights my evolving skills in accessible, standards-based web development. It also introduces my sample massage brand,
           <strong>Iridescent Cinderwyrm Bodywork</strong>. Please use the menu above to explore my work.
         </p>
 
-        <figure class="figure-holiday">
+        <figure data-holiday>
           <picture>
             <source type="image/webp"
               srcset="images/hiking_portrait_600w.webp 600w, images/hiking_portrait_800w.webp 800w, images/hiking_portrait_1200w.webp 1200w"
@@ -51,7 +34,7 @@
             <source type="image/jpeg"
               srcset="images/hiking_portrait_600w.jpg 600w, images/hiking_portrait_800w.jpg 800w, images/hiking_portrait_1200w.jpg 1200w"
               sizes="(max-width: 640px) 600px, (max-width: 960px) 800px, 1200px" />
-            <img class="img-gold-border intro-landscape"
+            <img class="intro-landscape"
               src="images/hiking_portrait_800w.jpg"
               width="800" height="1067"
               alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle." />
