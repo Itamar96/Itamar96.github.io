@@ -102,8 +102,6 @@
       border-radius: 12px; /* match header/main radius */
     }
 
-    footer p { margin: 0; }
-
     /* footer links styling without classes */
     footer a {
       color: var(--aethernova-link-color);
@@ -114,12 +112,10 @@
 
     footer a:hover { color: var(--aethernova-link-hover); text-shadow: 0 0 6px rgba(255,255,200,0.6); transform: translateY(-2px); }
     footer a:focus-visible { outline: 3px solid transparent; box-shadow: 0 0 0 3px var(--aethernova-focus-ring); border-radius: 6px; }
-
-    footer ul { list-style: none; margin: 8px 0; padding: 0; display: inline-flex; gap: .9rem; flex-wrap: wrap; align-items: center; }
-    footer ul li { list-style: none; margin: 0; display: flex; align-items: center; }
-
-    /* target the last paragraph in footer for spacing (replaces the .copyright class) */
-  footer p:last-of-type { margin-top: 10px; }
+  
+    ul {display: inline-flex; gap: .9rem; }
+    ul li {display: flex; }
+}
   </style>
   <!-- Accumulus / lint.page validator (WEB115 kit) -->
   <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous"></script>
