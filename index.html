@@ -112,12 +112,35 @@
       transition: color 0.25s ease, text-shadow 0.25s ease, transform .12s ease;
     }
 
+footer p{font-size:.95rem;line-height:1.6;margin-bottom:1rem;}
+footer a{color:var(--aethernova-link-color);margin:0.3rem;}
+footer a:hover,footer a:focus-visible{color:var(--aethernova-link-hover);text-decoration:underline;}
+footer ul{
+  list-style:none;margin:.5rem 0;padding:0;
+  display:flex;justify-content:center;flex-wrap:wrap;
+  gap:.6rem 1.2rem;align-items:center;
+}
+footer ul li{
+  display:flex;align-items:center;position:relative;
+}
     footer a:hover { color: var(--aethernova-link-hover); text-shadow: 0 0 6px rgba(255,255,200,0.6); transform: translateY(-2px); }
     footer a:focus-visible { outline: 3px solid transparent; box-shadow: 0 0 0 3px var(--aethernova-focus-ring); border-radius: 6px; }
   
     ul {display: inline-flex; gap: .9rem; }
     ul li {display: flex; }
     footer p {text-align:center;}
+
+    footer ul li:not(:last-child)::after{
+  content:"✶";
+  color:var(--aethernova-link-color);
+  position:absolute;
+  right:-0.9rem;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:.95rem;
+  line-height:1;
+  pointer-events:none;
+}
   </style>
   <!-- Accumulus / lint.page validator (WEB115 kit) -->
   <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous"></script>
@@ -147,7 +170,6 @@
       <nav aria-label="Footer links">
         <ul>
           <li><a href="https://github.com/Itamar96" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-          <li>✶</li>
           <li><a href="https://www.linkedin.com/in/itamar-castillo-6137b8380/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
         </ul>
       </nav>
