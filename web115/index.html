@@ -32,9 +32,6 @@
 
     <h2>Welcome</h2>
 
-      <section aria-labelledby="section-title-welcome">
-        <h3 id="section-title-welcome" data-visually-hidden>Welcome section</h3>
-
         <div data-intro>
           <p>
             This site presents my coursework and highlights my evolving skills in accessible,
@@ -44,23 +41,27 @@
 
           <figure data-gold>
             <picture>
-              <source type="image/webp"
-                srcset="images/hiking_portrait_600w.webp 600w,
-                        images/hiking_portrait_800w.webp 800w,
-                        images/hiking_portrait_1200w.webp 1200w"
-                sizes="(max-width: 640px) 600px,
-                       (max-width: 960px) 800px,
-                       1200px" />
-              <source type="image/jpeg"
-                srcset="images/hiking_portrait_600w.jpg 600w,
-                        images/hiking_portrait_800w.jpg 800w,
-                        images/hiking_portrait_1200w.jpg 1200w"
-                sizes="(max-width: 640px) 600px,
-                       (max-width: 960px) 800px,
-                       1200px" />
-              <img loading="lazy"
-                   src="images/hiking_portrait_800w.jpg"
-                   width="1200" height="1600"
+             <picture>
+  <source type="image/webp"
+          srcset="images/hiking_portrait_600w.webp 600w,
+                  images/hiking_portrait_800w.webp 800w,
+                  images/hiking_portrait_1200w.webp 1200w"
+          sizes="(max-width: 640px) 100vw,
+                 (max-width: 960px) 80vw,
+                 60vw" />
+  <source type="image/jpeg"
+          srcset="images/hiking_portrait_600w.jpg 600w,
+                  images/hiking_portrait_800w.jpg 800w,
+                  images/hiking_portrait_1200w.jpg 1200w"
+          sizes="(max-width: 640px) 100vw,
+                 (max-width: 960px) 80vw,
+                 60vw" />
+  <img loading="lazy"
+       src="images/hiking_portrait_800w.jpg"
+       alt="Portrait of a hiker in nature"
+       style="width: 100%; height: auto;" />
+</picture>
+
                    alt="Itamar on a rocky alpine trail among pine trees, holding a water bottle." />
             </picture>
             <figcaption>Exploring Colorado’s alpine trails, 2025.</figcaption>
@@ -71,7 +72,6 @@
             <cite>— Isaac Newton</cite>
           </blockquote>
         </div>
-      </section>
   </main>
 
   <footer data-include="components/footer.html"></footer>
