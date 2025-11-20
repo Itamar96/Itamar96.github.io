@@ -34,7 +34,7 @@
         <h3>Instructions here</h3>
         <p>
           Welcome to <strong>Iridescent Cinderwyrm Bodywork</strong>.
-          Enter your name below and receive a personalized greeting along with a FizzBuzz output from 1 to 125.
+          Enter your name below and receive a personalized greeting.
         </p>
 
         <form id="name-form" aria-describedby="form-hint" data-form-grid>
@@ -62,8 +62,8 @@
           Middle initial is optional. First and last name are required (max 20 characters each).
         </p>
 
-        <h3 data-section-title>FizzBuzz Output (1–125)</h3>
-        <ol id="datas" aria-live="polite"></ol>
+        <!-- This ordered list displays the personalized greeting and FizzBuzz output after form submission -->
+        <ul id="datas" aria-live="polite"></ul>
       </section>
   </main>
 
@@ -72,9 +72,10 @@
 
   <!-- HTML include script: injects components marked with data-include -->
   <script src="scripts/HTMLInclude.js" defer></script>
-  <script src="scripts/fizzbuzz.js" defer></script>
+  <script src="scripts/fizzbuzz0.js" defer></script>
   <script src="scripts/theme-toggle.js" defer></script>
 
   <!-- Fallback removed; serve over HTTP to use full includes -->
 
 </body>
+</html>
