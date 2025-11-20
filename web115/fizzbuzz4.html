@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Fizz Buzz 4 interactive form and output for WEB115." />
+  <meta name="course" content="WEB115" />
+  <title>Itamar Castillo's Iridescent Cinderwyrm - WEB115 - fizzbuzz4</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/default.css" />
+
+  <!-- Persist stored theme early -->
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.setAttribute('data-theme','dark');
+        }
+      } catch (e) { console.error(e); }
+    })();
+  </script>
+
+  <!-- Acculus Validator -->
+  <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- 🐉 Include header -->
+  <div data-include="components/header.html"></div>
+
+  <main>
+    <h2>Fizz Buzz 4</h2>
+    <section>
+      <h3>Instructions</h3>
+      <p>
+        In this version, you can personalize the output with your name, choose three divisors and words, and set the total count.  
+        Numbers not divisible by any divisor will display nothing (blank).
+      </p>
+
+      <form id="fizzbuzz-form" aria-describedby="form-hint" data-form-grid>
+        <!-- Name fields -->
+        <div data-field>
+          <label for="firstName">First Name</label>
+          <input id="firstName" name="firstName" type="text" placeholder="Itamar" required maxlength="20" />
+        </div>
+        <div data-field>
+          <label for="middleName">Middle Name</label>
+          <input id="middleName" name="middleName" type="text" placeholder="Cinderwyrm" maxlength="20" />
+        </div>
+        <div data-field>
+          <label for="lastName">Last Name</label>
+          <input id="lastName" name="lastName" type="text" placeholder="Castillo" required maxlength="20" />
+        </div>
+
+        <!-- Divisor + word fields -->
+        <div data-field>
+          <label for="divisor1">Divisor 1</label>
+          <input id="divisor1" name="divisor1" type="number" value="3" required />
+        </div>
+        <div data-field>
+          <label for="word1">Word for divisor 1</label>
+          <input id="word1" name="word1" type="text" value="Fizz" required maxlength="20" />
+        </div>
+
+        <div data-field>
+          <label for="divisor2">Divisor 2</label>
+          <input id="divisor2" name="divisor2" type="number" value="5" required />
+        </div>
+        <div data-field>
+          <label for="word2">Word for divisor 2</label>
+          <input id="word2" name="word2" type="text" value="Buzz" required maxlength="20" />
+        </div>
+
+        <div data-field>
+          <label for="divisor3">Divisor 3</label>
+          <input id="divisor3" name="divisor3" type="number" value="7" required />
+        </div>
+        <div data-field>
+          <label for="word3">Word for divisor 3</label>
+          <input id="word3" name="word3" type="text" value="Bang!" required maxlength="20" />
+        </div>
+
+        <!-- Total count -->
+        <div data-field>
+          <label for="totalCount">Total Count</label>
+          <input id="totalCount" name="totalCount" type="number" value="125" required />
+        </div>
+
+        <!-- Default word (blank) -->
+        <div data-field>
+          <label for="defaultWord">Default Word (for non-divisible numbers)</label>
+          <input id="defaultWord" name="defaultWord" type="text" value="" placeholder="(blank)" />
+        </div>
+
+        <div data-field>
+          <button type="submit" data-btn-primary>Run FizzBuzz 4</button>
+        </div>
+      </form>
+
+      <p id="form-hint" data-muted>
+        Try numbers like 15 (Fizz + Buzz), 21 (Fizz + Bang!), and 105 (Fizz + Buzz + Bang!).
+      </p>
+
+      <!-- Output list -->
+      <ol id="datas" aria-live="polite"></ol>
+    </section>
+  </main>
+
+  <!-- 🪶 Include footer -->
+  <div data-include="components/footer.html"></div>
+
+  <!-- Scripts -->
+  <script src="scripts/HTMLInclude.js" defer></script>
+  <script src="scripts/fizzbuzz4.js" defer></script>
+  <script src="scripts/theme-toggle.js" defer></script>
+
+</body>
+</html>
