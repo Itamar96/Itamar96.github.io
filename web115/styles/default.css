@@ -125,44 +125,68 @@ button:hover,button:focus-visible{background:var(--accent-deep);transform:transl
 :focus{outline:3px solid rgba(var(--accent-rgb),.18);outline-offset:3px;}
 
 /* Figures */
-figure{
-  margin:var(--space-6) auto;text-align:center;background:var(--surface);
-  border-radius:var(--radius);padding:var(--space-4);
-  box-shadow:var(--shadow);border:1px solid rgba(var(--accent-deep-rgb),.12);
-  max-width:var(--content-width);width:100%;
+figure {
+  margin: var(--space-6) auto;
+  text-align: center;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(var(--accent-deep-rgb), .12);
+  max-width: var(--content-width);
+  width: 100%;
 }
-figure img{
-  display:block;width:100%;height:auto;border-radius:12px;margin:0 auto;
-  box-shadow:0 8px 24px rgba(var(--text-rgb),.12);
-}
-figcaption{margin-top:.75rem;font-size:.95rem;color:var(--accent-deep);text-align:center;}
 
-[data-field],.field{
-  display:flex;flex-direction:column;margin-bottom:var(--space-4);
+figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 0 auto;
+  box-shadow: 0 8px 24px rgba(var(--text-rgb), .12);
 }
-[data-field] label,.field label{margin-bottom:.5rem;font-weight:600;}
-[data-field] input,.field input{
-  padding:.6rem .75rem;border:2px solid var(--holiday-gold);border-radius:10px;background:var(--surface);font:inherit;box-shadow:0 1px 3px rgba(0,0,0,.05);
-  transition:border-color .2s ease, box-shadow .2s ease;
-}
-[data-field] input:focus,.field input:focus{outline: none;border-color:var(--accent);box-shadow:0 0 6px rgba(var(--holiday-gold-rgb),.5);} 
 
-/* Muted inline helper text (replacement for .muted) */
-[data-muted],.muted{color:rgba(var(--text-rgb),.6);font-size:.95rem;}
+/* Caption styling */
+figcaption {
+  margin-top: .75rem;
+  font-size: .95rem;
+  color: var(--accent-deep);
+  text-align: center;
+}
 
 /* Framed variants */
-figure[data-gold],figure[data-holiday]{
-  position:relative;border-radius:20px;padding:0.7rem;background-color:var(--holiday-gold-outer);
-  box-shadow:inset 0 0 6px 6px var(--holiday-gold),0 10px 20px rgba(var(--holiday-gold-rgb),.10);
-  overflow:visible;max-width:var(--content-width);width:60%;
+figure[data-gold], figure[data-holiday] {
+  position: relative;
+  border-radius: 20px;
+  padding: 0.7rem;
+  background-color: var(--holiday-gold-outer);
+  box-shadow: inset 0 0 6px 6px var(--holiday-gold),
+              0 10px 20px rgba(var(--holiday-gold-rgb), .10);
+  overflow: visible;
+  max-width: var(--content-width);
+  width: 60%;
 }
-figure[data-gold]::before,figure[data-holiday]::before{
-  content:"";position:absolute;inset:-14px;border-radius:20px;
-  background:var(--holiday-cream);z-index:-1;box-shadow:0 12px 36px rgba(var(--holiday-gold-rgb),.12);
+
+figure[data-gold]::before, figure[data-holiday]::before {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  border-radius: 20px;
+  background: var(--holiday-cream);
+  z-index: -1;
+  box-shadow: 0 12px 36px rgba(var(--holiday-gold-rgb), .12);
 }
-figure[data-gold] img,figure[data-holiday] img{
-  width:calc(100% - 12px);max-width:calc(100% - 12px);margin:6px auto 0;border-radius:12px;border:0;padding:0;background:transparent;
+
+figure[data-gold] img, figure[data-holiday] img {
+  width: calc(100% - 12px);
+  max-width: calc(100% - 12px);
+  margin: 6px auto 0;
+  border-radius: 12px;
+  border: 0;
+  padding: 0;
+  background: transparent;
 }
+
 
 /* Intro block */
 [data-intro]{
@@ -188,7 +212,7 @@ footer{
   border-top:4px solid var(--accent);background:var(--clay-glow);color:var(--surface);
 }
 footer p{font-size:.95rem;line-height:1.6;margin-bottom:1rem;}
-footer a{color:var(--accent-deep);margin:0.3rem;}
+footer a{color:var(--holiday-gold);margin:0.3rem;}
 footer a:hover,footer a:focus-visible{color:var(--accent);text-decoration:underline;}
 footer ul{
   list-style:none;margin:.5rem 0;padding:0;
@@ -275,4 +299,29 @@ main[data-container] > div[data-intro] {
   margin-right: auto;
   padding-left: 0;
   padding-right: 0;
+}
+
+/* ----------------------------------------
+   NEW SECTION FOR FIZZBUZZ INPUT FIELDS
+   ---------------------------------------- */
+   
+/* -------- Gold-accented input fields (FizzBuzz, Accumulus compliant) -------- */
+[data-field] input[type="text"],
+[data-field] input[type="number"] {
+  /* No width here to avoid width+padding warning */
+  display: block;                           /* stack nicely under labels */
+  padding: 0.55rem 0.75rem;
+  border: 2px solid var(--holiday-gold);
+  border-radius: var(--radius);
+  font-family: var(--brand-body);
+  font-size: 1rem;
+  background: var(--holiday-cream);
+  color: var(--text);
+  box-shadow: inset 0 1px 3px rgba(var(--text-rgb), .08);
+}
+
+/* Focus: keep outline (for a11y + Accumulus), add gold glow */
+[data-field] input:focus {
+  border-color: var(--holiday-gold);
+  box-shadow: 0 0 0 3px rgba(var(--holiday-gold-rgb), .35);
 }
