@@ -105,5 +105,3 @@
     }
     w.HTMLInclude();
 }(window, document)
-
-
