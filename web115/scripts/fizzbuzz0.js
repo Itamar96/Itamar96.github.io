@@ -1,37 +1,24 @@
 "use strict";
 
-// Minimal fizzbuzz demo script using attribute-based helpers.
-// This mirrors the behavior in fizzbuzz.js but prefers [data-muted]
-// for live counters / greetings so the migration stays classless.
+// Minimal greeting + themed loop (FizzBuzz-style).
+// Keeps your structure; inserts the greeting heading under the page title.
 
-// Wire up submit handler (script is loaded with `defer`, so DOM is ready)
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('name-form');
-  if (form) form.addEventListener('submit', useForm);
-  initLengthCounters();
-});
-
-// Add subtle live counters for first/last names (max 20)
 function initLengthCounters() {
   const MAX = 20;
   const fields = [
     { id: 'first_name', label: 'First name' },
-    { id: 'last_name',  label: 'Last name'  },
+    { id: 'last_name',  label: 'Last name'  }
   ];
 
   for (const f of fields) {
     const input = document.getElementById(f.id);
     if (!input) continue;
 
-    // Create counter element (muted, live-updating)
     const counter = document.createElement('div');
-    // use data-muted for styling instead of class to prefer attribute-based selectors
     counter.setAttribute('data-muted', 'true');
     counter.setAttribute('aria-live', 'polite');
     counter.style.marginTop = '0.25rem';
     counter.style.fontSize = '0.9em';
-
-    // Insert right after the input (no HTML edits needed)
     input.insertAdjacentElement('afterend', counter);
 
     const update = () => {
@@ -44,27 +31,33 @@ function initLengthCounters() {
       } else {
         counter.textContent = `${f.label}: ${len}/20`;
       }
-      // Keep constraint-valid (maxlength already prevents >20)
-      input.setCustomValidity(''); // clear any prior message
+      input.setCustomValidity('');
     };
 
-    // Initialize and attach listeners
     update();
     input.addEventListener('input', update);
     input.addEventListener('blur', update);
   }
 }
 
+// Insert (if missing) and return a heading <h3 id="greeting">
+// Placed UNDER your existing page title <h3> inside <main> > <section>
 function ensureGreetingElement() {
   let g = document.getElementById('greeting');
-  const datas = document.getElementById('datas');
-  if (!datas) return null;
-  if (!g) {
-    g = document.createElement('p');
-    g.id = 'greeting';
-    // prefer attribute-based styling
-    g.setAttribute('data-muted', 'true');
-    datas.parentNode.insertBefore(g, datas);
+  if (g) return g;
+
+  const section = document.querySelector('main > section');
+  if (!section) return null;
+
+  const firstH3 = section.querySelector('h3'); // "Instructions here"
+  g = document.createElement('h3');
+  g.id = 'greeting';
+  g.textContent = 'Welcome to Iridescent Cinderwyrm Bodywork!';
+  // Prefer heading (h3), not paragraph, to satisfy the assignment
+  if (firstH3 && firstH3.parentNode === section) {
+    firstH3.insertAdjacentElement('afterend', g);
+  } else {
+    section.insertAdjacentElement('afterbegin', g);
   }
   return g;
 }
@@ -77,26 +70,35 @@ function titleCase(s) {
     .replace(/(^|\s)\S/g, (c) => c.toUpperCase());
 }
 
-function renderFizzBuzz(name) {
+// Render the themed list per assignment:
+// - Prompt for count (Part II). If invalid, fallback to 125 (Part I).
+// - Two-word phrase only.
+// - Show "the number is even/odd" on the same line.
+function renderFizzBuzz(firstName) {
   const datas = document.getElementById('datas');
   if (!datas) return;
   datas.innerHTML = '';
+
+  let howMany = prompt(`How high do you want to count, ${titleCase(firstName || 'friend')}?`);
+  howMany = parseInt(howMany, 10);
+  if (!Number.isFinite(howMany) || howMany < 1) howMany = 125; // Part I fallback
+  // Optionally cap to prevent runaway rendering
+  howMany = Math.min(howMany, 1000);
+
+  const phrase = 'Soothing Session'; // massage theme, exactly two words
+
   const frag = document.createDocumentFragment();
-  // limit to a reasonable maximum in case of unintended changes
-  const MAX = 125;
-  for (let i = 1; i <= MAX; i++) {
+  for (let i = 1; i <= howMany; i++) {
     const li = document.createElement('li');
-    let text = '';
-    if (i % 15 === 0) text = 'FizzBuzz';
-    else if (i % 3 === 0) text = 'Fizz';
-    else if (i % 5 === 0) text = 'Buzz';
-    else text = String(i);
-    if (i === 1 && name) text = `${text} — Hello, ${name}!`;
-    li.textContent = text;
+    const parity = (i % 2 === 0) ? 'even' : 'odd';
+    // Example format required by prompt:
+    // 1) Soothing Session - the number is odd
+    li.textContent = `${i}) ${phrase} - the number is ${parity}`;
     frag.appendChild(li);
   }
   datas.appendChild(frag);
-  // Make container focusable for screen reader announcement, but only if focus is supported
+
+  // Accessibility: allow SR/keyboard users to jump to output
   try {
     datas.setAttribute('tabindex', '-1');
     if (typeof datas.focus === 'function') datas.focus();
@@ -110,7 +112,6 @@ function useForm(event) {
   const mid = document.getElementById('middle_initial');
   const last = document.getElementById('last_name');
 
-  // Basic required fields check
   if (!first || !last || !first.value.trim() || !last.value.trim()) {
     alert('Please enter both first and last name.');
     return;
@@ -122,8 +123,19 @@ function useForm(event) {
   const displayName = nameParts.join(' ');
 
   const greeting = ensureGreetingElement();
-  if (greeting) greeting.textContent = `Hello, ${displayName}!`;
+  if (greeting) {
+    greeting.textContent = `Welcome to Iridescent Cinderwyrm Bodywork, ${displayName}!`;
+  }
 
-  renderFizzBuzz(displayName);
+  // Now render the themed list (Part I + II behavior)
+  renderFizzBuzz(first.value.trim());
 }
 
+// Attach listeners
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('name-form');
+  if (form) form.addEventListener('submit', useForm);
+  initLengthCounters();
+  // Make sure greeting appears even before submit
+  ensureGreetingElement();
+});
