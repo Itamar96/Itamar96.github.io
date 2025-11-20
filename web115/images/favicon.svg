@@ -1,0 +1,6 @@
+<!-- favicon.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="IC favicon">
+  <rect width="32" height="32" rx="6" fill="#2F3A34"></rect>
+  <path d="M8 6h4v20H8z" fill="#FFFFFF"></path>
+  <path d="M26 10l-2-2c-2.2-2.2-4.4-2.6-7-2.6-5.7 0-9.5 3.8-9.5 9.6S11.3 24 17 24c2.7 0 4.9-.4 7-2.6l2-2-2-2c-1.5 1.6-3.1 2.6-5.2 2.6-3.8 0-6.5-2.7-6.5-6.4S15 7.2 18.8 7.2c2.1 0 3.7 1 5.2 2.6l2-2z" fill="#FFFFFF"></path>
+</svg>
