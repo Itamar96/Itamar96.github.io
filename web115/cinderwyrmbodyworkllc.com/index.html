@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinderwyrm Bodywork LLC – Digital Card</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Accumulus / lint.page validator kit -->
+    <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous"></script>
+    <!-- Embedded stylesheet -->
+    <style>
+        /* Global reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Cormorant Garamond", "Georgia", serif;
+            background:
+                radial-gradient(circle at top left, rgba(255,255,255,0.8), transparent 55%),
+                radial-gradient(circle at bottom right, rgba(230,210,180,0.7), transparent 60%),
+                #e9dfcf;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .page-wrapper {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .card {
+            background-color: #fbf6ec;
+            border-radius: 26px;
+            box-shadow:
+                0 18px 40px rgba(0,0,0,0.18),
+                0 0 0 1px rgba(180,150,110,0.3);
+            padding: 2.5rem 3rem;
+            max-width: 1100px;
+            width: 90vw;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .card-front,
+        .card-back {
+            display: grid;
+            grid-template-columns: 1.1fr 1.4fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .portrait-frame {
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.22);
+        }
+
+        .portrait-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        h1 {
+            margin: 0;
+            font-family: "Cinzel", "Times New Roman", serif;
+            letter-spacing: 0.06em;
+            font-size: 2.2rem;
+            text-align: center;
+            color: #3b2c22;
+        }
+
+        .tagline-main {
+            margin: 0.4rem 0 0;
+            text-align: center;
+            font-size: 1.2rem;
+            letter-spacing: 0.04em;
+            color: #6a4d35;
+        }
+
+        .practitioner-name {
+            margin: 1.2rem 0 0.3rem;
+            text-align: center;
+            font-size: 1.6rem;
+            color: #3b2c22;
+        }
+
+        .divider-line {
+            width: 70%;
+            max-width: 400px;
+            height: 2px;
+            margin: 0.4rem auto 1.3rem;
+            background: linear-gradient(to right, transparent, #705337, transparent);
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1rem;
+            font-size: 1.05rem;
+            color: #423329;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .contact-icon {
+            font-size: 1.2rem;
+            width: 1.4rem;
+            text-align: center;
+        }
+
+        .contact-list a {
+            color: #423329;
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(112,83,55,0.5);
+        }
+
+        .contact-list a:hover,
+        .contact-list a:focus {
+            border-bottom-style: solid;
+        }
+
+        .address {
+            margin: 0.3rem 0 0;
+            font-size: 1.02rem;
+            text-align: center;
+            letter-spacing: 0.02em;
+            color: #3b2c22;
+        }
+
+        /* Back side styling */
+        .back-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.4rem;
+        }
+
+        .dragon-circle {
+            width: 210px;
+            height: 210px;
+            background-color: #c79c42;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dragon-circle::before {
+            content: "";
+            position: absolute;
+            width: 170%;
+            height: 170%;
+            border-radius: 50%;
+            border: 40px solid rgba(251,246,236,0.18);
+            top: -20%;
+            left: -35%;
+            transform: rotate(-22deg);
+        }
+
+        .dragon-initial {
+            position: relative;
+            font-family: "Cinzel Decorative", "Times New Roman", serif;
+            font-size: 5rem;
+            color: #fbf6ec;
+        }
+
+        .tagline-secondary {
+            margin: 0;
+            font-size: 1.25rem;
+            color: #3b2c22;
+            letter-spacing: 0.03em;
+        }
+
+        .back-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .cta {
+            margin: 0;
+            font-size: 1.4rem;
+            text-align: center;
+            color: #3b2c22;
+        }
+
+        .qr-frame {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .qr-frame img {
+            width: 190px;
+            height: 190px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        .qr-frame figcaption {
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            color: #3568c3;
+        }
+
+        .mid-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(0,0,0,0.18), transparent);
+            margin: 0.4rem 0;
+        }
+
+        /* Validation cloud */
+        .validator {
+            margin: 0;
+        }
+
+        .validator img {
+            border: none;
+            display: block;
+        }
+
+        /* Responsiveness: keep card visible on small screens */
+        @media (max-width: 900px) {
+            .card {
+                padding: 1.7rem 1.5rem;
+            }
+
+            .card-front,
+            .card-back {
+                grid-template-columns: 1fr;
+            }
+
+            .dragon-circle {
+                width: 170px;
+                height: 170px;
+            }
+
+            .qr-frame img {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        @media (max-height: 600px) {
+            .card {
+                transform: scale(0.9);
+            }
+        }
+
+        @media (max-height: 500px) {
+            .card {
+                transform: scale(0.8);
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="page-wrapper">
+    <!-- Digital business card -->
+    <section class="card" aria-label="Cinderwyrm Bodywork business card">
+        <!-- Front side -->
+        <div class="card-front">
+            <div class="front-left">
+                <figure class="portrait-frame">
+                    <!-- Replace hiking-photo.jpg with your own image file in this folder -->
+                    <img src="hiking-photo.jpg"
+                         alt="Itamar standing on one leg in a mountain meadow, smiling at the camera.">
+                </figure>
+            </div>
+
+            <div class="front-right">
+                <h1>Cinderwyrm Bodywork LLC</h1>
+                <p class="tagline-main">Grounded touch. Iridescent results.</p>
+                <p class="practitioner-name">Itamar Castillo</p>
+                <div class="divider-line" aria-hidden="true"></div>
+
+                <ul class="contact-list">
+                    <li>
+                        <span class="contact-icon" aria-hidden="true">&#9993;</span>
+                        <a href="mailto:icastil4@email.cpcc.edu">icastil4@email.cpcc.edu</a>
+                    </li>
+                    <li>
+                        <span class="contact-icon" aria-hidden="true">&#128241;</span>
+                        <a href="tel:+19173309238">(917) 330-9238</a>
+                    </li>
+                    <li>
+                        <span class="contact-icon" aria-hidden="true">&#128279;</span>
+                        <a href="https://itamar96.github.io" target="_blank" rel="noopener">
+                            https://itamar96.github.io
+                        </a>
+                    </li>
+                </ul>
+
+                <p class="address">
+                    Address: 482 Willow Creek Drive, Boulder, CO 80302
+                </p>
+            </div>
+        </div>
+
+        <div class="mid-divider" aria-hidden="true"></div>
+
+        <!-- Back side -->
+        <div class="card-back">
+            <div class="back-logo">
+                <div class="dragon-circle" aria-hidden="true">
+                    <!-- Stylized dragon-inspired initial -->
+                    <span class="dragon-initial">C</span>
+                </div>
+                <p class="tagline-secondary">Touch that awakens.</p>
+            </div>
+
+            <div class="back-right">
+                <p class="cta">Ready for hands-on magic?</p>
+                <figure class="qr-frame">
+                    <!-- Replace venmo-qr.png with your own Venmo QR code image -->
+                    <img src="venmo-qr.png"
+                         alt="Venmo QR code for Cinderwyrm Bodywork payments.">
+                    <figcaption>Venmo</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+</div>  
+</body>
+</html>
