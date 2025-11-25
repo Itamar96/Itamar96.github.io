@@ -16,13 +16,13 @@
   --accent-deep:#365746;
   --accent-soft:#92ABA6;
 
-  --clay-glow:#B85B39;
+  --clay-glow:#6e1d00;
 
-  --holiday-gold:#701761;
+  --holiday-gold:#9f8c11;
   --header-gold:#DDB955;
   --holiday-cream:#FFF7E2;
   --holiday-gold-rgb:201,168,77;
-  --holiday-gold-outer:rgba(255,243,200,.95);
+  --holiday-gold-outer:rgba(250, 231, 162, 0.95);
 
   --brand-heading:"Playfair Display",serif;
   --brand-body:"Inter",sans-serif;
@@ -92,9 +92,24 @@ p,ul,ol{margin:0 0 var(--space-4);}
 
 /* -------- Components -------- */
 header{
-  position:relative;padding:calc(var(--space-4) + .5rem) 0;
-  text-align:center;background:var(--surface);
-  border-bottom:1px solid rgba(var(--accent-deep-rgb),.12);
+  position: relative;
+  padding: calc(var(--space-4) + .5rem) 0;
+  text-align: center;  /* centers the title text */
+  background: var(--surface);
+  border-bottom: 1px solid rgba(var(--accent-deep-rgb), .12);
+}
+
+/* Logo: left side, aligned with the header title */
+header .logo{
+  position: absolute;
+  left: 6rem;        /* move closer/further from left edge */
+  top: 50%;
+  transform: translateY(-50%);   /* vertically centers it in the header */
+}
+
+header .logo img{
+  display: block;
+  height: 60px;        /* adjust size to taste */
 }
 nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1rem;margin-top:.5rem;}
 nav a{
@@ -227,7 +242,7 @@ footer ul li{
 /* Place the decorative separator (star) between items instead of inside them */
 footer ul li:not(:last-child)::after{
   content:"✶";
-  color:var(--holiday-gold);
+  color:var(--bg-base);
   position:absolute;
   right:-0.9rem;
   top:50%;
