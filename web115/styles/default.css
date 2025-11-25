@@ -253,7 +253,7 @@ footer ul li:not(:last-child)::after{
 /* -------- Dark Theme -------- */
 [data-theme="dark"]{
   --dark-bg:#0f211b;--dark-surface:#1b2621;--dark-accent:#8fbf9e;--dark-accent-deep:#5f8f6f;--dark-accent-soft:#90b59a;--dark-gold:#B8933F;
-  --header-gold:#CAA145;--holiday-gold-rgb:184,147,63;
+  --header-gold:#ae9242;
   --bg-base:var(--dark-bg);
   --bg-grad-1:#162824;--bg-grad-2:#101e1a;--bg-grad-3:#0b1512;
   --surface:var(--dark-surface);
