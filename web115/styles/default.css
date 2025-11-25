@@ -99,18 +99,11 @@ header{
   border-bottom: 1px solid rgba(var(--accent-deep-rgb), .12);
 }
 
-/* Logo: left side, aligned with the header title */
-header .logo{
-  position: absolute;
-  left: 6rem;        /* move closer/further from left edge */
-  top: 50%;
-  transform: translateY(-50%);   /* vertically centers it in the header */
+/* Logo: left side, aligned with the header title */ FIX
+.logo{
+  float:left;
 }
 
-header .logo img{
-  display: block;
-  height: 60px;        /* adjust size to taste */
-}
 nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1rem;margin-top:.5rem;}
 nav a{
   color:var(--accent-deep);padding:.4rem .75rem;border-radius:999px;font-weight:400;
