@@ -18,8 +18,8 @@
 
   --clay-glow:#B85B39;
 
-  --holiday-gold:#C9A84D;
-  --header-gold:#896e23;
+  --holiday-gold:#715a1c;
+  --header-gold:#DDB955;
   --holiday-cream:#FFF7E2;
   --holiday-gold-rgb:201,168,77;
   --holiday-gold-outer:rgba(255,243,200,.95);
@@ -253,7 +253,7 @@ footer ul li:not(:last-child)::after{
 /* -------- Dark Theme -------- */
 [data-theme="dark"]{
   --dark-bg:#0f211b;--dark-surface:#1b2621;--dark-accent:#8fbf9e;--dark-accent-deep:#5f8f6f;--dark-accent-soft:#90b59a;--dark-gold:#B8933F;
-  --header-gold:#ae9242;
+  --header-gold:#CAA145;--holiday-gold-rgb:184,147,63;
   --bg-base:var(--dark-bg);
   --bg-grad-1:#162824;--bg-grad-2:#101e1a;--bg-grad-3:#0b1512;
   --surface:var(--dark-surface);
