@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <!-- Accumulus / lint.page validator kit -->
     <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous"></script>
+
+     <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png"/>
+
     <!-- Embedded stylesheet -->
     <style>
         /* Global reset */
@@ -63,16 +67,20 @@
         }
 
         .portrait-frame {
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.22);
-        }
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.22);
+     max-width: 210px;
+    width: 100%;
+}
 
-        .portrait-frame img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
+.portrait-frame img {
+    max-width: 210px;
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
 
         h1 {
             margin: 0;
@@ -148,23 +156,28 @@
 
         /* Back side styling */
         .back-logo {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.4rem;
-        }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.4rem;
+}
 
-        .dragon-circle {
-            width: 210px;
-            height: 210px;
-            background-color: #c79c42;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
+.dragon-circle img {
+    width: 200px;
+    height: auto;
+}
+.dragon-circle {
+    width: 210px;
+    height: 210px;
+    background-color: #c79c42;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
 
         .dragon-circle::before {
             content: "";
@@ -290,8 +303,9 @@
             <div class="front-left">
                 <figure class="portrait-frame">
                     <!-- Replace hiking-photo.jpg with your own image file in this folder -->
-                    <img src="hiking-photo.jpg"
-                         alt="Itamar standing on one leg in a mountain meadow, smiling at the camera.">
+                    <img src="images/businesscard.png" 
+     alt="Itamar standing on one leg in a mountain meadow, smiling at the camera.">
+
                 </figure>
             </div>
 
@@ -326,26 +340,26 @@
 
         <div class="mid-divider" aria-hidden="true"></div>
 
-        <!-- Back side -->
-        <div class="card-back">
-            <div class="back-logo">
-                <div class="dragon-circle" aria-hidden="true">
-                    <!-- Stylized dragon-inspired initial -->
-                    <span class="dragon-initial">C</span>
-                </div>
-                <p class="tagline-secondary">Touch that awakens.</p>
-            </div>
+       <div class="card-back">
+    <div class="back-logo">
+        <figure class="dragon-circle" aria-hidden="true">
+            <!-- Stylized dragon-inspired logo -->
+            <img src="images/logo_120.png" 
+                 alt="Iridescent Cinderwyrm Bodywork logo">
+        </figure>
+        <p class="tagline-secondary">Touch that awakens.</p>
+    </div>
 
-            <div class="back-right">
-                <p class="cta">Ready for hands-on magic?</p>
-                <figure class="qr-frame">
-                    <!-- Replace venmo-qr.png with your own Venmo QR code image -->
-                    <img src="venmo-qr.png"
-                         alt="Venmo QR code for Cinderwyrm Bodywork payments.">
-                    <figcaption>Venmo</figcaption>
-                </figure>
-            </div>
-        </div>
+    <div class="back-right">
+        <p class="cta">Ready for hands-on magic?</p>
+        <figure class="qr-frame">
+            <img src="images/Aethernova-real-QR.jpg" 
+                 alt="Venmo QR code for Cinderwyrm Bodywork payments">
+            <figcaption>Venmo</figcaption>
+        </figure>
+    </div>
+</div>
+
     </section>
 </div>  
 </body>

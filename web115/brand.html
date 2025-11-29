@@ -29,7 +29,19 @@
 </head>
 <body>
   <!-- Header -->
-  <div data-include="components/header.html"></div>
+  <div data-include="components/header.html">
+    <!-- Fallback header content in case HTMLInclude.js fails -->
+    <header>
+      <h1>Itamar Castillo's Iridescent Cinderwyrm</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="brand.html">Brand Guide</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
 
   <main>
     <h2>Brand Guide</h2>
@@ -54,71 +66,107 @@
       <!-- Dark Theme Palette -->
       <section aria-labelledby="brand-dark" data-section>
         <h3 id="brand-dark" data-section-title>Dark Theme Palette (opt-in)</h3>
-        <ul data-swatches>
-          <li>
-            <span style="background:#1E1E1E; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span>#1E1E1E</span> <em>Deep background</em>
-          </li>
-          <li>
-            <span style="background:#202020; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span>#202020</span> <em>Panels / surfaces</em>
-          </li>
-          <li>
-            <span style="background:#EAEAEA; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; border:1px solid #ccc; margin-right:0.5em; vertical-align:middle;"></span>
-            <span>#EAEAEA</span> <em>Text (on dark)</em>
-          </li>
-          <li>
-            <span style="background:#88BFA2; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span>#88BFA2</span> <em>Accent (dark)</em>
-          </li>
-          <li>
-            <span style="background:#64A083; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span>#64A083</span> <em>Accent deep (dark)</em>
-          </li>
-        </ul>
-      </section>
+       <ul data-swatches>
+  <li>
+    <span style="background:#0f211b; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>#0f211b</span> <em>Deep background</em>
+  </li>
+  <li>
+    <span style="background:#1b2621; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>#1b2621</span> <em>Surface / panels</em>
+  </li>
+  <li>
+    <span style="background:#f6f4ef; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; border:1px solid #ccc; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>#f6f4ef</span> <em>Text (on dark)</em>
+  </li>
+  <li>
+    <span style="background:#8fbf9e; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>#8fbf9e</span> <em>Accent</em>
+  </li>
+  <li>
+    <span style="background:#5f8f6f; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>#5f8f6f</span> <em>Accent deep</em>
+  </li>
+  <li>
+    <span style="background:#90b59a; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>#90b59a</span> <em>Accent soft</em>
+  </li>
+  <li>
+    <span style="background:#B8933F; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>#B8933F</span> <em>Holiday gold</em>
+  </li>
+  <li>
+    <span style="background:#CAA145; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>#CAA145</span> <em>Header gold</em>
+  </li>
+  <li>
+    <span style="background:#162824; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>#162824</span> <em>Background gradient 1</em>
+  </li>
+  <li>
+    <span style="background:#101e1a; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>#101e1a</span> <em>Background gradient 2</em>
+  </li>
+  <li>
+    <span style="background:#0b1512; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>#0b1512</span> <em>Background gradient 3</em>
+  </li>
+</ul>
+</section>
 
       <!-- Color Palette (Desert Matcha) -->
       <section aria-labelledby="brand-colors" data-section>
         <h3 id="brand-colors" data-section-title>Color Palette (Desert Matcha)</h3>
         <ul data-swatches>
-          <li>
-            <span style="background:#F7EAD9; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span>#F7EAD9</span> <em>Sand background</em>
-          </li>
-          <li>
-            <span style="background:#FFFFFF; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; border:1px solid #ccc; margin-right:0.5em; vertical-align:middle;"></span>
-            <span>#FFFFFF</span> <em>Surface / Cards</em>
-          </li>
-          <li>
-            <span style="background:#2F3A34; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span>#2F3A34</span> <em>Primary text</em>
-          </li>
-          <li>
-            <span style="background:#6F8F6B; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span>#6F8F6B</span> <em>Accent buttons</em>
-          </li>
-          <li>
-            <span style="background:#3E574B; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span>#3E574B</span> <em>Small text</em>
-          </li>
-          <li>
-            <span style="background:#8DA3A6; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span>#8DA3A6</span> <em>Mist (subtle UI)</em>
-          </li>
-          <li>
-            <span style="background:#6e1d00; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span>#6e1d00</span> <em>Clay glow</em>
-          </li>
-          <li>
-            <span style="background:#FFF8DC; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span>#FFF8DC</span> <em>Holiday light background</em>
-          </li>
-          <li>
-            <span style="background:#D4AF37; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
-            <span>#D4AF37</span> <em>Links / Gold accent</em>
-          </li>
-        </ul>
+  <li>
+    <span style="background:#F7EAD9; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>#F7EAD9</span> <em>Base background</em>
+  </li>
+  <li>
+    <span style="background:#FFFFFF; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; border:1px solid #ccc; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>#FFFFFF</span> <em>Surface / panels</em>
+  </li>
+  <li>
+    <span style="background:#2F3A34; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>#2F3A34</span> <em>Text (on light)</em>
+  </li>
+  <li>
+    <span style="background:#5E7D62; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>#5E7D62</span> <em>Accent</em>
+  </li>
+  <li>
+    <span style="background:#365746; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>#365746</span> <em>Accent deep</em>
+  </li>
+  <li>
+    <span style="background:#92ABA6; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>#92ABA6</span> <em>Accent soft</em>
+  </li>
+  <li>
+    <span style="background:#6e1d00; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>#6e1d00</span> <em>Clay glow</em>
+  </li>
+  <li>
+    <span style="background:#9f8c11; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>#9f8c11</span> <em>Holiday gold</em>
+  </li>
+  <li>
+    <span style="background:#DDB955; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>#DDB955</span> <em>Header gold</em>
+  </li>
+  <li>
+    <span style="background:#FFF7E2; display:inline-block; width:1.25em; height:1.25em; border-radius:3px; border:1px solid #ccc; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>#FFF7E2</span> <em>Holiday cream</em>
+  </li>
+  <li>
+    <span style="background:rgb(201,168,77); display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>rgb(201,168,77)</span> <em>Holiday gold (RGB)</em>
+  </li>
+  <li>
+    <span style="background:rgba(250,231,162,0.95); display:inline-block; width:1.25em; height:1.25em; border-radius:3px; margin-right:0.5em; vertical-align:middle;"></span>
+    <span>rgba(250,231,162,0.95)</span> <em>Holiday gold outer glow</em>
+  </li>
+</ul>
 
         <p data-meta>
           Contrast: #2F3A34 on #F7EAD9 passes for body copy. White text on #6F8F6B passes on buttons.
@@ -127,7 +175,12 @@
   </main>
 
   <!-- Footer -->
-  <div data-include="components/footer.html"></div>
+  <div data-include="components/footer.html">
+    <!-- Fallback footer content in case HTMLInclude.js fails -->
+    <footer>
+      <p>&copy; 2024 Itamar Castillo. All rights reserved.</p>
+    </footer>
+  </div>
 
   <!-- Scripts -->
   <script src="scripts/HTMLInclude.js" defer></script>
