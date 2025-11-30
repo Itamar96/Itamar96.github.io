@@ -42,41 +42,39 @@
       <h3>Instructions</h3>
       <p>
         This version incorporates divisibility by <strong>3</strong>, <strong>5</strong>, and <strong>7</strong>.  
-        If divisible by 7, output <strong>BANG!</strong>. Multiple divisors concatenate their words.
+        If divisible by 7, output <strong>BANG!</strong>. Multiple divisors concatenate their words. Test with numbers like 21 (3 & 7), 15 (3 & 5), and 105 (3, 5, 7).
       </p>
 
-      <form id="fizzbuzz-form" aria-describedby="form-hint" data-form-grid>
-        <div data-field>
-          <label for="baseWord">Base Word</label>
-          <input id="baseWord" name="baseWord" type="text" placeholder="Breathe!" required maxlength="20" />
-        </div>
+     <form id="fizzbuzz3-form" aria-describedby="form-hint" data-form-grid>
 
-        <div data-field>
-          <label for="word3">Word for divisible by 3</label>
-          <input id="word3" name="word3" type="text" placeholder="Relax!" required maxlength="20" />
-        </div>
+  <div data-field>
+    <label for="baseWord"><strong>Base Word</strong></label>
+    <input class="word" id="baseWord" name="baseWord" type="text" placeholder="Breathe!" required maxlength="20" />
+  </div>
 
-        <div data-field>
-          <label for="word5">Word for divisible by 5</label>
-          <input id="word5" name="word5" type="text" placeholder="Restore!" required maxlength="20" />
-        </div>
+  <div data-field>
+    <label for="word3"><strong>Word for divisible by 3</strong></label>
+    <input class="word" id="word3" name="word3" type="text" placeholder="Relax!" required maxlength="20" />
+  </div>
 
-        <div data-field>
-          <label for="word7">Word for divisible by 7</label>
-          <input id="word7" name="word7" type="text" placeholder="BANG!" required maxlength="20" />
-        </div>
+  <div data-field>
+    <label for="word5"><strong>Word for divisible by 5</strong></label>
+    <input class="word" id="word5" name="word5" type="text" placeholder="Restore!" required maxlength="20" />
+  </div>
 
-        <div data-field>
-          <button type="submit" data-btn-primary>Run FizzBuzz</button>
-        </div>
-      </form>
+  <div data-field>
+    <label for="word7"><strong>Word for divisible by 7</strong></label>
+    <input class="word" id="word7" name="word7" type="text" placeholder="BANG!" required maxlength="20" />
+  </div>
 
-      <p id="form-hint" data-muted>
-        Test with numbers like 21 (3 & 7), 15 (3 & 5), and 105 (3, 5, 7).
-      </p>
+  <div data-field class="button-row">
+    <button type="submit" data-btn-primary>Run FizzBuzz 3</button>
+  </div>
+
+</form>
 
       <!-- Output list -->
-      <ol id="datas" aria-live="polite"></ol>
+      <ul style="list-style-type:none; " id="datas" aria-live="polite"></ul>
     </section>
   </main>
 

@@ -13,7 +13,9 @@
     <!-- Embedded stylesheet -->
     <style>
         /* Global reset */
-        *, *::before, *::after {
+        html, body, p, ul, li, figure {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
@@ -51,7 +53,6 @@
                 0 0 0 1px rgba(180,150,110,0.3);
             padding: 2.5rem 3rem;
             max-width: 1100px;
-            width: 90vw;
             max-height: 80vh;
             display: flex;
             flex-direction: column;
@@ -72,13 +73,14 @@
     box-shadow: 0 8px 25px rgba(0,0,0,0.22);
      max-width: 210px;
     width: 100%;
+    margin-left: 5.2rem;
 }
 
 .portrait-frame img {
     max-width: 210px;
     width: 100%;
     height: auto;
-    display: flex;
+    display: flex;;
 }
 
 
@@ -178,14 +180,12 @@
     overflow: hidden;
 }
 
-
         .dragon-circle::before {
             content: "";
             position: absolute;
             width: 170%;
             height: 170%;
             border-radius: 50%;
-            border: 40px solid rgba(251,246,236,0.18);
             top: -20%;
             left: -35%;
             transform: rotate(-22deg);

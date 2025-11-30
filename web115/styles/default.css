@@ -99,9 +99,10 @@ header{
   border-bottom: 1px solid rgba(var(--accent-deep-rgb), .12);
 }
 
-/* Logo: left side, aligned with the header title */ FIX
-.logo{
+/* Logo: left side, aligned with the header title */ 
+.logo {
   float:left;
+  display:inline-flex;align-items:center;justify-content:center;
 }
 
 nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1rem;margin-top:.5rem;}
@@ -113,6 +114,19 @@ nav a:hover,nav a:focus-visible{
   transform:translateY(-1px);
   background:linear-gradient(180deg,rgba(144,181,154,.06),rgba(144,181,154,.03));
 }
+
+/* Theme toggle */
+#theme-toggle{
+  position:absolute;right:1rem;top:.9rem;display:inline-flex;align-items:center;justify-content:center;
+  width:38px;height:38px;padding:0;border-radius:999px;background:transparent;color:var(--accent-deep);
+  border:1px solid rgba(var(--accent-deep-rgb),.14);opacity:.86;cursor:pointer;
+  transition:border-color 160ms ease,opacity 160ms ease;font-size:1.05rem;
+}
+#theme-toggle [data-theme-icon]{line-height:1;display:inline-block;width:20px;height:20px;}
+#theme-toggle:hover{opacity:1;border-color:rgba(var(--accent-deep-rgb),.2);}
+#theme-toggle:focus-visible{outline:3px solid rgba(var(--accent-rgb),.18);outline-offset:3px;}
+[data-theme-icon]{width:20px;height:20px;display:inline-block;}
+[data-icon-sun]{display:none;}
 
 button,input[type="button"],input[type="submit"],[data-button]{
   padding:.55rem .95rem;border-radius:999px;font-weight:600;border:0;cursor:pointer;
@@ -245,19 +259,6 @@ footer ul li:not(:last-child)::after{
   pointer-events:none;
 }
 
-/* Theme toggle */
-#theme-toggle{
-  position:absolute;right:1rem;top:.9rem;display:inline-flex;align-items:center;justify-content:center;
-  width:38px;height:38px;padding:0;border-radius:999px;background:transparent;color:var(--accent-deep);
-  border:1px solid rgba(var(--accent-deep-rgb),.14);opacity:.86;cursor:pointer;
-  transition:border-color 160ms ease,opacity 160ms ease;font-size:1.05rem;
-}
-#theme-toggle [data-theme-icon]{line-height:1;display:inline-block;width:20px;height:20px;}
-#theme-toggle:hover{opacity:1;border-color:rgba(var(--accent-deep-rgb),.2);}
-#theme-toggle:focus-visible{outline:3px solid rgba(var(--accent-rgb),.18);outline-offset:3px;}
-[data-theme-icon]{width:20px;height:20px;display:inline-block;}
-[data-icon-sun]{display:none;}
-
 /* -------- Dark Theme -------- */
 [data-theme="dark"]{
   --dark-bg:#0f211b;--dark-surface:#1b2621;--dark-accent:#8fbf9e;--dark-accent-deep:#5f8f6f;--dark-accent-soft:#90b59a;--dark-gold:#B8933F;
@@ -313,11 +314,10 @@ main[data-container] > div[data-intro] {
    NEW SECTION FOR FIZZBUZZ INPUT FIELDS
    ---------------------------------------- */
    
-/* -------- Gold-accented input fields (FizzBuzz, Accumulus compliant) -------- */
+/* --- Base styles for inputs --- */
 [data-field] input[type="text"],
 [data-field] input[type="number"] {
-  /* No width here to avoid width+padding warning */
-  display: block;                           /* stack nicely under labels */
+  display: block;
   padding: 0.55rem 0.75rem;
   border: 2px solid var(--holiday-gold);
   border-radius: var(--radius);
@@ -328,8 +328,79 @@ main[data-container] > div[data-intro] {
   box-shadow: inset 0 1px 3px rgba(var(--text-rgb), .08);
 }
 
-/* Focus: keep outline (for a11y + Accumulus), add gold glow */
-[data-field] input:focus {
-  border-color: var(--holiday-gold);
-  box-shadow: 0 0 0 3px rgba(var(--holiday-gold-rgb), .35);
+/* Make the whole form horizontal */
+form[data-form-grid] {
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+  align-items: flex-start;     
+  flex-wrap: wrap;           
+}
+
+/* Label above input in each field */
+form[data-form-grid] > div[data-field] {
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+}
+
+/* Inputs stretch full width of their field */
+form[data-form-grid] > div[data-field] > input {
+  width: 100%;
+}
+
+/* ---- Middle Initial = EXACTLY 20px ---- */
+#middle_initial {
+  width: 20px;
+  max-width: 20px;
+}
+
+/* First + Last name wider */
+#first_name,
+#last_name {
+  max-width: 160px;
+}
+
+/* ---- Specific styling for FizzBuzz inputs ONLY ---- */
+.word {
+  max-width: 70px;    /* adjust this to your liking */
+  width: 100%;
+}
+
+/* ---- Number inputs = EXACTLY 20px ---- */
+.number {
+  width: 45px;
+  max-width: 45px;
+}
+
+/* ---- BUTTON ROW BELOW + LEFT ---- */
+
+/* Make the button row drop below all fields */
+form[data-form-grid] > div[data-field].button-row {
+  width: 100%;                     /* full row → moves underneath */
+  display: flex;
+  justify-content: flex-start;     /* button to the left */
+}
+
+/* Ensure the button stays aligned left */
+form[data-form-grid] > div[data-field].button-row button {
+  align-self: flex-start;
+}
+
+/* ===========================
+   FizzBuzz 4 – Two-Column Layout
+   =========================== */
+.fizzbuzz-columns {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;  
+  gap: 1.25rem;
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+/* Each column stacks fields vertically */
+.fizzbuzz-columns .column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }

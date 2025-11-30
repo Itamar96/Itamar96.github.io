@@ -1,7 +1,7 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("fizzbuzz-form");
+  const form = document.getElementById("fizzbuzz4-form");
   const output = document.getElementById("datas");
 
   function checkDivision(num, divisor) {
@@ -12,10 +12,16 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     output.innerHTML = "";
 
-    // Gather inputs
-    const firstName = document.getElementById("firstName").value.trim();
-    const middleName = document.getElementById("middleName").value.trim();
-    const lastName = document.getElementById("lastName").value.trim();
+    // Optional: clear old greeting if you submit more than once
+    const oldGreeting = document.getElementById("fizzbuzz4-greeting");
+    if (oldGreeting) {
+      oldGreeting.remove();
+    }
+
+    // 🔹 Gather inputs – IDs now MATCH the HTML 🔹
+    const firstName = document.getElementById("first_name").value.trim();
+    const middleName = document.getElementById("middle_initial").value.trim();
+    const lastName = document.getElementById("last_name").value.trim();
 
     const divisor1 = parseInt(document.getElementById("divisor1").value, 10);
     const word1 = document.getElementById("word1").value.trim();
@@ -38,7 +44,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Personalized greeting (outside the list)
     const greeting = document.createElement("p");
-    greeting.textContent = `Hello ${firstName} ${middleName} ${lastName}, here is your FizzBuzz 4 list:`;
+    greeting.id = "fizzbuzz4-greeting";
+
+    // Don’t show "undefined" if middle is empty
+    const nameParts = [firstName, middleName, lastName].filter(Boolean);
+    greeting.textContent = `Hello ${nameParts.join(" ")}, here is your FizzBuzz 4 list:`;
+
     output.parentNode.insertBefore(greeting, output);
 
     // Generate list
@@ -46,19 +57,19 @@ document.addEventListener("DOMContentLoaded", () => {
       let text = "";
 
       for (const divisor in rules) {
-        if (checkDivision(i, divisor)) {
+        if (checkDivision(i, Number(divisor))) {
           text += rules[divisor] + " ";
         }
       }
 
       if (text === "") {
-        text = defaultWord; // blank if empty
+        text = defaultWord; // can be blank if you left it blank
       } else {
         text = text.trim();
       }
 
       const li = document.createElement("li");
-      li.textContent = text; // ✅ no manual numbering
+      li.textContent = text;
       output.appendChild(li);
     }
   });

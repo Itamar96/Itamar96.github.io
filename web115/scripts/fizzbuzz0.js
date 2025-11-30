@@ -139,3 +139,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // Make sure greeting appears even before submit
   ensureGreetingElement();
 });
+
+function addMiddleOptionalNote() {
+  const mid = document.getElementById('middle_initial');
+  if (!mid) return;
+
+  const note = document.createElement('div');
+  note.setAttribute('data-muted', 'true');
+  note.style.marginTop = '0.25rem';
+  note.style.fontSize = '0.9em';
+  note.textContent = '(Optional)';
+
+  // Put the note right under the middle initial box
+  mid.insertAdjacentElement('afterend', note);
+}
+document.addEventListener('DOMContentLoaded', addMiddleOptionalNote);

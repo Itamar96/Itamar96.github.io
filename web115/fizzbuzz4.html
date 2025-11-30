@@ -42,75 +42,88 @@
       <h3>Instructions</h3>
       <p>
         In this version, you can personalize the output with your name, choose three divisors and words, and set the total count.  
-        Numbers not divisible by any divisor will display nothing (blank).
+        Numbers not divisible by any divisor will display nothing (blank). Try numbers like 15 (Fizz + Buzz), 21 (Fizz + Bang!), and 105 (Fizz + Buzz + Bang!).
       </p>
 
-      <form id="fizzbuzz-form" aria-describedby="form-hint" data-form-grid>
-        <!-- Name fields -->
-        <div data-field>
-          <label for="firstName">First Name</label>
-          <input id="firstName" name="firstName" type="text" placeholder="Itamar" required maxlength="20" />
-        </div>
-        <div data-field>
-          <label for="middleName">Middle Name</label>
-          <input id="middleName" name="middleName" type="text" placeholder="Cinderwyrm" maxlength="20" />
-        </div>
-        <div data-field>
-          <label for="lastName">Last Name</label>
-          <input id="lastName" name="lastName" type="text" placeholder="Castillo" required maxlength="20" />
-        </div>
+      <form id="fizzbuzz4-form" aria-describedby="form-hint" data-form-grid>
+          <div data-field>
+            <label for="first_name"><strong>First Name</strong></label>
+            <input id="first_name" name="first_name" type="text" placeholder="Enter your first name" required autocomplete="given-name" maxlength="20" />
+          </div>
 
-        <!-- Divisor + word fields -->
-        <div data-field>
-          <label for="divisor1">Divisor 1</label>
-          <input id="divisor1" name="divisor1" type="number" value="3" required />
-        </div>
-        <div data-field>
-          <label for="word1">Word for divisor 1</label>
-          <input id="word1" name="word1" type="text" value="Fizz" required maxlength="20" />
-        </div>
+          <div data-field>
+            <label for="middle_initial"><strong>Middle Initial</strong></label>
+            <input id="middle_initial" name="middle_initial" type="text" placeholder="M" maxlength="1" pattern="[A-Za-z]" title="One letter only" autocomplete="additional-name" />
+          </div>
 
-        <div data-field>
-          <label for="divisor2">Divisor 2</label>
-          <input id="divisor2" name="divisor2" type="number" value="5" required />
-        </div>
-        <div data-field>
-          <label for="word2">Word for divisor 2</label>
-          <input id="word2" name="word2" type="text" value="Buzz" required maxlength="20" />
-        </div>
+          <div data-field>
+            <label for="last_name"><strong>Last Name</strong></label>
+            <input id="last_name" name="last_name" type="text" placeholder="Enter your last name" required autocomplete="family-name" maxlength="20" />
+          </div>
 
-        <div data-field>
-          <label for="divisor3">Divisor 3</label>
-          <input id="divisor3" name="divisor3" type="number" value="7" required />
-        </div>
-        <div data-field>
-          <label for="word3">Word for divisor 3</label>
-          <input id="word3" name="word3" type="text" value="Bang!" required maxlength="20" />
-        </div>
 
-        <!-- Total count -->
-        <div data-field>
-          <label for="totalCount">Total Count</label>
-          <input id="totalCount" name="totalCount" type="number" value="125" required />
-        </div>
+  <!-- Divisor + word fields -->
+<form id="fizzbuzz4-form" aria-describedby="form-hint" data-form-grid>
 
-        <!-- Default word (blank) -->
-        <div data-field>
-          <label for="defaultWord">Default Word (for non-divisible numbers)</label>
-          <input id="defaultWord" name="defaultWord" type="text" value="" placeholder="(blank)" />
-        </div>
+  <div class="fizzbuzz-columns">
 
-        <div data-field>
-          <button type="submit" data-btn-primary>Run FizzBuzz 4</button>
-        </div>
-      </form>
+    <!-- LEFT COLUMN: divisors + total count -->
+    <div class="column">
+      <div data-field>
+        <label for="divisor1"><strong>Divisor 1</strong></label>
+        <input class="number" id="divisor1" name="divisor1" type="number" value="3" required />
+      </div>
 
-      <p id="form-hint" data-muted>
-        Try numbers like 15 (Fizz + Buzz), 21 (Fizz + Bang!), and 105 (Fizz + Buzz + Bang!).
-      </p>
+      <div data-field>
+        <label for="divisor2"><strong>Divisor 2</strong></label>
+        <input class="number" id="divisor2" name="divisor2" type="number" value="5" required />
+      </div>
+
+      <div data-field>
+        <label for="divisor3"><strong>Divisor 3</strong></label>
+        <input class="number" id="divisor3" name="divisor3" type="number" value="7" required />
+      </div>
+
+      <div data-field>
+        <label for="totalCount"><strong>Total Count</strong></label>
+        <input class="number" id="totalCount" name="totalCount" type="number" value="125" required />
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: words -->
+    <div class="column">
+      <div data-field>
+        <label for="word1"><strong>Word for divisor 1</strong></label>
+        <input class="word" id="word1" name="word1" type="text" value="Fizz" required maxlength="20" />
+      </div>
+
+      <div data-field>
+        <label for="word2"><strong>Word for divisor 2</strong></label>
+        <input class="word" id="word2" name="word2" type="text" value="Buzz" required maxlength="20" />
+      </div>
+
+      <div data-field>
+        <label for="word3"><strong>Word for divisor 3</strong></label>
+        <input class="word" id="word3" name="word3" type="text" value="Bang!" required maxlength="20" />
+      </div>
+
+      <div data-field>
+        <label for="defaultWord"><strong>Default Word</strong></label>
+        <input class="word" id="defaultWord" name="defaultWord" type="text" placeholder="(blank)" />
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BUTTON ROW -->
+  <div data-field class="button-row">
+    <button type="submit" data-btn-primary>Run FizzBuzz 4</button>
+  </div>
+
+</form>
 
       <!-- Output list -->
-      <ol id="datas" aria-live="polite"></ol>
+      <ul style="list-style-type:none; " id="datas" aria-live="polite"></ul>
     </section>
   </main>
 

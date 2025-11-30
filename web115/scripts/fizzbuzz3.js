@@ -1,7 +1,7 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("fizzbuzz-form");
+  const form = document.getElementById("fizzbuzz3-form");
   const output = document.getElementById("datas");
 
   // Generic divisibility check

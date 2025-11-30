@@ -1,7 +1,7 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("fizzbuzz-form");
+  const form = document.getElementById("fizzbuzz2-form");
   const output = document.getElementById("datas");
 
   // Divisors (default to 3 and 5, but you can change them here)
