@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("fizzbuzz4-form");
   const output = document.getElementById("datas");
 
+  // Safety: if either is missing, don't run to avoid errors
+  if (!form || !output) return;
+
   function checkDivision(num, divisor) {
     return num % divisor === 0;
   }
@@ -69,9 +72,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const li = document.createElement("li");
-      li.textContent = text;
+      // 🔹 ADD NUMBERING LIKE FIZZBUZZ 0 🔹
+      li.textContent = `${i}. ${text}`;
       output.appendChild(li);
     }
   });
 });
-
