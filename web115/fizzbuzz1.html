@@ -40,28 +40,32 @@
         Enter your theme words below and generate a numbered list from 1 to 140. For example: Breathe!, Relax!, Restore!.
       </p>
 
-      <form id="fizzbuzz1-form" aria-describedby="form-hint" data-form-grid>
+      <form id="fizzbuzz1-form" class="fizzbuzz-form form" data-form-grid>
 
-  <div data-field>
-    <label for="baseWord"><strong>Base Word</strong></label>
-    <input class="word" id="baseWord" name="baseWord" type="text" placeholder="Breathe!" required maxlength="20" />
+  <div class="data-field" data-field>
+    <label for="baseWord" class="label"><strong>Base Word</strong></label>
+    <input class="word style" id="baseWord" name="baseWord" type="text"
+           placeholder="Breathe!" required maxlength="20" />
   </div>
 
-  <div data-field>
-    <label for="word3"><strong>Word for divisible by 3</strong></label>
-    <input class="word" id="word3" name="word3" type="text" placeholder="Relax!" required maxlength="20" />
+  <div class="data-field" data-field>
+    <label for="word3" class="label"><strong>Word for divisible by 3</strong></label>
+    <input class="word style" id="word3" name="word3" type="text"
+           placeholder="Relax!" required maxlength="20" />
   </div>
 
-  <div data-field>
-    <label for="word5"><strong>Word for divisible by 5</strong></label>
-    <input class="word" id="word5" name="word5" type="text" placeholder="Restore!" required maxlength="20" />
+  <div class="data-field" data-field>
+    <label for="word5" class="label"><strong>Word for divisible by 5</strong></label>
+    <input class="word style" id="word5" name="word5" type="text"
+           placeholder="Restore!" required maxlength="20" />
   </div>
 
-  <div data-field class="button-row">
-    <button type="submit" data-btn-primary>Run FizzBuzz 1</button>
+  <div class="data-field button-row" data-field>
+    <button class="buttons" type="submit" data-btn-primary>Run FizzBuzz 1</button>
   </div>
 
 </form>
+
 
       <!-- Output list (same placement as fizzbuzz0) -->
       <ul style="list-style-type:none; " id="datas" aria-live="polite"></ul>

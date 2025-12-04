@@ -47,27 +47,39 @@
         Enter your name below and receive a personalized greeting.
       </p>
 
-      <!-- Removed aria-describedby because form-hint did not exist -->
-      <form id="name-form" data-form-grid>
-        <div data-field>
-          <label for="first_name"><strong>First Name</strong></label>
-          <input id="first_name" name="first_name" type="text" placeholder="Enter your first name" required autocomplete="given-name" maxlength="20" />
-        </div>
+    <!-- Removed aria-describedby because form-hint did not exist -->
+<form id="name-form" class="fizzbuzz-form form" data-form-grid>
 
-        <div data-field>
-          <label for="middle_initial"><strong>Middle Initial</strong></label>
-          <input id="middle_initial" name="middle_initial" type="text" placeholder="M" maxlength="1" pattern="[A-Za-z]" title="One letter only" autocomplete="additional-name" />
-        </div>
+  <div class="data-field" data-field>
+    <label for="first_name" class="label"><strong>First Name</strong></label>
+    <input id="first_name" name="first_name" type="text"
+           class="style"
+           placeholder="Enter your first name"
+           required autocomplete="given-name" maxlength="20" />
+  </div>
 
-        <div data-field>
-          <label for="last_name"><strong>Last Name</strong></label>
-          <input id="last_name" name="last_name" type="text" placeholder="Enter your last name" required autocomplete="family-name" maxlength="20" />
-        </div>
+  <div class="data-field" data-field>
+    <label for="middle_initial" class="label"><strong>Middle Initial</strong></label>
+    <input id="middle_initial" name="middle_initial" type="text"
+           class="style"
+           placeholder="M" maxlength="1" pattern="[A-Za-z]"
+           title="One letter only" autocomplete="additional-name" />
+  </div>
 
-        <div data-field class="button-row">
-          <button type="submit" data-btn-primary>Greet Me</button>
-        </div>
-      </form>
+  <div class="data-field" data-field>
+    <label for="last_name" class="label"><strong>Last Name</strong></label>
+    <input id="last_name" name="last_name" type="text"
+           class="style"
+           placeholder="Enter your last name"
+           required autocomplete="family-name" maxlength="20" />
+  </div>
+
+  <div class="data-field button-row" data-field>
+    <button type="submit" class="buttons" data-btn-primary>Greet Me</button>
+  </div>
+
+</form>
+
 
       <!-- UL preserved exactly as requested -->
       <ul id="datas" aria-live="polite" style="list-style-type:none;"></ul>

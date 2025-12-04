@@ -45,25 +45,30 @@
         Enter your theme words below and generate a numbered list from 1 to 140. Default divisors are 3 and 5. You can change them in the script if desired.
       </p>
 
-      <form id="fizzbuzz2-form" aria-describedby="form-hint" data-form-grid>
+      <form id="fizzbuzz2-form" class="fizzbuzz-form form" data-form-grid>
 
-  <div data-field>
-    <label for="baseWord"><strong>Base Word</strong></label>
-    <input class="word" id="baseWord" name="baseWord" type="text" placeholder="Breathe!" required maxlength="20" />
+  <div class="data-field" data-field>
+    <label for="baseWord" class="label"><strong>Base Word</strong></label>
+    <input class="word style" id="baseWord" name="baseWord" type="text"
+           placeholder="Breathe!" required maxlength="20" />
   </div>
 
-  <div data-field>
-    <label for="word3"><strong>Divisible by 1st divisor</strong></label>
-    <input class="word" id="word3" name="word3" type="text" placeholder="Relax!" required maxlength="20" />
+  <div class="data-field" data-field>
+    <label for="word3" class="label"><strong>Divisible by 1st divisor</strong></label>
+    <input class="word style" id="word3" name="word3" type="text"
+           placeholder="Relax!" required maxlength="20" />
   </div>
 
-  <div data-field>
-    <label for="word5"><strong>Divisible by 2nd divisor</strong></label>
-    <input class="word" id="word5" name="word5" type="text" placeholder="Restore!" required maxlength="20" />
+  <div class="data-field" data-field>
+    <label for="word5" class="label"><strong>Divisible by 2nd divisor</strong></label>
+    <input class="word style" id="word5" name="word5" type="text"
+           placeholder="Restore!" required maxlength="20" />
   </div>
 
-  <div data-field class="button-row">
-    <button type="submit" data-btn-primary><strong>FizzBuzz 2</strong></button>
+  <div class="data-field button-row" data-field>
+    <button type="submit" class="buttons" data-btn-primary>
+      <strong>FizzBuzz 2</strong>
+    </button>
   </div>
 
 </form>
