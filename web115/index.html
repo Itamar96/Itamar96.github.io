@@ -14,13 +14,19 @@
   <!-- Styles -->
   <link rel="stylesheet" href="styles/default.css" />
 
- <!-- Favicon -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/assets/favicon.png"/>
-  
+
   <!-- Persist stored theme early (prevents flash) -->
   <script>
     (function () {
-      try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme','dark'); } catch (e) { console.error(e); }
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.setAttribute('data-theme','dark');
+        }
+      } catch (e) {
+        console.error(e);
+      }
     })();
   </script>
 
@@ -32,38 +38,37 @@
   <div data-include="components/header.html"></div>
 
   <main id="main">
-
     <h2>Welcome</h2>
 
-        <div data-intro>
-          <p>
-            This site presents my coursework and highlights my evolving skills in accessible,
-            standards-based web development. It also introduces my sample massage brand,
-            <strong>Iridescent Cinderwyrm Bodywork.</strong>
-          </p>
-          
-           <figure data-gold>
-  <img loading="lazy"
-       src="images/hiking_mountain_lake_500w.jpg"
-       alt="Portrait of a hiker in nature"
-        width="500"
-       height="694"
-       style="width: 100%; height: auto;" />
-  <figcaption data-note-gold="">Exploring Colorado’s alpine trails, 2025.</figcaption>
-</figure>
-          <blockquote>
-            If I have seen further it is by standing on the shoulders of giants.
-            <cite>— Isaac Newton</cite>
-          </blockquote>
-        </div>
+    <div data-intro>
+      <p>
+        This site presents my coursework and highlights my evolving skills in accessible,
+        standards-based web development. It also introduces my sample massage brand,
+        <strong>Iridescent Cinderwyrm Bodywork.</strong>
+      </p>
+
+      <figure data-gold>
+        <img loading="lazy"
+             src="images/hiking_mountain_lake_500w.jpg"
+             alt="Portrait of a hiker in nature"
+             width="500"
+             height="694"
+             style="width: 100%; height: auto;" />
+        <figcaption data-note-gold="">Exploring Colorado’s alpine trails, 2025.</figcaption>
+      </figure>
+
+      <blockquote>
+        If I have seen further it is by standing on the shoulders of giants.
+        <cite>— Isaac Newton</cite>
+      </blockquote>
+    </div>
   </main>
 
-  <footer data-include="components/footer.html"></footer>
+  <!-- footer include (use div so we don't nest <footer> tags) -->
+  <div data-include="components/footer.html"></div>
 
+  <script src="scripts/HTMLInclude.js"></script>
+  <script src="scripts/theme-toggle.js"></script>
 
-  <!-- Active nav: run after includes complete -->
-  
- <script src="scripts/HTMLInclude.js" ></script>
- <script src="scripts/theme-toggle.js"></script>
 </body>
 </html>

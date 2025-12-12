@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="description"
+        content="Itamar Castillo’s WEB115 workspace — single-page (flipped main) version" />
+  <meta name="course" content="WEB115" />
+
+  <title>Itamar Castillo's Iridescent Cinderwyrm - WEB115</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/default.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/assets/favicon.png" />
+
+  <!-- Persist stored theme early (prevents flash) -->
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("theme") === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    })();
+  </script>
+
+  <!-- Acculus Validator -->
+  <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <!-- Header (included once) -->
+  <div data-include="components/header.html"></div>
+
+  <!-- Main content (loaded dynamically by index2.js) -->
+  <main id="main"></main>
+
+  <!-- Footer (included once) -->
+  <div data-include="components/footer.html"></div>
+
+  <!-- Includes first -->
+  <script src="scripts/HTMLInclude.js"></script>
+
+  <!-- Flip-components controller next -->
+  <script src="scripts/index2.js"></script>
+
+  <!-- Theme toggle LAST (so #theme-toggle definitely exists) -->
+  <script src="scripts/theme-toggle.js"></script>
+
+</body>
+</html>

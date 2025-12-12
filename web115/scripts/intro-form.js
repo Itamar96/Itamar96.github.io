@@ -121,3 +121,11 @@ document.addEventListener('DOMContentLoaded', () => {
     output.scrollIntoView({ behavior: 'smooth' });
   });
 });
+
+if (pageName === "fizzbuzz3") {
+  const script = document.createElement("script");
+  script.src = "scripts/fizzbuzz3.js";
+  script.defer = true;
+  script.dataset.dynamic = "true";
+  document.body.appendChild(script);
+}
