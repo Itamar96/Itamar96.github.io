@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Introduction form for Itamar Castillo — Iridescent Cinderwyrm Bodywork" />
+  <meta name="course" content="WEB115" />
+  <title>Itamar Castillo's Iridescent Cinderwyrm - WEB115 - Introduction Form</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/default.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/assets/favicon.png" />
+
+  <!-- Persist stored theme early (prevents flash) -->
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    })();
+  </script>
+
+  <script src="https://lint.page/kit/67ff88.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <!-- 🐉 Include header -->
+  <div data-include="components/header.html"></div>
+
+  <main data-container>
+    <h2>Introduction Form</h2>
+    <p>Update the fields below and submit to generate your introduction page.</p>
+
+    <!-- 
+      NOTE:
+      Using the shared form styles from default.css:
+      .form = layout (flex + spacing)
+      .data-field = label + input grouping
+      .label + .style = consistent input styling
+    -->
+    <form id="introForm" class="form">
+
+      <!-- About Me -->
+      <fieldset class="data-field">
+        <legend class="label">About Me</legend>
+
+        <label for="aboutMe" class="label">About me</label>
+        <textarea id="aboutMe" name="aboutMe" class="style" required rows="8">Hello, my name is Itamar Castillo, and I’m in my final year of study as a Software Developer. I enjoy music, hiking, and fitness, and I’m using this site to practice my web skills while presenting a sample massage brand for class. As I study web technologies, I’m focused on building an accessible and consistent portfolio that uses semantic HTML, responsive images, and a calm brand voice inspired by my massage concept, Iridescent Cinderwyrm Bodywork. I value clarity, comfort, and craft both online and on the table.</textarea>
+      </fieldset>
+
+      <!-- Quick Facts -->
+      <fieldset class="data-field">
+        <legend class="label">Quick Facts</legend>
+
+        <label for="personalBackground" class="label">Personal background</label>
+        <textarea id="personalBackground" name="personalBackground" class="style" required rows="3">I balance interests in communication and health with a focus on technology and problem solving.</textarea>
+
+        <label for="academicBackground" class="label">Academic background</label>
+        <textarea id="academicBackground" name="academicBackground" class="style" required rows="3">I continue to build programming, systems, and project skills.</textarea>
+
+        <!-- Courses -->
+        <div class="data-field courses-group">
+          <h3>Courses I am taking</h3>
+
+          <div id="courses-container">
+
+            <div class="data-field course-row">
+              <label for="course1Title" class="label">Course title</label>
+              <input
+                type="text"
+                class="style course-title"
+                name="courseTitle"
+                id="course1Title"
+                value="CSC 249: Data Structures and Algorithms"
+                required
+              />
+
+              <label for="course1Note" class="label">Course note</label>
+              <input
+                type="text"
+                class="style course-note"
+                name="courseNote"
+                id="course1Note"
+                value="improve problem solving."
+                required
+              />
+            </div>
+
+            <div class="data-field course-row">
+              <label for="course2Title" class="label">Course title</label>
+              <input
+                type="text"
+                class="style course-title"
+                name="courseTitle"
+                id="course2Title"
+                value="CTS 118: IS Professional Communication"
+                required
+              />
+
+              <label for="course2Note" class="label">Course note</label>
+              <input
+                type="text"
+                class="style course-note"
+                name="courseNote"
+                id="course2Note"
+                value="teamwork and documentation."
+                required
+              />
+            </div>
+
+            <div class="data-field course-row">
+              <label for="course3Title" class="label">Course title</label>
+              <input
+                type="text"
+                class="style course-title"
+                name="courseTitle"
+                id="course3Title"
+                value="CTS 240: Project Management"
+                required
+              />
+
+              <label for="course3Note" class="label">Course note</label>
+              <input
+                type="text"
+                class="style course-note"
+                name="courseNote"
+                id="course3Note"
+                value="leadership and organization."
+                required
+              />
+            </div>
+
+            <div class="data-field course-row">
+              <label for="course4Title" class="label">Course title</label>
+              <input
+                type="text"
+                class="style course-title"
+                name="courseTitle"
+                id="course4Title"
+                value="WEB 115: Web Markup and Scripting"
+                required
+              />
+
+              <label for="course4Note" class="label">Course note</label>
+              <input
+                type="text"
+                class="style course-note"
+                name="courseNote"
+                id="course4Note"
+                value="web development skills."
+                required
+              />
+            </div>
+
+          </div>
+
+          <div class="button-row">
+            <button type="button" id="add-course" class="buttons">Add Course</button>
+            <button type="button" id="remove-course" class="buttons" data-btn-secondary>Remove Last Course</button>
+          </div>
+        </div>
+
+        <label for="interestingFact" class="label">Interesting fact</label>
+        <textarea id="interestingFact" name="interestingFact" class="style" required rows="2">I like to explore new hiking trails.</textarea>
+
+        <label for="shareSomething" class="label">Something I would like to share</label>
+        <textarea id="shareSomething" name="shareSomething" class="style" required rows="2">Technology feels easier when you stay curious and keep practicing.</textarea>
+      </fieldset>
+
+      <div class="button-row">
+        <button type="submit" class="buttons">Generate Introduction</button>
+        <button type="reset" class="buttons" data-btn-secondary>Reset to Defaults</button>
+      </div>
+    </form>
+
+    <hr />
+
+    <section id="intro-output" aria-live="polite">
+      <h2 class="visually-hidden">Generated Introduction Preview</h2>
+      <!-- JS will render the generated introduction here -->
+    </section>
+  </main>
+
+  <!-- 🪶 Include footer -->
+  <div data-include="components/footer.html"></div>
+
+  <!-- Scripts -->
+  <script src="scripts/HTMLInclude.js" defer></script>
+  <script src="scripts/theme-toggle.js" defer></script>
+  <script src="scripts/intro-form.js" defer></script>
+</body>
+</html>
