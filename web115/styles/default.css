@@ -419,3 +419,43 @@ main[data-container] > div[data-intro] {
   flex-direction: column;
   gap: 0.75rem;
 }
+
+/* ---------------------------------------------------------
+   TABLE GOLD BORDER STYLE
+   Ensures the table has a clearly visible gold border on ALL
+   four sides (top, bottom, left, right). Stronger outer
+   border + consistent inner cell borders. Designed to match
+   the site's holiday gold aesthetic.
+   --------------------------------------------------------- */
+
+table {
+  width: 100%;
+  border-collapse: separate; /* important: keeps full border visible */
+  border-spacing: 0;         /* removes gaps between cells */
+  margin: 2rem 0;
+  background: var(--surface);
+  border: 4px solid var(--holiday-gold); /* strong outer border */
+  border-radius: 14px;
+}
+
+th, td {
+  border: 1px solid var(--holiday-gold); /* inner cell borders */
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+/* Round ONLY the outside corners */
+table tr:first-child th:first-child { border-top-left-radius: 1px; }
+table tr:first-child th:last-child { border-top-right-radius: 1px; }
+table tr:last-child td:first-child { border-bottom-left-radius: 1px; }
+table tr:last-child td:last-child { border-bottom-right-radius: 1px; }
+
+thead th {
+  background: rgba(var(--holiday-gold-rgb), 0.18);
+  font-weight: 700;
+}
+
+tfoot th, tfoot td {
+  background: rgba(var(--holiday-gold-rgb), 0.12);
+  font-weight: 600;
+}
